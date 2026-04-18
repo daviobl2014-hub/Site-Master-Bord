@@ -1,0 +1,106 @@
+/* ==========================================
+   03 - HERO
+   Seção principal: título "Master Bord",
+   subtítulos e responsivo da hero.
+   ========================================== */
+
+/* ===== SEÇÃO HERO ===== */
+.hero {
+  position: relative;
+  width: 100%;
+  min-height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: transparent;
+  padding: 35px 0 10px 0;
+}
+
+.hero-conteudo,
+.produtos-conteudo {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 0 20px;
+}
+
+/* ===== TÍTULO MASTER BORD ===== */
+.titulo-principal {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: clamp(10px, 2vw, 20px);
+  line-height: 1;
+  margin-bottom: 5px;
+}
+
+.titulo-master {
+  font-family: 'Bauhaus', sans-serif;
+  font-size: clamp(50px, 10vw, 150px);
+  font-weight: 700;
+  color: #3276b9;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  animation: tracking-in-expand 3s cubic-bezier(0.215, 0.61, 0.355, 1) both;
+}
+
+.titulo-bord {
+  font-family: 'Bauhaus', sans-serif;
+  margin-top: clamp(10px, 2vw, 40px);
+  font-size: clamp(50px, 10vw, 150px);
+  font-weight: 700;
+  color: #8c2d2e;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  animation: tracking-in-expand 3s cubic-bezier(0.215, 0.61, 0.355, 1) 0.2s both;
+}
+
+.subtitulo-logo {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(16px, 2.5vw, 30px);
+  font-weight: 400;
+  color: #8c2d2e;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+  animation: focus-in-expand-fwd 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s
+    both;
+}
+
+.subtitulo {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(11px, 1.5vw, 20px);
+  font-weight: 500;
+  color: #00080f;
+  letter-spacing: clamp(1px, 0.3vw, 4px);
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
+  text-transform: uppercase;
+  margin-top: clamp(15px, 3vw, 40px);
+  animation: text-focus-in 1s cubic-bezier(0.55, 0.085, 0.68, 0.53) 0.5s both;
+}
+
+/* ===== RESPONSIVO ===== */
+@media (max-width: 1200px) {
+  .hero {
+    padding: 70px 0 10px 0;
+  }
+  .hero h1 {
+    text-align: center !important;
+  }
+  .titulo-principal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .titulo-principal {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .titulo-bord {
+    margin-top: 0;
+  }
+}

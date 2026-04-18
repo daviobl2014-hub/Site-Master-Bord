@@ -1,0 +1,128 @@
+/* ==========================================
+   01 - BASE
+   Reset, body, pano de fundo, fonte customizada,
+   sistema de revelação por scroll e animações
+   globais reutilizadas por várias seções.
+   ========================================== */
+
+/* ===== RESET ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+  font-family: 'Montserrat', 'Segoe UI', sans-serif;
+  overflow-x: hidden;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+/* ===== PANO DE FUNDO ÚNICO ===== */
+.container-fundo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('../imagem/fundo-master.jpg') center center / cover no-repeat;
+  opacity: 0.35;
+  filter: blur(1px);
+  z-index: -2;
+}
+
+/* ===== FONTE BAUHAUS ===== */
+@font-face {
+  font-family: 'Bauhaus';
+  src: url('../font/bauhausm.ttf') format('truetype');
+}
+
+/* ===== SISTEMA DE ANIMAÇÃO AO VER ===== */
+/* Elementos escondidos até entrar na tela */
+.escondido {
+  opacity: 0;
+}
+
+/* Revelação com blur fade-in */
+.revelar {
+  animation: revelar-blur 0.8s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
+}
+
+@keyframes revelar-blur {
+  0% {
+    filter: blur(10px);
+    opacity: 0;
+  }
+  100% {
+    filter: blur(0);
+    opacity: 1;
+  }
+}
+
+/* ===== ANIMAÇÕES GLOBAIS (usadas em hero e carrossel) ===== */
+@keyframes tracking-in-expand {
+  0% {
+    letter-spacing: -0.5em;
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes text-focus-in {
+  0% {
+    filter: blur(12px);
+    opacity: 0;
+  }
+  100% {
+    filter: blur(0);
+    opacity: 1;
+  }
+}
+
+@keyframes focus-in-expand-fwd {
+  0% {
+    letter-spacing: -0.5em;
+    transform: translateZ(-800px);
+    filter: blur(12px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateZ(0);
+    filter: blur(0);
+    opacity: 1;
+  }
+}
+
+@keyframes kenburns-top {
+  0% {
+    transform: scale(1) translateY(0);
+    transform-origin: 50% 16%;
+  }
+  100% {
+    transform: scale(1.25) translateY(-15px);
+    transform-origin: top;
+  }
+}
+
+@keyframes kenburns-bottom {
+  0% {
+    transform: scale(1) translateY(0);
+    transform-origin: 50% 84%;
+  }
+  100% {
+    transform: scale(1.25) translateY(15px);
+    transform-origin: bottom;
+  }
+}
