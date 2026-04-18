@@ -98,7 +98,7 @@
    em telas ≤768px.
    ========================================== */
 .hamburguer {
-  display: none;                    /* escondido por padrão (desktop) */
+  display: none; /* escondido por padrão (desktop) */
   flex-direction: column;
   justify-content: space-between;
   width: 30px;
@@ -127,7 +127,7 @@
 }
 
 .hamburguer.ativo span:nth-child(2) {
-  opacity: 0;              /* barra do meio some */
+  opacity: 0; /* barra do meio some */
 }
 
 .hamburguer.ativo span:nth-child(3) {
@@ -151,10 +151,10 @@
   }
 
   /* Esconde o menu principal até ser aberto */
-  .menu-principal {
+  .cabecalho-nav .menu-principal {
     display: none;
     position: fixed;
-    top: 62px;                      /* logo abaixo do header */
+    top: 62px; /* logo abaixo do header */
     left: 0;
     width: 100%;
     flex-direction: column;
@@ -168,7 +168,7 @@
   }
 
   /* Quando o menu está aberto, aparece como lista vertical */
-  .menu-principal.aberto {
+  .cabecalho-nav ul .menu-principal .aberto {
     display: flex;
   }
 
@@ -185,13 +185,13 @@
   .menu-principal > li > a {
     display: block;
     padding: 18px 20px;
-    font-size: 1.5rem;              /* 15px */
+    font-size: 1.5rem; /* 15px */
     color: #fff;
   }
 
   /* Submenu Produtos vira accordion dentro do menu mobile */
   .cabecalho-nav ul li > ul {
-    position: static;                /* sai do modo "barra fixa" */
+    position: static; /* sai do modo "barra fixa" */
     display: none;
     width: 100%;
     flex-direction: column;
@@ -220,7 +220,7 @@
   .cabecalho-nav ul li > ul li a {
     display: block;
     padding: 14px 20px;
-    font-size: 1.3rem;              /* 13px - subitem menor */
+    font-size: 1.3rem; /* 13px - subitem menor */
     color: #7b8fa3;
   }
 
