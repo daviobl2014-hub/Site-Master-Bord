@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<title>Master Bord — Industrial Premium</title>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  @font-face {
+    font-family: 'Bauhaus';
+    src: url('https://fonts.cdnfonts.com/s/19795/BauhausRegular.woff') format('woff');
+    font-display: swap;
+  }
+  html, body { margin: 0; background: #0F1116; font-family: Inter, system-ui, sans-serif; }
+  * { box-sizing: border-box; }
+  button { font-family: inherit; }
+  input, textarea { font-family: inherit; }
+  input::placeholder, textarea::placeholder { color: #5A6070; }
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: #0A0C10; }
+  ::-webkit-scrollbar-thumb { background: #2E3340; }
+  ::-webkit-scrollbar-thumb:hover { background: #4A8BD6; }
+</style>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel" src="mb-theme.jsx"></script>
+<script type="text/babel" src="mb-shell.jsx"></script>
+<script type="text/babel" src="mb-home.jsx"></script>
+<script type="text/babel" src="mb-sobre.jsx"></script>
+<script type="text/babel" src="mb-produtos.jsx"></script>
+<script type="text/babel" src="mb-catalogo-contato.jsx"></script>
+
+<script type="text/babel" data-presets="env,react">
+const TWEAKS = /*EDITMODE-BEGIN*/{
+  "mobile": false,
+  "page": "home"
+}/*EDITMODE-END*/;
+
+function App() {
+  const [tweaks, setTweaks] = React.useState(TWEAKS);
+  const [editMode, setEditMode] = React.useState(false);
+  const [page, setPageState] = React.useState(() => {
+    try { return localStorage.getItem('mb_page') || TWEAKS.page || 'home'; } catch { return 'home'; }
+  });
+
+  const setPage = (p) => {
+    setPageState(p);
+    try {
+      localStorage.setItem('mb_page', p);
+      const el = document.getElementById('mb-scroll');
+      if (el) el.scrollTop = 0;
+    } catch {}
+  };
+
+  React.useEffect(() => {
+    const handler = (e) => {
+      if (e.data?.type === '__activate_edit_mode') setEditMode(true);
+      else if (e.data?.type === '__deactivate_edit_mode') setEditMode(false);
+    };
+    window.addEventListener('message', handler);
+    window.parent.postMessage({type: '__edit_mode_available'}, '*');
+    return () => window.removeEventListener('message', handler);
+  }, []);
+
+  const update = (patch) => {
+    setTweaks(t => ({...t, ...patch}));
+    window.parent.postMessage({type: '__edit_mode_set_keys', edits: patch}, '*');
+  };
+
+  const mobile = tweaks.mobile;
+
+  let content;
+  if (page === 'home') content = <window.HomePage mobile={mobile} setPage={setPage}/>;
+  else if (page === 'sobre') content = <window.SobrePage mobile={mobile} setPage={setPage}/>;
+  else if (page === 'produtos') content = <window.ProdutosIndex mobile={mobile} setPage={setPage}/>;
+  else if (page.startsWith('produto-')) content = <window.ProdutoPage id={page.slice(8)} mobile={mobile} setPage={setPage}/>;
+  else if (page === 'catalogo') content = <window.CatalogoPage mobile={mobile} setPage={setPage}/>;
+  else if (page === 'contato') content = <window.ContatoPage mobile={mobile}/>;
+  else content = <window.HomePage mobile={mobile} setPage={setPage}/>;
+
+  return (
+    <>
+      <div style={{minHeight: '100vh', background: MB.bg, display: 'flex', justifyContent: 'center'}}>
+        <div id="mb-scroll" style={{
+          width: '100%',
+          maxWidth: mobile ? 430 : '100%',
+          minHeight: '100vh', maxHeight: '100vh', overflowY: 'auto',
+          boxShadow: mobile ? '0 0 40px rgba(0,0,0,0.4)' : 'none',
+          borderLeft: mobile ? `1px solid ${MB.line}` : 'none',
+          borderRight: mobile ? `1px solid ${MB.line}` : 'none',
+        }}>
+          <window.MBHeader page={page} setPage={setPage} mobile={mobile}/>
+          {content}
+          <window.MBFooter mobile={mobile} setPage={setPage}/>
+        </div>
+      </div>
+
+      {editMode && (
+        <div style={{
+          position: 'fixed', bottom: 20, right: 20, width: 240,
+          background: '#1a1a1a', color: '#f0eee9', padding: 18,
+          fontFamily: 'Inter', fontSize: 12, borderRadius: 10,
+          boxShadow: '0 20px 60px rgba(0,0,0,0.4)', zIndex: 9999,
+        }}>
+          <div style={{fontWeight: 700, fontSize: 13, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: 14, color: '#D4A96A'}}>Tweaks</div>
+          <label style={{display: 'flex', alignItems: 'center', gap: 8, marginBottom: 14, cursor: 'pointer'}}>
+            <input type="checkbox" checked={tweaks.mobile} onChange={e => update({mobile: e.target.checked})}/>
+            Visualizar como mobile
+          </label>
+          <div style={{opacity: 0.7, marginBottom: 6, fontSize: 11}}>Página atual</div>
+          <select value={page} onChange={e => setPage(e.target.value)} style={{width: '100%', padding: 6, background: '#0F1116', color: '#f0eee9', border: '1px solid #2E3340', fontFamily: 'inherit'}}>
+            <option value="home">Home</option>
+            <option value="sobre">Sobre</option>
+            <option value="produtos">Produtos (Index)</option>
+            <option value="produto-etiqueta">Produto · Etiqueta</option>
+            <option value="produto-bordado">Produto · Bordado</option>
+            <option value="produto-laser">Produto · Laser</option>
+            <option value="catalogo">Catálogo</option>
+            <option value="contato">Contato</option>
+          </select>
+        </div>
+      )}
+    </>
+  );
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App/>);
+</script>
+</body>
+</html>
