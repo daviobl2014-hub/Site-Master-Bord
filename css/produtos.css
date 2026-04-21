@@ -1,0 +1,107 @@
+/* ================================================================
+   PRODUTOS.CSS — Master Bord
+   CSS exclusivo da PÁGINA PRODUTOS (produtos.html — índice dos 3).
+   NÃO carregue em outras páginas.
+
+   Seções:
+   1. Hero (capa "Três produtos, um padrão")
+   2. Grid de produtos (3 cards)
+   3. Media queries mobile
+   ================================================================ */
+
+/* ================================================================
+   1. HERO — capa da página produtos
+   ================================================================ */
+.produtos-hero {
+  background: var(--mb-bg);
+  color: var(--mb-paper);
+  padding: 72px 48px;
+}
+.produtos-hero-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 112px;
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  color: var(--mb-paper);
+  margin: 16px 0 0;
+}
+
+/* ================================================================
+   2. GRID — 3 cards dos produtos
+   ================================================================ */
+.produtos-index {
+  background: var(--mb-bg-soft);
+  padding: 56px 48px 96px;
+}
+.produtos-index-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.produto-index-card {
+  display: block;
+  cursor: pointer;
+  transition: transform 0.2s, border-color 0.2s;
+}
+.produto-index-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--mb-line);
+}
+.produto-index-image {
+  aspect-ratio: 5 / 4;
+  margin-bottom: 20px;
+}
+.produto-index-numero {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--mb-muted);
+  letter-spacing: 0.2em;
+}
+.produto-index-nome {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 32px;
+  color: var(--mb-paper);
+  margin-top: 8px;
+  letter-spacing: -0.01em;
+}
+.produto-index-tagline {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 15px;
+  margin-top: 6px;
+}
+.produto-index-link {
+  margin-top: 18px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+/* ================================================================
+   3. MEDIA QUERIES MOBILE
+   Ponto de quebra: 900px
+   ================================================================ */
+@media (max-width: 900px) {
+  /* Hero */
+  .produtos-hero {
+    padding: 48px 20px;
+  }
+  .produtos-hero-title {
+    font-size: 48px;
+  }
+
+  /* Grid */
+  .produtos-index {
+    padding: 40px 20px 72px;
+  }
+  .produtos-index-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .produto-index-nome {
+    font-size: 26px;
+  }
+}

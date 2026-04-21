@@ -1,0 +1,429 @@
+/* ================================================================
+   PRODUTO.CSS — Master Bord
+   CSS compartilhado entre as 3 páginas de detalhe de produto:
+     - produto-etiqueta.html (cor: azul)
+     - produto-bordado.html  (cor: vinho)
+     - produto-laser.html    (cor: ouro)
+
+   A cor por página vem do <body data-cor="azul|vinho|ouro">
+   e é aplicada via variável --cor-produto.
+
+   Seções:
+   1. Variável de cor por página
+   2. Hero do produto (breadcrumb, código, título, imagem)
+   3. Specs (ficha técnica)
+   4. Aplicações (5 imagens)
+   5. Outros produtos (2 cards)
+   6. Media queries mobile
+   ================================================================ */
+
+/* ================================================================
+   1. VARIÁVEL DE COR POR PÁGINA
+   ================================================================ */
+body[data-cor='azul'] {
+  --cor-produto: var(--mb-azul);
+  --cor-produto-rgb: 74, 139, 214;
+}
+body[data-cor='vinho'] {
+  --cor-produto: var(--mb-vinho);
+  --cor-produto-rgb: 196, 75, 85;
+}
+body[data-cor='ouro'] {
+  --cor-produto: var(--mb-ouro);
+  --cor-produto-rgb: 212, 169, 106;
+}
+
+/* Aplica a cor onde foi marcada com a classe utilitária */
+.cor-produto {
+  color: var(--cor-produto);
+}
+.bg-cor-produto {
+  background: var(--cor-produto);
+}
+.border-cor-produto {
+  border-color: var(--cor-produto);
+}
+
+/* ================================================================
+   2. HERO DO PRODUTO
+   ================================================================ */
+.produto-hero {
+  position: relative;
+  overflow: hidden;
+  background: var(--mb-bg);
+  color: var(--mb-paper);
+  padding: 72px 48px 96px;
+}
+.produto-hero-glow {
+  position: absolute;
+  top: 20%;
+  left: -5%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(
+    circle,
+    rgba(var(--cor-produto-rgb), 0.16),
+    transparent 60%
+  );
+  filter: blur(40px);
+  pointer-events: none;
+}
+
+.produto-breadcrumb {
+  position: relative;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--mb-muted);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 32px;
+}
+.produto-breadcrumb a {
+  color: var(--mb-muted);
+  transition: color 0.2s;
+}
+.produto-breadcrumb a:hover {
+  color: var(--mb-paper);
+}
+.produto-breadcrumb .sep {
+  color: var(--mb-ouro);
+  margin: 0 4px;
+}
+
+.produto-hero-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 56px;
+  align-items: start;
+}
+
+.produto-hero-codigo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 28px;
+}
+.produto-hero-k {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 80px;
+  color: var(--cor-produto);
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+}
+.produto-hero-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.produto-hero-meta-num,
+.produto-hero-meta-spec {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+}
+.produto-hero-meta-num {
+  color: var(--mb-muted);
+}
+.produto-hero-meta-spec {
+  color: var(--mb-ouro);
+}
+
+.produto-hero-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 88px;
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+  color: var(--mb-paper);
+  margin: 0;
+}
+.produto-hero-tagline {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 26px;
+  color: var(--cor-produto);
+  margin-top: 14px;
+}
+.produto-hero-lead {
+  font-family: var(--font-sans);
+  font-size: 17px;
+  color: var(--mb-paper-dim);
+  line-height: 1.6;
+  margin: 32px 0 0;
+  max-width: 560px;
+}
+.produto-hero-ctas {
+  display: flex;
+  gap: 12px;
+  margin-top: 36px;
+  flex-wrap: wrap;
+}
+
+/* Imagem do hero (placeholder com sample box embaixo) */
+.produto-hero-img {
+  position: relative;
+  aspect-ratio: 3 / 4;
+}
+.produto-hero-img-sample {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  padding: 10px 14px;
+  background: var(--mb-bg-deep);
+  border: 1px solid var(--cor-produto);
+}
+.produto-hero-img-sample-cod {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--cor-produto);
+  letter-spacing: 0.2em;
+}
+.produto-hero-img-sample-txt {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--mb-paper);
+  margin-top: 4px;
+}
+
+/* ================================================================
+   3. SPECS — ficha técnica
+   ================================================================ */
+.produto-specs {
+  background: var(--mb-bg-soft);
+  color: var(--mb-paper);
+  padding: 96px 48px;
+}
+.produto-specs-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 56px;
+  align-items: start;
+}
+.produto-specs-intro {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: var(--mb-muted);
+  margin-top: 16px;
+  line-height: 1.6;
+  max-width: 320px;
+}
+
+.produto-specs-card {
+  padding: 24px;
+}
+.produto-specs-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+.spec-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px dashed var(--mb-line);
+  align-items: baseline;
+}
+.spec-row:last-child {
+  border-bottom: none;
+}
+.spec-key {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--mb-muted);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+.spec-val {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: var(--mb-paper);
+  font-weight: 500;
+}
+
+.produto-specs-rodape {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--mb-line);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--mb-muted);
+  display: flex;
+  justify-content: space-between;
+}
+.produto-specs-rodape .versao {
+  color: var(--cor-produto);
+}
+
+/* ================================================================
+   4. APLICAÇÕES — 5 imagens
+   ================================================================ */
+.produto-aplicacoes {
+  background: var(--mb-bg);
+  color: var(--mb-paper);
+  padding: 96px 48px;
+}
+.produto-aplicacoes-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+}
+.produto-aplicacao {
+  position: relative;
+  aspect-ratio: 1 / 1;
+}
+.produto-aplicacao-titulo {
+  position: absolute;
+  bottom: 14px;
+  left: 14px;
+  right: 14px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 17px;
+  color: var(--mb-paper);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+
+/* ================================================================
+   5. OUTROS PRODUTOS — 2 cards
+   ================================================================ */
+.produto-relacionados {
+  background: var(--mb-bg-soft);
+  color: var(--mb-paper);
+  padding: 96px 48px;
+}
+.produto-relacionados-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.produto-relacionado-card {
+  display: grid;
+  grid-template-columns: 1fr 120px;
+  gap: 20px;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.produto-relacionado-card:hover {
+  transform: translateY(-2px);
+}
+.produto-relacionado-num {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--mb-muted);
+  letter-spacing: 0.2em;
+}
+.produto-relacionado-nome {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 32px;
+  color: var(--mb-paper);
+  margin-top: 6px;
+  letter-spacing: -0.01em;
+}
+.produto-relacionado-link {
+  margin-top: 14px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+.produto-relacionado-k {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 72px;
+  text-align: right;
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+/* ================================================================
+   6. MEDIA QUERIES MOBILE
+   Ponto de quebra: 900px
+   ================================================================ */
+@media (max-width: 900px) {
+  /* Hero */
+  .produto-hero {
+    padding: 48px 20px 56px;
+  }
+  .produto-breadcrumb {
+    font-size: 10px;
+    margin-bottom: 20px;
+  }
+  .produto-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .produto-hero-codigo {
+    margin-bottom: 18px;
+  }
+  .produto-hero-k {
+    font-size: 54px;
+  }
+  .produto-hero-title {
+    font-size: 44px;
+  }
+  .produto-hero-tagline {
+    font-size: 18px;
+  }
+  .produto-hero-lead {
+    font-size: 15px;
+    margin-top: 22px;
+  }
+  .produto-hero-ctas {
+    margin-top: 24px;
+  }
+  .produto-hero-img-sample-txt {
+    font-size: 16px;
+  }
+
+  /* Specs */
+  .produto-specs {
+    padding: 56px 20px;
+  }
+  .produto-specs-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .produto-specs-cols {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  /* Aplicações */
+  .produto-aplicacoes {
+    padding: 56px 20px;
+  }
+  .produto-aplicacoes-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .produto-aplicacao-titulo {
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+    font-size: 14px;
+  }
+
+  /* Relacionados */
+  .produto-relacionados {
+    padding: 56px 20px;
+  }
+  .produto-relacionados-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .produto-relacionado-nome {
+    font-size: 26px;
+  }
+  .produto-relacionado-k {
+    font-size: 56px;
+  }
+}

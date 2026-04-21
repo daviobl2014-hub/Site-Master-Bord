@@ -1,0 +1,235 @@
+/* ================================================================
+   CATALOGO.CSS — Master Bord
+   CSS exclusivo da PÁGINA CATÁLOGO (catalogo.html).
+   NÃO carregue em outras páginas.
+
+   Seções:
+   1. Hero (capa "O acervo")
+   2. Barra de filtros (sticky)
+   3. Grid de itens (cards 4 col desktop / 2 col mobile)
+   4. Estado vazio
+   5. Media queries mobile
+   ================================================================ */
+
+/* ================================================================
+   1. HERO
+   ================================================================ */
+.catalogo-hero {
+  position: relative;
+  overflow: hidden;
+  background: var(--mb-bg);
+  color: var(--mb-paper);
+  padding: 72px 48px;
+}
+.catalogo-hero-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 40px;
+  align-items: end;
+}
+.catalogo-hero-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 96px;
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  color: var(--mb-paper);
+  margin: 16px 0 0;
+}
+.catalogo-hero-lead {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  color: var(--mb-paper-dim);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ================================================================
+   2. BARRA DE FILTROS (sticky abaixo do header)
+   ================================================================ */
+.catalogo-filtros {
+  position: sticky;
+  top: 56px; /* altura aproximada do header — ajuste se mudar */
+  z-index: 50;
+  background: var(--mb-bg-deep);
+  border-top: 1px solid var(--mb-line);
+  border-bottom: 1px solid var(--mb-line);
+  padding: 20px 48px;
+}
+.catalogo-filtros-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.catalogo-filtros-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--mb-ouro);
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.catalogo-filtro-btn {
+  padding: 8px 16px;
+  background: transparent;
+  color: var(--mb-muted);
+  border: 1px solid var(--mb-line);
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+.catalogo-filtro-btn:hover {
+  border-color: var(--mb-paper-dim);
+  color: var(--mb-paper);
+}
+.catalogo-filtro-btn.active {
+  background: var(--mb-paper);
+  color: var(--mb-bg);
+  border-color: var(--mb-paper);
+}
+.catalogo-filtros-spacer {
+  flex: 1;
+}
+.catalogo-filtros-count {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--mb-muted);
+  white-space: nowrap;
+}
+
+/* ================================================================
+   3. GRID DE ITENS
+   ================================================================ */
+.catalogo-grid-wrap {
+  background: var(--mb-bg-soft);
+  padding: 48px 48px 96px;
+}
+.catalogo-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+.catalogo-item {
+  padding: 0;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.catalogo-item:hover {
+  transform: translateY(-2px);
+}
+.catalogo-item.hidden {
+  display: none;
+}
+.catalogo-item-img {
+  aspect-ratio: 1 / 1;
+}
+.catalogo-item-body {
+  padding: 18px;
+}
+.catalogo-item-cat {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--mb-muted);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+.catalogo-item-titulo {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--mb-paper);
+  margin-top: 6px;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+}
+.catalogo-item-rodape {
+  margin-top: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+}
+.catalogo-item-cod {
+  color: var(--mb-muted);
+}
+
+/* ================================================================
+   4. ESTADO VAZIO
+   ================================================================ */
+.catalogo-vazio {
+  margin-top: 32px;
+  padding: 48px;
+  border: 1px dashed var(--mb-line);
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--mb-muted);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+/* ================================================================
+   5. MEDIA QUERIES MOBILE
+   Ponto de quebra: 900px
+   ================================================================ */
+@media (max-width: 900px) {
+  /* Hero */
+  .catalogo-hero {
+    padding: 48px 20px;
+  }
+  .catalogo-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .catalogo-hero-title {
+    font-size: 44px;
+  }
+  .catalogo-hero-lead {
+    font-size: 14px;
+  }
+
+  /* Filtros */
+  .catalogo-filtros {
+    top: 72px;
+    padding: 16px 20px;
+  }
+  .catalogo-filtros-row {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 8px;
+  }
+  .catalogo-filtro-btn {
+    padding: 6px 12px;
+  }
+  .catalogo-filtros-spacer {
+    display: none;
+  }
+  .catalogo-filtros-count {
+    margin-left: auto;
+  }
+
+  /* Grid */
+  .catalogo-grid-wrap {
+    padding: 32px 20px 56px;
+  }
+  .catalogo-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .catalogo-item-body {
+    padding: 14px;
+  }
+  .catalogo-item-titulo {
+    font-size: 16px;
+  }
+}

@@ -1,0 +1,288 @@
+/* ================================================================
+   CONTATO.CSS — Master Bord
+   CSS exclusivo da PÁGINA CONTATO (contato.html).
+   NÃO carregue em outras páginas.
+
+   Seções:
+   1. Hero + Grid (texto+info à esquerda, formulário à direita)
+   2. Lista de informações de contato
+   3. Formulário (inputs, checkboxes, textarea, erros)
+   4. Mapa / localização
+   5. Media queries mobile
+   ================================================================ */
+
+/* ================================================================
+   1. HERO + GRID
+   ================================================================ */
+.contato-hero {
+  position: relative;
+  overflow: hidden;
+  background: var(--mb-bg);
+  color: var(--mb-paper);
+  padding: 72px 48px 96px;
+}
+.contato-hero-glow {
+  position: absolute;
+  top: 30%;
+  left: -10%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(
+    circle,
+    rgba(196, 75, 85, 0.13),
+    transparent 60%
+  );
+  filter: blur(40px);
+  pointer-events: none;
+}
+.contato-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: start;
+}
+.contato-hero-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 96px;
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  color: var(--mb-paper);
+  margin: 16px 0 0;
+}
+.contato-hero-lead {
+  font-family: var(--font-sans);
+  font-size: 17px;
+  color: var(--mb-paper-dim);
+  line-height: 1.6;
+  margin: 20px 0 0;
+  max-width: 460px;
+}
+
+/* ================================================================
+   2. LISTA DE INFORMAÇÕES DE CONTATO
+   ================================================================ */
+.contato-info {
+  margin-top: 48px;
+  display: flex;
+  flex-direction: column;
+}
+.contato-info-row {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 20px;
+  padding: 14px 0;
+  border-bottom: 1px dashed var(--mb-line);
+  align-items: center;
+}
+.contato-info-key {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.25em;
+}
+.contato-info-val {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  color: var(--mb-paper);
+  font-weight: 500;
+}
+
+/* ================================================================
+   3. FORMULÁRIO
+   ================================================================ */
+.contato-form {
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.form-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--mb-ouro);
+  letter-spacing: 0.25em;
+}
+.form-titulo {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 28px;
+  color: var(--mb-paper);
+  margin: 8px 0 16px;
+  letter-spacing: -0.01em;
+}
+.form-campo {
+  display: flex;
+  flex-direction: column;
+}
+.form-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--mb-muted);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.form-input {
+  width: 100%;
+  padding: 12px 14px;
+  background: var(--mb-bg-deep);
+  border: 1px solid var(--mb-line);
+  color: var(--mb-paper);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+}
+.form-input:focus {
+  border-color: var(--mb-azul);
+}
+.form-input.invalid {
+  border-color: var(--mb-vinho);
+}
+.form-textarea {
+  resize: vertical;
+  min-height: 96px;
+}
+.form-erro {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--mb-vinho);
+  letter-spacing: 0.1em;
+  margin-top: 6px;
+  min-height: 12px;
+}
+
+.form-checks {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.form-check {
+  padding: 8px 14px;
+  background: var(--mb-bg-deep);
+  border: 1px solid var(--mb-line);
+  color: var(--mb-paper-dim);
+  font-family: var(--font-sans);
+  font-size: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: border-color 0.2s, color 0.2s;
+}
+.form-check:hover {
+  border-color: var(--mb-vinho);
+  color: var(--mb-paper);
+}
+.form-check input[type='checkbox'] {
+  accent-color: var(--mb-vinho);
+}
+
+.form-sucesso {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--mb-green);
+  letter-spacing: 0.15em;
+  text-align: center;
+  padding: 12px;
+  border: 1px dashed var(--mb-green);
+  margin-top: 4px;
+}
+.form-disclaimer {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--mb-muted);
+  letter-spacing: 0.15em;
+  text-align: center;
+  margin-top: 4px;
+}
+
+/* ================================================================
+   4. MAPA / LOCALIZAÇÃO
+   ================================================================ */
+.contato-mapa {
+  background: var(--mb-bg-soft);
+  padding: 80px 48px;
+}
+.contato-mapa-img {
+  position: relative;
+  aspect-ratio: 16 / 6;
+}
+.contato-mapa-pin {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.contato-mapa-pin-dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--mb-vinho);
+  border: 3px solid var(--mb-paper);
+  box-shadow: 0 0 0 4px rgba(196, 75, 85, 0.38);
+}
+.contato-mapa-pin-label {
+  padding: 6px 12px;
+  background: var(--mb-bg-deep);
+  border: 1px solid var(--mb-vinho);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--mb-paper);
+  letter-spacing: 0.15em;
+}
+
+/* ================================================================
+   5. MEDIA QUERIES MOBILE
+   Ponto de quebra: 900px
+   ================================================================ */
+@media (max-width: 900px) {
+  /* Hero */
+  .contato-hero {
+    padding: 48px 20px 72px;
+  }
+  .contato-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .contato-hero-title {
+    font-size: 44px;
+  }
+  .contato-hero-lead {
+    font-size: 15px;
+  }
+
+  /* Info */
+  .contato-info {
+    margin-top: 32px;
+  }
+  .contato-info-row {
+    grid-template-columns: 90px 1fr;
+    gap: 12px;
+  }
+  .contato-info-val {
+    font-size: 14px;
+  }
+
+  /* Formulário */
+  .contato-form {
+    padding: 24px;
+  }
+  .form-titulo {
+    font-size: 22px;
+  }
+
+  /* Mapa */
+  .contato-mapa {
+    padding: 56px 20px;
+  }
+  .contato-mapa-img {
+    aspect-ratio: 4 / 3;
+  }
+}
