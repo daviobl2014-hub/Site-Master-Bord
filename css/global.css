@@ -148,7 +148,7 @@ img {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px 40px;
+  padding: 10px 40px;
 }
 .nav-left {
   display: flex;

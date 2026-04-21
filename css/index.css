@@ -225,9 +225,9 @@
 @media (min-width: 900px) {
   /* Hero ocupa exatamente a tela inteira (100vh) */
   .hero {
-    min-height: 100vh;
+    min-height: 90vh;
     /* Padding fluido: em notebook 13" fica compacto, em monitor grande respira */
-    padding: clamp(15px, 5vh, 96px) clamp(24px, 3vw, 64px);
+    padding: clamp(12px, 2.5vh, 32px) clamp(24px, 3vw, 64px);
   }
 
   /* Grid do hero: centralizado vertical e horizontalmente */
@@ -286,7 +286,6 @@
     height: auto;
     aspect-ratio: 4 / 5;
     max-height: 65vh;
-    min-height: 600px;
     width: 100%;
     max-width: 100%;
     justify-self: stretch;
