@@ -158,12 +158,43 @@
           <div class="hero-spec-corner bl"></div>
           <div class="hero-spec-corner br"></div>
 
-          <div class="hero-spec-header">
-            <div class="carousel">
-              <img src="/img/ia2.png" alt="" />
-              <!-- <img src="/img/ia1.png" alt="" />
-              <img src="/img/laser.png" alt="" />
-            </div> -->
+          <div class="carousel" id="mbCarousel">
+            <!-- Slide 1 -->
+            <div class="carousel-slide active">
+              <img src="/img/ia1.png" alt="Etiqueta tecida em cetim" />
+              <div class="carousel-caption">Etiqueta tecida em cetim</div>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="carousel-slide">
+              <img src="/img/ia2.png" alt="Tear Barudan em produção" />
+              <div class="carousel-caption">Tear Barudan em produção</div>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="carousel-slide">
+              <img src="/img/laser.png" alt="Corte laser de precisão" />
+              <div class="carousel-caption">Corte laser de precisão</div>
+            </div>
+
+            <!-- Bolinhas de controle -->
+            <div class="carousel-dots">
+              <button
+                class="carousel-dot active"
+                data-slide="0"
+                aria-label="Ver slide 1"
+              ></button>
+              <button
+                class="carousel-dot"
+                data-slide="1"
+                aria-label="Ver slide 2"
+              ></button>
+              <button
+                class="carousel-dot"
+                data-slide="2"
+                aria-label="Ver slide 3"
+              ></button>
+            </div>
           </div>
         </div>
       </div>
@@ -847,5 +878,6 @@
 
     <!-- JavaScript global (header scroll, etc.) -->
     <script src="js/global.js"></script>
+    <script src="js/index.js"></script>
   </body>
 </html>

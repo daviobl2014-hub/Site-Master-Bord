@@ -199,21 +199,81 @@
   border-right: 2px solid var(--mb-ouro);
 }
 
-/* container do carrossel */
+/* Container do carrossel */
 .carousel {
   position: absolute;
-  inset: 0;
-  margin: 10px;
+  inset: 10px;
+  overflow: hidden;
 }
 
-/* imagens */
-.carousel img {
+/* Cada slide (imagem + legenda) empilhados no mesmo lugar */
+.carousel-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+  pointer-events: none;
+}
+
+/* Slide ativo: aparece */
+.carousel-slide.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Imagem ocupa todo o slide */
+.carousel-slide img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
 }
-.carousel img:first-child {
-  opacity: 1;
+
+/* Legenda embaixo, sobre a imagem */
+.carousel-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 16px 20px 32px;
+  background: linear-gradient(to top, rgba(15, 17, 22, 0.85), transparent);
+  color: var(--mb-paper);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+/* Bolinhas de controle (embaixo, centralizadas) */
+.carousel-dots {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 2;
+}
+
+.carousel-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(242, 236, 224, 0.4);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.carousel-dot:hover {
+  background: rgba(242, 236, 224, 0.7);
+  transform: scale(1.2);
+}
+
+.carousel-dot.active {
+  background: var(--mb-ouro);
+  transform: scale(1.3);
 }
 
 /* ════════════════════════════════════════════════════════════════
