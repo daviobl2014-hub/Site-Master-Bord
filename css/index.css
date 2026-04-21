@@ -82,33 +82,39 @@
   height: 1px;
   background: var(--mb-ouro);
 }
-.hero-title {
-  font-family: var(--font-display);
-  font-weight: 700;
+
+/* ===== TÍTULO MASTER BORD ===== */
+.titulo-principal {
   font-size: 150px;
-  line-height: 0.85;
+  font-family: var(--font-display);
   margin: 0;
-  letter-spacing: -0.02em;
+  line-height: 1;
+  margin-bottom: 5px;
 }
-.hero-title .master {
+
+.titulo-master {
   letter-spacing: 0.4rem;
   display: block;
-  color: var(--mb-azul);
-  text-shadow: 0 0 50px rgba(74, 139, 214, 0.3);
+  font-weight: 700;
+  color: #3276b9;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  animation: tracking-in-expand 3s cubic-bezier(0.215, 0.61, 0.355, 1) both;
 }
-.hero-title .bord {
+
+.titulo-bord {
   letter-spacing: 0.4rem;
-  display: block;
-  margin-left: 48px;
-  color: var(--mb-vinho);
-  text-shadow: 0 0 50px rgba(196, 75, 85, 0.3);
+  margin-top: clamp(10px, 2vw, 40px);
+  font-weight: 700;
+  color: #8c2d2e;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  animation: tracking-in-expand 3s cubic-bezier(0.215, 0.61, 0.355, 1) 0.2s both;
 }
 
 .hero-lead {
-  font-size: 20px;
+  font-size: 22px;
   color: var(--mb-paper-dim);
   line-height: 1.5;
-  max-width: 580px;
+  max-width: 650px;
   margin: 40px 0 0;
 }
 .hero-lead strong {
@@ -230,24 +236,28 @@
 }
 
 /* Legenda embaixo, sobre a imagem */
+
 .carousel-caption {
+  font-weight: 600;
+  backdrop-filter: blur(10px);
   position: absolute;
+  width: 100%;
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 16px 20px 32px;
+  padding: 16px 20px 10px;
   background: linear-gradient(to top, rgba(15, 17, 22, 0.85), transparent);
   color: var(--mb-paper);
   font-family: var(--font-mono);
   font-size: 11px;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
 }
 
 /* Bolinhas de controle (embaixo, centralizadas) */
 .carousel-dots {
   position: absolute;
-  bottom: 12px;
+  bottom: 15px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -274,6 +284,66 @@
 .carousel-dot.active {
   background: var(--mb-ouro);
   transform: scale(1.3);
+}
+/* ────────────────────────────────────────────────────────────────
+   EFEITO KEN BURNS — zoom lento enquanto o slide está ativo.
+   A imagem começa em escala 1.0 e vai até 1.15 nos 8 segundos
+   do slide ativo. Cada imagem tem um movimento diferente pra não
+   parecer repetitivo.
+   ──────────────────────────────────────────────────────────────── */
+
+/* Aplica a animação SÓ na imagem do slide ativo */
+.carousel-slide.active img {
+  animation: kenburns-zoom-in 8s ease-out both;
+}
+
+/* Keyframe padrão: zoom central (slide 3 - laser) */
+@keyframes kenburns-zoom-in {
+  0% {
+    transform: scale(1) translate(0, 0);
+  }
+  100% {
+    transform: scale(1.15) translate(0, 0);
+  }
+}
+
+/* Slide 1 (Barudan - Bordados) — zoom + desloca pro canto inferior direito */
+.carousel-slide:nth-child(1).active img {
+  animation: kenburns-bottom-right 8s ease-out both;
+}
+@keyframes kenburns-bottom-right {
+  0% {
+    transform: scale(1) translate(0, 0);
+  }
+  100% {
+    transform: scale(1.18) translate(-3%, -2%);
+  }
+}
+
+/* Slide 2 (Tear Muller - Etiquetas) — zoom + desloca pro canto superior esquerdo */
+.carousel-slide:nth-child(2).active img {
+  animation: kenburns-top-left 8s ease-out both;
+}
+@keyframes kenburns-top-left {
+  0% {
+    transform: scale(1) translate(0, 0);
+  }
+  100% {
+    transform: scale(1.18) translate(3%, 2%);
+  }
+}
+
+/* Slide 3 (Prisma - Corte laser) — zoom central suave (usa o keyframe padrão) */
+/* Não precisa regra extra, o default kenburns-zoom-in já aplica */
+
+/* Acessibilidade: se o usuário pediu pra reduzir movimento no SO,
+   desativa a animação (prevenção de enjoo / fotossensibilidade) */
+@media (prefers-reduced-motion: reduce) {
+  .carousel-slide.active img,
+  .carousel-slide:nth-child(1).active img,
+  .carousel-slide:nth-child(2).active img {
+    animation: none;
+  }
 }
 
 /* ════════════════════════════════════════════════════════════════
@@ -315,7 +385,7 @@
   .hero-lead {
     font-size: clamp(14px, 1.1vw, 18px);
     margin-top: clamp(16px, 2vh, 32px);
-    max-width: 560px;
+    max-width: 650px;
   }
 
   /* CTAs (botões) — margem compacta */

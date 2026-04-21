@@ -23,7 +23,7 @@
   const dots = carousel.querySelectorAll('.carousel-dot');
 
   // Configurações
-  const INTERVALO = 5000; // 5 segundos — muda aqui se quiser mais rápido/lento
+  const INTERVALO = 8000; // 8 segundos — tempo ideal pro Ken Burns
   let slideAtual = 0;
   let timerAutomatico = null;
 
