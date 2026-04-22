@@ -505,6 +505,20 @@
   text-transform: uppercase;
 }
 
+img-border {
+  width: 300px;
+  height: 200px;
+  border: 2px solid rgba(74, 139, 214, 0.3);
+  overflow: hidden; /* importante */
+}
+
+.img-border img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* não estoura e preenche */
+  object-position: center 30%;
+}
+
 /* ================================================================
    3. GALERIA / PORTFÓLIO — 03
    ================================================================ */
