@@ -27,11 +27,7 @@
   left: -10%;
   width: 600px;
   height: 600px;
-  background: radial-gradient(
-    circle,
-    rgba(196, 75, 85, 0.13),
-    transparent 60%
-  );
+  background: radial-gradient(circle, rgba(196, 75, 85, 0.13), transparent 60%);
   filter: blur(40px);
   pointer-events: none;
 }
@@ -209,33 +205,6 @@
 .contato-mapa-img {
   position: relative;
   aspect-ratio: 16 / 6;
-}
-.contato-mapa-pin {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-}
-.contato-mapa-pin-dot {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: var(--mb-vinho);
-  border: 3px solid var(--mb-paper);
-  box-shadow: 0 0 0 4px rgba(196, 75, 85, 0.38);
-}
-.contato-mapa-pin-label {
-  padding: 6px 12px;
-  background: var(--mb-bg-deep);
-  border: 1px solid var(--mb-vinho);
-  font-family: var(--font-mono);
-  font-size: 11px;
-  color: var(--mb-paper);
-  letter-spacing: 0.15em;
 }
 
 /* ================================================================
