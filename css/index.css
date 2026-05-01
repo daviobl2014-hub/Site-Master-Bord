@@ -539,6 +539,7 @@ img-border {
 .galeria-filtros span {
   cursor: pointer;
 }
+
 .galeria-filtros span:not(.active) {
   color: var(--mb-muted);
 }
@@ -587,11 +588,19 @@ img-border {
   line-height: 1.1;
   letter-spacing: -0.01em;
 }
+
 .galeria-item-link {
   font-family: var(--font-mono);
   font-size: 10px;
   margin-top: 6px;
   letter-spacing: 0.15em;
+}
+
+.galeria-item {
+  transition: opacity 0.4s ease;
+}
+.galeria-item.trocando {
+  opacity: 0;
 }
 
 /* ================================================================
