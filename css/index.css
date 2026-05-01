@@ -683,6 +683,14 @@ img-border {
   letter-spacing: 0.1em;
 }
 
+.depoimento-avatar:hover {
+  opacity: 1;
+  transform: scale(1.1);
+  border-color: var(
+    --mb-ouro
+  ); /* moldura dourada no hover (parecido com depoimento) */
+}
+
 /* ================================================================
    5. LOGOS DE CLIENTES
    ================================================================ */
@@ -712,19 +720,119 @@ img-border {
   align-items: center;
   flex: 1;
 }
-.marca {
-  color: var(--mb-muted);
-  letter-spacing: 0.1em;
+/* ────────────────────────────────────────────────────────────
+   LOGOS DOS CLIENTES — círculos com imagem (estilo depoimento)
+   ──────────────────────────────────────────────────────────── */
+
+.marca-logo {
+  display: block;
+  width: clamp(48px, 5vw, 72px); /* círculo cresce/encolhe com a tela */
+  height: clamp(
+    48px,
+    5vw,
+    72px
+  ); /* mesma medida que width — quadrado vira círculo */
+  border-radius: 50%;
+  background-size: cover; /* foto cobre todo o círculo */
+  background-position: center;
+  background-repeat: no-repeat;
+  border: 2px solid var(--mb-line); /* moldura sutil igual ao depoimento */
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: transform 0.3s, border-color 0.3s, opacity 0.3s;
+  opacity: 0.85;
 }
-.marca.display {
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 15px;
+
+.marca-logo:hover {
+  opacity: 1;
+  transform: scale(1.1);
+  border-color: var(
+    --mb-ouro
+  ); /* moldura dourada no hover (parecido com depoimento) */
 }
-.marca.sans {
-  font-family: var(--font-sans);
-  font-weight: 600;
-  font-size: 15px;
+
+/* ────────────────────────────────────────────────────────────
+   TOOLTIP NO HOVER — mostra nome do cliente quando passa o mouse
+   ──────────────────────────────────────────────────────────── */
+
+.marca-logo {
+  position: relative; /* ← IMPORTANTE: pra tooltip se ancorar aqui */
+}
+
+.marca-logo::after {
+  content: attr(data-nome); /* pega o texto do data-nome do HTML */
+  position: absolute;
+  bottom: calc(100% + 8px); /* aparece em cima do círculo, com 8px de respiro */
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 6px 12px;
+  background: var(--mb-bg-deep);
+  color: var(--mb-paper);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  white-space: nowrap; /* evita quebra de linha */
+  border: 1px solid var(--mb-ouro);
+  border-radius: 4px;
+  opacity: 0;
+  pointer-events: none; /* mouse passa direto, não atrapalha clique */
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.marca-logo:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-2px); /* pequeno "pulo" pra cima */
+}
+
+/* Cada cliente — uma classe com a foto dele */
+.marca-logo.dressto {
+  background-image: url('../img/clientes/dressto.jpg');
+}
+.marca-logo.sacada {
+  background-image: url('../img/clientes/sacada.jpg');
+}
+.marca-logo.metal {
+  background-image: url('../img/clientes/metal-carbono.jpg');
+}
+.marca-logo.sealy {
+  background-image: url('../img/clientes/sealy.jpg');
+}
+.marca-logo.brazil {
+  background-image: url('../img/clientes/brazil-combat.jpg');
+}
+.marca-logo.braziline {
+  background-image: url('../img/clientes/braziline.jpg');
+}
+.marca-logo.cacay {
+  background-image: url('../img/clientes/cacay.jpg');
+}
+.marca-logo.emporio {
+  background-image: url('../img/clientes/emporio.jpg');
+}
+.marca-logo.porto {
+  background-image: url('../img/clientes/porto-blue.jpg');
+}
+.marca-logo.myplace {
+  background-image: url('../img/clientes/myplace.jpg');
+}
+.marca-logo.farm {
+  background-image: url('../img/clientes/farm.jpg');
+}
+.marca-logo.knulu {
+  background-image: url('../img/clientes/knulu.jpg');
+}
+.marca-logo.passaro {
+  background-image: url('../img/clientes/passaro-livre.jpg');
+}
+.marca-logo.glitter {
+  background-image: url('../img/clientes/glitter.jpg');
+}
+.marca-logo.breno-rio {
+  background-image: url('../img/clientes/breno-rio.jpg');
+}
+.marca-logo.rede-dor {
+  background-image: url('../img/clientes/rede-dor.jpg');
 }
 
 /* ================================================================
@@ -916,5 +1024,41 @@ img-border {
   }
   .etapa-titulo {
     font-size: 22px;
+  }
+}
+
+/* ────────────────────────────────────────────────────────────
+   ESCONDE LOGOS PROGRESSIVAMENTE conforme tela diminui
+   (mantém de antes — funciona igual)
+   ──────────────────────────────────────────────────────────── */
+
+@media (max-width: 1399px) {
+  .section-logos-list .marca-logo:nth-child(10) {
+    display: none;
+  }
+}
+@media (max-width: 1199px) {
+  .section-logos-list .marca-logo:nth-child(9) {
+    display: none;
+  }
+}
+@media (max-width: 1049px) {
+  .section-logos-list .marca-logo:nth-child(8) {
+    display: none;
+  }
+}
+@media (max-width: 899px) {
+  .section-logos-list .marca-logo:nth-child(7) {
+    display: none;
+  }
+}
+@media (max-width: 749px) {
+  .section-logos-list .marca-logo:nth-child(6) {
+    display: none;
+  }
+}
+@media (max-width: 599px) {
+  .section-logos-list .marca-logo:nth-child(5) {
+    display: none;
   }
 }
