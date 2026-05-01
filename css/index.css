@@ -647,11 +647,26 @@ img-border {
   align-items: center;
   gap: 12px;
 }
+
 .depoimento-avatar {
-  width: 38px;
-  height: 38px;
+  width: 56px; /* aumentado de 38 pra 56 — foto fica reconhecível */
+  height: 56px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--mb-azul), var(--mb-vinho));
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: 2px solid var(--mb-line); /* moldura sutil */
+  flex-shrink: 0; /* evita esmagar quando o nome do cliente é longo */
+}
+/* Foto de cada cliente — uma classe por pessoa */
+.depoimento-avatar.smartiron {
+  background-image: url('../img/clientes/iron.jpg');
+}
+.depoimento-avatar.meuraiodesol {
+  background-image: url('../img/clientes/meu-raio-de-sol.jpg');
+}
+.depoimento-avatar.dechelles {
+  background-image: url('../img/clientes/dechelles.jpg');
 }
 .depoimento-nome {
   font-size: 13px;
