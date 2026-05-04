@@ -692,77 +692,134 @@ img-border {
 }
 
 /* ================================================================
-   5. LOGOS DE CLIENTES
+   5. LOGOS DE CLIENTES — Layout vertical: label em cima, logos em baixo
+   
+   Estrutura:
+   - SEÇÃO PAI (.section-logos) → flex-direction: column
+     ├─ LABEL (.section-logos-label) → "CLIENTES ATIVOS ↓" centralizado
+     └─ TRACK (.section-logos-track) → carrossel horizontal infinito
+        └─ LIST (.section-logos-list) → trilho com logos rolando
+           └─ MARCA-LOGO (.marca-logo) → cada cliente
+              └─ TOOLTIP (::after) → nome aparece EMBAIXO no hover
    ================================================================ */
+
+/* SEÇÃO PAI — agora vertical (label em cima, carrossel embaixo) */
 .section-logos {
   background: var(--mb-bg);
-  padding: 36px 48px;
+  padding: 38px 0;
   border-top: 1px solid var(--mb-line);
   border-bottom: 1px solid var(--mb-line);
   display: flex;
+  flex-direction: column; /* MUDANÇA CHAVE: label fica em cima */
   align-items: center;
   gap: 24px;
+  overflow: hidden; /* impede scroll horizontal do site */
+  position: relative;
 }
+
+/* LABEL — centralizado em cima, sem fundo nem z-index */
 .section-logos-label {
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: 11px;
   color: var(--mb-ouro);
-  letter-spacing: 0.25em;
+  letter-spacing: 0.3em;
   text-transform: uppercase;
   white-space: nowrap;
-  border-right: 1px solid var(--mb-line);
-  padding-right: 24px;
+  text-align: center;
+  /* Removido: border-right, padding-right (não é mais coluna lateral) */
+  /* Removido: z-index, background (não tem mais conflito com logos) */
 }
+
+/* TRACK — container do carrossel, ocupa toda largura */
+.section-logos-track {
+  width: 100%;
+  position: relative;
+  overflow: visible; /* tooltips precisam vazar verticalmente */
+  min-width: 0;
+}
+
+/* GRADIENTES laterais (fade nas pontas) */
+.section-logos-track::before,
+.section-logos-track::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 80px;
+  z-index: 5;
+  pointer-events: none;
+}
+.section-logos-track::before {
+  left: 0;
+  background: linear-gradient(to right, var(--mb-bg), transparent);
+}
+.section-logos-track::after {
+  right: 0;
+  background: linear-gradient(to left, var(--mb-bg), transparent);
+}
+
+/* LISTA — trilho com logos rolando em loop infinito */
 .section-logos-list {
   display: flex;
-  flex-wrap: wrap;
-  gap: 30px;
   align-items: center;
-  flex: 1;
+  gap: clamp(16px, 2vw, 30px);
+  width: max-content;
+  animation: logos-scroll 40s linear infinite;
+  padding: 10px 35px; /* respiro vertical: 50px em cima (pro hover) e embaixo (pro tooltip) */
 }
-/* ────────────────────────────────────────────────────────────
-   LOGOS DOS CLIENTES — círculos com imagem (estilo depoimento)
-   ──────────────────────────────────────────────────────────── */
 
+/* Pausa quando o mouse passa no carrossel */
+.section-logos-track:hover .section-logos-list {
+  animation-play-state: paused;
+}
+
+@keyframes logos-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section-logos-list {
+    animation: none;
+  }
+}
+
+/* LOGO — círculo individual */
 .marca-logo {
   display: block;
-  width: clamp(48px, 5vw, 72px); /* círculo cresce/encolhe com a tela */
-  height: clamp(
-    48px,
-    5vw,
-    72px
-  ); /* mesma medida que width — quadrado vira círculo */
+  position: relative; /* IMPORTANTE: tooltip se ancora aqui */
+  width: clamp(48px, 5vw, 72px);
+  height: clamp(48px, 5vw, 72px);
   border-radius: 50%;
-  background-size: cover; /* foto cobre todo o círculo */
+  background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  border: 2px solid var(--mb-line); /* moldura sutil igual ao depoimento */
+  border: 2px solid var(--mb-line);
   flex-shrink: 0;
   cursor: pointer;
   transition: transform 0.3s, border-color 0.3s, opacity 0.3s;
   opacity: 0.85;
+  z-index: 1;
 }
 
 .marca-logo:hover {
   opacity: 1;
   transform: scale(1.1);
-  border-color: var(
-    --mb-ouro
-  ); /* moldura dourada no hover (parecido com depoimento) */
+  border-color: var(--mb-ouro);
+  z-index: 100;
 }
 
-/* ────────────────────────────────────────────────────────────
-   TOOLTIP NO HOVER — mostra nome do cliente quando passa o mouse
-   ──────────────────────────────────────────────────────────── */
-
-.marca-logo {
-  position: relative; /* ← IMPORTANTE: pra tooltip se ancorar aqui */
-}
-
+/* TOOLTIP — aparece EMBAIXO do logo no hover (mudança principal) */
 .marca-logo::after {
-  content: attr(data-nome); /* pega o texto do data-nome do HTML */
+  content: attr(data-nome);
   position: absolute;
-  bottom: calc(100% + 8px); /* aparece em cima do círculo, com 8px de respiro */
+  top: calc(
+    100% + 8px
+  ); /* MUDOU: era bottom, agora top — tooltip vai PRA BAIXO */
   left: 50%;
   transform: translateX(-50%);
   padding: 6px 12px;
@@ -772,20 +829,23 @@ img-border {
   font-size: 11px;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  white-space: nowrap; /* evita quebra de linha */
+  white-space: nowrap;
   border: 1px solid var(--mb-ouro);
   border-radius: 4px;
   opacity: 0;
-  pointer-events: none; /* mouse passa direto, não atrapalha clique */
+  pointer-events: none;
   transition: opacity 0.2s, transform 0.2s;
+  z-index: 999;
 }
 
 .marca-logo:hover::after {
   opacity: 1;
-  transform: translateX(-50%) translateY(-2px); /* pequeno "pulo" pra cima */
+  transform: translateX(-50%) translateY(2px); /* MUDOU: pulinho pra baixo */
 }
 
-/* Cada cliente — uma classe com a foto dele */
+/* ────────────────────────────────────────────────────────────
+     FOTOS DOS CLIENTES (mantém igual ao que você já tem)
+     ──────────────────────────────────────────────────────────── */
 .marca-logo.dressto {
   background-image: url('../img/clientes/dressto.jpg');
 }
@@ -833,6 +893,23 @@ img-border {
 }
 .marca-logo.rede-dor {
   background-image: url('../img/clientes/rede-dor.jpg');
+}
+
+/* ────────────────────────────────────────────────────────────
+     MOBILE — ajustes pra telas pequenas
+     (Layout já é vertical no desktop, então mobile só ajusta padding e fonte)
+     ──────────────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .section-logos {
+    padding: 20px 0px;
+    gap: 16px;
+  }
+  .section-logos-label {
+    font-size: 10px;
+  }
+  .section-logos-list {
+    padding: 40px 0; /* mantém espaço pro tooltip e hover em mobile */
+  }
 }
 
 /* ================================================================
@@ -992,20 +1069,8 @@ img-border {
     font-size: 15px;
   }
 
-  /* Logos */
-  .section-logos {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 24px 20px;
-    gap: 14px;
-  }
-  .section-logos-label {
-    border-right: none;
-    padding-right: 0;
-  }
-  .section-logos-list {
-    gap: 14px;
-  }
+  /* Logos — ajustes mobile já estão no @media próprio acima da seção 5 */
+
   .marca.display,
   .marca.sans {
     font-size: 12px;
@@ -1024,41 +1089,5 @@ img-border {
   }
   .etapa-titulo {
     font-size: 22px;
-  }
-}
-
-/* ────────────────────────────────────────────────────────────
-   ESCONDE LOGOS PROGRESSIVAMENTE conforme tela diminui
-   (mantém de antes — funciona igual)
-   ──────────────────────────────────────────────────────────── */
-
-@media (max-width: 1399px) {
-  .section-logos-list .marca-logo:nth-child(10) {
-    display: none;
-  }
-}
-@media (max-width: 1199px) {
-  .section-logos-list .marca-logo:nth-child(9) {
-    display: none;
-  }
-}
-@media (max-width: 1049px) {
-  .section-logos-list .marca-logo:nth-child(8) {
-    display: none;
-  }
-}
-@media (max-width: 899px) {
-  .section-logos-list .marca-logo:nth-child(7) {
-    display: none;
-  }
-}
-@media (max-width: 749px) {
-  .section-logos-list .marca-logo:nth-child(6) {
-    display: none;
-  }
-}
-@media (max-width: 599px) {
-  .section-logos-list .marca-logo:nth-child(5) {
-    display: none;
   }
 }
