@@ -1,364 +1,382 @@
-# 📘 PROJETO MASTER BORD — CONTEXTO
+# 📘 PROJETO MASTER BORD — STATUS GERAL
 
-> **Arquivo de continuidade entre conversas com Claude.**
-> Sempre que iniciar nova conversa, envie este arquivo primeiro.
-> Atualize ao final de cada sessão de trabalho.
+> **Arquivo de continuação entre sessões com Claude.**
+> Envie este arquivo no início de cada nova conversa.
+> **Última atualização:** 04/05/2026 (Sessão 4 — final do dia)
 
 ---
 
-## 🎯 OBJETIVO DO PROJETO
+## 🎯 OBJETIVO
 
-Construir o site institucional da **Master Bord** (empresa de etiquetas tecidas, bordados e corte a laser) em **HTML + CSS + JavaScript puro**, sem frameworks, sem build tools, sem dependências.
+Construir o site institucional da **Master Bord** (etiquetas tecidas, bordados e corte a laser) em **HTML + CSS + JavaScript puro**.
 
-Características:
-- Estrutura de pastas organizada (css/, js/, imagens/)
-- CSS separado em `global.css` + CSS por página
-- JS separado em `global.js` + JS por página quando necessário
-- Zero build — arquivos abrem direto no navegador
+- Sem frameworks, sem build tools, sem dependências
+- 8 páginas + assets organizados em pastas (css/, js/, img/)
 - Publicação no GitHub Pages
-- Projeto aprovado formalmente pela Master Bord
+- Projeto formalmente aprovado pela Master Bord
 
 ---
 
-## 👤 CONTEXTO DO DESENVOLVEDOR
+## 👤 CONTEXTO
 
-- **Nome:** Davi
-- **Empresa:** Dono de tecelagem em Petrópolis-RJ (produz para Master Bord como cliente externo)
-- **Relação:** Master Bord é cliente da tecelagem; Davi está refazendo o site deles com aprovação formal
-- **Perfil:** Desenvolvedor iniciante-intermediário. Aprendeu Git, HTML/CSS/JS e Python por conta própria. Entende conceitos mas precisa de passo a passo em ferramentas novas.
-- **Estilo preferido:** Direto, sem rodeios, com desafio honesto. Aprende melhor iterando visualmente. Prefere entender o padrão antes de replicar em escala.
-- **Idioma:** Português brasileiro
+- **Davi** — dono de tecelagem em Petrópolis-RJ, refazendo o site da Master Bord (cliente externo)
+- **Perfil:** dev iniciante-intermediário, aprende melhor iterando visualmente
+- **Estilo preferido:** direto, sem rodeios, com desafio honesto + coach
+- **Idioma:** PT-BR
 
----
+### Ambientes
+| Máquina | Sistema | Uso |
+|---|---|---|
+| PC trabalho (Petrópolis) | Windows 7 / Node 13 | Edição |
+| Notebook casa | Windows 10 / Node 24 | Edição |
 
-## 🗂️ ESTRUTURA DE BRANCHES GIT
+**Live Server VS Code** + **Chrome DevTools** com dispositivo customizado "Notebook 13" (1280×720) configurado.
 
+### Git
 - **Repositório:** https://github.com/daviobl2014-hub/Site-Master-Bord
-- **`main`** → site antigo HTML/CSS puro (publicado em GitHub Pages)
-- **`nova-interface`** → branch de desenvolvimento da nova versão
-
-**URL do site antigo publicado:** https://daviobl2014-hub.github.io/Site-Master-Bord
+- **`main`** = site antigo (publicado)
+- **`nova-interface`** = branch atual de desenvolvimento
 
 ---
 
-## 💻 AMBIENTES DE TRABALHO
+## 📐 DECISÕES TÉCNICAS LOCKADAS
 
-| Máquina | Sistema | Node | Uso |
-|---|---|---|---|
-| PC trabalho (Petrópolis) | Windows 7 | v13 (desatualizado) | Edição HTML/CSS/JS direta |
-| Notebook casa | Windows 10 | v24.11.0 | Edição HTML/CSS/JS direta |
-
-**Vantagem da escolha atual (HTML puro):** os dois ambientes funcionam igual, sem necessidade de Node.js para desenvolver.
+1. **HTML + CSS + JS puro** (Vite/React/Astro descartados)
+2. **Fluid design só desktop (≥900px) com `clamp()`** — mobile preservado intacto
+3. **Breakpoint único:** 900px
+4. **Header/footer duplicados em cada HTML** (custo aceito vs simplicidade)
+5. **CSS modular:** `global.css` (compartilhado) + `[pagina].css` (exclusivo)
+6. **JS modular:** `global.js` + `[pagina].js`
+7. **Mapa Google Maps via iframe** (sem JavaScript API)
+8. **Formulário sem backend** — envia via WhatsApp pré-preenchido
 
 ---
 
-## 🎨 IDENTIDADE VISUAL (tokens originais do mb-theme.jsx)
+## 🎨 IDENTIDADE VISUAL
 
-> ⚠️ **NOTA:** Davi fez ajustes visuais (cores, textos) no `index.html`, `global.css` e `index.css` após a geração inicial. As cores/textos reais do site podem divergir dos valores abaixo. **Fonte de verdade: os arquivos atuais no repositório Git (branch `nova-interface`).** Consulte-os antes de qualquer mudança visual.
-
-### Cores base (valores iniciais — podem ter sido alterados)
+### Cores (em `:root` do `global.css`)
 ```
-bg:         #0F1116   (fundo escuro principal)
-bgSoft:     #181B22   (fundo secundário)
-bgDeep:     #0A0C10   (fundo mais escuro)
-card:       #20242D   (cartões)
-paper:      #F2ECE0   (texto claro - papel)
-paperDim:   #D4CFC3   (texto claro suave)
-azul:       #4A8BD6   (cor primária 1)
-azulGlow:   #6BA8E8   (azul brilhante)
-vinho:      #C44B55   (cor primária 2 - CTA)
-vinhoGlow:  #E56670   (vinho brilhante)
-ouro:       #D4A96A   (destaque terciário)
-muted:      #8B8F99   (texto secundário)
-line:       #2E3340   (linhas/bordas)
-green:      #7FC291   (status online)
+--mb-bg:         #0F1116
+--mb-bg-soft:    #181B22
+--mb-bg-deep:    #10100A
+--mb-card:       #20242D
+--mb-paper:      #F2ECE0
+--mb-azul:       #4A8BD6
+--mb-vinho:      #C44B55
+--mb-ouro:       #D4A96A
+--mb-muted:      #8B8F99
+--mb-line:       #2E3340
+--mb-green:      #7FC291
 ```
 
-**Todas as cores vivem em `css/global.css` dentro do `:root`.** Mudança global = editar uma linha.
+Cores customizadas no título da home:
+- `.titulo-master` → `#3276b9`
+- `.titulo-bord` → `#8c2d2e`
 
 ### Fontes
-- **Bauhaus** (display/títulos) — via fontes.cdnfonts.com
-- **Inter** (UI/texto) — Google Fonts
-- **JetBrains Mono** (monoespaçado/técnicos) — Google Fonts
-- **Playfair Display** (itálicos serifados) — Google Fonts
-- **Space Grotesk** (fallback de Bauhaus) — Google Fonts
+- **Bauhaus** — display/títulos
+- **Inter** — UI/texto
+- **JetBrains Mono** — técnicos/monoespaçado
+- **Playfair Display** — serif itálico
+- **Font Awesome 6.5.0** — ícones
 
-### Estilo
+### Estilo geral
 - Dark mode industrial/técnico
-- Elementos com aparência de "ficha técnica"
+- Tags `[ TEXTO ]` via CSS `::before`/`::after`
 - Grid técnica de fundo (`.tech-grid`)
-- Tags no formato `[ TEXTO ]` (via CSS `::before` e `::after`)
-- Números com letter-spacing negativo
+- Logo SVG inline (não é texto)
 
 ---
 
-## 📐 DECISÃO TÉCNICA FINAL (sessão 2)
-
-Foi tomada uma decisão de arquitetura **diferente** do plano original (que previa React + Vite). Histórico da decisão:
-
-### O que foi considerado e descartado
-1. **Vite + React + CSS Modules** — descartado por: SEO mais fraco, complexidade desnecessária, incompatibilidade com PC do trabalho (Win 7 / Node 13)
-2. **Astro + TypeScript** — recomendado por Claude, mas descartado por: exigir Node moderno (trava o PC do trabalho), curva de aprendizado, trabalho de conversão dos JSX
-3. **HTML + CSS + JS puro** — **escolhido** por: simplicidade máxima, funciona em qualquer máquina, Davi já conhece, zero dependência
-
-### Trade-offs aceitos conscientemente
-- **Duplicação de header/footer nas 8 páginas** — mudança em dados do header/footer precisa ser replicada em cada arquivo HTML. Davi aceitou esse custo em troca da simplicidade.
-- **Perda dos 6 JSX do designer como código executável** — viraram referência visual para reescrita em HTML puro.
-- **Filtros e interatividade reescritos em JS vanilla** — sem React, tudo com `addEventListener` + `classList`.
-
-### Por que HTML puro funciona bem neste caso
-- Site institucional de 8 páginas (não é app)
-- SEO forte (Google ama HTML pronto)
-- Só Davi edita (não precisa de CMS)
-- Edição rara (quando muda algo importante) — duplicação de header dói pouco
-- Deploy trivial no GitHub Pages
-
----
-
-## 🏗️ ESTRUTURA DE PASTAS ATUAL
+## 🏗️ ESTRUTURA ATUAL
 
 ```
 master-bord/
-├── index.html              ← FEITA ✅ (home)
-├── sobre.html              ← FEITA ✅
-├── produtos.html           ← FEITA ✅ (índice dos 3 produtos)
-├── produto-etiqueta.html   ← FEITA ✅
-├── produto-bordado.html    ← FEITA ✅
-├── produto-laser.html      ← FEITA ✅
-├── catalogo.html           ← FEITA ✅
-├── contato.html            ← FEITA ✅
+├── index.html          ✅ HOME — totalmente refinada
+├── sobre.html          ✅ Sessão 3 (não revisada)
+├── produtos.html       ✅ Sessão 3
+├── produto-etiqueta.html  ✅ Sessão 3
+├── produto-bordado.html   ✅ Sessão 3
+├── produto-laser.html     ✅ Sessão 3
+├── catalogo.html       ✅ Sessão 3
+├── contato.html        ✅ Revisado Sessão 4 (Google Maps)
 ├── css/
-│   ├── global.css          ← FEITO ✅ (reset, :root, header, footer, componentes)
-│   ├── index.css           ← FEITO ✅ (hero, produtos home, galeria, depoimentos, logos, processo)
-│   ├── sobre.css           ← FEITO ✅
-│   ├── produtos.css        ← FEITO ✅
-│   ├── produto.css         ← FEITO ✅ (compartilhado pelos 3 — cor via body[data-cor])
-│   ├── catalogo.css        ← FEITO ✅
-│   └── contato.css         ← FEITO ✅
+│   ├── global.css      ✅ Variáveis, header, footer, componentes
+│   ├── index.css       ✅ Hero + carrossel + Ken Burns + galeria + logos
+│   ├── sobre.css       ✅ Sessão 3
+│   ├── produtos.css    ✅ Sessão 3
+│   ├── produto.css     ✅ Compartilhado (cor via body[data-cor])
+│   ├── catalogo.css    ✅ Sessão 3
+│   └── contato.css     ✅ Revisado Sessão 4
 ├── js/
-│   ├── global.js           ← FEITO ✅ (header scroll)
-│   ├── catalogo.js         ← FEITO ✅ (filtro por categoria)
-│   └── contato.js          ← FEITO ✅ (validação + envio via WhatsApp)
-└── img/                    ← pendente (fotos reais)
+│   ├── global.js       ✅ Header scroll
+│   ├── index.js        ✅ Carrossel hero + galeria filtrada + carrossel logos
+│   ├── catalogo.js     ✅ Filtro por categoria
+│   └── contato.js      ✅ Validação + WhatsApp
+└── img/
+    ├── ia1.png, ia2.png, laser.png      (carrossel hero)
+    ├── operador-*.png                    (sobre)
+    ├── et[1-5].jpg, br[1-5].jpg, la[1-5].jpg  (galeria)
+    └── clientes/                         (logos + avatares depoimentos)
 ```
-
-### Regra de separação CSS (importante para próximas páginas)
-- **`global.css`** → tudo que aparece em **mais de uma página**: reset, variáveis, header, footer, botões (`.btn*`), tag (`.mb-tag`), título (`.mb-title`), card (`.mb-card`), grid (`.tech-grid`), logo (`.logo`), imagem placeholder (`.mb-image`), highlights de cor, section-head
-- **`[pagina].css`** → só o que é **exclusivo** daquela página (hero da home, timeline do sobre, filtro do catálogo, formulário do contato, etc.)
 
 ---
 
-## 📋 ARQUIVOS JSX ORIGINAIS (source de referência, não execução)
+## ✅ TUDO QUE FOI FEITO ATÉ AGORA
 
-Os 6 JSX ficam na pasta do projeto apenas como **referência visual** para replicar design nas próximas páginas. Não são executados.
+### Sessão 1 — Planejamento
+- Repo criado, JSX do designer recebidos
+- Decisão inicial Vite/React (depois revertida)
 
-- `mb-theme.jsx` — cores, fontes, componentes base (MB, FONT, MBTag, MBTitle, etc)
-- `mb-shell.jsx` — header e footer (MBHeader, MBFooter)
-- `mb-home.jsx` — home completa (Hero, Produtos, Galeria, Depoimentos, Logos, Processo)
-- `mb-sobre.jsx` — página sobre (Hero, Timeline, Certificados, Infra)
-- `mb-produtos.jsx` — páginas de produto (ProdutoHero, Specs, Aplicações, Relacionados, ProdutosIndex)
-- `mb-catalogo-contato.jsx` — catálogo (com filtros) e contato (com formulário)
+### Sessão 2 — Fundação
+- Decisão final: HTML + CSS + JS puro
+- Home criada com 6 seções, CSS/JS separados
+
+### Sessão 3 — 7 páginas restantes (outra conversa)
+- Sobre, Produtos, 3 produto-*, Catálogo, Contato
+- Truque `body[data-cor]` pros 3 produtos compartilharem CSS
+- Contato com WhatsApp integrado
+
+### Sessão 4 — Refinamentos visuais e interativos (HOJE)
+
+**Home (`index.html` + `index.css` + `js/index.js`):**
+
+1. **Fluid design desktop** com `clamp()` em padding, fonte do título, stats, ficha técnica
+2. **Carrossel do hero** — 3 slides (Barudan, Tear Muller, Prisma Laser) automático 8s + bolinhas + pausa hover
+3. **Efeito Ken Burns** nos slides (3 keyframes diferentes + `prefers-reduced-motion`)
+4. **Título animado** com `tracking-in-expand 3s`
+5. **Header atualizado** — logo SVG, ícones Font Awesome, links sociais reais, telefone real
+6. **Stats reais** — 30+ anos, 10k+ clientes, 250+/mês, 100% qualidade
+7. **Lead atualizado** — tecnologia Suíça, Japonesa, Brasileira
+8. **Galeria filtrada** com array de 15 imagens em 3 categorias (etiqueta/bordado/laser) + fade na troca
+9. **Padrão `.section-head`** corrigido na seção Processo
+10. **Avatares dos depoimentos** com fotos reais redondas + link Instagram + tooltip
+11. **Logos de clientes** transformados em círculos (mesmo padrão dos avatares)
+12. **Tooltip CSS** com nome no hover (em todos os logos)
+13. **Carrossel infinito** dos logos (com 32 logos = 16 reais + 16 cópia + JS controlando)
+
+**Página Contato:**
+- **Mapa Google Maps** real integrado via iframe
+- **Bug do pino fake removido** (estava em `position: absolute` no centro da tela, não acompanhava endereço)
+
+**Configurações úteis:**
+- DevTools com dispositivo customizado "Notebook 13" (1280×720)
+
+---
+
+## 🐛 PROBLEMA ATUAL — RESOLVER NA PRÓXIMA SESSÃO
+
+### Sintoma
+No carrossel infinito de logos, o usuário vê uma **"demora" de ~1,6 segundos** entre o último logo (Rede D'or) sair pela esquerda e o primeiro (Dress To) aparecer pela direita. Parece que tem um "espaço vazio" entre o final e o reinício.
+
+### Causa diagnosticada — NÃO É BUG TÉCNICO
+**É a estética dos gradientes laterais funcionando como projetado.**
+
+No `index.css`:
+```css
+.section-logos-track::before,
+.section-logos-track::after {
+  width: 80px;
+  /* ::before — fade esquerdo */
+  /* ::after — fade direito */
+}
+```
+
+**Como funciona:**
+- O gradiente esquerdo (`::before`) cobre 80px na borda esquerda — logos saindo dissolvem nesses 80px
+- O gradiente direito (`::after`) cobre 80px na borda direita — logos entrando aparecem dissolvendo nesses 80px
+
+**Cálculo do tempo de "aparição":**
+- Velocidade JS: `50px/segundo`
+- Largura do gradiente: `80px`
+- Tempo pra atravessar o gradiente: `80 ÷ 50 = 1,6 segundos`
+
+**É isso que o usuário está vendo como "demora".** Não é bug — é o fade-in/fade-out funcionando como deveria. Mas está calibrado lento demais.
+
+### CSS e JS estão tecnicamente CORRETOS
+
+- HTML: 32 logos (16 + 16 cópia idêntica) ✅
+- CSS: sem `:last-child margin: 0`, sem `:nth-child(16)`, padding lateral 0 ✅
+- JS: usa `getBoundingClientRect()` pra cálculo exato do reset (logo 1 vs logo 17) ✅
+- Reset matematicamente perfeito (verificado) ✅
+
+**O carrossel funciona perfeitamente. O que precisa é ajuste estético do fade.**
+
+### Soluções possíveis (escolher uma)
+
+**Opção A — Diminuir o gradiente lateral (recomendado):**
+```css
+.section-logos-track::before,
+.section-logos-track::after {
+  width: 40px;   /* era 80px, agora 40px */
+}
+```
+Resultado: fade visível mas atravessa em 0,8s.
+
+**Opção B — Aumentar velocidade:**
+```javascript
+// js/index.js
+const VELOCIDADE = 80;   // era 50, agora 80
+```
+Resultado: tudo mais rápido, fade atravessa em 1s.
+
+**Opção C — Combinar A + B (mais agressivo):**
+```css
+width: 40px;   /* gradiente menor */
+```
+```javascript
+const VELOCIDADE = 60;   // velocidade 20% maior
+```
+Resultado: atravessa em 0,67s. Praticamente imperceptível.
+
+**Opção D — Tirar gradiente totalmente:**
+```css
+.section-logos-track::before,
+.section-logos-track::after {
+  display: none;
+}
+```
+Resultado: logos aparecem/somem bruscamente nas bordas. Sem fade. **Não recomendo** — perde o polimento.
+
+### Decisão pendente
+
+**Davi precisa testar a Opção A (recomendada) e decidir.**
 
 ---
 
 ## 🚧 DADOS FICTÍCIOS A SUBSTITUIR
 
-Placeholders marcados com `[SUBSTITUIR: X]` — localizáveis com Ctrl+F:
+Marcados com `[SUBSTITUIR: X]` em várias páginas:
+- [ ] `[SUBSTITUIR: EMAIL]`
+- [ ] `[SUBSTITUIR: RUA, NÚMERO]`
+- [ ] `[SUBSTITUIR: CEP]`
+- [ ] `[SUBSTITUIR: CNPJ]`
 
-- `[SUBSTITUIR: TELEFONE]`
-- `[SUBSTITUIR: EMAIL]`
-- `[SUBSTITUIR: RUA, NÚMERO]`
-- `[SUBSTITUIR: CIDADE · UF]`
-- `[SUBSTITUIR: CEP]`
-- `[SUBSTITUIR: CNPJ]`
+**Já substituído:**
+- ✅ Telefone (24) 2231-7666
+- ✅ Cidade/UF Petrópolis-RJ
+- ✅ Instagram + Facebook (@masterbordbordados)
+- ✅ Coordenadas mapa
+- ✅ WhatsApp (5524223176660)
 
-**Outros dados fictícios (não marcados ainda) que precisam confirmação da Master Bord:**
-- Timeline anos: 1995, 2003, 2011, 2018 (verificar datas reais)
-- Estatísticas: 2.400m², 32 máquinas, 48 colaboradores, 120k peças/mês, 500+ marcas, 30+ anos
-- Nomes de clientes nos logos: Atelier M., Farah&Co, Teixeira, Nórdica, Linha 14, Petit, Concreto, Brava, Kibon, Alma
-- Depoimentos: Juliana Farah, Rafael Teixeira, Clara Moretti (são nomes inventados)
-- Todas as imagens são placeholders CSS (retângulos com pattern diagonal)
-
----
-
-## 📍 STATUS ATUAL
-
-### ✅ CONCLUÍDO
-- [x] Repositório GitHub criado e publicado
-- [x] Branch `nova-interface` criada
-- [x] Arquivos antigos removidos
-- [x] 6 arquivos JSX recebidos como referência
-- [x] **Decisão técnica final:** HTML + CSS + JS puro (sem React, sem Vite, sem Astro)
-- [x] **Home (`index.html`)** com 6 seções: Hero, Produtos, Galeria, Depoimentos, Logos, Processo
-- [x] **Sobre (`sobre.html`)** com Hero, Timeline (5 marcos), Certificados (4 cards), Infraestrutura
-- [x] **Produtos índice (`produtos.html`)** — 3 cards linkando pras páginas de detalhe
-- [x] **Produto Etiqueta / Bordado / Laser** — 3 páginas de detalhe com Hero + Specs + Aplicações + Relacionados
-- [x] **Catálogo (`catalogo.html`)** — 12 itens com filtro sticky por categoria
-- [x] **Contato (`contato.html`)** — Hero + formulário + mapa
-- [x] **CSS:** `global.css` + 1 CSS por página (`sobre`, `produtos`, `produto` compartilhado pelos 3, `catalogo`, `contato`)
-- [x] **JS:** `global.js` (header scroll) + `catalogo.js` (filtro) + `contato.js` (validação + envio via WhatsApp)
-- [x] Header e footer fiéis ao design dos JSX, duplicados nas 8 páginas
-- [x] Responsividade via `@media (max-width: 900px)` em todas as páginas
-- [x] Truque do `body[data-cor="azul|vinho|ouro"]` em `produto.css` evita 3 CSS quase iguais
-- [x] **Commit feito** (sessão 2) na branch `nova-interface` com Home
-
-### 🔄 EM ANDAMENTO
-- [ ] **Próxima ação:** testar as 7 páginas novas no navegador (desktop + mobile) e commitar
-
-### 🎯 MUDANÇAS PEDIDAS PRA PRÓXIMA SESSÃO (Davi pediu, não fazer agora)
-- [ ] **Carrossel na imagem central do `index.html`** — hoje é uma `<img>` única dentro de `.hero-spec-card .carousel` (linhas ~162-167 do `index.html`). Já existem comentadas referências a `ia1.png` e `laser.png`. Implementar troca automática (ou setas) entre 2-3 imagens.
-- [ ] **Responsividade da imagem por seção** — garantir que cada hero/imagem caiba 100% na viewport sem cortar nem precisar scrollar lateral. Revisar especialmente seções de hero e galeria em telas pequenas/médias.
-- [ ] **Esquema de cores mais claro pra todos os HTMLs** — testar uma paleta clara (fundo branco/off-white em vez do `#0F1116` atual) ou modo híbrido. Cores ficam centralizadas em `css/global.css :root` (linhas 20-44) — mudar só ali se mantiver os mesmos nomes de variáveis.
-
-### ⏳ PENDENTE
-- [ ] **Trocar `WHATSAPP_NUMERO` em `js/contato.js:14`** pelo número real da Master Bord (formato `5524XXXXXXXX`)
-- [ ] Substituir os `[SUBSTITUIR: ...]` pelos dados reais (telefone, email, endereço, CEP, CNPJ)
-- [ ] Confirmar com a Master Bord os dados ainda fictícios: anos da timeline, estatísticas (2.400m², 32 máquinas, 48 colaboradores, 120k peças/mês), nomes nos depoimentos, logos de clientes
-- [ ] Adicionar fotos reais da fábrica/produtos em `img/` (todas as imagens hoje são placeholders CSS)
-- [ ] Testar todas as 8 páginas em desktop e mobile
-- [ ] Merge da branch `nova-interface` para `main` quando tudo estiver pronto
-- [ ] Publicação no GitHub Pages
+**Confirmar com Master Bord:**
+- [ ] Datas timeline (1995, 2003, 2011, 2018)
+- [ ] Estatísticas (2.400m², 32 máquinas, 48 colaboradores, 120k peças/mês)
+- [ ] Depoimentos (Juliana Farah, Rafael Teixeira, Clara Moretti = nomes inventados)
 
 ---
 
-## 💡 DECISÕES TÉCNICAS TOMADAS
+## 📍 PRÓXIMAS MISSÕES (em ordem de prioridade)
 
-1. **HTML + CSS + JS puro** — sem frameworks, sem build
-2. **Arquivos separados** — `index.html` limpo, sem `<style>` ou `<script>` grandes inline
-3. **CSS global + CSS por página** — evita duplicação massiva
-4. **Variáveis CSS no `:root`** — mudança de cor em todo o site = 1 linha editada
-5. **Header/footer duplicados em cada HTML** — custo aceito em troca da simplicidade
-6. **Classes BEM-inspired** — padrão `bloco-elemento` (`.hero-title`, `.produto-card`, `.etapa-numero`)
-7. **Responsividade por `@media`** — breakpoint em 900px, substituiu a prop `mobile` dos JSX
-8. **Fontes via CDN** — Google Fonts + cdnfonts.com (trade-off: precisa de internet)
-9. **Sem TypeScript** — JS vanilla simples
-10. **Sem React Router** — navegação via `<a href>` tradicional, 1 página = 1 arquivo HTML
+### 1. Resolver o "delay" do carrossel
+Aplicar **Opção A** (gradiente 40px). Testar em ~3 voltas completas. Se ainda incomodar, escalar pra Opção C.
+
+### 2. Aplicar fluid design nas outras 7 páginas
+Replicar padrão da home (`@media min-width: 900px` + `clamp()`):
+- [ ] sobre.html / sobre.css
+- [ ] produtos.html / produtos.css
+- [ ] produto-*.html / produto.css
+- [ ] catalogo.html / catalogo.css
+- [ ] contato.html / contato.css
+
+### 3. Substituir dados fictícios pelos reais
+Email, endereço, CEP, CNPJ, datas, estatísticas, nomes depoimentos.
+
+### 4. Limpar lixo técnico
+- Font Awesome carregado 2x no `index.html` (linhas ~14 e ~20-22) → remover duplicata
+
+### 5. Testes finais
+8 páginas em 4 resoluções: 1920×1080, 1280×720, 768px, 375px.
+
+### 6. Deploy
+- Commit final na `nova-interface`
+- Push pro GitHub
+- Merge pra `main` (ou release)
+- Verificar GitHub Pages publicado em https://daviobl2014-hub.github.io/Site-Master-Bord
+
+### 7. Opcional — Paleta mais clara
+Só se Master Bord pedir. Mexer no `:root` de `global.css`.
 
 ---
 
-## 🔧 COMANDOS ÚTEIS
+## 🐛 ARMADILHAS APRENDIDAS NESTA SESSÃO 4
+
+### Carrossel infinito CSS-only NÃO é confiável
+`translateX(-50%)` depende de matemática exata do CSS. Qualquer `padding` ou `margin` quebra o cálculo. **Use JavaScript com `getBoundingClientRect()`** pra cálculo preciso.
+
+### `mask-image` afeta tooltips e descendentes
+`mask-image` aplica transparência em **TODOS** os filhos. Tooltip dentro fica cortado. Solução: use `::before/::after` com gradientes em vez de mask.
+
+### `overflow: hidden` corta tooltip que sobe
+Pra carrossel: `overflow: hidden` no PAI (pra evitar scroll horizontal do site), `overflow: visible` no track interno (pra tooltip vazar).
+
+### Quando algo "passa por cima" → use z-index, não margin
+Margin empurra. Z-index empilha. Combinado com `background: cor-sólida`, cobre o que está atrás visualmente.
+
+### Layout horizontal vs vertical
+Quando dois elementos competem pelo mesmo eixo (ex: label fixo + carrossel rolando no eixo X), considere mudar pra **vertical** (label em cima). Resolve sem hacks.
+
+### `:nth-child(N)` é frágil
+Se conteúdo muda, regra quebra. Prefira `:first-child`/`:last-child` ou JavaScript dinâmico.
+
+### Gradientes laterais criam "delay" perceptível
+Gradiente de 80px + velocidade 50px/s = 1,6s "fantasma". Calibrar conforme velocidade da animação.
+
+### Hotlinking de CDN do Instagram quebra
+URLs `instagram.fsdu37-1.fna.fbcdn.net/...` expiram em dias. Sempre baixar local.
+
+### JPG não funciona com `filter: brightness(0) invert(1)`
+JPG sempre tem fundo branco. O filtro vira tudo branco sólido. Use **PNG transparente** ou **círculo redondo com `background-image`** (esconde o fundo branco).
+
+### Google Maps iframe — pino customizado é gambiarra
+HTML overlay no centro da tela não acompanha o endereço quando usuário arrasta. Use **só o marcador oficial** do Google.
+
+### Padding lateral em lista com loop quebra cálculo
+`padding: 10px 35px` na `.section-logos-list` deslocava o início. Pra animação funcionar, padding lateral deve ser 0.
+
+---
+
+## 🔧 COMANDOS GIT — REFERÊNCIA RÁPIDA
 
 ```bash
-# Git - trocar branch
-git checkout nova-interface
-git checkout main
+# ANTES de começar trabalho (em qualquer máquina)
+git status
+git pull origin nova-interface
 
-# Git - salvar e enviar
+# Durante o trabalho (a cada feature)
 git add .
-git commit -m "mensagem descritiva"
+git commit -m "feat: descrição"
+
+# ANTES de sair / trocar máquina
 git push origin nova-interface
 
-# Git - baixar do GitHub
-git pull
-
-# Testar site localmente
-# Basta abrir index.html no navegador (duplo-clique)
-# Não precisa de servidor, Node ou build
+# Diagnosticar
+git log --oneline -10
+git branch
 ```
-
----
-
-## 📝 PADRÃO PARA PRÓXIMAS PÁGINAS (template mental)
-
-Ao criar `sobre.html` (e outras), seguir esta estrutura:
-
-```html
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <!-- Meta + fontes (igual index.html) -->
-  <link rel="stylesheet" href="css/global.css">
-  <link rel="stylesheet" href="css/sobre.css">  ← CSS específico desta página
-</head>
-<body>
-  <!-- HEADER (copiar do index.html, mudar class="active" para o link correto) -->
-  <!-- SEÇÕES ESPECÍFICAS DA PÁGINA -->
-  <!-- FOOTER (copiar do index.html idêntico) -->
-  <script src="js/global.js"></script>
-  <!-- Se a página tiver JS próprio: <script src="js/sobre.js"></script> -->
-</body>
-</html>
-```
-
-**Regras:**
-- Usar classes do `global.css` sempre que possível (`.mb-tag`, `.mb-title`, `.mb-card`, `.btn-primary`, etc.)
-- Criar classes novas **só** para o que é exclusivo da página
-- Media query mobile em 900px mantém consistência
-- Marcar link ativo do menu com `class="active"`
-
----
-
-## 📖 HISTÓRICO DE SESSÕES
-
-### Sessão 1 — 20/04/2026 (manhã)
-- Discussão inicial sobre design do site Master Bord
-- Análise do site antigo publicado em GitHub Pages
-- Criação de mockup HTML com seções faltantes
-- Decisão inicial de migrar para React/Vite
-- Limpeza da branch `nova-interface`
-- Criação do projeto Vite no notebook de casa
-- 6 arquivos JSX identificados e recebidos
-
-### Sessão 2 — 20/04/2026 (tarde) — **ATUAL**
-**Conversa debatida com Claude como coach técnico. Mudanças importantes:**
-1. Claude desafiou o plano inicial React/Vite apontando furos:
-   - Styles inline são anti-padrão em 2026
-   - SPA é handicap para SEO em site institucional
-   - JSX "sem TypeScript" esconde bugs
-   - React Router deveria entrar na FASE 1, não 3
-2. Davi considerou Astro (recomendado por Claude), depois escolheu **HTML + CSS + JS puro** por simplicidade e compatibilidade com PC de trabalho (Win 7 / Node 13)
-3. Master Bord confirmada como cliente com projeto **aprovado formalmente**
-4. Claude gerou `index.html` completo com tudo inline
-5. Davi pediu separação em arquivos
-6. Claude refez em 4 arquivos: `index.html` + `css/global.css` + `css/index.css` + `js/global.js`
-7. Davi fez ajustes visuais posteriores (cores, textos) nos arquivos — **commit já feito** na branch `nova-interface`
-8. MD atualizado para refletir a nova realidade do projeto
-
-**Próxima etapa:** criar `sobre.html` seguindo o padrão estabelecido.
-
-### Sessão 3 — 20/04/2026 (noite) — **ATUAL**
-**Geradas todas as 7 páginas restantes em uma sessão.** Decisões e marcos:
-
-1. **`sobre.html` + `css/sobre.css`** — Hero, Timeline (5 marcos: 1995→2026), Certificados (4 cards), Infraestrutura (3 imagens placeholder + 4 stats)
-2. **Discussão sobre header/footer compartilhado** — Davi perguntou se dava pra fazer 1 arquivo só. Claude apresentou as opções (JS fetch quebra SEO, SSI não roda no GitHub Pages, build precisa Node) e recomendou manter duplicado. **Decisão mantida:** duplicação aceita.
-3. **`produtos.html` + `css/produtos.css`** — índice com 3 cards linkando pras páginas de detalhe
-4. **Davi pediu pular pra `contato.html` antes dos detalhes de produto** — feito:
-   - `contato.html` — Hero com texto+info à esquerda, formulário à direita, mapa abaixo
-   - `css/contato.css` — estilos do form (inputs, checks, erros)
-   - `js/contato.js` — **decisão tomada por Claude:** validação inline + abrir WhatsApp com mensagem montada (sem backend, mais útil que só "obrigado"). Davi precisa trocar `WHATSAPP_NUMERO` na linha 14.
-5. **`catalogo.html` + `css/catalogo.css` + `js/catalogo.js`** — 12 itens hardcoded no HTML (melhor SEO que renderizar via JS), filtro sticky com 5 categorias, contador dinâmico, mensagem de "vazio"
-6. **3 páginas de produto + `css/produto.css` compartilhado** — usadas variáveis CSS via `body[data-cor="azul|vinho|ouro"]` pra reusar 100% do CSS entre etiqueta/bordado/laser. Cada página: Hero (breadcrumb + ET/BR/LA + título + sample), Specs (8 itens em 2 colunas), Aplicações (5 quadrados), Outros Produtos (links pras outras 2)
-7. **Limite do plano original mantido:** zero JS framework, zero build, tudo abre direto no navegador
-
-**Próxima etapa:** Davi vai testar visualmente no navegador e commitar as mudanças.
 
 ---
 
 ## ⚠️ LEMBRETES IMPORTANTES
 
-1. **Push antes de sair, pull ao chegar** — sempre sincronizar entre máquinas
-2. **NUNCA apagar a pasta `.git`** — contém todo o histórico
-3. **Trabalhar SEMPRE na branch `nova-interface`** até estar 100% pronto
-4. **Só fazer merge para `main` quando tudo estiver testado**
-5. **Dados fictícios precisam ser substituídos** antes de publicar
-6. **Fonte de verdade para código atual é o Git, não este MD** — o MD descreve intenção e decisões; o código tem o estado real
-7. **Sempre atualizar este MD ao final de cada sessão** — linhas 1-2 no Histórico bastam
-8. **Ao abrir nova conversa com Claude:** enviar este MD primeiro, depois arquivos editados
+1. **Push antes de sair, pull ao chegar** — em qualquer máquina
+2. **NUNCA apagar `.git`** — perde histórico
+3. **Trabalhar na `nova-interface`** até estar 100% pronto
+4. **Mobile (<900px) está bom** — não mexer sem motivo forte
+5. **Atualizar este MD** ao final de cada sessão
+6. **Fonte de verdade é o Git**, não o MD
+7. **Ao abrir nova conversa com Claude:** envia este MD primeiro
 
 ---
 
 ## 🎯 COMO RETOMAR NA PRÓXIMA SESSÃO
 
-Se você voltar a conversar comigo (Claude) em outro dia:
-
-1. **Envie este MD** como primeiro anexo
-2. **Envie os arquivos atuais** (`index.html`, `css/global.css`, `css/index.css`, `js/global.js`) — eu preciso ver o estado real, não o que gerei originalmente
-3. **Diga o que quer fazer** — ex: "quero criar o sobre.html agora"
-
-Se você quiser só consultar/debater sem código novo:
-1. Envie este MD
-2. Faça a pergunta
+1. **Sincroniza Git** primeiro (push do trabalho → pull no notebook ou vice-versa)
+2. **Envia este MD** pro Claude
+3. **Envia o `index.css` e `js/index.js` atuais**
+4. **Diga:** "Quero aplicar a Opção A do problema documentado — gradiente 40px"
+5. **Testa, ajusta se preciso, segue pras próximas missões**
 
 ---
 
-**Última atualização:** 20/04/2026 (final da Sessão 3 — todas as 8 páginas geradas)
+**Status final da sessão 4:** Home tecnicamente completa. Falta calibrar 1 detalhe estético (gradiente) e aplicar fluid design nas outras 7 páginas. ~75% do projeto concluído.
