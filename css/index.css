@@ -745,7 +745,7 @@ img-border {
   position: absolute;
   top: 0;
   bottom: 0;
-  width: 80px;
+  width: 40px;
   z-index: 5;
   pointer-events: none;
 }
@@ -759,13 +759,19 @@ img-border {
 }
 
 /* LISTA — trilho com logos rolando em loop infinito */
+/* LISTA — trilho com logos rolando em loop infinito */
 .section-logos-list {
   display: flex;
   align-items: center;
-  gap: clamp(16px, 2vw, 30px);
   width: max-content;
-  animation: logos-scroll 40s linear infinite;
-  padding: 10px 35px; /* respiro vertical: 50px em cima (pro hover) e embaixo (pro tooltip) */
+  /* APAGA: animation: logos-scroll 40s linear infinite; */
+  /* APAGA: padding: 10px 35px; */
+  padding: 10px 0; /* mantém só vertical */
+  will-change: transform; /* otimização de performance */
+}
+
+.section-logos-list .marca-logo {
+  margin-right: clamp(16px, 2vw, 30px);
 }
 
 /* Pausa quando o mouse passa no carrossel */
@@ -779,12 +785,6 @@ img-border {
   }
   100% {
     transform: translateX(-50%);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .section-logos-list {
-    animation: none;
   }
 }
 

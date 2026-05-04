@@ -218,3 +218,109 @@
   // Inicialização: carrega "Todos" ao abrir a página
   trocarGaleria('todos');
 })();
+
+/* ================================================================
+   3. CARROSSEL INFINITO DE LOGOS — controle preciso por JavaScript
+   - Calcula a largura exata do grupo 1 de logos
+   - Anima translateX usando requestAnimationFrame (suave 60fps)
+   - Reset invisível: quando completa o grupo 1, volta pra 0 sem salto
+   - Pausa no hover automaticamente
+   ================================================================ */
+
+(function () {
+  const lista = document.querySelector('.section-logos-list');
+  if (!lista) return;
+
+  const track = document.querySelector('.section-logos-track');
+  if (!track) return;
+
+  // Configuração — VELOCIDADE em pixels por segundo
+  const VELOCIDADE = 50; // 50px/s = bem suave. Aumenta pra mais rápido.
+
+  let posicaoAtual = 0; // Posição atual do trilho (em pixels)
+  let larguraGrupo1 = 0; // Largura total do grupo 1 (calculada após DOM carregar)
+  let pausado = false;
+  let ultimoTimestamp = null;
+  let frameId = null;
+
+  /**
+   * Calcula a largura total do GRUPO 1 (primeiros 16 logos + suas margens).
+   * É essa a distância que precisa rolar antes de "resetar" pra posição 0.
+   */
+  function calcularLarguraGrupo1() {
+    const logos = lista.querySelectorAll('.marca-logo');
+    if (logos.length < 17) return 0;
+
+    // Mede a posição X do logo 1 e do logo 17 (que é a CÓPIA do logo 1).
+    // A diferença é exatamente a distância que precisamos rolar.
+    const primeiroX = logos[0].getBoundingClientRect().left;
+    const decimoSetimoX = logos[16].getBoundingClientRect().left;
+
+    return decimoSetimoX - primeiroX;
+  }
+  /**
+   * Animação — chamada a cada frame (~60fps).
+   */
+  function animar(timestamp) {
+    if (ultimoTimestamp === null) ultimoTimestamp = timestamp;
+    const delta = (timestamp - ultimoTimestamp) / 1000; // segundos desde último frame
+    ultimoTimestamp = timestamp;
+
+    if (!pausado) {
+      // Move o trilho proporcionalmente ao tempo passado
+      posicaoAtual += VELOCIDADE * delta;
+
+      // RESET invisível: quando passou da largura do grupo 1, volta pra 0.
+      // Como o grupo 2 é cópia idêntica do grupo 1, o usuário não percebe.
+      if (posicaoAtual >= larguraGrupo1) {
+        posicaoAtual -= larguraGrupo1;
+      }
+
+      lista.style.transform = `translateX(-${posicaoAtual}px)`;
+    }
+
+    frameId = requestAnimationFrame(animar);
+  }
+
+  // Pausa no hover
+  track.addEventListener('mouseenter', () => {
+    pausado = true;
+  });
+  track.addEventListener('mouseleave', () => {
+    pausado = false;
+  });
+
+  // Calcula largura quando as imagens carregarem
+  // (precisa esperar pra ter o offsetWidth correto)
+  function inicializar() {
+    larguraGrupo1 = calcularLarguraGrupo1();
+    if (larguraGrupo1 === 0) {
+      // Se ainda não calculou direito, tenta de novo em 100ms
+      setTimeout(inicializar, 100);
+      return;
+    }
+    frameId = requestAnimationFrame(animar);
+  }
+
+  // Recalcula se a tela for redimensionada (clamp() muda o tamanho dos logos)
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      larguraGrupo1 = calcularLarguraGrupo1();
+    }, 200);
+  });
+
+  // Respeita preferência de menos animação
+  const prefereSemAnimacao = window.matchMedia(
+    '(prefers-reduced-motion: reduce)'
+  ).matches;
+  if (prefereSemAnimacao) return; // não inicia animação
+
+  // Aguarda o DOM e imagens carregarem antes de iniciar
+  if (document.readyState === 'complete') {
+    inicializar();
+  } else {
+    window.addEventListener('load', inicializar);
+  }
+})();
