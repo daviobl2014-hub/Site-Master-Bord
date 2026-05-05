@@ -89,9 +89,7 @@ img {
   z-index: 100;
   background: var(--mb-bg);
   border-bottom: 1px solid var(--mb-line);
-  transition:
-    background 0.3s ease,
-    backdrop-filter 0.3s ease;
+  transition: background 0.3s ease, backdrop-filter 0.3s ease;
 }
 .header.scrolled {
   background: rgba(15, 17, 22, 0.92);
@@ -173,9 +171,7 @@ img {
   font-weight: 500;
   padding-bottom: 2px;
   border-bottom: 1px solid transparent;
-  transition:
-    color 0.2s,
-    border-color 0.2s;
+  transition: color 0.2s, border-color 0.2s;
 }
 .nav-links a.active,
 .nav-links a:hover {
@@ -229,8 +225,7 @@ img {
 .footer-cta-bg {
   position: absolute;
   inset: 0;
-  background:
-    radial-gradient(
+  background: radial-gradient(
       circle at 20% 50%,
       rgba(74, 139, 214, 0.1),
       transparent 50%
@@ -250,11 +245,26 @@ img {
   gap: 12px;
 }
 .footer-cols {
-  padding: 48px 48px;
+  padding: 24px 48px;
   border-top: 1px solid var(--mb-line);
   display: grid;
   grid-template-columns: 1.3fr 1fr 1fr 1.2fr;
   gap: 40px;
+}
+
+.footer-col li {
+  width: 200px; /* Largura máxima */
+  /* Quebra de linha forçada */
+  overflow-wrap: break-word;
+  word-wrap: break-word; /* fallback */
+}
+.encurtar ul {
+  padding: 0;
+  margin: 0;
+}
+.encurtar li {
+  margin: 1px;
+  line-height: 1.1;
 }
 .footer-about p {
   font-size: 13px;
@@ -281,10 +291,7 @@ img {
   font-size: 14px;
   color: var(--mb-muted);
   letter-spacing: 0.1em;
-  transition:
-    color 0.25s ease,
-    border-color 0.25s ease,
-    transform 0.25s ease,
+  transition: color 0.25s ease, border-color 0.25s ease, transform 0.25s ease,
     background 0.25s ease;
 }
 .footer-socials .social:hover {
@@ -301,9 +308,7 @@ img {
   left: 50%;
   opacity: 0;
   pointer-events: none;
-  transition:
-    opacity 0.25s ease,
-    transform 0.25s ease;
+  transition: opacity 0.25s ease, transform 0.25s ease;
 }
 .footer-socials .social::before {
   content: attr(data-tooltip);
@@ -430,10 +435,7 @@ img {
   line-height: 1;
   color: var(--mb-muted);
   border: 1px solid transparent;
-  transition:
-    color 0.2s,
-    border-color 0.2s,
-    background 0.2s;
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
 }
 .wa-modal-close:hover {
   color: var(--mb-paper);
@@ -470,9 +472,7 @@ img {
   color: var(--mb-paper);
   text-decoration: none;
   overflow: hidden;
-  transition:
-    transform 0.25s ease,
-    border-color 0.25s ease,
+  transition: transform 0.25s ease, border-color 0.25s ease,
     background 0.25s ease;
 }
 .wa-modal-option::before {
@@ -540,9 +540,7 @@ img {
   font-family: var(--font-mono);
   font-size: 18px;
   color: var(--mb-muted);
-  transition:
-    transform 0.25s ease,
-    color 0.25s ease;
+  transition: transform 0.25s ease, color 0.25s ease;
 }
 .wa-modal-option:hover .wa-opt-arrow {
   transform: translateX(4px);
@@ -595,9 +593,7 @@ img {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   border: 1px solid transparent;
-  transition:
-    opacity 0.2s,
-    transform 0.2s;
+  transition: opacity 0.2s, transform 0.2s;
 }
 .btn:hover {
   opacity: 0.9;
@@ -691,8 +687,10 @@ img {
   position: absolute;
   inset: 0;
 
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0.04) 1px,
+      transparent 1px
+    ),
     linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
 
   background-size: 60px 60px; /* 🔥 antes era 80px */
@@ -704,8 +702,7 @@ img {
   position: absolute;
   inset: 0;
 
-  background-image:
-    repeating-linear-gradient(
+  background-image: repeating-linear-gradient(
       0deg,
       rgba(255, 255, 255, 0.015) 0px,
       rgba(255, 255, 255, 0.015) 1px,
