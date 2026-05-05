@@ -760,7 +760,7 @@ img-border {
 }
 
 .section-logos-list .marca-logo {
-  margin-right: clamp(16px, 2vw, 30px);
+  margin-right: clamp(12px, 1.4vw, 20px);
 }
 
 /* Pausa quando o mouse passa no carrossel */

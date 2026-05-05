@@ -235,7 +235,7 @@
   if (!track) return;
 
   // Configuração — VELOCIDADE em pixels por segundo
-  const VELOCIDADE = 50; // 50px/s = bem suave. Aumenta pra mais rápido.
+  const VELOCIDADE = 70; // 70px/s = wrap imperceptível sem ficar acelerado demais
 
   let posicaoAtual = 0; // Posição atual do trilho (em pixels)
   let larguraGrupo1 = 0; // Largura total do grupo 1 (calculada após DOM carregar)
@@ -290,6 +290,28 @@
     pausado = false;
   });
 
+  /**
+   * Garante que o trilho tenha logos suficientes para preencher o viewport
+   * mesmo no momento exato do reset. Sem isso, em telas largas (viewport >
+   * larguraGrupo1), aparece um "espaço preto" após a última logo (Rede D'or)
+   * porque o trilho de 32 logos termina antes de preencher a tela.
+   *
+   * Solução: clona o grupo original de 16 logos quantas vezes for necessário
+   * até que o trilho tenha pelo menos `larguraGrupo1 + viewportWidth` de
+   * largura. Aí o reset sempre acontece com tela cheia de logos.
+   */
+  function garantirLogosSuficientes() {
+    const viewportWidth = track.offsetWidth;
+    const tamanhoNecessario = larguraGrupo1 + viewportWidth;
+
+    while (lista.scrollWidth < tamanhoNecessario) {
+      const grupoOriginal = Array.from(
+        lista.querySelectorAll('.marca-logo')
+      ).slice(0, 16);
+      grupoOriginal.forEach((logo) => lista.appendChild(logo.cloneNode(true)));
+    }
+  }
+
   // Calcula largura quando as imagens carregarem
   // (precisa esperar pra ter o offsetWidth correto)
   function inicializar() {
@@ -299,6 +321,7 @@
       setTimeout(inicializar, 100);
       return;
     }
+    garantirLogosSuficientes();
     frameId = requestAnimationFrame(animar);
   }
 
@@ -308,6 +331,7 @@
     clearTimeout(resizeTimer);
     resizeTimer = setTimeout(() => {
       larguraGrupo1 = calcularLarguraGrupo1();
+      garantirLogosSuficientes();
     }, 200);
   });
 

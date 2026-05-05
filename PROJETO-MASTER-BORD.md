@@ -2,381 +2,200 @@
 
 > **Arquivo de continuação entre sessões com Claude.**
 > Envie este arquivo no início de cada nova conversa.
-> **Última atualização:** 04/05/2026 (Sessão 4 — final do dia)
+> **Última atualização:** 04/05/2026 (Sessão 5 — carrossel de logos finalizado)
 
 ---
 
 ## 🎯 OBJETIVO
 
-Construir o site institucional da **Master Bord** (etiquetas tecidas, bordados e corte a laser) em **HTML + CSS + JavaScript puro**.
-
-- Sem frameworks, sem build tools, sem dependências
-- 8 páginas + assets organizados em pastas (css/, js/, img/)
-- Publicação no GitHub Pages
-- Projeto formalmente aprovado pela Master Bord
+Site institucional da **Master Bord** (etiquetas tecidas, bordados e corte a laser) em **HTML + CSS + JavaScript puro**. Sem frameworks, sem build tools. 8 páginas. Publicação no GitHub Pages.
 
 ---
 
 ## 👤 CONTEXTO
 
-- **Davi** — dono de tecelagem em Petrópolis-RJ, refazendo o site da Master Bord (cliente externo)
-- **Perfil:** dev iniciante-intermediário, aprende melhor iterando visualmente
-- **Estilo preferido:** direto, sem rodeios, com desafio honesto + coach
+- **Davi** — dono de tecelagem em Petrópolis-RJ
+- **Perfil:** dev iniciante-intermediário, aprende iterando visualmente
+- **Estilo:** direto, sem rodeios
 - **Idioma:** PT-BR
 
 ### Ambientes
-| Máquina | Sistema | Uso |
-|---|---|---|
-| PC trabalho (Petrópolis) | Windows 7 / Node 13 | Edição |
-| Notebook casa | Windows 10 / Node 24 | Edição |
-
-**Live Server VS Code** + **Chrome DevTools** com dispositivo customizado "Notebook 13" (1280×720) configurado.
+- PC trabalho (Petrópolis): Windows 7 / Node 13
+- Notebook casa: Windows 10 / Node 24
+- Live Server VS Code + Chrome DevTools (dispositivo "Notebook 13" 1280×720)
 
 ### Git
-- **Repositório:** https://github.com/daviobl2014-hub/Site-Master-Bord
-- **`main`** = site antigo (publicado)
-- **`nova-interface`** = branch atual de desenvolvimento
+- Repo: https://github.com/daviobl2014-hub/Site-Master-Bord
+- `main` = site antigo publicado
+- `nova-interface` = branch atual de desenvolvimento
 
 ---
 
 ## 📐 DECISÕES TÉCNICAS LOCKADAS
 
-1. **HTML + CSS + JS puro** (Vite/React/Astro descartados)
-2. **Fluid design só desktop (≥900px) com `clamp()`** — mobile preservado intacto
-3. **Breakpoint único:** 900px
-4. **Header/footer duplicados em cada HTML** (custo aceito vs simplicidade)
-5. **CSS modular:** `global.css` (compartilhado) + `[pagina].css` (exclusivo)
-6. **JS modular:** `global.js` + `[pagina].js`
-7. **Mapa Google Maps via iframe** (sem JavaScript API)
-8. **Formulário sem backend** — envia via WhatsApp pré-preenchido
+1. HTML + CSS + JS puro (Vite/React descartados)
+2. Fluid design só desktop (≥900px) com `clamp()` — mobile preservado
+3. Breakpoint único: 900px
+4. Header/footer duplicados em cada HTML
+5. CSS modular: `global.css` + `[pagina].css`
+6. JS modular: `global.js` + `[pagina].js`
+7. Google Maps via iframe
+8. Formulário sem backend → WhatsApp pré-preenchido
 
 ---
 
 ## 🎨 IDENTIDADE VISUAL
 
-### Cores (em `:root` do `global.css`)
+### Cores (`:root` do `global.css`)
 ```
---mb-bg:         #0F1116
---mb-bg-soft:    #181B22
---mb-bg-deep:    #10100A
---mb-card:       #20242D
---mb-paper:      #F2ECE0
---mb-azul:       #4A8BD6
---mb-vinho:      #C44B55
---mb-ouro:       #D4A96A
---mb-muted:      #8B8F99
---mb-line:       #2E3340
---mb-green:      #7FC291
+--mb-bg:#0F1116  --mb-bg-soft:#181B22  --mb-bg-deep:#10100A
+--mb-card:#20242D  --mb-paper:#F2ECE0
+--mb-azul:#4A8BD6  --mb-vinho:#C44B55  --mb-ouro:#D4A96A
+--mb-muted:#8B8F99  --mb-line:#2E3340  --mb-green:#7FC291
 ```
-
-Cores customizadas no título da home:
-- `.titulo-master` → `#3276b9`
-- `.titulo-bord` → `#8c2d2e`
+Título home: `.titulo-master`#3276b9 / `.titulo-bord`#8c2d2e
 
 ### Fontes
-- **Bauhaus** — display/títulos
-- **Inter** — UI/texto
-- **JetBrains Mono** — técnicos/monoespaçado
-- **Playfair Display** — serif itálico
-- **Font Awesome 6.5.0** — ícones
+Bauhaus (display) · Inter (UI) · JetBrains Mono (técnico) · Playfair Display (serif) · Font Awesome 6.5.0
 
-### Estilo geral
-- Dark mode industrial/técnico
-- Tags `[ TEXTO ]` via CSS `::before`/`::after`
-- Grid técnica de fundo (`.tech-grid`)
-- Logo SVG inline (não é texto)
+### Estilo
+Dark mode industrial, tags `[ TEXTO ]` via `::before/::after`, grid técnica de fundo, logo SVG inline.
 
 ---
 
-## 🏗️ ESTRUTURA ATUAL
+## 🏗️ ESTRUTURA
 
 ```
 master-bord/
-├── index.html          ✅ HOME — totalmente refinada
-├── sobre.html          ✅ Sessão 3 (não revisada)
-├── produtos.html       ✅ Sessão 3
-├── produto-etiqueta.html  ✅ Sessão 3
-├── produto-bordado.html   ✅ Sessão 3
-├── produto-laser.html     ✅ Sessão 3
-├── catalogo.html       ✅ Sessão 3
-├── contato.html        ✅ Revisado Sessão 4 (Google Maps)
-├── css/
-│   ├── global.css      ✅ Variáveis, header, footer, componentes
-│   ├── index.css       ✅ Hero + carrossel + Ken Burns + galeria + logos
-│   ├── sobre.css       ✅ Sessão 3
-│   ├── produtos.css    ✅ Sessão 3
-│   ├── produto.css     ✅ Compartilhado (cor via body[data-cor])
-│   ├── catalogo.css    ✅ Sessão 3
-│   └── contato.css     ✅ Revisado Sessão 4
-├── js/
-│   ├── global.js       ✅ Header scroll
-│   ├── index.js        ✅ Carrossel hero + galeria filtrada + carrossel logos
-│   ├── catalogo.js     ✅ Filtro por categoria
-│   └── contato.js      ✅ Validação + WhatsApp
-└── img/
-    ├── ia1.png, ia2.png, laser.png      (carrossel hero)
-    ├── operador-*.png                    (sobre)
-    ├── et[1-5].jpg, br[1-5].jpg, la[1-5].jpg  (galeria)
-    └── clientes/                         (logos + avatares depoimentos)
+├── index.html ✅ HOME refinada
+├── sobre.html / produtos.html / produto-*.html (3) / catalogo.html / contato.html ✅
+├── css/  global.css · index.css · sobre.css · produtos.css · produto.css · catalogo.css · contato.css
+├── js/   global.js · index.js · catalogo.js · contato.js
+└── img/  ia*.png · operador-*.png · et[1-5].jpg · br[1-5].jpg · la[1-5].jpg · clientes/
 ```
 
 ---
 
-## ✅ TUDO QUE FOI FEITO ATÉ AGORA
+## ✅ TUDO QUE FOI FEITO
 
 ### Sessão 1 — Planejamento
-- Repo criado, JSX do designer recebidos
-- Decisão inicial Vite/React (depois revertida)
+Repo criado, JSX recebidos, decisão Vite/React (depois revertida).
 
 ### Sessão 2 — Fundação
-- Decisão final: HTML + CSS + JS puro
-- Home criada com 6 seções, CSS/JS separados
+Decisão final: HTML+CSS+JS puro. Home com 6 seções.
 
-### Sessão 3 — 7 páginas restantes (outra conversa)
-- Sobre, Produtos, 3 produto-*, Catálogo, Contato
-- Truque `body[data-cor]` pros 3 produtos compartilharem CSS
-- Contato com WhatsApp integrado
+### Sessão 3 — 7 páginas restantes
+Sobre, Produtos, 3 produto-*, Catálogo, Contato. Truque `body[data-cor]` pros 3 produtos compartilharem CSS.
 
-### Sessão 4 — Refinamentos visuais e interativos (HOJE)
+### Sessão 4 — Refinamentos visuais
+- Fluid design desktop com `clamp()`
+- Carrossel hero (3 slides, 8s, Ken Burns)
+- Header com logo SVG, ícones FA, links sociais reais
+- Stats reais (30+ anos, 10k+ clientes, 250+/mês)
+- Galeria filtrada (15 imgs em 3 categorias com fade)
+- Avatares depoimentos (fotos reais redondas + Instagram + tooltip)
+- Logos clientes em círculos com tooltip hover
+- Carrossel infinito de logos (32 = 16 + 16 cópia, JS com `getBoundingClientRect`)
+- Mapa Google Maps real no Contato
+- Bug do pino fake removido
 
-**Home (`index.html` + `index.css` + `js/index.js`):**
+### Sessão 5 — Carrossel de logos finalizado (HOJE)
 
-1. **Fluid design desktop** com `clamp()` em padding, fonte do título, stats, ficha técnica
-2. **Carrossel do hero** — 3 slides (Barudan, Tear Muller, Prisma Laser) automático 8s + bolinhas + pausa hover
-3. **Efeito Ken Burns** nos slides (3 keyframes diferentes + `prefers-reduced-motion`)
-4. **Título animado** com `tracking-in-expand 3s`
-5. **Header atualizado** — logo SVG, ícones Font Awesome, links sociais reais, telefone real
-6. **Stats reais** — 30+ anos, 10k+ clientes, 250+/mês, 100% qualidade
-7. **Lead atualizado** — tecnologia Suíça, Japonesa, Brasileira
-8. **Galeria filtrada** com array de 15 imagens em 3 categorias (etiqueta/bordado/laser) + fade na troca
-9. **Padrão `.section-head`** corrigido na seção Processo
-10. **Avatares dos depoimentos** com fotos reais redondas + link Instagram + tooltip
-11. **Logos de clientes** transformados em círculos (mesmo padrão dos avatares)
-12. **Tooltip CSS** com nome no hover (em todos os logos)
-13. **Carrossel infinito** dos logos (com 32 logos = 16 reais + 16 cópia + JS controlando)
+**Problema:** "espaço preto" aparecia após a última logo (Rede D'or) antes da primeira (Dress To) reaparecer no wrap-around.
 
-**Página Contato:**
-- **Mapa Google Maps** real integrado via iframe
-- **Bug do pino fake removido** (estava em `position: absolute` no centro da tela, não acompanhava endereço)
+**Diagnóstico — bug real (matemático, não percepção):**
+HTML tinha 16 logos × 2 cópias = **32 logos no DOM**. Mas em telas onde `viewport > larguraGrupo1`, o trilho de 32 logos termina ANTES de preencher a tela inteira no momento do reset. Resultado: espaço vazio visível à direita da Rede D'or do grupo 2 antes do reset acontecer.
 
-**Configurações úteis:**
-- DevTools com dispositivo customizado "Notebook 13" (1280×720)
+Diagnósticos secundários (também aplicados, melhoram polimento):
+- Gradientes laterais de 40px criavam fade-in/fade-out que parecia "delay"
+- Velocidade lenta (50px/s) + margem larga deixavam o olho fixar no loop
 
----
+**Correções aplicadas:**
+- `js/index.js` — função `garantirLogosSuficientes()` clona o grupo de 16 logos automaticamente até o trilho ter `larguraGrupo1 + viewportWidth` de largura. Resolve o bug em qualquer viewport. **Esta é a correção principal.**
+- `js/index.js` — velocidade `50` → `70` px/s
+- `css/index.css` — gradientes laterais removidos (`display: none`)
+- `css/index.css` — margem entre logos `clamp(16px, 2vw, 30px)` → `clamp(12px, 1.4vw, 20px)`
 
-## 🐛 PROBLEMA ATUAL — RESOLVER NA PRÓXIMA SESSÃO
-
-### Sintoma
-No carrossel infinito de logos, o usuário vê uma **"demora" de ~1,6 segundos** entre o último logo (Rede D'or) sair pela esquerda e o primeiro (Dress To) aparecer pela direita. Parece que tem um "espaço vazio" entre o final e o reinício.
-
-### Causa diagnosticada — NÃO É BUG TÉCNICO
-**É a estética dos gradientes laterais funcionando como projetado.**
-
-No `index.css`:
-```css
-.section-logos-track::before,
-.section-logos-track::after {
-  width: 80px;
-  /* ::before — fade esquerdo */
-  /* ::after — fade direito */
-}
-```
-
-**Como funciona:**
-- O gradiente esquerdo (`::before`) cobre 80px na borda esquerda — logos saindo dissolvem nesses 80px
-- O gradiente direito (`::after`) cobre 80px na borda direita — logos entrando aparecem dissolvendo nesses 80px
-
-**Cálculo do tempo de "aparição":**
-- Velocidade JS: `50px/segundo`
-- Largura do gradiente: `80px`
-- Tempo pra atravessar o gradiente: `80 ÷ 50 = 1,6 segundos`
-
-**É isso que o usuário está vendo como "demora".** Não é bug — é o fade-in/fade-out funcionando como deveria. Mas está calibrado lento demais.
-
-### CSS e JS estão tecnicamente CORRETOS
-
-- HTML: 32 logos (16 + 16 cópia idêntica) ✅
-- CSS: sem `:last-child margin: 0`, sem `:nth-child(16)`, padding lateral 0 ✅
-- JS: usa `getBoundingClientRect()` pra cálculo exato do reset (logo 1 vs logo 17) ✅
-- Reset matematicamente perfeito (verificado) ✅
-
-**O carrossel funciona perfeitamente. O que precisa é ajuste estético do fade.**
-
-### Soluções possíveis (escolher uma)
-
-**Opção A — Diminuir o gradiente lateral (recomendado):**
-```css
-.section-logos-track::before,
-.section-logos-track::after {
-  width: 40px;   /* era 80px, agora 40px */
-}
-```
-Resultado: fade visível mas atravessa em 0,8s.
-
-**Opção B — Aumentar velocidade:**
-```javascript
-// js/index.js
-const VELOCIDADE = 80;   // era 50, agora 80
-```
-Resultado: tudo mais rápido, fade atravessa em 1s.
-
-**Opção C — Combinar A + B (mais agressivo):**
-```css
-width: 40px;   /* gradiente menor */
-```
-```javascript
-const VELOCIDADE = 60;   // velocidade 20% maior
-```
-Resultado: atravessa em 0,67s. Praticamente imperceptível.
-
-**Opção D — Tirar gradiente totalmente:**
-```css
-.section-logos-track::before,
-.section-logos-track::after {
-  display: none;
-}
-```
-Resultado: logos aparecem/somem bruscamente nas bordas. Sem fade. **Não recomendo** — perde o polimento.
-
-### Decisão pendente
-
-**Davi precisa testar a Opção A (recomendada) e decidir.**
+**Resultado:** loop infinito perfeito. Sem espaço vazio em nenhuma resolução. Wrap imperceptível.
 
 ---
 
 ## 🚧 DADOS FICTÍCIOS A SUBSTITUIR
 
-Marcados com `[SUBSTITUIR: X]` em várias páginas:
-- [ ] `[SUBSTITUIR: EMAIL]`
-- [ ] `[SUBSTITUIR: RUA, NÚMERO]`
-- [ ] `[SUBSTITUIR: CEP]`
-- [ ] `[SUBSTITUIR: CNPJ]`
+Marcados com `[SUBSTITUIR: X]`:
+- [ ] EMAIL · RUA, NÚMERO · CEP · CNPJ
 
-**Já substituído:**
-- ✅ Telefone (24) 2231-7666
-- ✅ Cidade/UF Petrópolis-RJ
-- ✅ Instagram + Facebook (@masterbordbordados)
-- ✅ Coordenadas mapa
-- ✅ WhatsApp (5524223176660)
+**Já reais:** ✅ Telefone (24) 2231-7666 · Petrópolis-RJ · @masterbordbordados (Insta+FB) · WhatsApp (5524223176660) · coordenadas mapa
 
-**Confirmar com Master Bord:**
+**Confirmar com cliente:**
 - [ ] Datas timeline (1995, 2003, 2011, 2018)
 - [ ] Estatísticas (2.400m², 32 máquinas, 48 colaboradores, 120k peças/mês)
-- [ ] Depoimentos (Juliana Farah, Rafael Teixeira, Clara Moretti = nomes inventados)
+- [ ] Depoimentos (Juliana Farah, Rafael Teixeira, Clara Moretti = inventados)
 
 ---
 
-## 📍 PRÓXIMAS MISSÕES (em ordem de prioridade)
+## 📍 PRÓXIMAS MISSÕES
 
-### 1. Resolver o "delay" do carrossel
-Aplicar **Opção A** (gradiente 40px). Testar em ~3 voltas completas. Se ainda incomodar, escalar pra Opção C.
-
-### 2. Aplicar fluid design nas outras 7 páginas
-Replicar padrão da home (`@media min-width: 900px` + `clamp()`):
-- [ ] sobre.html / sobre.css
-- [ ] produtos.html / produtos.css
-- [ ] produto-*.html / produto.css
-- [ ] catalogo.html / catalogo.css
-- [ ] contato.html / contato.css
-
-### 3. Substituir dados fictícios pelos reais
-Email, endereço, CEP, CNPJ, datas, estatísticas, nomes depoimentos.
-
-### 4. Limpar lixo técnico
-- Font Awesome carregado 2x no `index.html` (linhas ~14 e ~20-22) → remover duplicata
-
-### 5. Testes finais
-8 páginas em 4 resoluções: 1920×1080, 1280×720, 768px, 375px.
-
-### 6. Deploy
-- Commit final na `nova-interface`
-- Push pro GitHub
-- Merge pra `main` (ou release)
-- Verificar GitHub Pages publicado em https://daviobl2014-hub.github.io/Site-Master-Bord
-
-### 7. Opcional — Paleta mais clara
-Só se Master Bord pedir. Mexer no `:root` de `global.css`.
+1. **Aplicar fluid design nas outras 7 páginas** (replicar `@media min-width: 900px` + `clamp()` da home)
+2. **Substituir dados fictícios** pelos reais (email, endereço, CEP, CNPJ, datas, stats, depoimentos)
+3. **Limpar Font Awesome duplicado** no `index.html` (linhas ~14 e ~20-22)
+4. **Testes finais** — 8 páginas em 1920×1080, 1280×720, 768px, 375px
+5. **Deploy** — commit `nova-interface`, push, merge `main`, verificar Pages
+6. *(Opcional)* Paleta mais clara — só se cliente pedir
 
 ---
 
-## 🐛 ARMADILHAS APRENDIDAS NESTA SESSÃO 4
+## 🐛 ARMADILHAS APRENDIDAS
 
-### Carrossel infinito CSS-only NÃO é confiável
-`translateX(-50%)` depende de matemática exata do CSS. Qualquer `padding` ou `margin` quebra o cálculo. **Use JavaScript com `getBoundingClientRect()`** pra cálculo preciso.
-
-### `mask-image` afeta tooltips e descendentes
-`mask-image` aplica transparência em **TODOS** os filhos. Tooltip dentro fica cortado. Solução: use `::before/::after` com gradientes em vez de mask.
-
-### `overflow: hidden` corta tooltip que sobe
-Pra carrossel: `overflow: hidden` no PAI (pra evitar scroll horizontal do site), `overflow: visible` no track interno (pra tooltip vazar).
-
-### Quando algo "passa por cima" → use z-index, não margin
-Margin empurra. Z-index empilha. Combinado com `background: cor-sólida`, cobre o que está atrás visualmente.
-
-### Layout horizontal vs vertical
-Quando dois elementos competem pelo mesmo eixo (ex: label fixo + carrossel rolando no eixo X), considere mudar pra **vertical** (label em cima). Resolve sem hacks.
-
-### `:nth-child(N)` é frágil
-Se conteúdo muda, regra quebra. Prefira `:first-child`/`:last-child` ou JavaScript dinâmico.
-
-### Gradientes laterais criam "delay" perceptível
-Gradiente de 80px + velocidade 50px/s = 1,6s "fantasma". Calibrar conforme velocidade da animação.
-
-### Hotlinking de CDN do Instagram quebra
-URLs `instagram.fsdu37-1.fna.fbcdn.net/...` expiram em dias. Sempre baixar local.
-
-### JPG não funciona com `filter: brightness(0) invert(1)`
-JPG sempre tem fundo branco. O filtro vira tudo branco sólido. Use **PNG transparente** ou **círculo redondo com `background-image`** (esconde o fundo branco).
-
-### Google Maps iframe — pino customizado é gambiarra
-HTML overlay no centro da tela não acompanha o endereço quando usuário arrasta. Use **só o marcador oficial** do Google.
-
-### Padding lateral em lista com loop quebra cálculo
-`padding: 10px 35px` na `.section-logos-list` deslocava o início. Pra animação funcionar, padding lateral deve ser 0.
+- **Carrossel infinito CSS-only** quebra com qualquer padding/margin no track. Use JS com `getBoundingClientRect()`.
+- **Carrossel infinito precisa de buffer dinâmico:** se `viewport > larguraGrupo1`, o trilho duplicado (2 cópias) NÃO é suficiente — aparece espaço vazio no wrap. Solução: clonar grupos via JS até ter `larguraGrupo1 + viewportWidth` de trilho.
+- **Gradientes laterais** criam delay perceptível no wrap. Se quer wrap imperceptível, remove gradiente E aperta velocidade/margem.
+- **`mask-image`** corta tooltips (afeta todos descendentes). Use `::before/::after` com gradiente.
+- **`overflow: hidden` no PAI**, `visible` no track interno (pra tooltip vazar verticalmente sem causar scroll horizontal).
+- **`:nth-child(N)`** é frágil — prefira `:first-child`/`:last-child` ou JS dinâmico.
+- **Hotlinking CDN Instagram** quebra em dias — sempre baixar local.
+- **JPG não funciona** com `filter: brightness(0) invert(1)` (fundo branco vira tudo branco). Use PNG transparente ou círculo com `background-image`.
+- **Google Maps iframe** — não fazer pino HTML overlay (não acompanha endereço quando arrasta). Use só marcador oficial.
+- **Padding lateral no track de loop** quebra o cálculo. Padding lateral deve ser 0.
 
 ---
 
-## 🔧 COMANDOS GIT — REFERÊNCIA RÁPIDA
+## 🔧 GIT — REFERÊNCIA RÁPIDA
 
 ```bash
-# ANTES de começar trabalho (em qualquer máquina)
-git status
-git pull origin nova-interface
+# Ao chegar na máquina
+git status && git pull origin nova-interface
 
-# Durante o trabalho (a cada feature)
-git add .
-git commit -m "feat: descrição"
+# Durante trabalho
+git add . && git commit -m "feat: descrição"
 
-# ANTES de sair / trocar máquina
+# Antes de sair
 git push origin nova-interface
 
 # Diagnosticar
-git log --oneline -10
-git branch
+git log --oneline -10 && git branch
 ```
 
 ---
 
-## ⚠️ LEMBRETES IMPORTANTES
+## ⚠️ LEMBRETES
 
-1. **Push antes de sair, pull ao chegar** — em qualquer máquina
-2. **NUNCA apagar `.git`** — perde histórico
-3. **Trabalhar na `nova-interface`** até estar 100% pronto
-4. **Mobile (<900px) está bom** — não mexer sem motivo forte
-5. **Atualizar este MD** ao final de cada sessão
-6. **Fonte de verdade é o Git**, não o MD
-7. **Ao abrir nova conversa com Claude:** envia este MD primeiro
-
----
-
-## 🎯 COMO RETOMAR NA PRÓXIMA SESSÃO
-
-1. **Sincroniza Git** primeiro (push do trabalho → pull no notebook ou vice-versa)
-2. **Envia este MD** pro Claude
-3. **Envia o `index.css` e `js/index.js` atuais**
-4. **Diga:** "Quero aplicar a Opção A do problema documentado — gradiente 40px"
-5. **Testa, ajusta se preciso, segue pras próximas missões**
+1. Push antes de sair, pull ao chegar
+2. Nunca apagar `.git`
+3. Trabalhar na `nova-interface` até estar 100%
+4. Mobile (<900px) está bom — não mexer sem motivo
+5. Atualizar este MD ao final de cada sessão
+6. Fonte de verdade é o Git, não o MD
+7. Ao abrir nova conversa: enviar este MD primeiro
 
 ---
 
-**Status final da sessão 4:** Home tecnicamente completa. Falta calibrar 1 detalhe estético (gradiente) e aplicar fluid design nas outras 7 páginas. ~75% do projeto concluído.
+## 🎯 COMO RETOMAR
+
+1. Sincroniza Git (push/pull conforme máquina)
+2. Envia este MD pro Claude
+3. Diga qual missão da lista vai atacar (recomendo começar pelo fluid design das 7 páginas)
+
+---
+
+**Status sessão 5:** Home 100% finalizada (carrossel de logos resolvido). Faltam 7 páginas pra aplicar fluid design + dados reais + deploy. ~80% do projeto.
