@@ -2,7 +2,7 @@
 
 > **Arquivo de continuação entre sessões com Claude.**
 > Envie este arquivo no início de cada nova conversa.
-> **Última atualização:** 04/05/2026 (Sessão 5 — carrossel de logos finalizado)
+> **Última atualização:** 05/05/2026 (Sessão 6 — certificados com selos SVG + hover do card)
 
 ---
 
@@ -118,6 +118,34 @@ Diagnósticos secundários (também aplicados, melhoram polimento):
 
 **Resultado:** loop infinito perfeito. Sem espaço vazio em nenhuma resolução. Wrap imperceptível.
 
+### Sessão 6 — Certificados com selos SVG + hover do card (HOJE)
+
+**Contexto:** Os 4 cards da seção `02 / CERTIFICAÇÕES` em `sobre.html` tinham só texto dentro do quadrado do selo (`ABVTEX`, `BARUDAN`, `MUCAD`, `ISO`). Os SVGs reais já existiam em `img/svg/` (commitados na sessão de Sobre/Timeline).
+
+**Mudanças aplicadas:**
+
+- `sobre.html` — Cada `.certificado-selo` ganhou `<img class="certificado-selo-img" />` apontando pro SVG correspondente:
+  - Certificados ABVTEX → `img/svg/abvtex.svg`
+  - Bordado profissional → `img/svg/BARUDAN.svg`
+  - Etiquetas de precisão → `img/svg/MULLER.svg` (label trocado de MUCAD → Müller)
+  - Equipe qualificada → `img/svg/QUALIDADE GARANTIDA.svg`
+
+- `css/sobre.css` — `.certificado-selo` agora:
+  - **Redondo** (`border-radius: 50%`) com `background: white` (Davi mudou de quadrado pra círculo manualmente)
+  - `padding: 14px` + `overflow: hidden` pra imagem respirar dentro
+
+- `css/sobre.css` — Nova classe `.certificado-selo-img` com `width/height: 100%`, `object-fit: contain` (mantém proporção do logo).
+
+- `css/sobre.css` — **Hover destacando o card inteiro** (`.certificado-card:hover`):
+  - Fundo `--mb-card` → `--mb-card-hover`
+  - Border `--mb-line` → `--mb-paper-dim`
+  - `transform: translateY(-3px)` (lift sutil)
+  - `box-shadow: 0 14px 32px -18px rgba(0,0,0,.55)` (sombra suave)
+  - `.accent-bar` engrossa de 3px → 5px e ganha glow `box-shadow: 0 0 28px currentColor` (cada card brilha na sua cor — azul/vinho/ouro/azul-glow — sem regras separadas, herdando via `currentColor`)
+  - `.certificado-selo` muda borda tracejada → sólida no hover
+
+**Resultado:** Selos com identidade visual real (logos das certificações), card inteiro reage como bloco único ao mouse, glow da accent-bar reforça a cor de cada certificado.
+
 ---
 
 ## 🚧 DADOS FICTÍCIOS A SUBSTITUIR
@@ -198,4 +226,4 @@ git log --oneline -10 && git branch
 
 ---
 
-**Status sessão 5:** Home 100% finalizada (carrossel de logos resolvido). Faltam 7 páginas pra aplicar fluid design + dados reais + deploy. ~80% do projeto.
+**Status sessão 6:** Página Sobre evoluindo — timeline OK, certificados com selos SVG reais e hover do card. Faltam fluid design nas outras 7 páginas + dados reais + deploy. ~82% do projeto.
