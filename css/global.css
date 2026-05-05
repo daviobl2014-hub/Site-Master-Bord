@@ -89,7 +89,9 @@ img {
   z-index: 100;
   background: var(--mb-bg);
   border-bottom: 1px solid var(--mb-line);
-  transition: background 0.3s ease, backdrop-filter 0.3s ease;
+  transition:
+    background 0.3s ease,
+    backdrop-filter 0.3s ease;
 }
 .header.scrolled {
   background: rgba(15, 17, 22, 0.92);
@@ -171,7 +173,9 @@ img {
   font-weight: 500;
   padding-bottom: 2px;
   border-bottom: 1px solid transparent;
-  transition: color 0.2s, border-color 0.2s;
+  transition:
+    color 0.2s,
+    border-color 0.2s;
 }
 .nav-links a.active,
 .nav-links a:hover {
@@ -225,7 +229,8 @@ img {
 .footer-cta-bg {
   position: absolute;
   inset: 0;
-  background: radial-gradient(
+  background:
+    radial-gradient(
       circle at 20% 50%,
       rgba(74, 139, 214, 0.1),
       transparent 50%
@@ -263,7 +268,9 @@ img {
   gap: 8px;
   margin-top: 16px;
 }
+
 .footer-socials .social {
+  position: relative;
   width: 32px;
   height: 32px;
   border: 1px solid var(--mb-line);
@@ -271,9 +278,63 @@ img {
   align-items: center;
   justify-content: center;
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: 14px;
   color: var(--mb-muted);
   letter-spacing: 0.1em;
+  transition:
+    color 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.25s ease,
+    background 0.25s ease;
+}
+.footer-socials .social:hover {
+  color: var(--mb-paper);
+  border-color: var(--mb-ouro);
+  transform: translateY(-2px);
+  background: rgba(212, 169, 106, 0.08);
+}
+
+/* Tooltip — aparece acima do ícone com nome da rede */
+.footer-socials .social::before,
+.footer-socials .social::after {
+  position: absolute;
+  left: 50%;
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
+}
+.footer-socials .social::before {
+  content: attr(data-tooltip);
+  bottom: calc(100% + 10px);
+  transform: translateX(-50%) translateY(4px);
+  background: var(--mb-bg-deep);
+  border: 1px solid var(--mb-ouro);
+  color: var(--mb-paper);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 6px 10px;
+  white-space: nowrap;
+}
+.footer-socials .social::after {
+  content: '';
+  bottom: calc(100% + 5px);
+  transform: translateX(-50%) translateY(4px);
+  border: 5px solid transparent;
+  border-top-color: var(--mb-ouro);
+}
+.footer-socials .social:hover::before,
+.footer-socials .social:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+/* Esconde o tooltip se o link não tiver data-tooltip definido */
+.footer-socials .social:not([data-tooltip])::before,
+.footer-socials .social:not([data-tooltip])::after {
+  display: none;
 }
 .footer-col-title {
   font-family: var(--font-mono);
@@ -321,7 +382,9 @@ img {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   border: 1px solid transparent;
-  transition: opacity 0.2s, transform 0.2s;
+  transition:
+    opacity 0.2s,
+    transform 0.2s;
 }
 .btn:hover {
   opacity: 0.9;
@@ -415,10 +478,8 @@ img {
   position: absolute;
   inset: 0;
 
-  background-image: linear-gradient(
-      rgba(255, 255, 255, 0.04) 1px,
-      transparent 1px
-    ),
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
 
   background-size: 60px 60px; /* 🔥 antes era 80px */
@@ -430,7 +491,8 @@ img {
   position: absolute;
   inset: 0;
 
-  background-image: repeating-linear-gradient(
+  background-image:
+    repeating-linear-gradient(
       0deg,
       rgba(255, 255, 255, 0.015) 0px,
       rgba(255, 255, 255, 0.015) 1px,
