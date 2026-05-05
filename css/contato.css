@@ -1,4 +1,34 @@
 /* ================================================================
+   1. VARIÁVEIS DE TEMA — cores e fontes da Master Bord
+   Para mudar uma cor em TODO o site, edite aqui.
+   ================================================================ */
+:root {
+  /* Cores — extraídas do mb-theme.jsx */
+  --mb-bg: #0f1116;
+  --mb-bg-soft: #181b22;
+  --mb-bg-deep: #10100a;
+  --mb-card: #20242d;
+  --mb-card-hover: #262b36;
+  --mb-paper: #f2ece0;
+  --mb-paper-dim: #d4cfc3;
+  --mb-azul: #4a8bd6;
+  --mb-azul-glow: #6ba8e8;
+  --mb-vinho: #c44b55;
+  --mb-vinho-glow: #e56670;
+  --mb-ouro: #d4a96a;
+  --mb-muted: #8b8f99;
+  --mb-line: #2e3340;
+  --mb-line-soft: #1f2430;
+  --mb-green: #7fc291;
+
+  /* Fontes */
+  --font-display: Bauhaus, 'Space Grotesk', sans-serif;
+  --font-sans: Inter, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  --font-serif: 'Playfair Display', serif;
+}
+
+/* ================================================================
    CONTATO.CSS — Master Bord
    CSS exclusivo da PÁGINA CONTATO (contato.html).
    NÃO carregue em outras páginas.
@@ -78,10 +108,77 @@
   letter-spacing: 0.25em;
 }
 .contato-info-val {
+  display: flex;
+  gap: 10px;
   font-family: var(--font-sans);
   font-size: 15px;
   color: var(--mb-paper);
   font-weight: 500;
+}
+
+.n-bordado,
+.n-etiqueta {
+  position: relative;
+  cursor: pointer; /* muda o cursor */
+}
+.n-bordado:hover,
+.n-etiqueta:hover {
+  color: var(--mb-paper);
+  border-color: var(--mb-ouro);
+  transform: translateY(-2px);
+  background: rgba(212, 169, 106, 0.08);
+}
+/* tooltip escondido */
+/* TEXTO DO TOOLTIP */
+.n-bordado::before,
+.n-etiqueta::before {
+  content: attr(data-tooltip);
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 10px);
+
+  transform: translateX(-50%) translateY(4px);
+  opacity: 0;
+  pointer-events: none;
+
+  background: var(--mb-bg-deep);
+  border: 1px solid var(--mb-ouro);
+  color: var(--mb-paper);
+
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+
+  padding: 6px 10px;
+  white-space: nowrap;
+
+  transition: 0.25s ease;
+}
+/* SETINHA */
+.n-bordado::after,
+.n-etiqueta::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 5px);
+
+  transform: translateX(-50%) translateY(4px);
+  opacity: 0;
+
+  border: 5px solid transparent;
+  border-top-color: var(--mb-ouro);
+
+  transition: 0.25s ease;
+}
+
+/* HOVER */
+.n-bordado:hover::before,
+.n-bordado:hover::after,
+.n-etiqueta:hover::before,
+.n-etiqueta:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
 }
 
 /* ================================================================
