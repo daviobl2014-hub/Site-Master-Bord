@@ -369,6 +369,219 @@ img {
 }
 
 /* ================================================================
+   4b. MODAL WHATSAPP — disparado pelo botão "WhatsApp direto" do footer
+   Markup é injetado em runtime por js/global.js. Mantemos só o estilo aqui.
+   ================================================================ */
+.wa-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+.wa-modal[aria-hidden='false'] {
+  display: flex;
+}
+.wa-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 17, 22, 0.82);
+  backdrop-filter: blur(10px);
+  animation: waFadeIn 0.25s ease both;
+}
+.wa-modal-card {
+  position: relative;
+  width: 100%;
+  max-width: 460px;
+  background: var(--mb-card);
+  border: 1px solid var(--mb-line);
+  padding: 36px 32px 32px;
+  animation: waScaleIn 0.32s cubic-bezier(0.2, 0.8, 0.25, 1) both;
+  overflow: hidden;
+}
+.wa-modal-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    var(--mb-vinho) 0%,
+    var(--mb-vinho) 50%,
+    var(--mb-azul) 50%,
+    var(--mb-azul) 100%
+  );
+}
+.wa-modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-sans);
+  font-size: 22px;
+  line-height: 1;
+  color: var(--mb-muted);
+  border: 1px solid transparent;
+  transition:
+    color 0.2s,
+    border-color 0.2s,
+    background 0.2s;
+}
+.wa-modal-close:hover {
+  color: var(--mb-paper);
+  border-color: var(--mb-line);
+  background: var(--mb-bg-deep);
+}
+.wa-modal-title {
+  font-family: var(--font-display);
+  font-size: 30px;
+  letter-spacing: -0.02em;
+  color: var(--mb-paper);
+  margin: 14px 0 8px;
+  line-height: 1.05;
+}
+.wa-modal-sub {
+  font-size: 13px;
+  color: var(--mb-muted);
+  margin: 0 0 26px;
+  line-height: 1.5;
+}
+.wa-modal-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.wa-modal-option {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 18px 16px 22px;
+  background: var(--mb-bg-soft);
+  border: 1px solid var(--mb-line);
+  color: var(--mb-paper);
+  text-decoration: none;
+  overflow: hidden;
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    background 0.25s ease;
+}
+.wa-modal-option::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+}
+.wa-modal-option.vinho::before {
+  background: var(--mb-vinho);
+  box-shadow: 0 0 16px rgba(196, 75, 85, 0.5);
+}
+.wa-modal-option.azul::before {
+  background: var(--mb-azul);
+  box-shadow: 0 0 16px rgba(74, 139, 214, 0.5);
+}
+.wa-modal-option:hover {
+  transform: translateX(4px);
+  background: var(--mb-card-hover);
+}
+.wa-modal-option.vinho:hover {
+  border-color: var(--mb-vinho);
+}
+.wa-modal-option.azul:hover {
+  border-color: var(--mb-azul);
+}
+.wa-opt-icon {
+  flex-shrink: 0;
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  background: var(--mb-bg-deep);
+  border: 1px solid var(--mb-line);
+}
+.wa-modal-option.vinho .wa-opt-icon {
+  color: var(--mb-vinho-glow);
+}
+.wa-modal-option.azul .wa-opt-icon {
+  color: var(--mb-azul-glow);
+}
+.wa-opt-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.wa-opt-label {
+  font-family: var(--font-display);
+  font-size: 18px;
+  letter-spacing: -0.01em;
+  color: var(--mb-paper);
+}
+.wa-opt-num {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--mb-muted);
+  letter-spacing: 0.12em;
+}
+.wa-opt-arrow {
+  font-family: var(--font-mono);
+  font-size: 18px;
+  color: var(--mb-muted);
+  transition:
+    transform 0.25s ease,
+    color 0.25s ease;
+}
+.wa-modal-option:hover .wa-opt-arrow {
+  transform: translateX(4px);
+}
+.wa-modal-option.vinho:hover .wa-opt-arrow {
+  color: var(--mb-vinho-glow);
+}
+.wa-modal-option.azul:hover .wa-opt-arrow {
+  color: var(--mb-azul-glow);
+}
+
+@keyframes waFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes waScaleIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+@media (max-width: 600px) {
+  .wa-modal-card {
+    padding: 28px 20px 24px;
+  }
+  .wa-modal-title {
+    font-size: 24px;
+  }
+}
+
+/* ================================================================
    5. BOTÕES — usados em qualquer página
    ================================================================ */
 .btn {
