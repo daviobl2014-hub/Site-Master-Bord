@@ -127,12 +127,11 @@
 
 .titulo-row {
   display: flex;
-  align-items: flex-end;
-
+  justify-content: center;
   width: 100%;
   /* gap visível entre o ícone e "Bord" — eles não são colados na logo real */
   gap: clamp(8px, 1.4vw, 18px);
-  transform: translate(-3.5%, -1%); /* 🔥 fixa posição */
+  transform: translate(-4.3%, -1%); /* 🔥 fixa posição */
 }
 
 /* Logo (ícone "M") fica AZUL — mesma cor do master.
@@ -504,6 +503,8 @@
   transition: background 0.2s;
 }
 .produto-card:hover {
+  opacity: 1;
+  transform: translateY(-10px);
   background: var(--mb-card-hover);
 }
 .produto-card .mb-image {
@@ -679,6 +680,52 @@ img-border {
   display: flex;
   flex-direction: column;
 }
+.depoimento-card:hover {
+  /* Sobe a caixa 10px (eixo y negativo) */
+  transform: translateY(-10px);
+
+  /* Adiciona sombra para destacar (x, y, blur, cor) */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+
+  /* Muda a cor de fundo (opcional) */
+  background-color: var(--mb-bg);
+}
+.depoimento-texto a {
+  position: relative;
+  inset: 0;
+  z-index: 5;
+  cursor: pointer;
+}
+
+.depoimento-texto a::after {
+  content: attr(aria-label);
+  position: absolute;
+
+  bottom: 120%;
+  left: 50%;
+  transform: translateX(-50%);
+
+  color: var(--mb-paper);
+  border: 1px solid var(--mb-ouro);
+  background: rgba(212, 169, 106, 0.08);
+
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+
+  white-space: nowrap;
+
+  opacity: 0;
+  transition: 0.25s ease;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.depoimento-texto a:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-2px);
+}
+
 .depoimento-aspas {
   font-family: var(--font-display);
   font-weight: 700;
@@ -694,6 +741,7 @@ img-border {
   margin: 0;
   flex: 1;
 }
+
 .depoimento-footer {
   margin-top: 24px;
   padding-top: 16px;
