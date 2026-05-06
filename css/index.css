@@ -128,10 +128,11 @@
 .titulo-row {
   display: flex;
   align-items: flex-end;
-  justify-content: flex-start;
+
   width: 100%;
   /* gap visível entre o ícone e "Bord" — eles não são colados na logo real */
   gap: clamp(8px, 1.4vw, 18px);
+  transform: translate(-3.5%, -1%); /* 🔥 fixa posição */
 }
 
 /* Logo (ícone "M") fica AZUL — mesma cor do master.
