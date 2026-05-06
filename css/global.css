@@ -248,24 +248,10 @@ img {
   padding: 24px 48px;
   border-top: 1px solid var(--mb-line);
   display: grid;
-  grid-template-columns: 1.3fr 1fr 1fr 1.2fr;
+  grid-template-columns: 1.3fr 1fr 1fr 1fr 1.2fr;
   gap: 40px;
 }
 
-.footer-col li {
-  width: 200px; /* Largura máxima */
-  /* Quebra de linha forçada */
-  overflow-wrap: break-word;
-  word-wrap: break-word; /* fallback */
-}
-.encurtar ul {
-  padding: 0;
-  margin: 0;
-}
-.encurtar li {
-  margin: 1px;
-  line-height: 1.1;
-}
 .footer-about p {
   font-size: 13px;
   color: var(--mb-muted);

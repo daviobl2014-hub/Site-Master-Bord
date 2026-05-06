@@ -1,0 +1,402 @@
+/* ================================================================
+   POLITICAS.CSS — Master Bord
+   CSS exclusivo da PÁGINA POLÍTICAS (politicas.html).
+   NÃO carregue em outras páginas.
+
+   Seções:
+   1. Scroll suave + compensação do header sticky
+   2. Hero (capa com índice clicável)
+   3. Seções de política (4 blocos: Frete, Entrega, Pagamento, Garantia)
+   4. Conteúdo de texto (parágrafos, listas, subtítulos, avisos)
+   5. Rodapé da página (voltar ao topo)
+   6. Media queries mobile
+   ================================================================ */
+
+/* ================================================================
+   1. SCROLL SUAVE + COMPENSAÇÃO DO HEADER STICKY
+   - scroll-behavior: smooth → rolagem suave ao clicar nas âncoras
+   - scroll-margin-top → compensa o header fixo (senão o título fica escondido)
+   ================================================================ */
+html {
+  scroll-behavior: smooth;
+}
+
+.politica-secao {
+  scroll-margin-top: 100px; /* altura do header sticky + respiro */
+}
+
+/* ================================================================
+   2. HERO — capa da página com índice clicável
+   ================================================================ */
+.politicas-hero {
+  position: relative;
+  overflow: hidden;
+  background: var(--mb-bg);
+  color: var(--mb-paper);
+  padding: 72px 48px 80px;
+}
+
+.politicas-hero-glow {
+  position: absolute;
+  top: 30%;
+  left: -10%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(
+    circle,
+    rgba(212, 169, 106, 0.13),
+    transparent 60%
+  );
+  filter: blur(40px);
+  pointer-events: none;
+}
+
+.politicas-hero-content {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.politicas-hero-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 72px;
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+  color: var(--mb-paper);
+  margin: 16px 0 24px;
+}
+
+.politicas-hero-lead {
+  font-family: var(--font-sans);
+  font-size: 17px;
+  color: var(--mb-paper-dim);
+  line-height: 1.6;
+  margin: 0 0 48px;
+  max-width: 640px;
+}
+
+/* Índice clicável — 4 blocos com número, título e seta */
+.politicas-indice {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-top: 48px;
+}
+
+.politicas-indice-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 20px 22px;
+  background: var(--mb-card);
+  border: 1px solid var(--mb-line);
+  text-decoration: none;
+  color: var(--mb-paper);
+  transition: border-color 0.2s, transform 0.2s, background 0.2s;
+  cursor: pointer;
+}
+
+.politicas-indice-item:hover {
+  border-color: var(--mb-ouro);
+  background: var(--mb-card-hover);
+  transform: translateY(-2px);
+}
+
+.politicas-indice-num {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--mb-ouro);
+  letter-spacing: 0.2em;
+  flex-shrink: 0;
+}
+
+.politicas-indice-titulo {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 18px;
+  flex: 1;
+  letter-spacing: -0.01em;
+}
+
+.politicas-indice-seta {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--mb-muted);
+  transition: color 0.2s, transform 0.2s;
+}
+
+.politicas-indice-item:hover .politicas-indice-seta {
+  color: var(--mb-ouro);
+  transform: translateX(4px);
+}
+
+/* ================================================================
+   3. SEÇÕES DE POLÍTICA — 4 blocos numerados
+   ================================================================ */
+.politica-secao {
+  padding: 96px 48px;
+  background: var(--mb-bg);
+  color: var(--mb-paper);
+}
+
+/* Alterna fundo entre seções pra ter ritmo visual */
+.politica-secao-alt {
+  background: var(--mb-bg-soft);
+}
+
+/* Cabeçalho de cada seção: número grande + tag + título */
+.politica-cabecalho {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 32px;
+  align-items: start;
+  max-width: 1200px;
+  margin: 0 auto 48px;
+}
+
+.politica-numero {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 96px;
+  line-height: 0.85;
+  color: var(--mb-azul);
+  letter-spacing: -0.04em;
+}
+
+.politica-titulo {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  color: var(--mb-paper);
+  margin: 12px 0 0;
+}
+
+/* ================================================================
+   4. CONTEÚDO DE TEXTO — parágrafos, listas, subtítulos
+   ================================================================ */
+.politica-conteudo {
+  max-width: 800px;
+  margin: 0 auto;
+  margin-left: 152px; /* alinha com o título (numero + gap) */
+}
+
+.politica-conteudo p {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--mb-paper-dim);
+  margin: 0 0 20px;
+}
+
+.politica-conteudo p strong {
+  color: var(--mb-paper);
+  font-weight: 600;
+}
+
+.politica-conteudo ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px;
+  border-left: 2px solid var(--mb-line);
+  padding-left: 20px;
+}
+
+.politica-conteudo ul li {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--mb-paper-dim);
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.politica-conteudo ul li::before {
+  content: '→';
+  color: var(--mb-ouro);
+  margin-right: 10px;
+  font-family: var(--font-mono);
+}
+
+.politica-conteudo ul li strong {
+  color: var(--mb-paper);
+  font-weight: 600;
+}
+
+/* Subtítulo dentro da seção */
+.politica-subtitulo {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 22px;
+  letter-spacing: -0.01em;
+  color: var(--mb-paper);
+  margin: 40px 0 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px dashed var(--mb-line);
+}
+
+/* Aviso destacado (importante, atenção) */
+.politica-aviso {
+  background: var(--mb-card);
+  border-left: 3px solid var(--mb-vinho);
+  padding: 16px 20px;
+  margin: 28px 0;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--mb-paper-dim);
+}
+
+.politica-aviso strong {
+  color: var(--mb-vinho-glow);
+}
+
+/* Links dentro do texto */
+.politica-conteudo a {
+  color: var(--mb-azul-glow);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.2s;
+}
+
+.politica-conteudo a:hover {
+  color: var(--mb-ouro);
+}
+
+/* ================================================================
+   5. RODAPÉ DA PÁGINA — voltar ao topo
+   ================================================================ */
+.politicas-fim {
+  background: var(--mb-bg-deep);
+  padding: 48px;
+  text-align: center;
+  border-top: 1px solid var(--mb-line);
+}
+
+.politicas-fim-texto {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--mb-muted);
+  letter-spacing: 0.15em;
+  margin: 0 0 16px;
+}
+
+.politicas-fim-link {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--mb-ouro);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.politicas-fim-link:hover {
+  color: var(--mb-paper);
+}
+
+/* ================================================================
+   6. MEDIA QUERIES MOBILE
+   Ponto de quebra: 900px
+   ================================================================ */
+@media (max-width: 900px) {
+  /* Hero */
+  .politicas-hero {
+    padding: 48px 20px 56px;
+  }
+  .politicas-hero-title {
+    font-size: 40px;
+  }
+  .politicas-hero-lead {
+    font-size: 15px;
+    margin-bottom: 32px;
+  }
+
+  /* Índice — coluna única */
+  .politicas-indice {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-top: 32px;
+  }
+  .politicas-indice-item {
+    padding: 16px 18px;
+  }
+  .politicas-indice-titulo {
+    font-size: 16px;
+  }
+
+  /* Seções de política */
+  .politica-secao {
+    padding: 56px 20px;
+    scroll-margin-top: 80px;
+  }
+  .politica-cabecalho {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    margin-bottom: 32px;
+  }
+  .politica-numero {
+    font-size: 56px;
+  }
+  .politica-titulo {
+    font-size: 28px;
+    margin-top: 4px;
+  }
+
+  /* Conteúdo */
+  .politica-conteudo {
+    margin-left: 0;
+  }
+  .politica-conteudo p {
+    font-size: 15px;
+  }
+  .politica-conteudo ul li {
+    font-size: 14px;
+  }
+  .politica-subtitulo {
+    font-size: 18px;
+    margin: 28px 0 12px;
+  }
+  .politica-aviso {
+    padding: 14px 16px;
+    font-size: 13px;
+  }
+
+  /* Fim */
+  .politicas-fim {
+    padding: 32px 20px;
+  }
+  .politicas-fim-texto {
+    font-size: 11px;
+  }
+}
+
+/* ================================================================
+   7. FLUID DESKTOP (>=900px) — opcional
+   Aplica clamp() pra escalar bem em monitores grandes
+   ================================================================ */
+@media (min-width: 900px) {
+  .politicas-hero {
+    padding: clamp(48px, 6vh, 96px) clamp(24px, 3vw, 64px) clamp(56px, 7vh, 96px);
+  }
+  .politicas-hero-title {
+    font-size: clamp(48px, 5.5vw, 96px);
+  }
+  .politicas-hero-lead {
+    font-size: clamp(15px, 1.1vw, 19px);
+  }
+  .politica-secao {
+    padding: clamp(64px, 8vh, 128px) clamp(24px, 3vw, 64px);
+  }
+  .politica-numero {
+    font-size: clamp(64px, 7vw, 120px);
+  }
+  .politica-titulo {
+    font-size: clamp(32px, 3.5vw, 56px);
+  }
+  .politica-conteudo p {
+    font-size: clamp(15px, 1.05vw, 17px);
+  }
+}
