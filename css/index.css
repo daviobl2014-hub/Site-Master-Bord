@@ -83,31 +83,90 @@
   background: var(--mb-ouro);
 }
 
-/* ===== TÍTULO MASTER BORD ===== */
+/* ===== TÍTULO MASTER BORD (SVG) =====
+   Layout fiel à logo:
+     [============ MASTER ============]   ← master.svg (azul #3276b9)
+     [ logo ]   [======= BORD =====]     ← logo.svg (azul) + gap + bord.svg (vinho)
+   master no topo cobre a largura total de [logo + gap + bord].
+   Cores controladas via CSS (background-color sob mask-image),
+   então os SVGs em img/svg/ ficam intactos como assets puros. */
+
 .titulo-principal {
-  font-size: 150px;
-  font-family: var(--font-display);
-  margin: 0;
+  display: flex;
+  flex-direction: column;
+  margin: 0 0 5px;
+  width: clamp(280px, 38vw, 540px);
+  gap: clamp(6px, 1vw, 16px);
   line-height: 1;
-  margin-bottom: 5px;
+}
+
+.titulo-master,
+.titulo-bord,
+.titulo-logo {
+  display: block;
+  background-color: currentColor;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  /* Mesmo efeito do title-shadow do título anterior, levemente reforçado
+     pra destacar do fundo escuro: */
+  filter: drop-shadow(0 3px 12px rgba(0, 0, 0, 0.55));
 }
 
 .titulo-master {
-  letter-spacing: 0.4rem;
-  display: block;
-  font-weight: 700;
+  width: 100%;
+  aspect-ratio: 505.67 / 124.83; /* viewBox real do master.svg */
   color: #3276b9;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-  animation: tracking-in-expand 3s cubic-bezier(0.215, 0.61, 0.355, 1) both;
+  -webkit-mask-image: url('../img/svg/master.svg');
+  mask-image: url('../img/svg/master.svg');
+  animation: titulo-fade-in 1.1s ease-out both;
+}
+
+.titulo-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  width: 100%;
+  /* gap visível entre o ícone e "Bord" — eles não são colados na logo real */
+  gap: clamp(8px, 1.4vw, 18px);
+}
+
+/* Logo (ícone "M") fica AZUL — mesma cor do master.
+   Larguras escolhidas para logo e bord ficarem na mesma altura visual,
+   deixando margem pro gap entre eles:
+     logo aspect = 66.78/45.05 = 1.483
+     bord aspect = 239.53/94.69 = 2.530 */
+
+.titulo-logo {
+  flex: 0 0 auto;
+  width: 35%;
+  aspect-ratio: 66.78 / 45.05;
+  color: #3276b9;
+  -webkit-mask-image: url('../img/svg/logo.svg');
+  mask-image: url('../img/svg/logo.svg');
+  animation: titulo-fade-in 1.1s ease-out 0.2s both;
 }
 
 .titulo-bord {
-  letter-spacing: 0.4rem;
-  margin-top: clamp(10px, 2vw, 40px);
-  font-weight: 700;
+  flex: 0 0 auto;
+  width: 60%;
+  aspect-ratio: 239.53 / 94.69;
   color: #8c2d2e;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-  animation: tracking-in-expand 3s cubic-bezier(0.215, 0.61, 0.355, 1) 0.2s both;
+  -webkit-mask-image: url('../img/svg/bord.svg');
+  mask-image: url('../img/svg/bord.svg');
+  animation: titulo-fade-in 1.1s ease-out 0.4s both;
+}
+
+@keyframes titulo-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .hero-lead {
