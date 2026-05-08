@@ -2,7 +2,7 @@
 
 > **Arquivo de continuação entre sessões com Claude.**
 > Envie este arquivo no início de cada nova conversa.
-> **Última atualização:** 05/05/2026 (Sessão 6 — certificados com selos SVG + hover do card)
+> **Última atualização:** 05/05/2026 (Sessão 7 — rodapé replicado + h1 da home virou lockup SVG)
 
 ---
 
@@ -146,6 +146,64 @@ Diagnósticos secundários (também aplicados, melhoram polimento):
 
 **Resultado:** Selos com identidade visual real (logos das certificações), card inteiro reage como bloco único ao mouse, glow da accent-bar reforça a cor de cada certificado.
 
+### Sessão 7 — Rodapé replicado + h1 da home virou lockup SVG (HOJE)
+
+**Parte 1 — Coluna "Produtos" do rodapé replicada nas 7 páginas:**
+
+Davi atualizou o rodapé em `index.html` (commit `d096801`) com a coluna Produtos envolta em `<div class="encurtar">` e itens novos. As outras 7 páginas estavam desatualizadas.
+
+Aplicado em sobre/produtos/catalogo/contato/produto-bordado/produto-etiqueta/produto-laser:
+```html
+<div class="footer-col-title">Produtos</div>
+<div class="encurtar">
+  <ul>
+    <li>Etiquetas Tecidas</li>
+    <li>Bordados</li>
+    <li>Corte a Laser</li>
+    <li>Política de Troca e Devolução</li>
+    <li>Políticas de Frete, Entrega, Pagamento e Garantia</li>
+  </ul>
+</div>
+```
+
+Bonus: meta description do `sobre.html` corrigida (1995 → 1994) que faltou no commit do rodapé.
+
+**Parte 2 — H1 da home virou lockup SVG fiel à logo:**
+
+Substituído o `<span class="titulo-master">Master</span><span class="titulo-bord">Bord</span>` por sistema de máscaras SVG apontando para os assets em `img/svg/`:
+- `master.svg` no topo (azul `#3276b9`) cobre largura total
+- `logo.svg` no canto inferior esquerdo (azul `#3276b9` — MESMA cor do master, NÃO vinho)
+- `bord.svg` no canto inferior direito (vinho `#8c2d2e`)
+
+**HTML novo** (`index.html`):
+```html
+<h1 class="titulo-principal" aria-label="Master Bord">
+  <span class="titulo-master" role="img" aria-hidden="true"></span>
+  <span class="titulo-row" aria-hidden="true">
+    <span class="titulo-logo"></span>
+    <span class="titulo-bord"></span>
+  </span>
+</h1>
+```
+
+**CSS técnica** (`css/index.css` linhas ~86-170):
+- `mask-image: url('../img/svg/X.svg')` + `background-color: currentColor` — cor controlada via CSS, SVGs ficam intactos como assets puros.
+- `aspect-ratio` em cada elemento bate com o viewBox real (505.67/124.83, 66.78/45.05, 239.53/94.69).
+- Container width fluida: `clamp(280px, 38vw, 540px)`.
+- Logo 35% / Bord 60% no row inferior + gap `clamp(8px, 1.4vw, 18px)`.
+- Animação `titulo-fade-in` (só opacidade, sem scaleX) com delays escalonados 0s/0.2s/0.4s.
+- `filter: drop-shadow(0 3px 12px rgba(0,0,0,0.55))` substitui o `text-shadow` original e segue o contorno do SVG.
+
+**Ajuste fino de alinhamento (Davi finalizou manualmente):**
+```css
+.titulo-row {
+  transform: translate(-4.3%, -1%); /* 🔥 fixa posição */
+}
+```
+Translate em `%` é proporcional à largura do próprio `.titulo-row`, então **escala junto com o `clamp()` do container** — alinhamento se mantém em qualquer largura de tela (testado mentalmente em 280px / 400px / 540px, offset proporcional fica consistente).
+
+**Resultado:** logo lockup fiel, com cores certas (logo azul como master, bord vinho), gap visível entre ícone e bord, sombra realçando do fundo escuro. Posição responsiva mantém alinhamento em qualquer viewport.
+
 ---
 
 ## 🚧 DADOS FICTÍCIOS A SUBSTITUIR
@@ -226,4 +284,34 @@ git log --oneline -10 && git branch
 
 ---
 
-**Status sessão 6:** Página Sobre evoluindo — timeline OK, certificados com selos SVG reais e hover do card. Faltam fluid design nas outras 7 páginas + dados reais + deploy. ~82% do projeto.
+**Status sessão 7:** Rodapé padronizado nas 8 páginas. H1 da home agora é lockup SVG fiel à identidade visual (master.svg + logo.svg + bord.svg em `img/svg/`). Faltam fluid design nas outras 7 páginas + dados reais + deploy. ~85% do projeto.
+
+---
+
+## 🧠 NOTAS RÁPIDAS PARA PRÓXIMAS SESSÕES
+
+**SVGs disponíveis em `img/svg/`** (não precisar inspecionar):
+- `master.svg` — palavra "Master" estilizada, viewBox 505.67×124.83
+- `bord.svg` — palavra "Bord" estilizada, viewBox 239.53×94.69
+- `logo.svg` — ícone "M" stylizado, viewBox 66.78×45.05
+- `abvtex.svg`, `BARUDAN.svg`, `MULLER.svg`, `QUALIDADE GARANTIDA.svg` — selos dos certificados (já em uso em `sobre.html`)
+
+**Padrão técnica para SVG colorível via CSS** (usado no h1 da home e selos do sobre):
+```css
+.elemento {
+  background-color: currentColor;     /* cor controlada via CSS */
+  -webkit-mask-image: url('...svg');  /* SVG como máscara */
+  mask-image: url('...svg');
+  mask-size: contain;
+  aspect-ratio: viewbox-w / viewbox-h; /* bate com viewBox real */
+  color: #cor;                        /* a cor real */
+}
+```
+
+**Cores oficiais do título** (NÃO confundir com `--mb-azul`/`--mb-vinho` do site):
+- `#3276b9` = "Master" e logo-ícone (azul título)
+- `#8c2d2e` = "Bord" (vinho título)
+
+**Footer "Produtos" — estrutura padronizada nas 8 páginas:**
+- Coluna envolta em `<div class="encurtar">` (CSS no `global.css`)
+- 5 itens: Etiquetas Tecidas / Bordados / Corte a Laser / Política de Troca e Devolução / Políticas de Frete, Entrega, Pagamento e Garantia
