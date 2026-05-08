@@ -22,41 +22,44 @@
    ================================================================ */
 
 /* ================================================================
-   1. HERO — 01 / primeira dobra
+   1. HERO — 01 / primeira dobra (FULLSCREEN com background imersivo)
    ================================================================ */
 
-/* Estilos base do hero (válidos em qualquer tela) */
 .hero {
   display: flex;
   align-items: center;
   position: relative;
+  isolation: isolate;
   overflow: hidden;
   padding: 72px 48px 96px;
   background: var(--mb-bg);
   box-sizing: border-box;
 }
+
 .hero-glow-azul,
 .hero-glow-vinho {
   position: absolute;
   width: 500px;
   height: 500px;
   filter: blur(100px);
-  opacity: 0.5;
+  opacity: 0.4;
   pointer-events: none;
+  z-index: 3;
 }
-
-/* 🔵 Azul */
 .hero-glow-azul {
   background: radial-gradient(circle, rgba(0, 120, 255, 0.25), transparent 70%);
   top: -120px;
   left: -120px;
 }
-
-/* 🔴 Vinho */
 .hero-glow-vinho {
   background: radial-gradient(circle, rgba(180, 0, 60, 0.25), transparent 70%);
   bottom: -120px;
   right: -120px;
+}
+
+.hero .tech-grid {
+  z-index: 3;
+  opacity: 0.25;
 }
 
 .text-hero {
@@ -65,12 +68,16 @@
 
 .hero-grid {
   position: relative;
+  z-index: 10;
   display: grid;
-  grid-template-columns: 1.3fr 1fr;
+  grid-template-columns: 1fr;
   gap: 40px;
   align-items: start;
   width: 100%;
+  max-width: 1500px;
+  margin: 0 auto;
 }
+
 .hero-tag-line {
   display: flex;
   align-items: center;
@@ -83,14 +90,7 @@
   background: var(--mb-ouro);
 }
 
-/* ===== TÍTULO MASTER BORD (SVG) =====
-   Layout fiel à logo:
-     [============ MASTER ============]   ← master.svg (azul #3276b9)
-     [ logo ]   [======= BORD =====]     ← logo.svg (azul) + gap + bord.svg (vinho)
-   master no topo cobre a largura total de [logo + gap + bord].
-   Cores controladas via CSS (background-color sob mask-image),
-   então os SVGs em img/svg/ ficam intactos como assets puros. */
-
+/* TÍTULO MASTER BORD (SVG) — INTOCADO em estrutura, sombra reforçada */
 .titulo-principal {
   display: flex;
   flex-direction: column;
@@ -111,14 +111,12 @@
   mask-position: center;
   -webkit-mask-size: contain;
   mask-size: contain;
-  /* Mesmo efeito do title-shadow do título anterior, levemente reforçado
-     pra destacar do fundo escuro: */
-  filter: drop-shadow(0 3px 12px rgba(0, 0, 0, 0.55));
+  filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.7));
 }
 
 .titulo-master {
   width: 100%;
-  aspect-ratio: 505.67 / 124.83; /* viewBox real do master.svg */
+  aspect-ratio: 505.67 / 124.83;
   color: #3276b9;
   -webkit-mask-image: url('../img/svg/master.svg');
   mask-image: url('../img/svg/master.svg');
@@ -129,16 +127,9 @@
   display: flex;
   justify-content: center;
   width: 100%;
-  /* gap visível entre o ícone e "Bord" — eles não são colados na logo real */
   gap: clamp(8px, 1.4vw, 18px);
-  transform: translate(-4.3%, -1%); /* 🔥 fixa posição */
+  transform: translate(-4.3%, -1%);
 }
-
-/* Logo (ícone "M") fica AZUL — mesma cor do master.
-   Larguras escolhidas para logo e bord ficarem na mesma altura visual,
-   deixando margem pro gap entre eles:
-     logo aspect = 66.78/45.05 = 1.483
-     bord aspect = 239.53/94.69 = 2.530 */
 
 .titulo-logo {
   flex: 0 0 auto;
@@ -175,11 +166,11 @@
   line-height: 1.5;
   max-width: 650px;
   margin: 40px 0 0;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.85);
 }
 .hero-lead strong {
   color: var(--mb-paper);
 }
-
 .hero-lead abbr {
   text-decoration: none !important;
   border: 0 !important;
@@ -192,13 +183,14 @@
   margin-top: 36px;
   flex-wrap: wrap;
 }
+
 .hero-stats {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
   margin-top: 56px;
   padding-top: 32px;
-  border-top: 1px solid var(--mb-line);
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
 }
 .hero-stat .num {
   font-family: var(--font-display);
@@ -206,6 +198,7 @@
   font-size: 44px;
   line-height: 1;
   letter-spacing: -0.02em;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.7);
 }
 .hero-stat .num.azul {
   color: var(--mb-azul);
@@ -216,62 +209,24 @@
 .hero-stat .lbl {
   font-family: var(--font-mono);
   font-size: 10px;
-  color: var(--mb-muted);
+  color: var(--mb-paper-dim);
   letter-spacing: 0.2em;
   text-transform: uppercase;
   margin-top: 8px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
 }
 
-/* Etiqueta técnica (coluna direita do hero) */
-.hero-spec-card {
-  justify-self: end;
-  height: 700px;
-  min-width: 320px;
-  width: 100%;
-  position: relative;
-  background: var(--mb-card);
-  border: 1px solid var(--mb-line);
-  padding: 26px;
-  aspect-ratio: 4 / 5;
-}
-.hero-spec-corner {
-  position: absolute;
-  width: 14px;
-  height: 14px;
-}
-.hero-spec-corner.tl {
-  top: -1px;
-  left: -1px;
-  border-top: 2px solid var(--mb-ouro);
-  border-left: 2px solid var(--mb-ouro);
-}
-.hero-spec-corner.tr {
-  top: -1px;
-  right: -1px;
-  border-top: 2px solid var(--mb-ouro);
-  border-right: 2px solid var(--mb-ouro);
-}
-.hero-spec-corner.bl {
-  bottom: -1px;
-  left: -1px;
-  border-bottom: 2px solid var(--mb-ouro);
-  border-left: 2px solid var(--mb-ouro);
-}
-.hero-spec-corner.br {
-  bottom: -1px;
-  right: -1px;
-  border-bottom: 2px solid var(--mb-ouro);
-  border-right: 2px solid var(--mb-ouro);
-}
-
-/* Container do carrossel */
+/* CARROSSEL FULLSCREEN — antes inset:10px, agora inset:0 */
 .carousel {
   position: absolute;
-  inset: 10px;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0; /* começa a 40% da esquerda */
+  z-index: 0;
   overflow: hidden;
 }
 
-/* Cada slide (imagem + legenda) empilhados no mesmo lugar */
 .carousel-slide {
   position: absolute;
   inset: 0;
@@ -279,14 +234,10 @@
   transition: opacity 0.8s ease-in-out;
   pointer-events: none;
 }
-
-/* Slide ativo: aparece */
 .carousel-slide.active {
   opacity: 1;
   pointer-events: auto;
 }
-
-/* Imagem ocupa todo o slide */
 .carousel-slide img {
   width: 100%;
   height: 100%;
@@ -294,39 +245,40 @@
   display: block;
 }
 
-/* Legenda embaixo, sobre a imagem */
-
+/* Legenda — canto inferior direito, discreta com borda dourada */
 .carousel-caption {
-  font-weight: 600;
-  backdrop-filter: blur(10px);
   position: absolute;
-  width: 100%;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 16px 20px 10px;
-  background: linear-gradient(to top, rgba(15, 17, 22, 0.85), transparent);
+  right: 0px;
+  bottom: 20px;
+  left: auto;
+  width: auto;
+  padding: 8px 20px;
+  background: rgba(15, 17, 22, 0.6);
+  backdrop-filter: blur(10px);
   color: var(--mb-paper);
   font-family: var(--font-mono);
   font-size: 11px;
+  font-weight: 600;
   letter-spacing: 0.2em;
   text-transform: uppercase;
+  border-left: 2px solid var(--mb-ouro);
+  z-index: 20;
 }
 
-/* Bolinhas de controle (embaixo, centralizadas) */
+/* Bolinhas — canto inferior direito */
 .carousel-dots {
-  position: absolute;
-  bottom: 15px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 8px;
-  z-index: 2;
+  z-index: 9999;
+  display: flex; /* Ativa o Flexbox */
+  justify-content: center; /* Centraliza horizontalmente */
+  gap: 10px; /* Espaçamento entre os dots */
+  position: absolute; /* Opcional: para colocar sobre o carrossel */
+  bottom: 20px; /* Opcional: distância do fundo */
+  width: 100%; /* Opcional: garante que o container ocupe a largura toda */
 }
 
 .carousel-dot {
-  width: 8px;
-  height: 8px;
+  width: 9px;
+  height: 9px;
   border-radius: 50%;
   background: rgba(242, 236, 224, 0.4);
   border: none;
@@ -334,55 +286,22 @@
   padding: 0;
   transition: background 0.3s, transform 0.3s;
 }
-
 .carousel-dot:hover {
   background: rgba(242, 236, 224, 0.7);
   transform: scale(1.2);
 }
-
 .carousel-dot.active {
   background: var(--mb-ouro);
   transform: scale(1.3);
 }
-/* ────────────────────────────────────────────────────────────────
-   EFEITO KEN BURNS — zoom lento enquanto o slide está ativo.
-   A imagem começa em escala 1.0 e vai até 1.15 nos 8 segundos
-   do slide ativo. Cada imagem tem um movimento diferente pra não
-   parecer repetitivo.
-   ──────────────────────────────────────────────────────────────── */
 
-/* Aplica a animação SÓ na imagem do slide ativo */
+/* KEN BURNS — preservado */
+/* KEN BURNS — todas as imagens fazem o mesmo movimento da slide 2 antiga
+   (zoom suave + deslocamento pro canto superior esquerdo) */
 .carousel-slide.active img {
-  animation: kenburns-zoom-in 8s ease-out both;
-}
-
-/* Keyframe padrão: zoom central (slide 3 - laser) */
-@keyframes kenburns-zoom-in {
-  0% {
-    transform: scale(1) translate(0, 0);
-  }
-  100% {
-    transform: scale(1.15) translate(0, 0);
-  }
-}
-
-/* Slide 1 (Barudan - Bordados) — zoom + desloca pro canto inferior direito */
-.carousel-slide:nth-child(1).active img {
-  animation: kenburns-bottom-right 8s ease-out both;
-}
-@keyframes kenburns-bottom-right {
-  0% {
-    transform: scale(1) translate(0, 0);
-  }
-  100% {
-    transform: scale(1.18) translate(-3%, -2%);
-  }
-}
-
-/* Slide 2 (Tear Muller - Etiquetas) — zoom + desloca pro canto superior esquerdo */
-.carousel-slide:nth-child(2).active img {
   animation: kenburns-top-left 8s ease-out both;
 }
+
 @keyframes kenburns-top-left {
   0% {
     transform: scale(1) translate(0, 0);
@@ -392,97 +311,63 @@
   }
 }
 
-/* Slide 3 (Prisma - Corte laser) — zoom central suave (usa o keyframe padrão) */
-/* Não precisa regra extra, o default kenburns-zoom-in já aplica */
-
-/* Acessibilidade: se o usuário pediu pra reduzir movimento no SO,
-   desativa a animação (prevenção de enjoo / fotossensibilidade) */
 @media (prefers-reduced-motion: reduce) {
-  .carousel-slide.active img,
-  .carousel-slide:nth-child(1).active img,
-  .carousel-slide:nth-child(2).active img {
+  .carousel-slide.active img {
     animation: none;
   }
 }
+/* OVERLAY ESCURO — legibilidade do texto sobre imagem */
+.hero-bg-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    rgba(15, 17, 22, 1) 0%,
+    rgba(15, 17, 22, 0.98) 25%,
+    rgba(15, 17, 22, 0.65) 50%,
+    rgba(15, 17, 22, 0.1) 75%,
+    rgba(15, 17, 22, 0) 100%
+  );
+}
 
-/* ════════════════════════════════════════════════════════════════
-   🔧 FLUID DESIGN DESKTOP — ≥ 900px (SOBRESCREVE regras acima)
-   Essas regras só ativam em telas desktop (não afetam mobile).
-   Fazem o hero caber em 100vh em notebook 13" e crescer proporcional
-   em monitores maiores.
-   ════════════════════════════════════════════════════════════════ */
+/* FLUID DESIGN DESKTOP — ≥ 900px */
 @media (min-width: 900px) {
-  /* Hero ocupa exatamente a tela inteira (100vh) */
   .hero {
     min-height: 90vh;
-    /* Padding fluido: em notebook 13" fica compacto, em monitor grande respira */
-    padding: clamp(12px, 2.5vh, 32px) clamp(24px, 3vw, 64px);
+    padding: clamp(80px, 10vh, 120px) clamp(24px, 3vw, 64px);
   }
-
-  /* Grid do hero: centralizado vertical e horizontalmente */
   .hero-grid {
     align-items: center;
-    max-width: 1600px;
+    max-width: 1500px;
     margin: 0 auto;
     gap: clamp(24px, 3vw, 56px);
   }
-
-  /* Título — a mudança MAIS importante
-     Em 1280px (notebook 13") → ~90px
-     Em 1920px (monitor full HD) → 120px (teto)
-     Em tela menor que 900px → NÃO AFETA (mobile preservado) */
-  .hero-title {
-    font-size: clamp(64px, 7vw, 120px);
-    line-height: 0.88;
+  .text-hero {
+    max-width: 720px;
   }
-
-  .hero-title .bord {
-    margin-left: clamp(20px, 2vw, 48px);
-  }
-
-  /* Lead — parágrafo abaixo do título */
   .hero-lead {
-    font-size: clamp(14px, 1.1vw, 18px);
-    margin-top: clamp(16px, 2vh, 32px);
-    max-width: 650px;
+    font-size: clamp(15px, 1.2vw, 19px);
+    margin-top: clamp(20px, 2.5vh, 36px);
+    max-width: 600px;
   }
-
-  /* CTAs (botões) — margem compacta */
   .hero-ctas {
-    margin-top: clamp(16px, 2vh, 28px);
+    margin-top: clamp(20px, 2.5vh, 36px);
   }
-
-  /* Stats — linha de 4 números grandes */
   .hero-stats {
-    margin-top: clamp(20px, 3vh, 40px);
-    padding-top: clamp(16px, 2vh, 28px);
+    margin-top: clamp(24px, 3vh, 48px);
+    padding-top: clamp(20px, 2.5vh, 32px);
     gap: clamp(10px, 1.5vw, 20px);
   }
-
   .hero-stat .num {
-    font-size: clamp(24px, 2.5vw, 44px);
+    font-size: clamp(28px, 2.8vw, 44px);
   }
-
   .hero-stat .lbl {
-    font-size: clamp(8px, 0.65vw, 10px);
+    font-size: clamp(9px, 0.7vw, 10px);
   }
-
-  /* Ficha técnica (imagem do carrossel) — CORREÇÃO DO BUG
-     Antes: height: 700px + aspect-ratio: 4/5 brigavam.
-     Agora: aspect-ratio manda, altura MAX = 85vh (nunca passa da tela),
-     altura MIN preserva proporção pra imagem aparecer inteira. */
-  .hero-spec-card {
-    height: auto;
-    aspect-ratio: 4 / 5;
-    max-height: 65vh;
-    width: 100%;
-    max-width: 100%;
-    justify-self: stretch;
-  }
-
-  /* Tag line compacta no topo */
   .hero-tag-line {
-    margin-bottom: clamp(12px, 1.5vh, 24px);
+    margin-bottom: clamp(16px, 2vh, 28px);
   }
 }
 
@@ -1069,8 +954,10 @@ img-border {
    ================================================================ */
 @media (max-width: 900px) {
   /* Hero */
+  /* Hero — mobile com overlay vertical */
   .hero {
-    padding: 40px 20px 56px;
+    padding: 56px 20px 56px;
+    min-height: auto;
   }
   .hero-grid {
     grid-template-columns: 1fr;
@@ -1078,12 +965,6 @@ img-border {
   }
   .hero-tag-line {
     margin-bottom: 20px;
-  }
-  .hero-title {
-    font-size: 68px;
-  }
-  .hero-title .bord {
-    margin-left: 24px;
   }
   .hero-lead {
     font-size: 15px;
@@ -1103,22 +984,25 @@ img-border {
   .hero-stat .lbl {
     font-size: 9px;
   }
-  .hero-spec-card {
-    min-height: 380px;
-    padding: 20px;
-  }
-  .hero-spec-title {
-    font-size: 44px;
-  }
-  .hero-spec-footer {
-    bottom: 16px;
-    left: 16px;
-    right: 16px;
-  }
-  .hero-spec-footer .mb-mark {
-    font-size: 22px;
-  }
 
+  .hero-bg-overlay {
+    background: linear-gradient(
+      180deg,
+      rgba(15, 17, 22, 0.95) 0%,
+      rgba(15, 17, 22, 0.85) 60%,
+      rgba(15, 17, 22, 0.95) 100%
+    );
+  }
+  .carousel-caption {
+    right: 20px;
+    bottom: 50px;
+    font-size: 9px;
+    padding: 6px 10px;
+  }
+  .carousel-dots {
+    right: 20px;
+    bottom: 20px;
+  }
   /* Produtos */
   .section-produtos {
     padding: 56px 20px;
