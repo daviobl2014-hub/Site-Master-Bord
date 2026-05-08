@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Master Bord · Catálogo</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/global.css"/>
+<style>
+.page-hero { padding: 80px 48px; position: relative; overflow: hidden; }
+.page-hero-grid { position: relative; display: grid; grid-template-columns: 1.3fr 1fr; gap: 56px; align-items: end; }
+.page-hero h1 { font-family: var(--font-display); font-weight: 700; font-size: 96px; line-height: .9; margin: 18px 0 0; letter-spacing: -.02em; }
+.page-hero-lead { font-size: 16px; color: var(--mb-paper-dim); line-height: 1.6; max-width: 460px; }
+
+.filtros { position: sticky; top: 70px; z-index: 50; background: var(--mb-bg); border-top: 1px solid var(--mb-line); border-bottom: 1px solid var(--mb-line); padding: 14px 48px; }
+.filtros-row { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.filtros-label { font-family: var(--font-mono); font-size: 11px; color: var(--mb-ouro); letter-spacing: .25em; }
+.filtro-btn { padding: 8px 14px; border: 1px solid var(--mb-line); font-family: var(--font-mono); font-size: 11px; letter-spacing: .15em; text-transform: uppercase; color: var(--mb-muted); transition: .2s; }
+.filtro-btn:hover { color: var(--mb-paper); border-color: var(--mb-paper); }
+.filtro-btn.active { background: var(--mb-paper); color: var(--mb-bg); border-color: var(--mb-paper); }
+.filtros-count { margin-left: auto; font-family: var(--font-mono); font-size: 11px; color: var(--mb-muted); letter-spacing: .15em; }
+
+.grid-wrap { padding: 56px 48px 96px; }
+.grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+.item { padding: 0; cursor: pointer; transition: transform .2s, border-color .2s; }
+.item:hover { transform: translateY(-4px); border-color: var(--mb-paper); }
+.item-img { aspect-ratio: 1/1; position: relative; overflow: hidden; }
+.item-grad { position: absolute; inset: 0; }
+.item-pattern { position: absolute; inset: 0; }
+.item-key { position: absolute; bottom: 14px; right: 18px; font-family: var(--font-display); font-weight: 700; font-size: 56px; opacity: .9; }
+.item-num { position: absolute; top: 14px; left: 14px; font-family: var(--font-mono); font-size: 10px; color: var(--mb-muted); letter-spacing: .25em; }
+.item-body { padding: 18px 22px 22px; }
+.item-cat { font-family: var(--font-mono); font-size: 10px; color: var(--mb-muted); letter-spacing: .2em; text-transform: uppercase; }
+.item-titulo { font-family: var(--font-display); font-weight: 700; font-size: 18px; margin: 6px 0 14px; color: var(--mb-paper); }
+.item-foot { display: flex; justify-content: space-between; align-items: center; padding-top: 12px; border-top: 1px solid var(--mb-line); }
+.item-cta { font-family: var(--font-mono); font-size: 10px; letter-spacing: .2em; }
+.item-cod { font-family: var(--font-mono); font-size: 10px; color: var(--mb-muted); letter-spacing: .15em; }
+
+@media (max-width: 900px) {
+  .page-hero { padding: 40px 20px; }
+  .page-hero-grid { grid-template-columns: 1fr; gap: 24px; }
+  .page-hero h1 { font-size: 52px; }
+  .filtros { padding: 10px 16px; }
+  .grid-wrap { padding: 32px 20px 56px; }
+  .grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .item-key { font-size: 36px; }
+  .item-titulo { font-size: 14px; }
+}
+</style>
+</head><body>
+<script src="js/chrome.js"></script><script>injectChrome('catalogo');</script>
+
+<main>
+<section class="page-hero">
+  <div class="tech-grid"></div>
+  <div class="page-hero-grid">
+    <div><div class="mb-tag">CATÁLOGO COMPLETO · 12 ITENS</div><h1>O <span class="highlight-ouro">acervo</span><br/>da Master Bord.</h1></div>
+    <p class="page-hero-lead">Referências do que já produzimos. Clique em qualquer item para pedir amostra.</p>
+  </div>
+</section>
+
+<section class="filtros">
+  <div class="filtros-row">
+    <span class="filtros-label">FILTRAR →</span>
+    <button class="filtro-btn active" data-f="todos">Todos</button>
+    <button class="filtro-btn" data-f="etiqueta">Etiquetas</button>
+    <button class="filtro-btn" data-f="bordado">Bordados</button>
+    <button class="filtro-btn" data-f="laser">Laser</button>
+    <span class="filtros-count" id="count">12 itens</span>
+  </div>
+</section>
+
+<section class="grid-wrap">
+  <div class="grid" id="grid"></div>
+</section>
+
+<script>
+const items = [
+  {cat:'etiqueta',cor:'var(--mb-azul)',rgb:'74,139,214',k:'ET',cod:'ET-012',t:'Etiqueta Cetim 12mm'},
+  {cat:'etiqueta',cor:'var(--mb-azul)',rgb:'74,139,214',k:'ET',cod:'ET-016',t:'Etiqueta Damasco 16mm'},
+  {cat:'etiqueta',cor:'var(--mb-azul)',rgb:'74,139,214',k:'ET',cod:'ET-022',t:'Etiqueta Nylon 22mm'},
+  {cat:'etiqueta',cor:'var(--mb-azul)',rgb:'74,139,214',k:'ET',cod:'ET-008',t:'Tag composição'},
+  {cat:'bordado',cor:'var(--mb-vinho)',rgb:'196,75,85',k:'BR',cod:'BR-001',t:'Bordado plano'},
+  {cat:'bordado',cor:'var(--mb-vinho)',rgb:'196,75,85',k:'BR',cod:'BR-003',t:'Bordado 3D'},
+  {cat:'bordado',cor:'var(--mb-vinho)',rgb:'196,75,85',k:'BR',cod:'BR-005',t:'Bordado em couro'},
+  {cat:'bordado',cor:'var(--mb-vinho)',rgb:'196,75,85',k:'BR',cod:'BR-007',t:'Patch termocolante'},
+  {cat:'laser',cor:'var(--mb-ouro)',rgb:'212,169,106',k:'LA',cod:'LA-001',t:'Tag couro laser'},
+  {cat:'laser',cor:'var(--mb-ouro)',rgb:'212,169,106',k:'LA',cod:'LA-004',t:'Forma livre'},
+  {cat:'laser',cor:'var(--mb-ouro)',rgb:'212,169,106',k:'LA',cod:'LA-009',t:'Patch perfurado'},
+  {cat:'laser',cor:'var(--mb-ouro)',rgb:'212,169,106',k:'LA',cod:'LA-012',t:'Rótulo recortado'},
+];
+function render(filtro){
+  const list = filtro==='todos'?items:items.filter(i=>i.cat===filtro);
+  document.getElementById('grid').innerHTML = list.map((i,idx)=>`
+    <article class="mb-card item" data-cat="${i.cat}">
+      <div class="accent-bar" style="background:${i.cor}"></div>
+      <div class="item-img">
+        <div class="item-grad" style="background:linear-gradient(135deg,rgba(${i.rgb},.22),transparent 60%)"></div>
+        <div class="item-pattern" style="background:repeating-linear-gradient(${idx*22}deg,transparent 0 6px,rgba(${i.rgb},.13) 6px 7px)"></div>
+        <div class="item-num">${i.cod}</div>
+        <div class="item-key" style="color:${i.cor}">${i.k}</div>
+      </div>
+      <div class="item-body">
+        <div class="item-cat">${i.cat}</div>
+        <div class="item-titulo">${i.t}</div>
+        <div class="item-foot"><span class="item-cta" style="color:${i.cor}">AMOSTRA →</span><span class="item-cod">${i.cod}</span></div>
+      </div>
+    </article>`).join('');
+  document.getElementById('count').textContent = `${list.length} ite${list.length===1?'m':'ns'}`;
+}
+render('todos');
+document.querySelectorAll('.filtro-btn').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('.filtro-btn').forEach(x=>x.classList.remove('active'));
+  b.classList.add('active'); render(b.dataset.f);
+}));
+</script>
+</main>
+</body></html>

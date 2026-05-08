@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Master Bord · Sobre</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/global.css"/>
+<style>
+.page-hero { padding: 80px 48px; position: relative; overflow: hidden; }
+.page-hero-grid { position: relative; display: grid; grid-template-columns: 1.3fr 1fr; gap: 56px; align-items: end; }
+.page-hero h1 { font-family: var(--font-display); font-weight: 700; font-size: 96px; line-height: .9; margin: 18px 0 0; letter-spacing: -.02em; }
+.page-hero-lead { font-size: 17px; color: var(--mb-paper-dim); line-height: 1.6; max-width: 460px; }
+
+.timeline { padding: 96px 48px; background: var(--mb-bg-soft); }
+.timeline-track { display: grid; grid-template-columns: repeat(5,1fr); gap: 18px; position: relative; }
+.timeline-track::before { content: ''; position: absolute; top: 28px; left: 4%; right: 4%; height: 1px; background: var(--mb-line); }
+.tl-item { position: relative; padding-top: 60px; }
+.tl-dot { position: absolute; top: 18px; left: 50%; transform: translateX(-50%); width: 22px; height: 22px; border-radius: 50%; background: var(--mb-bg-soft); border: 2px solid var(--mb-azul); display: flex; align-items: center; justify-content: center; }
+.tl-dot.vinho { border-color: var(--mb-vinho); }
+.tl-dot::after { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--mb-azul); }
+.tl-dot.vinho::after { background: var(--mb-vinho); }
+.tl-year { font-family: var(--font-display); font-weight: 700; font-size: 32px; color: var(--mb-azul); }
+.tl-year.vinho { color: var(--mb-vinho); }
+.tl-title { font-family: var(--font-display); font-weight: 600; font-size: 18px; color: var(--mb-paper); margin-top: 8px; }
+.tl-desc { font-size: 13px; color: var(--mb-muted); line-height: 1.5; margin-top: 8px; }
+
+.certs { padding: 96px 48px; }
+.certs-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 18px; }
+.cert-icon { width: 52px; height: 52px; border: 1px solid var(--mb-line); display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-weight: 700; color: var(--mb-ouro); margin-bottom: 18px; }
+.cert-title { font-family: var(--font-display); font-weight: 700; font-size: 20px; color: var(--mb-paper); margin-bottom: 10px; }
+.cert-bar { width: 28px; height: 2px; margin-bottom: 12px; }
+.cert-desc { font-size: 13px; color: var(--mb-muted); line-height: 1.5; }
+
+.infra { padding: 96px 48px; background: var(--mb-bg-soft); }
+.infra-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 28px; }
+.infra-img { aspect-ratio: 16/10; }
+.infra-img-title { position: absolute; bottom: 16px; left: 16px; right: 16px; font-family: var(--font-display); font-weight: 700; font-size: 22px; color: var(--mb-paper); }
+.infra-numbers { display: flex; flex-direction: column; gap: 14px; }
+.infra-num { padding: 22px 24px; }
+.infra-num-val { font-family: var(--font-display); font-weight: 700; font-size: 44px; line-height: 1; }
+.infra-num-label { font-family: var(--font-mono); font-size: 11px; color: var(--mb-muted); letter-spacing: .2em; margin-top: 8px; text-transform: uppercase; }
+
+@media (max-width: 900px) {
+  .page-hero { padding: 40px 20px; }
+  .page-hero-grid { grid-template-columns: 1fr; gap: 24px; }
+  .page-hero h1 { font-size: 52px; }
+  .timeline, .certs, .infra { padding: 48px 20px; }
+  .timeline-track { grid-template-columns: 1fr; }
+  .timeline-track::before { display: none; }
+  .certs-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
+  .infra-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head><body>
+<script src="js/chrome.js"></script><script>injectChrome('sobre');</script>
+
+<main>
+<section class="page-hero">
+  <div class="tech-grid"></div>
+  <div class="page-hero-grid">
+    <div>
+      <div class="mb-tag">SOBRE A MASTER BORD · EST. 1995</div>
+      <h1>Tradição,<br/><span class="highlight-azul">compromisso</span><br/>e <span class="highlight-vinho">qualidade</span>.</h1>
+    </div>
+    <p class="page-hero-lead">Desde 1995, a Master Bord transforma ideias em produtos de qualidade, com atendimento próximo e personalizado. Atendemos desde grandes marcas da moda até pequenas marcas e artesãos.</p>
+  </div>
+</section>
+
+<section class="timeline">
+  <div class="section-head"><div><div class="mb-tag">01 / 30 ANOS</div><h2 class="mb-title lg" style="margin-top:10px">A linha do <span class="highlight-ouro">tempo</span>.</h2></div></div>
+  <div class="timeline-track">
+    <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">1995</div><div class="tl-title">Fundação</div><div class="tl-desc">Primeira máquina de bordar, dois operadores, galpão pequeno.</div></div>
+    <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">2003</div><div class="tl-title">Etiquetas tecidas</div><div class="tl-desc">Primeiros teares Barudan. Produção em escala.</div></div>
+    <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">2011</div><div class="tl-title">Certificação ABVTEX</div><div class="tl-desc">Homologação oficial — abre portas para grandes redes.</div></div>
+    <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">2018</div><div class="tl-title">Corte a laser</div><div class="tl-desc">Linha automatizada Mucad. Forma livre 0,1mm.</div></div>
+    <div class="tl-item"><div class="tl-dot vinho"></div><div class="tl-year vinho">Hoje</div><div class="tl-title">Hoje</div><div class="tl-desc">120 mil peças/mês, 500+ clientes, 3 ofícios.</div></div>
+  </div>
+</section>
+
+<section class="certs">
+  <div class="section-head"><div><div class="mb-tag">02 / CERTIFICAÇÕES</div><h2 class="mb-title lg" style="margin-top:10px">Por que nos <span class="highlight-azul">escolhem</span>.</h2></div></div>
+  <div class="certs-grid">
+    <div class="mb-card"><div class="accent-bar" style="background:var(--mb-azul)"></div><div class="cert-icon">A</div><div class="cert-title">ABVTEX</div><div class="cert-bar" style="background:var(--mb-azul)"></div><div class="cert-desc">Certificação completa para fornecer às maiores redes varejistas do país.</div></div>
+    <div class="mb-card"><div class="accent-bar" style="background:var(--mb-vinho)"></div><div class="cert-icon">B</div><div class="cert-title">Bordado profissional</div><div class="cert-bar" style="background:var(--mb-vinho)"></div><div class="cert-desc">Teares Barudan de última geração com até 20 cabeças simultâneas.</div></div>
+    <div class="mb-card"><div class="accent-bar" style="background:var(--mb-ouro)"></div><div class="cert-icon">E</div><div class="cert-title">Etiquetas de precisão</div><div class="cert-bar" style="background:var(--mb-ouro)"></div><div class="cert-desc">1200dpi de definição, padrão fiel lote a lote.</div></div>
+    <div class="mb-card"><div class="accent-bar" style="background:var(--mb-azul-glow)"></div><div class="cert-icon">Q</div><div class="cert-title">Equipe qualificada</div><div class="cert-bar" style="background:var(--mb-azul-glow)"></div><div class="cert-desc">Operadores treinados, inspeção peça a peça em todas as linhas.</div></div>
+  </div>
+</section>
+
+<section class="infra">
+  <div class="section-head"><div><div class="mb-tag">03 / INFRAESTRUTURA</div><h2 class="mb-title lg" style="margin-top:10px">Onde a peça <span class="highlight-vinho">acontece</span>.</h2></div></div>
+  <div class="infra-grid">
+    <div class="mb-image infra-img">
+      <div class="img-grad" style="background:linear-gradient(135deg,rgba(196,75,85,.25),transparent 60%)"></div>
+      <div class="img-pattern" style="background:repeating-linear-gradient(45deg,transparent 0 8px,rgba(255,255,255,.03) 8px 9px)"></div>
+      <div class="img-corners"><i></i></div>
+      <div class="img-label">PLANTA · 2400m²</div>
+      <div class="infra-img-title">Chão de fábrica</div>
+    </div>
+    <div class="infra-numbers">
+      <div class="mb-card infra-num"><div class="accent-bar" style="background:var(--mb-azul)"></div><div class="infra-num-val highlight-azul">2400m²</div><div class="infra-num-label">área produtiva</div></div>
+      <div class="mb-card infra-num"><div class="accent-bar" style="background:var(--mb-vinho)"></div><div class="infra-num-val highlight-vinho">42</div><div class="infra-num-label">colaboradores</div></div>
+      <div class="mb-card infra-num"><div class="accent-bar" style="background:var(--mb-ouro)"></div><div class="infra-num-val highlight-ouro">18</div><div class="infra-num-label">máquinas Barudan / Mucad</div></div>
+    </div>
+  </div>
+</section>
+</main>
+</body></html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Master Bord · Produtos</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/global.css"/>
+<style>
+.page-hero { padding: 80px 48px; position: relative; overflow: hidden; text-align: center; }
+.page-hero h1 { font-family: var(--font-display); font-weight: 700; font-size: 96px; line-height: .9; margin: 18px 0 0; letter-spacing: -.02em; }
+
+.linhas { padding: 0 48px 96px; display: flex; flex-direction: column; gap: 28px; }
+.linha { display: grid; grid-template-columns: 1fr 1.3fr; gap: 28px; padding: 36px; background: var(--mb-card); border: 1px solid var(--mb-line); position: relative; overflow: hidden; }
+.linha:nth-child(even) { grid-template-columns: 1.3fr 1fr; }
+.linha:nth-child(even) .linha-img { order: 2; }
+.linha-img { aspect-ratio: 4/3; position: relative; overflow: hidden; background: var(--mb-bg-soft); border: 1px solid var(--mb-line); }
+.linha-img-grad { position: absolute; inset: 0; }
+.linha-img-pattern { position: absolute; inset: 0; }
+.linha-img-key { position: absolute; bottom: 16px; right: 18px; font-family: var(--font-display); font-weight: 700; font-size: 88px; line-height: 1; letter-spacing: -.04em; }
+.linha-img-num { position: absolute; top: 16px; left: 16px; font-family: var(--font-mono); font-size: 11px; color: var(--mb-muted); letter-spacing: .25em; }
+.linha-body { display: flex; flex-direction: column; }
+.linha-cat { font-family: var(--font-mono); font-size: 11px; letter-spacing: .25em; text-transform: uppercase; }
+.linha-name { font-family: var(--font-display); font-weight: 700; font-size: 56px; line-height: 1; margin: 14px 0 18px; letter-spacing: -.02em; }
+.linha-tagline { font-size: 19px; line-height: 1.5; margin: 0 0 22px; }
+.linha-specs { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 18px 0; border-top: 1px solid var(--mb-line); border-bottom: 1px solid var(--mb-line); margin-bottom: 22px; }
+.linha-spec { font-family: var(--font-mono); font-size: 12px; }
+.linha-spec span { color: var(--mb-muted); }
+.linha-spec b { color: var(--mb-paper); font-weight: 500; margin-left: 6px; }
+.linha-cta { display: flex; gap: 12px; flex-wrap: wrap; }
+
+@media (max-width: 900px) {
+  .page-hero { padding: 40px 20px; }
+  .page-hero h1 { font-size: 52px; }
+  .linhas { padding: 0 20px 48px; gap: 20px; }
+  .linha, .linha:nth-child(even) { grid-template-columns: 1fr; padding: 22px; }
+  .linha:nth-child(even) .linha-img { order: 0; }
+  .linha-name { font-size: 36px; }
+  .linha-tagline { font-size: 15px; }
+  .linha-img-key { font-size: 56px; }
+}
+</style>
+</head><body>
+<script src="js/chrome.js"></script><script>injectChrome('produtos');</script>
+
+<main>
+<section class="page-hero">
+  <div class="tech-grid"></div>
+  <div style="position:relative">
+    <div class="mb-tag">CATÁLOGO DE OFÍCIOS</div>
+    <h1>Três <span class="highlight-azul">produtos</span>,<br/>um <span class="highlight-vinho">padrão</span>.</h1>
+  </div>
+</section>
+
+<section class="linhas">
+  <article class="linha">
+    <div class="linha-img">
+      <div class="linha-img-grad" style="background:linear-gradient(135deg,rgba(74,139,214,.3),transparent 60%)"></div>
+      <div class="linha-img-pattern" style="background:repeating-linear-gradient(0deg,transparent 0 8px,rgba(74,139,214,.13) 8px 9px)"></div>
+      <div class="linha-img-num">PRODUTO 01/03</div>
+      <div class="linha-img-key" style="color:var(--mb-azul)">ET</div>
+    </div>
+    <div class="linha-body">
+      <span class="linha-cat highlight-azul">[ ETIQUETAS ]</span>
+      <h2 class="linha-name">Etiquetas <span class="highlight-azul">tecidas</span>.</h2>
+      <p class="linha-tagline">Alta definição em cada fio. Cetim, damasco e nylon — tear Barudan de última geração.</p>
+      <div class="linha-specs">
+        <div class="linha-spec"><span>largura</span><b>12 / 16 / 22mm</b></div>
+        <div class="linha-spec"><span>cores</span><b>até 8</b></div>
+        <div class="linha-spec"><span>definição</span><b>1200dpi</b></div>
+        <div class="linha-spec"><span>lote mín.</span><b>100un</b></div>
+      </div>
+      <div class="linha-cta"><a href="contato.html" class="btn btn-primary">Pedir amostra →</a><a href="catalogo.html" class="btn btn-ghost">Ver no catálogo</a></div>
+    </div>
+  </article>
+
+  <article class="linha">
+    <div class="linha-img">
+      <div class="linha-img-grad" style="background:linear-gradient(135deg,rgba(196,75,85,.3),transparent 60%)"></div>
+      <div class="linha-img-pattern" style="background:repeating-linear-gradient(45deg,transparent 0 8px,rgba(196,75,85,.13) 8px 9px)"></div>
+      <div class="linha-img-num">PRODUTO 02/03</div>
+      <div class="linha-img-key" style="color:var(--mb-vinho)">BR</div>
+    </div>
+    <div class="linha-body">
+      <span class="linha-cat highlight-vinho">[ BORDADOS ]</span>
+      <h2 class="linha-name"><span class="highlight-vinho">Bordados</span> densos.</h2>
+      <p class="linha-tagline">Pontos firmes em qualquer tecido, cores Pantone fiéis, peça que aguenta.</p>
+      <div class="linha-specs">
+        <div class="linha-spec"><span>tamanho</span><b>até 20cm</b></div>
+        <div class="linha-spec"><span>cores</span><b>Pantone</b></div>
+        <div class="linha-spec"><span>tecido</span><b>qualquer</b></div>
+        <div class="linha-spec"><span>cabeças</span><b>20 simultâneas</b></div>
+      </div>
+      <div class="linha-cta"><a href="contato.html" class="btn btn-primary">Pedir amostra →</a><a href="catalogo.html" class="btn btn-ghost">Ver no catálogo</a></div>
+    </div>
+  </article>
+
+  <article class="linha">
+    <div class="linha-img">
+      <div class="linha-img-grad" style="background:linear-gradient(135deg,rgba(212,169,106,.3),transparent 60%)"></div>
+      <div class="linha-img-pattern" style="background:repeating-linear-gradient(90deg,transparent 0 8px,rgba(212,169,106,.13) 8px 9px)"></div>
+      <div class="linha-img-num">PRODUTO 03/03</div>
+      <div class="linha-img-key" style="color:var(--mb-ouro)">LA</div>
+    </div>
+    <div class="linha-body">
+      <span class="linha-cat highlight-ouro">[ LASER ]</span>
+      <h2 class="linha-name">Corte a <span class="highlight-ouro">laser</span>.</h2>
+      <p class="linha-tagline">Precisão 0,1mm em forma livre. Bordas seladas, sem desfiar.</p>
+      <div class="linha-specs">
+        <div class="linha-spec"><span>precisão</span><b>0.1mm</b></div>
+        <div class="linha-spec"><span>formas</span><b>livre</b></div>
+        <div class="linha-spec"><span>materiais</span><b>tecido / couro</b></div>
+        <div class="linha-spec"><span>aplicações</span><b>patch · tag · rótulo</b></div>
+      </div>
+      <div class="linha-cta"><a href="contato.html" class="btn btn-primary">Pedir amostra →</a><a href="catalogo.html" class="btn btn-ghost">Ver no catálogo</a></div>
+    </div>
+  </article>
+</section>
+</main>
+</body></html>

@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Master Bord · Etiquetas, Bordados e Laser</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/global.css"/>
+<style>
+/* HERO FULLSCREEN ============================================== */
+.hero { position: relative; isolation: isolate; min-height: calc(100vh - 102px); padding: 0; overflow: hidden; }
+
+.hero-bg-carousel { position: absolute; inset: 0; z-index: 0; overflow: hidden; }
+.hero-bg-slide { position: absolute; inset: 0; opacity: 0; transition: opacity 1s ease; pointer-events: none; }
+.hero-bg-slide.active { opacity: 1; }
+.hero-bg-slide img,
+.hero-bg-slide .img-fake { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.hero-bg-slide.active img,
+.hero-bg-slide.active .img-fake { animation: heroKenBurns 9s ease-out both; }
+@keyframes heroKenBurns { 0% { transform: scale(1); } 100% { transform: scale(1.12); } }
+
+.hero-bg-overlay {
+  position: absolute; inset: 0; z-index: 2;
+  background:
+    linear-gradient(90deg, rgba(5,8,22,.97) 0%, rgba(5,8,22,.92) 35%, rgba(5,8,22,.55) 62%, rgba(5,8,22,.82) 100%),
+    radial-gradient(circle at 12% 20%, rgba(74,139,214,.10), transparent 50%),
+    radial-gradient(circle at 18% 78%, rgba(196,75,85,.06), transparent 50%);
+}
+.hero .tech-grid { z-index: 3; opacity: .25; }
+
+.hero-bg-dots { position: absolute; bottom: 130px; right: 48px; display: flex; gap: 10px; z-index: 20; }
+.hero-bg-dot { width: 9px; height: 9px; border-radius: 50%; border: none; background: rgba(255,255,255,.35); cursor: pointer; transition: .3s; padding: 0; }
+.hero-bg-dot.active { background: var(--mb-ouro); transform: scale(1.3); }
+
+.hero-grid { position: relative; z-index: 10; max-width: 1500px; margin: 0 auto; padding: 96px 48px 0; display: grid; grid-template-columns: 1fr; gap: 0; }
+.hero-eyebrow { display: flex; align-items: center; gap: 14px; margin-bottom: 30px; }
+.hero-eyebrow .line { width: 60px; height: 1px; background: var(--mb-ouro); }
+.hero-eyebrow .mb-tag { color: var(--mb-ouro); font-family: var(--font-mono); font-size: 12px; letter-spacing: .25em; }
+.hero-eyebrow .mb-tag::before, .hero-eyebrow .mb-tag::after { content: ''; }
+
+.hero h1 { font-family: var(--font-display); font-weight: 800; font-size: 96px; line-height: .92; margin: 0; letter-spacing: -.025em; max-width: 960px; }
+.hero h1 .l1 { color: var(--mb-azul); display: block; text-shadow: 0 0 60px rgba(74,139,214,.35); }
+.hero h1 .l2 { color: var(--mb-vinho); display: block; text-shadow: 0 0 60px rgba(196,75,85,.35); }
+.hero h1 .l3 { color: var(--mb-paper); display: block; }
+
+.hero-lead { font-size: 17px; color: var(--mb-paper-dim); line-height: 1.65; margin: 34px 0 38px; max-width: 540px; }
+.hero-lead b { color: var(--mb-paper); font-weight: 700; }
+
+.hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+.hero-ctas .btn-primary { background: var(--mb-azul); padding: 18px 28px; font-size: 13px; }
+.hero-ctas .btn-primary:hover { background: var(--mb-azul-glow); }
+.hero-ctas .btn-ghost { padding: 18px 28px; font-size: 13px; border-color: rgba(255,255,255,.4); }
+.hero-ctas .btn-ghost:hover { border-color: var(--mb-paper); background: rgba(255,255,255,.05); }
+
+.hero-stats { position: relative; z-index: 10; margin-top: 96px; padding: 36px 48px; border-top: 1px solid rgba(255,255,255,.08); display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; max-width: 1500px; margin-left: auto; margin-right: auto; }
+.hero-stat { display: flex; align-items: center; gap: 18px; padding: 0 20px; border-right: 1px solid rgba(255,255,255,.06); }
+.hero-stat:last-child { border-right: 0; }
+.hero-stat-icon { width: 44px; height: 44px; flex-shrink: 0; color: var(--mb-azul-glow); display: flex; align-items: center; justify-content: center; }
+.hero-stat-icon svg { width: 100%; height: 100%; stroke: currentColor; stroke-width: 1.6; fill: none; }
+.hero-stat-num { font-family: var(--font-display); font-weight: 700; font-size: 36px; color: var(--mb-azul); line-height: 1; letter-spacing: -.02em; }
+.hero-stat-label { font-family: var(--font-mono); font-size: 10px; color: var(--mb-muted); letter-spacing: .22em; text-transform: uppercase; margin-top: 6px; }
+
+/* PRODUTOS */
+.produtos { background: var(--mb-bg-soft); padding: 96px 48px; }
+.produtos-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.produto-card { padding: 28px; }
+.produto-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+.produto-key { font-family: var(--font-display); font-weight: 700; font-size: 44px; letter-spacing: -.04em; }
+.produto-num { font-family: var(--font-mono); font-size: 10px; color: var(--mb-muted); letter-spacing: .2em; }
+.produto-name { font-family: var(--font-display); font-weight: 700; font-size: 26px; color: var(--mb-paper); margin-bottom: 10px; }
+.produto-desc { font-size: 13px; color: var(--mb-muted); line-height: 1.5; margin-bottom: 18px; }
+.produto-specs { border-top: 1px solid var(--mb-line); padding-top: 14px; display: flex; flex-direction: column; gap: 6px; font-family: var(--font-mono); font-size: 11px; }
+.produto-specs span { display: flex; gap: 10px; color: var(--mb-paper); }
+
+/* GALERIA */
+.galeria { background: var(--mb-bg); padding: 96px 48px; }
+.galeria-grid { display: grid; grid-template-columns: repeat(6, 1fr); grid-auto-rows: 200px; gap: 14px; }
+.galeria-item { position: relative; overflow: hidden; background: var(--mb-card); border: 1px solid var(--mb-line); }
+.galeria-item-meta { position: absolute; top: 14px; left: 14px; font-family: var(--font-mono); font-size: 10px; color: var(--mb-muted); letter-spacing: .2em; }
+.galeria-item-tag { position: absolute; top: 14px; right: 14px; padding: 3px 10px; font-family: var(--font-display); font-weight: 700; font-size: 11px; letter-spacing: .05em; color: var(--mb-bg); }
+.galeria-item-foot { position: absolute; bottom: 18px; left: 18px; right: 18px; }
+.galeria-item-title { font-family: var(--font-display); font-weight: 700; font-size: 22px; color: var(--mb-paper); line-height: 1.1; }
+.galeria-item-cta { font-family: var(--font-mono); font-size: 10px; margin-top: 6px; letter-spacing: .15em; }
+
+/* DEPOIMENTOS */
+.deps { background: var(--mb-bg-soft); padding: 96px 48px; }
+.deps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.dep-card { padding: 28px; display: flex; flex-direction: column; }
+.dep-quote { font-family: var(--font-display); font-weight: 700; font-size: 56px; color: var(--mb-vinho); line-height: .7; margin-bottom: 12px; }
+.dep-text { font-size: 16px; color: var(--mb-paper); line-height: 1.5; flex: 1; margin: 0; }
+.dep-foot { margin-top: 24px; padding-top: 16px; border-top: 1px solid var(--mb-line); display: flex; align-items: center; gap: 12px; }
+.dep-avatar { width: 38px; height: 38px; border-radius: 50%; background: linear-gradient(135deg, var(--mb-azul), var(--mb-vinho)); }
+.dep-name { font-size: 13px; font-weight: 600; }
+.dep-co { font-family: var(--font-mono); font-size: 11px; color: var(--mb-muted); }
+
+/* LOGOS */
+.logos { background: var(--mb-bg); padding: 36px 48px; border-top: 1px solid var(--mb-line); border-bottom: 1px solid var(--mb-line); }
+.logos-row { display: flex; align-items: center; gap: 24px; }
+.logos-label { font-family: var(--font-mono); font-size: 10px; color: var(--mb-ouro); letter-spacing: .25em; text-transform: uppercase; white-space: nowrap; border-right: 1px solid var(--mb-line); padding-right: 22px; }
+.logos-list { display: flex; flex-wrap: wrap; gap: 30px; align-items: center; flex: 1; }
+.logo-item { font-size: 15px; color: var(--mb-muted); letter-spacing: .1em; }
+
+/* PROCESSO */
+.processo { background: var(--mb-bg-soft); padding: 96px 48px; }
+.processo-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+.processo-card { padding: 24px; }
+.processo-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 16px; }
+.processo-num { font-family: var(--font-display); font-weight: 700; font-size: 52px; color: var(--mb-azul); line-height: .9; letter-spacing: -.04em; }
+.processo-time { padding: 3px 10px; border: 1px solid var(--mb-ouro); color: var(--mb-ouro); font-family: var(--font-mono); font-size: 10px; letter-spacing: .15em; }
+.processo-title { font-family: var(--font-display); font-weight: 700; font-size: 24px; color: var(--mb-paper); }
+.processo-bar { width: 24px; height: 2px; background: var(--mb-vinho); margin: 10px 0 12px; }
+.processo-desc { font-size: 13px; color: var(--mb-muted); line-height: 1.5; }
+
+@media (max-width: 900px) {
+  .hero { min-height: auto; }
+  .hero-grid { padding: 56px 20px 40px; }
+  .hero h1 { font-size: 44px; }
+  .hero-lead { font-size: 15px; margin: 24px 0 28px; }
+  .hero-bg-overlay { background: linear-gradient(180deg, rgba(5,8,22,.96) 0%, rgba(5,8,22,.85) 60%, rgba(5,8,22,.95) 100%); }
+  .hero-bg-dots { bottom: 220px; right: 20px; }
+  .hero-stats { grid-template-columns: 1fr 1fr; padding: 24px 20px; gap: 16px; margin-top: 24px; }
+  .hero-stat { padding: 0 8px; gap: 12px; border-right: 0; }
+  .hero-stat-icon { width: 34px; height: 34px; }
+  .hero-stat-num { font-size: 24px; }
+  .produtos, .galeria, .deps, .processo { padding: 48px 20px; }
+  .produtos-grid, .deps-grid, .processo-grid { grid-template-columns: 1fr; gap: 16px; }
+  .galeria-grid { grid-template-columns: 1fr; grid-auto-rows: 180px; }
+  .galeria-item { grid-column: span 1 !important; grid-row: span 1 !important; }
+  .logos { padding: 24px 20px; }
+  .logos-row { flex-direction: column; align-items: flex-start; gap: 14px; }
+  .logos-label { border-right: 0; padding-right: 0; }
+  .logos-list { gap: 16px; }
+}
+</style>
+</head>
+<body>
+<script src="js/chrome.js"></script>
+<script>injectChrome('home');</script>
+
+<main>
+  <!-- HERO FULLSCREEN -->
+  <section class="hero">
+    <div class="hero-bg-carousel">
+      <div class="hero-bg-slide active">
+        <img src="img/ia1.png" alt="Bordados Barudan"/>
+      </div>
+      <div class="hero-bg-slide">
+        <img src="img/ia2.png" alt="Tear Muller — etiquetas tecidas"/>
+      </div>
+      <div class="hero-bg-slide">
+        <img src="img/laser.png" alt="Corte a laser de precisão"/>
+      </div>
+      <div class="hero-bg-overlay"></div>
+      <div class="hero-bg-dots">
+        <button class="hero-bg-dot active" data-slide="0" aria-label="slide 1"></button>
+        <button class="hero-bg-dot" data-slide="1" aria-label="slide 2"></button>
+        <button class="hero-bg-dot" data-slide="2" aria-label="slide 3"></button>
+      </div>
+    </div>
+    <div class="tech-grid"></div>
+
+    <div class="hero-grid">
+      <div>
+        <div class="hero-eyebrow">
+          <span class="line"></span>
+          <span class="mb-tag">ETIQUETAS · BORDADOS · CORTE A LASER</span>
+        </div>
+        <h1>
+          <span class="l1">ETIQUETAS,</span>
+          <span class="l2">BORDADOS</span>
+          <span class="l3">E CORTES A LASER</span>
+        </h1>
+        <p class="hero-lead">Desde 1994, <b>três décadas</b> produzindo etiquetas, bordados e cortes a laser para marcas que levam o acabamento a sério. Certificados <b>ABVTEX</b>, com tecnologia Suíça, Japonesa e também tecnologia Brasileira.</p>
+        <div class="hero-ctas">
+          <a href="produtos.html" class="btn btn-primary">CONHEÇA NOSSOS PRODUTOS →</a>
+          <a href="catalogo.html" class="btn btn-ghost">VER CATÁLOGO ⧉</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-icon"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="1"/><path d="M3 9h18M8 3v4M16 3v4"/></svg></div>
+        <div><div class="hero-stat-num">30+</div><div class="hero-stat-label">ANOS DE ESTRADA</div></div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-icon"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><circle cx="17" cy="9" r="2.5"/><path d="M3 19c0-3 2.7-5 6-5s6 2 6 5M15 19c0-2 1.5-3.5 4-3.5s2 1.5 2 3.5"/></svg></div>
+        <div><div class="hero-stat-num">10.000+</div><div class="hero-stat-label">CLIENTES ATENDIDAS</div></div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-icon"><svg viewBox="0 0 24 24"><path d="M12 3l8 4.5v9L12 21 4 16.5v-9z"/><path d="M12 12l8-4.5M12 12v9M12 12L4 7.5"/></svg></div>
+        <div><div class="hero-stat-num">250+</div><div class="hero-stat-label">CLIENTES POR MÊS</div></div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="9" r="6"/><path d="M9 14l-2 7 5-3 5 3-2-7"/></svg></div>
+        <div><div class="hero-stat-num">100%</div><div class="hero-stat-label">QUALIDADE GARANTIDA</div></div>
+      </div>
+    </div>
+
+    <script>
+      (function(){
+        const slides = document.querySelectorAll('.hero-bg-slide');
+        const dots = document.querySelectorAll('.hero-bg-dot');
+        let cur = 0;
+        function show(i){ slides.forEach(s=>s.classList.remove('active')); dots.forEach(d=>d.classList.remove('active')); slides[i].classList.add('active'); dots[i].classList.add('active'); cur=i; }
+        dots.forEach((d,i)=>d.addEventListener('click',()=>show(i)));
+        setInterval(()=>show((cur+1)%slides.length), 8000);
+      })();
+    </script>
+  </section>
+
+  <!-- PRODUTOS -->
+  <section class="produtos">
+    <div class="section-head">
+      <div>
+        <div class="mb-tag">02 / PRODUTOS</div>
+        <h2 class="mb-title lg" style="margin-top:10px">Três linhas. <span class="highlight-azul">Um padrão</span>.</h2>
+      </div>
+      <div class="subtitle-right">Cada produto passa por 4 checkpoints de qualidade antes de sair da fábrica.</div>
+    </div>
+    <div class="produtos-grid">
+      <div class="mb-card produto-card"><div class="accent-bar" style="background:var(--mb-azul);box-shadow:0 0 20px rgba(74,139,214,.5)"></div>
+        <div class="produto-head"><div class="produto-key" style="color:var(--mb-azul)">ET</div><div class="produto-num">01/03</div></div>
+        <div class="produto-name">Etiquetas Tecidas</div>
+        <div class="produto-desc">Definição em cada fio, em qualquer tecido-base. Produção em teares Barudan.</div>
+        <div class="produto-specs"><span><i style="color:var(--mb-azul)">→</i>12/16/22mm</span><span><i style="color:var(--mb-azul)">→</i>8 cores</span><span><i style="color:var(--mb-azul)">→</i>Cetim · Damasco · Nylon</span></div>
+      </div>
+      <div class="mb-card produto-card"><div class="accent-bar" style="background:var(--mb-vinho);box-shadow:0 0 20px rgba(196,75,85,.5)"></div>
+        <div class="produto-head"><div class="produto-key" style="color:var(--mb-vinho)">BR</div><div class="produto-num">02/03</div></div>
+        <div class="produto-name">Bordados</div>
+        <div class="produto-desc">Alta densidade de pontos para acabamento profissional e durável.</div>
+        <div class="produto-specs"><span><i style="color:var(--mb-vinho)">→</i>até 20cm</span><span><i style="color:var(--mb-vinho)">→</i>cores Pantone</span><span><i style="color:var(--mb-vinho)">→</i>qualquer tecido</span></div>
+      </div>
+      <div class="mb-card produto-card"><div class="accent-bar" style="background:var(--mb-ouro);box-shadow:0 0 20px rgba(212,169,106,.5)"></div>
+        <div class="produto-head"><div class="produto-key" style="color:var(--mb-ouro)">LA</div><div class="produto-num">03/03</div></div>
+        <div class="produto-name">Corte a Laser</div>
+        <div class="produto-desc">Cortes retos, curvos ou complexos. Bordas seladas, sem desfiar.</div>
+        <div class="produto-specs"><span><i style="color:var(--mb-ouro)">→</i>0.1mm precisão</span><span><i style="color:var(--mb-ouro)">→</i>forma livre</span><span><i style="color:var(--mb-ouro)">→</i>patch · tag · rótulo</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERIA -->
+  <section class="galeria">
+    <div class="section-head">
+      <div>
+        <div class="mb-tag">03 / PORTFÓLIO</div>
+        <h2 class="mb-title lg" style="margin-top:10px">Últimas <span class="highlight-vinho">produções</span>.</h2>
+      </div>
+      <div class="subtitle-right">Mosaico de trabalhos recentes. Clique para ver ficha técnica completa.</div>
+    </div>
+    <div class="galeria-grid">
+      <div class="galeria-item" style="grid-column:span 3;grid-row:span 2;background:linear-gradient(135deg,#c44b5530,transparent 60%)">
+        <div style="position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent 0 6px,#c44b5520 6px 7px)"></div>
+        <div class="galeria-item-meta">01/05</div><div class="galeria-item-tag" style="background:var(--mb-vinho)">BR</div>
+        <div class="galeria-item-foot"><div class="galeria-item-title">Uniforme corporativo</div><div class="galeria-item-cta" style="color:var(--mb-vinho)">VER DETALHES →</div></div>
+      </div>
+      <div class="galeria-item" style="grid-column:span 2;background:linear-gradient(135deg,#4a8bd630,transparent 60%)">
+        <div style="position:absolute;inset:0;background:repeating-linear-gradient(30deg,transparent 0 6px,#4a8bd620 6px 7px)"></div>
+        <div class="galeria-item-meta">02/05</div><div class="galeria-item-tag" style="background:var(--mb-azul)">ET</div>
+        <div class="galeria-item-foot"><div class="galeria-item-title">Label cetim</div><div class="galeria-item-cta" style="color:var(--mb-azul)">VER →</div></div>
+      </div>
+      <div class="galeria-item" style="background:linear-gradient(135deg,#d4a96a30,transparent 60%)">
+        <div style="position:absolute;inset:0;background:repeating-linear-gradient(60deg,transparent 0 6px,#d4a96a20 6px 7px)"></div>
+        <div class="galeria-item-meta">03/05</div><div class="galeria-item-tag" style="background:var(--mb-ouro)">LA</div>
+        <div class="galeria-item-foot"><div class="galeria-item-title">Tag couro</div></div>
+      </div>
+      <div class="galeria-item" style="grid-column:span 3;background:linear-gradient(135deg,#e5667030,transparent 60%)">
+        <div style="position:absolute;inset:0;background:repeating-linear-gradient(120deg,transparent 0 6px,#e5667020 6px 7px)"></div>
+        <div class="galeria-item-meta">04/05</div><div class="galeria-item-tag" style="background:var(--mb-vinho-glow);color:var(--mb-bg)">BR</div>
+        <div class="galeria-item-foot"><div class="galeria-item-title">Patch bordado coleção 2026</div><div class="galeria-item-cta" style="color:var(--mb-vinho-glow)">VER →</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEPOIMENTOS -->
+  <section class="deps">
+    <div class="section-head">
+      <div><div class="mb-tag">04 / CLIENTES</div><h2 class="mb-title lg" style="margin-top:10px">Dito por <span class="highlight-azul">quem produz</span>.</h2></div>
+    </div>
+    <div class="deps-grid">
+      <div class="mb-card dep-card"><div class="dep-quote">"</div><p class="dep-text">Padronização que não vejo em nenhum outro fornecedor. Cada lote idêntico ao anterior.</p><div class="dep-foot"><div class="dep-avatar"></div><div><div class="dep-name">Juliana Farah</div><div class="dep-co">Farah & Co.</div></div></div></div>
+      <div class="mb-card dep-card"><div class="dep-quote">"</div><p class="dep-text">Amostra em 48h, produção no prazo. Isso mudou nosso planejamento de coleção.</p><div class="dep-foot"><div class="dep-avatar"></div><div><div class="dep-name">Rafael Teixeira</div><div class="dep-co">Teixeira Jeans</div></div></div></div>
+      <div class="mb-card dep-card"><div class="dep-quote">"</div><p class="dep-text">A etiqueta virou argumento de venda. Clientes perguntam quem faz.</p><div class="dep-foot"><div class="dep-avatar"></div><div><div class="dep-name">Clara Moretti</div><div class="dep-co">Atelier Clara M.</div></div></div></div>
+    </div>
+  </section>
+
+  <!-- LOGOS -->
+  <section class="logos">
+    <div class="logos-row">
+      <span class="logos-label">CLIENTES ATIVOS ↓</span>
+      <div class="logos-list">
+        <span class="logo-item" style="font-family:var(--font-display);font-weight:700">ATELIER M.</span>
+        <span class="logo-item">FARAH</span>
+        <span class="logo-item" style="font-family:var(--font-display);font-weight:700">TEIXEIRA</span>
+        <span class="logo-item">NÓRDICA</span>
+        <span class="logo-item" style="font-family:var(--font-display);font-weight:700">LINHA 14</span>
+        <span class="logo-item">PETIT</span>
+        <span class="logo-item" style="font-family:var(--font-display);font-weight:700">CONCRETO</span>
+        <span class="logo-item">BRAVA</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESSO -->
+  <section class="processo">
+    <div class="section-head">
+      <div><div class="mb-tag">05 / PROCESSO</div><h2 class="mb-title lg" style="margin-top:10px">Da arte à <span class="highlight-ouro">entrega</span>.</h2></div>
+    </div>
+    <div class="processo-grid">
+      <div class="mb-card processo-card"><div class="processo-head"><div class="processo-num">01</div><div class="processo-time">24h</div></div><div class="processo-title">Briefing</div><div class="processo-bar"></div><div class="processo-desc">Arte, tecido, prazo e volume. Recebemos por e-mail ou WhatsApp.</div></div>
+      <div class="mb-card processo-card"><div class="processo-head"><div class="processo-num">02</div><div class="processo-time">48h</div></div><div class="processo-title">Amostra</div><div class="processo-bar"></div><div class="processo-desc">Peça física produzida e enviada para aprovação formal.</div></div>
+      <div class="mb-card processo-card"><div class="processo-head"><div class="processo-num">03</div><div class="processo-time">5–10d</div></div><div class="processo-title">Produção</div><div class="processo-bar"></div><div class="processo-desc">Lote entra na linha com inspeção 100% peça a peça.</div></div>
+      <div class="mb-card processo-card"><div class="processo-head"><div class="processo-num">04</div><div class="processo-time">48h</div></div><div class="processo-title">Entrega</div><div class="processo-bar"></div><div class="processo-desc">Embalagem dedicada, nota fiscal e rastreio em tempo real.</div></div>
+    </div>
+  </section>
+</main>
+</body>
+</html>

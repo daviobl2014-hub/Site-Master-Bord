@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Master Bord · Contato</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/global.css"/>
+<style>
+.contato-hero { padding: 80px 48px 96px; position: relative; overflow: hidden; }
+.contato-grid { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+.contato-info { padding-right: 24px; }
+.contato-hero h1 { font-family: var(--font-display); font-weight: 700; font-size: 84px; line-height: .9; margin: 18px 0 24px; letter-spacing: -.02em; }
+.contato-lead { font-size: 17px; color: var(--mb-paper-dim); line-height: 1.6; margin-bottom: 36px; }
+.contato-cards { display: flex; flex-direction: column; gap: 14px; }
+.cc { padding: 22px; display: flex; gap: 16px; align-items: center; }
+.cc-icon { width: 44px; height: 44px; border: 1px solid var(--mb-line); display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-weight: 700; }
+.cc-label { font-family: var(--font-mono); font-size: 10px; color: var(--mb-muted); letter-spacing: .25em; text-transform: uppercase; }
+.cc-value { font-family: var(--font-display); font-weight: 600; font-size: 18px; color: var(--mb-paper); margin-top: 4px; }
+
+.form { padding: 32px; }
+.form-eyebrow { font-family: var(--font-mono); font-size: 11px; color: var(--mb-ouro); letter-spacing: .25em; }
+.form-titulo { font-family: var(--font-display); font-weight: 700; font-size: 32px; margin: 8px 0 24px; color: var(--mb-paper); }
+.form-campo { margin-bottom: 16px; }
+.form-label { display: block; font-family: var(--font-mono); font-size: 10px; color: var(--mb-muted); letter-spacing: .2em; text-transform: uppercase; margin-bottom: 6px; }
+.form-input, .form-textarea {
+  width: 100%; padding: 12px 14px;
+  background: var(--mb-bg); color: var(--mb-paper);
+  border: 1px solid var(--mb-line); font: inherit; font-size: 14px;
+  transition: border-color .2s;
+}
+.form-input:focus, .form-textarea:focus { border-color: var(--mb-azul); outline: none; }
+.form-textarea { resize: vertical; min-height: 100px; }
+.form-checks { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 4px; }
+.form-check { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--mb-paper); cursor: pointer; }
+.form-check input { accent-color: var(--mb-vinho); }
+.form-disclaimer { font-family: var(--font-mono); font-size: 10px; color: var(--mb-muted); letter-spacing: .15em; margin-top: 14px; text-align: center; }
+
+.mapa { padding: 96px 48px; background: var(--mb-bg-soft); }
+.mapa-box { aspect-ratio: 16/6; background: var(--mb-card); border: 1px solid var(--mb-line); position: relative; overflow: hidden; }
+.mapa-box::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(74,139,214,.15), transparent 60%), repeating-linear-gradient(45deg, transparent 0 12px, rgba(255,255,255,.03) 12px 13px); }
+.mapa-pin { position: absolute; top: 45%; left: 50%; transform: translate(-50%,-50%); display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.mapa-pin-dot { width: 18px; height: 18px; border-radius: 50%; background: var(--mb-vinho); box-shadow: 0 0 0 8px rgba(196,75,85,.2), 0 0 30px var(--mb-vinho); }
+.mapa-pin-label { font-family: var(--font-mono); font-size: 11px; color: var(--mb-paper); letter-spacing: .2em; padding: 6px 12px; background: var(--mb-bg-deep); border: 1px solid var(--mb-line); }
+
+@media (max-width: 900px) {
+  .contato-hero { padding: 40px 20px; }
+  .contato-grid { grid-template-columns: 1fr; gap: 24px; }
+  .contato-info { padding-right: 0; }
+  .contato-hero h1 { font-size: 44px; }
+  .form { padding: 22px; }
+  .mapa { padding: 48px 20px; }
+  .mapa-box { aspect-ratio: 4/5; }
+}
+</style>
+</head><body>
+<script src="js/chrome.js"></script><script>injectChrome('contato');</script>
+
+<main>
+<section class="contato-hero">
+  <div class="tech-grid"></div>
+  <div class="contato-grid">
+    <div class="contato-info">
+      <div class="mb-tag">CONTATO · RESPOSTA EM 2H</div>
+      <h1>Vamos <span class="highlight-azul">conversar</span> sobre sua <span class="highlight-vinho">peça</span>.</h1>
+      <p class="contato-lead">Envie sua arte, prazo e volume. Retornamos em até 2h com proposta inicial e cronograma de amostra.</p>
+      <div class="contato-cards">
+        <div class="mb-card cc"><div class="accent-bar" style="background:var(--mb-azul)"></div><div class="cc-icon" style="color:var(--mb-azul)">W</div><div><div class="cc-label">WhatsApp · Mais rápido</div><div class="cc-value">(11) 0000‑0000</div></div></div>
+        <div class="mb-card cc"><div class="accent-bar" style="background:var(--mb-vinho)"></div><div class="cc-icon" style="color:var(--mb-vinho)">@</div><div><div class="cc-label">E‑mail comercial</div><div class="cc-value">contato@masterbord.com.br</div></div></div>
+        <div class="mb-card cc"><div class="accent-bar" style="background:var(--mb-ouro)"></div><div class="cc-icon" style="color:var(--mb-ouro)">📍</div><div><div class="cc-label">Endereço · São Paulo</div><div class="cc-value">Rua Exemplo, 1000 · Brás</div></div></div>
+      </div>
+    </div>
+
+    <form class="mb-card form" id="contatoForm" novalidate>
+      <div class="accent-bar" style="background:linear-gradient(180deg,var(--mb-azul) 0%,var(--mb-vinho) 50%,var(--mb-ouro) 100%)"></div>
+      <div class="form-eyebrow">[ FORMULÁRIO · ORÇAMENTO ]</div>
+      <div class="form-titulo">Pedir orçamento</div>
+      <div class="form-campo"><label class="form-label">Nome</label><input type="text" required class="form-input"/></div>
+      <div class="form-campo"><label class="form-label">E-mail</label><input type="email" required class="form-input"/></div>
+      <div class="form-campo"><label class="form-label">Empresa</label><input type="text" class="form-input"/></div>
+      <div class="form-campo"><label class="form-label">Telefone / WhatsApp</label><input type="tel" required class="form-input"/></div>
+      <div class="form-campo">
+        <div class="form-label">Produto de interesse</div>
+        <div class="form-checks">
+          <label class="form-check"><input type="checkbox" name="p" value="Etiqueta"/> Etiqueta</label>
+          <label class="form-check"><input type="checkbox" name="p" value="Bordado"/> Bordado</label>
+          <label class="form-check"><input type="checkbox" name="p" value="Laser"/> Laser</label>
+        </div>
+      </div>
+      <div class="form-campo"><label class="form-label">Mensagem</label><textarea required class="form-input form-textarea" placeholder="Conte sobre a peça, tecido, volume e prazo."></textarea></div>
+      <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center">Enviar via WhatsApp →</button>
+      <div class="form-disclaimer">SEUS DADOS SÃO CONFIDENCIAIS · LGPD</div>
+    </form>
+  </div>
+</section>
+
+<section class="mapa">
+  <div class="section-head"><div><div class="mb-tag">LOCALIZAÇÃO · SP</div><h2 class="mb-title md" style="margin-top:10px">Venha conhecer a <span class="highlight-ouro">fábrica</span>.</h2></div></div>
+  <div class="mapa-box">
+    <div class="mapa-pin"><div class="mapa-pin-dot"></div><div class="mapa-pin-label">MASTER BORD · SP</div></div>
+  </div>
+</section>
+</main>
+
+<script>
+document.getElementById('contatoForm').addEventListener('submit',e=>{
+  e.preventDefault();
+  alert('Mensagem pronta! Em produção, abriria o WhatsApp.');
+});
+</script>
+</body></html>
