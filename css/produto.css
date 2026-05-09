@@ -301,10 +301,28 @@ body[data-cor='ouro'] {
     transparent 60%
   );
 }
-.produto-hero-img .img-pattern,
-.produto-aplicacao .img-pattern {
+/* Ângulo do pattern segue a cor da página (padrão global do site):
+   azul = 0deg / vinho = 35deg / ouro = 70deg */
+body[data-cor='azul'] .produto-hero-img .img-pattern,
+body[data-cor='azul'] .produto-aplicacao .img-pattern {
   background: repeating-linear-gradient(
-    45deg,
+    0deg,
+    transparent 0 6px,
+    rgba(var(--cor-produto-rgb), 0.13) 6px 7px
+  );
+}
+body[data-cor='vinho'] .produto-hero-img .img-pattern,
+body[data-cor='vinho'] .produto-aplicacao .img-pattern {
+  background: repeating-linear-gradient(
+    35deg,
+    transparent 0 6px,
+    rgba(var(--cor-produto-rgb), 0.13) 6px 7px
+  );
+}
+body[data-cor='ouro'] .produto-hero-img .img-pattern,
+body[data-cor='ouro'] .produto-aplicacao .img-pattern {
+  background: repeating-linear-gradient(
+    -70deg,
     transparent 0 6px,
     rgba(var(--cor-produto-rgb), 0.13) 6px 7px
   );

@@ -3,12 +3,11 @@
    CSS exclusivo da PÁGINA HOME (index.html).
 
    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   ATUALIZAÇÃO (fluid design em DESKTOP apenas):
    - Mobile (< 900px) NÃO FOI ALTERADO — continua igual
-   - Desktop (≥ 900px): hero agora cabe em 100vh em notebook 13"
-     e cresce fluidamente em monitores maiores com clamp()
-   - Imagem da ficha técnica sempre aparece inteira
-   - Bug corrigido: removido conflito height: 700px + aspect-ratio
+   - Desktop (≥ 900px): fluid design com clamp() (hero cabe em 100vh
+     em notebook 13" e cresce fluidamente em monitores maiores)
+   - Hero é fullscreen com carousel de fundo + Ken Burns (sessão 8)
+   - Cores das seções via modifier classes .is-{cor} (sessão 12)
    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
    Seções:
@@ -538,7 +537,7 @@
 }
 .produto-card.is-laser .img-pattern {
   background: repeating-linear-gradient(
-    70deg,
+    -70deg,
     transparent 0 6px,
     rgba(212, 169, 106, 0.13) 6px 7px
   );
@@ -680,6 +679,127 @@
 }
 .galeria-item.trocando {
   opacity: 0;
+}
+
+/* mb-image dentro do galeria-item ocupa altura total da célula */
+.galeria-item .mb-image {
+  height: 100%;
+}
+
+/* ===== Variantes de cor por item da galeria =====
+   5 categorias: vinho, azul, ouro, vinho-glow, azul-glow.
+   Centralizadas aqui — substituem todos os style="" inline.
+   Padronizamos 1 ângulo de pattern por cor pra simplificar
+   (vai ficar coberto pela imagem real depois). */
+
+/* --- VINHO (BR) --- */
+.galeria-item.is-vinho .img-gradient {
+  background: linear-gradient(
+    135deg,
+    rgba(196, 75, 85, 0.19),
+    transparent 60%
+  );
+}
+.galeria-item.is-vinho .img-pattern {
+  background: repeating-linear-gradient(
+    35deg,
+    transparent 0 6px,
+    rgba(196, 75, 85, 0.13) 6px 7px
+  );
+}
+.galeria-item.is-vinho .img-border {
+  border-color: rgba(196, 75, 85, 0.3);
+}
+.galeria-item.is-vinho .galeria-item-tag {
+  background: var(--mb-vinho);
+}
+
+/* --- AZUL (ET) --- */
+.galeria-item.is-azul .img-gradient {
+  background: linear-gradient(
+    135deg,
+    rgba(74, 139, 214, 0.19),
+    transparent 60%
+  );
+}
+.galeria-item.is-azul .img-pattern {
+  background: repeating-linear-gradient(
+    0deg,
+    transparent 0 6px,
+    rgba(74, 139, 214, 0.13) 6px 7px
+  );
+}
+.galeria-item.is-azul .img-border {
+  border-color: rgba(74, 139, 214, 0.3);
+}
+.galeria-item.is-azul .galeria-item-tag {
+  background: var(--mb-azul);
+}
+
+/* --- OURO (LA) --- */
+.galeria-item.is-ouro .img-gradient {
+  background: linear-gradient(
+    135deg,
+    rgba(212, 169, 106, 0.19),
+    transparent 60%
+  );
+}
+.galeria-item.is-ouro .img-pattern {
+  background: repeating-linear-gradient(
+    -70deg,
+    transparent 0 6px,
+    rgba(212, 169, 106, 0.13) 6px 7px
+  );
+}
+.galeria-item.is-ouro .img-border {
+  border-color: rgba(212, 169, 106, 0.3);
+}
+.galeria-item.is-ouro .galeria-item-tag {
+  background: var(--mb-ouro);
+}
+
+/* --- VINHO-GLOW (BR alta densidade) --- */
+.galeria-item.is-vinho-glow .img-gradient {
+  background: linear-gradient(
+    135deg,
+    rgba(229, 102, 112, 0.19),
+    transparent 60%
+  );
+}
+.galeria-item.is-vinho-glow .img-pattern {
+  background: repeating-linear-gradient(
+    35deg,
+    transparent 0 6px,
+    rgba(229, 102, 112, 0.13) 6px 7px
+  );
+}
+.galeria-item.is-vinho-glow .img-border {
+  border-color: rgba(229, 102, 112, 0.3);
+}
+.galeria-item.is-vinho-glow .galeria-item-tag {
+  background: var(--mb-vinho-glow);
+}
+
+/* --- AZUL-GLOW (ET clip) --- */
+.galeria-item.is-azul-glow .img-gradient {
+  background: linear-gradient(
+    135deg,
+    rgba(107, 168, 232, 0.19),
+    transparent 60%
+  );
+}
+.galeria-item.is-azul-glow .img-pattern {
+  background: repeating-linear-gradient(
+    0deg,
+    transparent 0 6px,
+    rgba(107, 168, 232, 0.13) 6px 7px
+  );
+}
+.galeria-item.is-azul-glow .img-border {
+  border-color: rgba(107, 168, 232, 0.3);
+}
+.galeria-item.is-azul-glow .galeria-item-tag {
+  background: var(--mb-azul-glow);
 }
 
 /* ================================================================

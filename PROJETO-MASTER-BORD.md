@@ -2,7 +2,7 @@
 
 > **Arquivo de continuação entre sessões com Claude.**
 > Envie este arquivo no início de cada nova conversa.
-> **Última atualização:** 09/05/2026 (Sessão 11 — IMAGENS-INSTRUCOES.md criado + ajuste H1 catálogo + commit antes de imagens)
+> **Última atualização:** 09/05/2026 (Sessão 12 — limpeza inline styles + padronização ângulos por cor + PENDENCIAS.md criado)
 
 ---
 
@@ -540,24 +540,69 @@ A pasta `pega/` na raiz do projeto contém uma versão antiga/protótipo do site
 
 **Status sessão 11:** CSS/HTML do site finalizados pra fase atual. Hero fullscreen + dots externos + caption mobile + H1 catálogo ajustado. Inventário completo de 42 caixas de imagem documentado em `IMAGENS-INSTRUCOES.md`. Davi vai commitar tudo e migrar pra fase de design no Corel + substituição de imagens reais. ~88% do projeto.
 
+### Sessão 12 — Limpeza geral de inline styles + padronização global de ângulos (HOJE)
+
+**Parte 1 — TODOS os inline styles removidos do HTML:**
+
+Davi pediu pra mover todo `style=""` do HTML pro CSS. ~242 inline styles removidos das 9 páginas de produção. Estratégia: criar modifier classes `.is-{etiqueta|bordado|laser|...}` por seção. Cada arquivo CSS recebeu blocos por categoria centralizando cor (accent-bar, gradient, pattern, border-color, links).
+
+Detalhes:
+- `index.html` ← 0 styles (era ~50 entre produto-card + galeria)
+- `catalogo.html` ← 0 (era 60) — usa `[data-cat="X"]` que já existia
+- `sobre.html` ← 0 (era 21) — `.certificado-card.is-X` + `.infra-img-secundaria.is-X`
+- `produtos.html` ← 0 (era 18) — `.produto-index-card.is-X`
+- `contato.html` ← 0 (era 10) — `.contato-info-key.is-X` + `.contato-mapa-img .img-*`
+- `produto-bordado/etiqueta/laser.html` ← 0 cada (era 26 cada) — usa `body[data-cor]` + `.produto-relacionado-card.is-X`
+- `politicas.html` ← 0 (era 4)
+
+Utilities globais criadas em `global.css`: `.spacer-12`, `.btn-cta-center`, `.footer-logo`, `.footer-cta-grid .mb-title.xl`.
+
+JS dormente da galeria filtrada (~115 linhas em `js/index.js`) removido — substituído por comentário explicativo.
+
+Bug `img-border` sem ponto removido do `index.css`.
+
+**Parte 2 — Padronização global de ângulos do `repeating-linear-gradient` por cor:**
+
+Antes cada arquivo tinha ângulos diferentes pra cada cor. Padronizado pra 3 ângulos canônicos baseados em `.produto-card` do home:
+
+| Cor | Ângulo padrão |
+|---|---|
+| Azul (etiqueta) | `0deg` |
+| Vinho (bordado) | `35deg` |
+| Ouro (laser) | `-70deg` ⚡ invertido a pedido do Davi |
+| Vinho-glow | `35deg` (segue vinho) |
+| Azul-glow | `0deg` (segue azul) |
+
+Aplicado em 6 lugares: `index.css` (produto-card + galeria), `catalogo.css`, `produtos.css`, `sobre.css`, `produto.css`.
+
+**Parte 3 — `PENDENCIAS.md` criado:**
+
+Lista organizada de pendências técnicas. Próxima alta prioridade: **criar variáveis CSS centrais para as 5 cores** (RGB triples + ângulos) no `:root` do `global.css`. Hoje as cores ainda aparecem como `rgba(74, 139, 214, X)` literal espalhadas — variáveis vão centralizar tudo, mudar 1 linha = atualiza site inteiro.
+
 ---
 
 ## 🎯 ARQUIVOS DE REFERÊNCIA NA RAIZ
 
 - **`PROJETO-MASTER-BORD.md`** ← este arquivo (continuação de sessões com Claude)
+- **`PENDENCIAS.md`** ← lista de pendências técnicas + sugestões (NOVO)
 - **`IMAGENS-INSTRUCOES.md`** ← inventário das 42 caixas de imagem (consultar no Corel)
 - **`pega/`** ← protótipo antigo, referência do pattern de fundo (pode apagar se quiser)
 
 ---
 
-## 📍 PRÓXIMAS MISSÕES (atualizadas pós-sessão 11)
+## 📍 PRÓXIMAS MISSÕES (atualizadas pós-sessão 12)
 
-1. **Criar caixas no Corel** seguindo `IMAGENS-INSTRUCOES.md` (42 imagens em 7 páginas)
-2. **Exportar imagens** (sRGB, JPG q85 progressive, tamanhos 2x)
-3. **Substituir placeholders** nos `<div class="mb-image">` por `<img>` reais
-4. **Corrigir bug** do `img-border` sem ponto em `css/index.css:460`
-5. **Aplicar fluid design** nas outras 7 páginas (replicar `@media min-width: 900px` + `clamp()` da home)
-6. **Substituir dados fictícios** (email, endereço, CEP, CNPJ, datas timeline, stats, depoimentos)
-7. **Limpar Font Awesome duplicado** no `index.html`
-8. **Testes finais** — 8 páginas em 1920×1080, 1280×720, 768px, 375px
-9. **Deploy** — commit `nova-interface` → push → merge `main` → verificar Pages
+> Lista detalhada com prioridades em `PENDENCIAS.md`.
+
+1. **Criar variáveis CSS centrais para as 5 cores** (RGB triples + ângulos) — alta prioridade. Centraliza tudo no `:root` do `global.css`. Detalhes em `PENDENCIAS.md` item 2.
+2. **Criar caixas no Corel** seguindo `IMAGENS-INSTRUCOES.md` (42 imagens)
+3. **Exportar imagens** (sRGB, JPG q85 progressive, tamanhos 2x)
+4. **Substituir placeholders** nos `<div class="mb-image">` por `<img>` reais
+5. **Resolver filtros decorativos da galeria** (item 3 do PENDENCIAS.md)
+6. **Aplicar fluid design** nas outras 7 páginas
+7. **Substituir dados fictícios** (email, endereço, CEP, CNPJ, datas timeline, stats, depoimentos)
+8. **Limpar Font Awesome duplicado** no `index.html`
+9. **Testes finais** — 8 páginas em 1920×1080, 1280×720, 768px, 375px
+10. **Deploy** — commit `nova-interface` → push → merge `main` → verificar Pages
+
+**Status sessão 12:** Limpeza profunda concluída — 0 inline styles em todas as páginas de produção, ângulos do pattern padronizados globalmente (azul=0deg, vinho=35deg, ouro=-70deg invertido), JS dormente removido. CSS arquitetura limpa pronta pra próxima fase de melhorias (variáveis centralizadas → imagens reais). ~90% do projeto.

@@ -233,7 +233,7 @@
 }
 .catalogo-item[data-cat='laser'] .img-pattern {
   background: repeating-linear-gradient(
-    70deg,
+    -70deg,
     transparent 0 6px,
     rgba(212, 169, 106, 0.13) 6px 7px
   );
@@ -258,7 +258,7 @@
 }
 .catalogo-item[data-cat='misto'] .img-pattern {
   background: repeating-linear-gradient(
-    62deg,
+    0deg,
     transparent 0 6px,
     rgba(107, 168, 232, 0.13) 6px 7px
   );

@@ -124,7 +124,7 @@
 }
 .produto-index-card.is-bordado .img-pattern {
   background: repeating-linear-gradient(
-    40deg,
+    35deg,
     transparent 0 6px,
     rgba(196, 75, 85, 0.13) 6px 7px
   );
@@ -151,7 +151,7 @@
 }
 .produto-index-card.is-laser .img-pattern {
   background: repeating-linear-gradient(
-    80deg,
+    -70deg,
     transparent 0 6px,
     rgba(212, 169, 106, 0.13) 6px 7px
   );
