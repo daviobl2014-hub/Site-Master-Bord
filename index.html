@@ -104,6 +104,26 @@
     <section class="hero">
       <!-- Carrossel agora é background fullscreen
              (mesmas classes/IDs do JS atual — js/index.js continua funcionando) -->
+      <!-- Bolinhas de navegação fora do .carousel pra não sofrerem overlay/glow
+           do hero. JS (js/index.js) busca via document.querySelectorAll. -->
+      <div class="carousel-dots" id="mbCarouselDots">
+        <button
+          class="carousel-dot active"
+          data-slide="0"
+          aria-label="Ver slide 1"
+        ></button>
+        <button
+          class="carousel-dot"
+          data-slide="1"
+          aria-label="Ver slide 2"
+        ></button>
+        <button
+          class="carousel-dot"
+          data-slide="2"
+          aria-label="Ver slide 3"
+        ></button>
+      </div>
+
       <div class="carousel" id="mbCarousel">
         <div class="carousel-slide active">
           <img src="img/ia1.png" alt="Etiqueta tecida em cetim" />
@@ -116,23 +136,6 @@
         <div class="carousel-slide">
           <img src="img/laser.png" alt="Corte laser de precisão" />
           <div class="carousel-caption">Prisma - Corte laser</div>
-        </div>
-        <div class="carousel-dots">
-          <button
-            class="carousel-dot active"
-            data-slide="0"
-            aria-label="Ver slide 1"
-          ></button>
-          <button
-            class="carousel-dot"
-            data-slide="1"
-            aria-label="Ver slide 2"
-          ></button>
-          <button
-            class="carousel-dot"
-            data-slide="2"
-            aria-label="Ver slide 3"
-          ></button>
         </div>
       </div>
 

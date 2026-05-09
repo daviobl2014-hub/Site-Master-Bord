@@ -20,7 +20,12 @@
   if (!carousel) return; // Se não tem carrossel, sai (evita erro em outras páginas)
 
   const slides = carousel.querySelectorAll('.carousel-slide');
-  const dots = carousel.querySelectorAll('.carousel-dot');
+  // Dots agora vivem FORA do .carousel — busca pelo container próprio (#mbCarouselDots)
+  // pra não acoplar com o DOM do carrossel (seguro pra futuros re-arranjos do hero).
+  const dotsContainer = document.getElementById('mbCarouselDots');
+  const dots = dotsContainer
+    ? dotsContainer.querySelectorAll('.carousel-dot')
+    : document.querySelectorAll('.carousel-dot');
 
   // Configurações
   const INTERVALO = 8000; // 8 segundos — tempo ideal pro Ken Burns
