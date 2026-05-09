@@ -304,6 +304,58 @@
   aspect-ratio: 16 / 6;
 }
 
+/* ===== Substituem inline styles do contato.html =====
+   - .contato-info-key.is-X colore o label da linha de contato
+   - .contato-form .accent-bar fixa cor vinho do formulário
+   - .contato-mapa-img .* colore o placeholder/moldura azul do mapa
+   - .form-submit-btn ajusta o botão final do formulário
+   - .contato-mapa iframe remove a borda padrão */
+
+.contato-info-key.is-whatsapp {
+  color: var(--mb-green);
+}
+.contato-info-key.is-email {
+  color: var(--mb-azul);
+}
+.contato-info-key.is-endereco {
+  color: var(--mb-ouro);
+}
+.contato-info-key.is-horario {
+  color: var(--mb-vinho);
+}
+
+.contato-form .accent-bar {
+  background: var(--mb-vinho);
+  box-shadow: 0 0 20px rgba(196, 75, 85, 0.5);
+}
+
+.contato-mapa-img .img-gradient {
+  background: linear-gradient(
+    135deg,
+    rgba(74, 139, 214, 0.19),
+    transparent 60%
+  );
+}
+.contato-mapa-img .img-pattern {
+  background: repeating-linear-gradient(
+    0deg,
+    transparent 0 6px,
+    rgba(74, 139, 214, 0.13) 6px 7px
+  );
+}
+.contato-mapa-img .img-border {
+  border-color: rgba(74, 139, 214, 0.3);
+}
+
+.form-submit-btn {
+  justify-content: center;
+  margin-top: 6px;
+}
+
+.contato-mapa iframe {
+  border: 0;
+}
+
 /* ================================================================
    5. MEDIA QUERIES MOBILE
    Ponto de quebra: 900px

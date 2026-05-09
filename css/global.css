@@ -252,6 +252,27 @@ img {
   gap: 40px;
 }
 
+/* ===== UTILITÁRIOS GLOBAIS (substituem inline styles que se repetiam em várias páginas) ===== */
+
+/* Logo dentro do footer (era style="font-size: 22px") */
+.footer-logo {
+  font-size: 22px;
+}
+
+/* Espaçador vertical de 12px entre .mb-tag e .mb-title */
+.spacer-12 {
+  height: 12px;
+}
+
+/* Botões do footer-cta com texto centralizado */
+.btn-cta-center {
+  justify-content: center;
+}
+
+/* Margin-top no h2 grande do footer-cta-grid */
+.footer-cta-grid .mb-title.xl {
+  margin-top: 14px;
+}
 .footer-about p {
   font-size: 13px;
   color: var(--mb-muted);

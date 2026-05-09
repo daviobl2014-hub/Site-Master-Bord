@@ -163,6 +163,113 @@
   color: var(--mb-muted);
 }
 
+/* ===== Variantes por categoria (data-cat) =====
+   Antes ficava tudo em style="" inline em cada um dos 12 itens.
+   Agora o atributo data-cat="X" (já existente no HTML) controla:
+     - cor do accent-bar lateral
+     - gradient + pattern + border-color do .mb-image
+     - cor do .catalogo-item-cta */
+
+/* --- ETIQUETA (azul) --- */
+.catalogo-item[data-cat='etiqueta'] .accent-bar {
+  background: var(--mb-azul);
+}
+.catalogo-item[data-cat='etiqueta'] .img-gradient {
+  background: linear-gradient(
+    135deg,
+    rgba(74, 139, 214, 0.19),
+    transparent 60%
+  );
+}
+.catalogo-item[data-cat='etiqueta'] .img-pattern {
+  background: repeating-linear-gradient(
+    0deg,
+    transparent 0 6px,
+    rgba(74, 139, 214, 0.13) 6px 7px
+  );
+}
+.catalogo-item[data-cat='etiqueta'] .img-border {
+  border-color: rgba(74, 139, 214, 0.3);
+}
+.catalogo-item[data-cat='etiqueta'] .catalogo-item-cta {
+  color: var(--mb-azul);
+}
+
+/* --- BORDADO (vinho) --- */
+.catalogo-item[data-cat='bordado'] .accent-bar {
+  background: var(--mb-vinho);
+}
+.catalogo-item[data-cat='bordado'] .img-gradient {
+  background: linear-gradient(
+    135deg,
+    rgba(196, 75, 85, 0.19),
+    transparent 60%
+  );
+}
+.catalogo-item[data-cat='bordado'] .img-pattern {
+  background: repeating-linear-gradient(
+    35deg,
+    transparent 0 6px,
+    rgba(196, 75, 85, 0.13) 6px 7px
+  );
+}
+.catalogo-item[data-cat='bordado'] .img-border {
+  border-color: rgba(196, 75, 85, 0.3);
+}
+.catalogo-item[data-cat='bordado'] .catalogo-item-cta {
+  color: var(--mb-vinho);
+}
+
+/* --- LASER (ouro) --- */
+.catalogo-item[data-cat='laser'] .accent-bar {
+  background: var(--mb-ouro);
+}
+.catalogo-item[data-cat='laser'] .img-gradient {
+  background: linear-gradient(
+    135deg,
+    rgba(212, 169, 106, 0.19),
+    transparent 60%
+  );
+}
+.catalogo-item[data-cat='laser'] .img-pattern {
+  background: repeating-linear-gradient(
+    70deg,
+    transparent 0 6px,
+    rgba(212, 169, 106, 0.13) 6px 7px
+  );
+}
+.catalogo-item[data-cat='laser'] .img-border {
+  border-color: rgba(212, 169, 106, 0.3);
+}
+.catalogo-item[data-cat='laser'] .catalogo-item-cta {
+  color: var(--mb-ouro);
+}
+
+/* --- MISTO (azul-glow — categoria composta) --- */
+.catalogo-item[data-cat='misto'] .accent-bar {
+  background: var(--mb-azul-glow);
+}
+.catalogo-item[data-cat='misto'] .img-gradient {
+  background: linear-gradient(
+    135deg,
+    rgba(107, 168, 232, 0.19),
+    transparent 60%
+  );
+}
+.catalogo-item[data-cat='misto'] .img-pattern {
+  background: repeating-linear-gradient(
+    62deg,
+    transparent 0 6px,
+    rgba(107, 168, 232, 0.13) 6px 7px
+  );
+}
+.catalogo-item[data-cat='misto'] .img-border {
+  border-color: rgba(107, 168, 232, 0.3);
+}
+.catalogo-item[data-cat='misto'] .catalogo-item-cta {
+  color: var(--mb-azul-glow);
+}
+
 /* ================================================================
    4. ESTADO VAZIO
    ================================================================ */

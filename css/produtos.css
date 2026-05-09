@@ -77,7 +77,91 @@
   font-family: var(--font-mono);
   font-size: 11px;
   letter-spacing: 0.15em;
+  display: inline-block;
   text-transform: uppercase;
+}
+
+/* ===== Variantes por categoria — substituem todos os style="" inline ===== */
+
+/* --- ETIQUETA (azul) --- */
+.produto-index-card.is-etiqueta .accent-bar {
+  background: var(--mb-azul);
+  box-shadow: 0 0 20px rgba(74, 139, 214, 0.5);
+}
+.produto-index-card.is-etiqueta .img-gradient {
+  background: linear-gradient(
+    135deg,
+    rgba(74, 139, 214, 0.19),
+    transparent 60%
+  );
+}
+.produto-index-card.is-etiqueta .img-pattern {
+  background: repeating-linear-gradient(
+    0deg,
+    transparent 0 6px,
+    rgba(74, 139, 214, 0.13) 6px 7px
+  );
+}
+.produto-index-card.is-etiqueta .img-border {
+  border-color: rgba(74, 139, 214, 0.3);
+}
+.produto-index-card.is-etiqueta .produto-index-tagline,
+.produto-index-card.is-etiqueta .produto-index-link {
+  color: var(--mb-azul);
+}
+
+/* --- BORDADO (vinho) --- */
+.produto-index-card.is-bordado .accent-bar {
+  background: var(--mb-vinho);
+  box-shadow: 0 0 20px rgba(196, 75, 85, 0.5);
+}
+.produto-index-card.is-bordado .img-gradient {
+  background: linear-gradient(
+    135deg,
+    rgba(196, 75, 85, 0.19),
+    transparent 60%
+  );
+}
+.produto-index-card.is-bordado .img-pattern {
+  background: repeating-linear-gradient(
+    40deg,
+    transparent 0 6px,
+    rgba(196, 75, 85, 0.13) 6px 7px
+  );
+}
+.produto-index-card.is-bordado .img-border {
+  border-color: rgba(196, 75, 85, 0.3);
+}
+.produto-index-card.is-bordado .produto-index-tagline,
+.produto-index-card.is-bordado .produto-index-link {
+  color: var(--mb-vinho);
+}
+
+/* --- LASER (ouro) --- */
+.produto-index-card.is-laser .accent-bar {
+  background: var(--mb-ouro);
+  box-shadow: 0 0 20px rgba(212, 169, 106, 0.5);
+}
+.produto-index-card.is-laser .img-gradient {
+  background: linear-gradient(
+    135deg,
+    rgba(212, 169, 106, 0.19),
+    transparent 60%
+  );
+}
+.produto-index-card.is-laser .img-pattern {
+  background: repeating-linear-gradient(
+    80deg,
+    transparent 0 6px,
+    rgba(212, 169, 106, 0.13) 6px 7px
+  );
+}
+.produto-index-card.is-laser .img-border {
+  border-color: rgba(212, 169, 106, 0.3);
+}
+.produto-index-card.is-laser .produto-index-tagline,
+.produto-index-card.is-laser .produto-index-link {
+  color: var(--mb-ouro);
 }
 
 /* ================================================================

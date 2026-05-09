@@ -290,7 +290,9 @@
   border: none;
   cursor: pointer;
   padding: 0;
-  transition: background 0.3s, transform 0.3s;
+  transition:
+    background 0.3s,
+    transform 0.3s;
 }
 .carousel-dot:hover {
   background: rgba(242, 236, 224, 0.7);
@@ -457,18 +459,111 @@
   text-transform: uppercase;
 }
 
-img-border {
-  width: 300px;
-  height: 200px;
-  border: 2px solid rgba(74, 139, 214, 0.3);
-  overflow: hidden; /* importante */
-}
-
+/* Imagem real dentro de .img-border preenche o container */
 .img-border img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* não estoura e preenche */
+  object-fit: cover;
   object-position: center 30%;
+}
+
+/* ===== PRODUTO-CARD: variantes de cor por categoria =====
+   Aplicar uma das modifier classes no <a class="produto-card">:
+     .is-etiqueta  → azul   (var(--mb-azul))
+     .is-bordado   → vinho  (var(--mb-vinho))
+     .is-laser     → ouro   (var(--mb-ouro))
+   Antes ficava tudo em style="" inline no HTML — agora centralizado aqui. */
+
+/* --- ETIQUETA (azul) --- */
+.produto-card.is-etiqueta .accent-bar {
+  background: var(--mb-azul);
+  box-shadow: 0 0 20px rgba(74, 139, 214, 0.5);
+}
+.produto-card.is-etiqueta .img-gradient {
+  background: linear-gradient(
+    135deg,
+    rgba(74, 139, 214, 0.19),
+    transparent 60%
+  );
+}
+.produto-card.is-etiqueta .img-pattern {
+  background: repeating-linear-gradient(
+    0deg,
+    transparent 0 6px,
+    rgba(74, 139, 214, 0.13) 6px 7px
+  );
+}
+.produto-card.is-etiqueta .img-border {
+  border-color: rgba(74, 139, 214, 0.3);
+}
+.produto-card.is-etiqueta .produto-k,
+.produto-card.is-etiqueta .produto-link,
+.produto-card.is-etiqueta .spec span {
+  color: var(--mb-azul);
+}
+
+/* --- BORDADO (vinho) --- */
+.produto-card.is-bordado .accent-bar {
+  background: var(--mb-vinho);
+  box-shadow: 0 0 20px rgba(196, 75, 85, 0.5);
+}
+.produto-card.is-bordado .img-gradient {
+  background: linear-gradient(
+    135deg,
+    rgba(196, 75, 85, 0.19),
+    transparent 60%
+  );
+}
+.produto-card.is-bordado .img-pattern {
+  background: repeating-linear-gradient(
+    35deg,
+    transparent 0 6px,
+    rgba(196, 75, 85, 0.13) 6px 7px
+  );
+}
+.produto-card.is-bordado .img-border {
+  border-color: rgba(196, 75, 85, 0.3);
+}
+.produto-card.is-bordado .produto-k,
+.produto-card.is-bordado .produto-link,
+.produto-card.is-bordado .spec span {
+  color: var(--mb-vinho);
+}
+
+/* --- LASER (ouro) --- */
+.produto-card.is-laser .accent-bar {
+  background: var(--mb-ouro);
+  box-shadow: 0 0 20px rgba(212, 169, 106, 0.5);
+}
+.produto-card.is-laser .img-gradient {
+  background: linear-gradient(
+    135deg,
+    rgba(212, 169, 106, 0.19),
+    transparent 60%
+  );
+}
+.produto-card.is-laser .img-pattern {
+  background: repeating-linear-gradient(
+    70deg,
+    transparent 0 6px,
+    rgba(212, 169, 106, 0.13) 6px 7px
+  );
+}
+.produto-card.is-laser .img-border {
+  border-color: rgba(212, 169, 106, 0.3);
+}
+.produto-card.is-laser .produto-k,
+.produto-card.is-laser .produto-link,
+.produto-card.is-laser .spec span {
+  color: var(--mb-ouro);
+}
+
+/* (.spacer-12, .btn-cta-center, .footer-cta-grid .mb-title.xl movidos
+    para global.css — são compartilhados entre páginas) */
+
+/* Margin-bottom da section-head dos depoimentos (era inline style, só no index) */
+.depoimentos-head {
+  margin-bottom: 48px;
 }
 
 /* ================================================================
@@ -789,7 +884,10 @@ img-border {
   border: 2px solid var(--mb-line);
   flex-shrink: 0;
   cursor: pointer;
-  transition: transform 0.3s, border-color 0.3s, opacity 0.3s;
+  transition:
+    transform 0.3s,
+    border-color 0.3s,
+    opacity 0.3s;
   opacity: 0.85;
   z-index: 1;
 }
@@ -822,7 +920,9 @@ img-border {
   border-radius: 4px;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.2s, transform 0.2s;
+  transition:
+    opacity 0.2s,
+    transform 0.2s;
   z-index: 999;
 }
 

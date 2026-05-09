@@ -290,6 +290,35 @@ body[data-cor='ouro'] {
   letter-spacing: -0.01em;
 }
 
+/* ===== Coloração via --cor-produto-rgb (substituem todos os style="" inline)
+   Hero img + 5 aplicações herdam a cor da página atual via body[data-cor]. */
+
+.produto-hero-img .img-gradient,
+.produto-aplicacao .img-gradient {
+  background: linear-gradient(
+    135deg,
+    rgba(var(--cor-produto-rgb), 0.19),
+    transparent 60%
+  );
+}
+.produto-hero-img .img-pattern,
+.produto-aplicacao .img-pattern {
+  background: repeating-linear-gradient(
+    45deg,
+    transparent 0 6px,
+    rgba(var(--cor-produto-rgb), 0.13) 6px 7px
+  );
+}
+.produto-hero-img .img-border,
+.produto-aplicacao .img-border {
+  border-color: rgba(var(--cor-produto-rgb), 0.3);
+}
+
+/* Espaçador 40px para .produto-aplicacoes-head e .produto-relacionados-head */
+.head-margin-40 {
+  margin-bottom: 40px;
+}
+
 /* ================================================================
    5. OUTROS PRODUTOS — 2 cards
    ================================================================ */
@@ -342,6 +371,31 @@ body[data-cor='ouro'] {
   text-align: right;
   line-height: 1;
   letter-spacing: -0.04em;
+}
+
+/* Variantes do .produto-relacionado-card (cores fixas das outras categorias) */
+.produto-relacionado-card.is-azul .accent-bar {
+  background: var(--mb-azul);
+}
+.produto-relacionado-card.is-azul .produto-relacionado-link,
+.produto-relacionado-card.is-azul .produto-relacionado-k {
+  color: var(--mb-azul);
+}
+
+.produto-relacionado-card.is-vinho .accent-bar {
+  background: var(--mb-vinho);
+}
+.produto-relacionado-card.is-vinho .produto-relacionado-link,
+.produto-relacionado-card.is-vinho .produto-relacionado-k {
+  color: var(--mb-vinho);
+}
+
+.produto-relacionado-card.is-ouro .accent-bar {
+  background: var(--mb-ouro);
+}
+.produto-relacionado-card.is-ouro .produto-relacionado-link,
+.produto-relacionado-card.is-ouro .produto-relacionado-k {
+  color: var(--mb-ouro);
 }
 
 /* ================================================================
