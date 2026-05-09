@@ -2,7 +2,7 @@
 
 > **Arquivo de continuação entre sessões com Claude.**
 > Envie este arquivo no início de cada nova conversa.
-> **Última atualização:** 08/05/2026 (Sessão 9 — dots fora do carrossel + doc do pattern do pega/)
+> **Última atualização:** 09/05/2026 (Sessão 11 — IMAGENS-INSTRUCOES.md criado + ajuste H1 catálogo + commit antes de imagens)
 
 ---
 
@@ -353,6 +353,76 @@ Davi notou que as bolinhas estavam sendo afetadas pelos glows do hero (atrás do
 
 Davi pediu que eu lesse `pega/index.html` + `pega/css/01-base.css` + `03-hero.css` + `04-carrossel.css` e documentasse no MD a forma como o fundo é estruturado lá. A receita exata virou seção própria pra próximas sessões poderem replicar sem ter que abrir os arquivos do `pega/`.
 
+### Sessão 10 — Caption do carrossel ajustada em mobile (HOJE)
+
+Davi notou que a `.carousel-caption` (legenda dos slides do hero) ficava grande/desalinhada em telas abaixo de 900px. Ajuste pequeno só no `@media (max-width: 900px)` do `css/index.css` (linhas ~1002-1007), sem mexer no desktop:
+
+```css
+@media (max-width: 900px) {
+  .carousel-caption {
+    right: 10px;     /* desktop: 0px  → mobile: 10px (encosta menos na borda) */
+    bottom: 12px;    /* desktop: 20px → mobile: 12px (mais perto do fundo) */
+    font-size: 9px;  /* desktop: 11px → mobile: 9px (compacto) */
+    padding: 6px 10px; /* desktop: 8px 20px → mobile: 6px 10px (mais apertado) */
+  }
+}
+```
+
+`.carousel-dots` no mesmo @media já estava com `right: 20px; bottom: 20px` — não foi tocado.
+
+Sem mudanças em HTML/JS — só CSS, e só dentro do breakpoint mobile.
+
+### Sessão 11 — IMAGENS-INSTRUCOES.md + ajuste H1 catálogo + commit antes de imagens (HOJE)
+
+**Objetivo da sessão:** preparar o site pra fase de imagens reais — fechar pendências pequenas, commitar tudo funcionando, sair do trabalho de layout/CSS e entrar no trabalho de design Corel + substituição de imagens.
+
+**Parte 1 — Inventário de imagens (`IMAGENS-INSTRUCOES.md` na raiz):**
+
+Davi vai criar caixas no CorelDraw pra ter melhor resolução das imagens. Eu fiz inventário completo de TODAS as 42 caixas de imagem do site (`<div class="mb-image">`) divididas por:
+- Página (7 páginas: index, produtos, sobre, 3× produto-*, catalogo)
+- Seção
+- aspect-ratio (5/3, 5/4, 16/10, 3/4, 1/1, fullscreen)
+- img-label (textinho sobreposto, ex: ET-012, PLANTA · 2400M²)
+- Tamanho 2x sugerido (HiDPI/Retina)
+- Área respirável (canto superior esquerdo pra label, canto inferior pra título grande)
+
+Tabela cheat-sheet pro Corel:
+| Aspect | Tamanho 2x |
+|---|---|
+| 5/3 | 1200×720 |
+| 5/4 | 1200×960 |
+| 16/10 | 2000×1250 |
+| 3/4 | 1200×1600 |
+| 1/1 | 800×800 |
+| Hero | 2400×1500 |
+
+Davi pode abrir só esse arquivo no Corel pra consultar enquanto desenha.
+
+**Parte 2 — Ajuste do H1 do catálogo:**
+
+Davi editou manualmente o H1 da página catálogo ([catalogo.html:101-105](catalogo.html#L101-L105)) — palavra "acervo" agora highlight ouro, "Master" highlight azul, "Bord" highlight vinho:
+
+```html
+<h1 class="catalogo-hero-title">
+  O <span class="highlight-ouro">acervo</span><br />
+  da <span class="highlight-azul">Master</span>
+  <span class="highlight-vinho">Bord</span>.
+</h1>
+```
+
+✅ Versão final aplicada usa `<span>` consistente nas 3 palavras destacadas — HTML válido, sem warning de validador.
+
+**Parte 3 — Commit:**
+
+Tudo funcionando, Davi vai commitar antes de mudar de fase (CSS/HTML → imagens).
+
+**Próximas missões da próxima sessão:**
+
+1. Criar caixas no Corel seguindo `IMAGENS-INSTRUCOES.md`
+2. Exportar imagens (sRGB, JPG q85, tamanhos 2x)
+3. Substituir placeholders nos `<div class="mb-image">` por `<img>` reais
+4. Corrigir bug do `img-border` sem ponto em [css/index.css:460](css/index.css#L460) (não bloqueante mas vale)
+
 ---
 
 ## 🖼️ PATTERN DE FUNDO DA PASTA `pega/` (referência visual do Davi)
@@ -468,4 +538,26 @@ A pasta `pega/` na raiz do projeto contém uma versão antiga/protótipo do site
 
 ---
 
-**Status sessão 9:** Hero fullscreen consolidado (sessão 8) + dots fora do carrossel funcionando + pattern do pega/ documentado pra futuras sessões. Próximos: polir legenda do carrossel, decidir entre pattern do pega vs fullscreen atual, aplicar fluid design nas outras 7 páginas, dados reais, deploy. ~85% do projeto.
+**Status sessão 11:** CSS/HTML do site finalizados pra fase atual. Hero fullscreen + dots externos + caption mobile + H1 catálogo ajustado. Inventário completo de 42 caixas de imagem documentado em `IMAGENS-INSTRUCOES.md`. Davi vai commitar tudo e migrar pra fase de design no Corel + substituição de imagens reais. ~88% do projeto.
+
+---
+
+## 🎯 ARQUIVOS DE REFERÊNCIA NA RAIZ
+
+- **`PROJETO-MASTER-BORD.md`** ← este arquivo (continuação de sessões com Claude)
+- **`IMAGENS-INSTRUCOES.md`** ← inventário das 42 caixas de imagem (consultar no Corel)
+- **`pega/`** ← protótipo antigo, referência do pattern de fundo (pode apagar se quiser)
+
+---
+
+## 📍 PRÓXIMAS MISSÕES (atualizadas pós-sessão 11)
+
+1. **Criar caixas no Corel** seguindo `IMAGENS-INSTRUCOES.md` (42 imagens em 7 páginas)
+2. **Exportar imagens** (sRGB, JPG q85 progressive, tamanhos 2x)
+3. **Substituir placeholders** nos `<div class="mb-image">` por `<img>` reais
+4. **Corrigir bug** do `img-border` sem ponto em `css/index.css:460`
+5. **Aplicar fluid design** nas outras 7 páginas (replicar `@media min-width: 900px` + `clamp()` da home)
+6. **Substituir dados fictícios** (email, endereço, CEP, CNPJ, datas timeline, stats, depoimentos)
+7. **Limpar Font Awesome duplicado** no `index.html`
+8. **Testes finais** — 8 páginas em 1920×1080, 1280×720, 768px, 375px
+9. **Deploy** — commit `nova-interface` → push → merge `main` → verificar Pages
