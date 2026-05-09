@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
@@ -250,10 +250,7 @@
         </a>
 
         <!-- Bordado (vinho) -->
-        <a
-          href="produto-bordado.html"
-          class="mb-card produto-card is-bordado"
-        >
+        <a href="produto-bordado.html" class="mb-card produto-card is-bordado">
           <div class="accent-bar"></div>
           <div class="mb-image">
             <div class="img-gradient"></div>
@@ -315,29 +312,223 @@
       <div class="section-head">
         <div>
           <div class="mb-tag">03 / PORTFÓLIO</div>
-          <div class="spacer-12"></div>
+          <div style="height: 12px"></div>
           <h2 class="mb-title lg">
             Últimas <span class="highlight-vinho">produções</span>.
           </h2>
         </div>
         <div class="galeria-filtros">
-          <span class="active" data-filtro="todos">Todos</span>
-          <span data-filtro="etiqueta">Etiquetas</span>
-          <span data-filtro="bordado">Bordados</span>
-          <span data-filtro="laser">Laser</span>
+          <span class="border-baixo">Bordados</span>
+          <span class="border-baixo">Etiquetas</span>
+          <span class="border-baixo">Laser</span>
         </div>
       </div>
 
-      <div class="galeria-grid" id="galeriaGrid">
-        <!-- 5 espaços vazios — JS preenche conforme o filtro -->
-        <div class="galeria-item wide tall" data-slot="0"></div>
-        <div class="galeria-item" data-slot="1"></div>
-        <div class="galeria-item" data-slot="2"></div>
-        <div class="galeria-item" data-slot="3"></div>
-        <div class="galeria-item wide" data-slot="4"></div>
+      <div class="galeria-grid">
+        <!-- Item 1 (wide + tall) -->
+        <div class="galeria-item wide tall">
+          <div class="mb-image" style="height: 100%">
+            <div
+              class="img-gradient"
+              style="
+                background: linear-gradient(
+                  135deg,
+                  rgba(196, 75, 85, 0.19),
+                  transparent 60%
+                );
+              "
+            ></div>
+            <div
+              class="img-pattern"
+              style="
+                background: repeating-linear-gradient(
+                  0deg,
+                  transparent 0 6px,
+                  rgba(196, 75, 85, 0.13) 6px 7px
+                );
+              "
+            ></div>
+            <div
+              class="img-border"
+              style="border-color: rgba(196, 75, 85, 0.3)"
+            >
+              <img src="img/portifolio/bordado-1.jpg" alt="" />
+            </div>
+          </div>
+          <div class="galeria-item-tag" style="background: var(--mb-vinho)">
+            BR
+          </div>
+          <div class="galeria-item-caption">
+            <div class="galeria-texto">
+              <div class="galeria-item-title">Uniforme corporativo</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="galeria-item">
+          <div class="mb-image" style="height: 100%">
+            <div
+              class="img-gradient"
+              style="
+                background: linear-gradient(
+                  135deg,
+                  rgba(74, 139, 214, 0.19),
+                  transparent 60%
+                );
+              "
+            ></div>
+            <div
+              class="img-pattern"
+              style="
+                background: repeating-linear-gradient(
+                  30deg,
+                  transparent 0 6px,
+                  rgba(74, 139, 214, 0.13) 6px 7px
+                );
+              "
+            ></div>
+            <div
+              class="img-border img-etiqueta1-ajuste"
+              style="border-color: rgba(74, 139, 214, 0.3)"
+            >
+              <img src="img/portifolio/etiqueta-1.jpg" alt="" />
+            </div>
+          </div>
+          <div class="galeria-item-tag" style="background: var(--mb-azul)">
+            ET
+          </div>
+          <div class="galeria-item-caption">
+            <div class="galeria-texto">
+              <div class="galeria-item-title">Etiqueta Palito</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="galeria-item">
+          <div class="mb-image" style="height: 100%">
+            <div
+              class="img-gradient"
+              style="
+                background: linear-gradient(
+                  135deg,
+                  rgba(212, 169, 106, 0.19),
+                  transparent 60%
+                );
+              "
+            ></div>
+            <div
+              class="img-pattern"
+              style="
+                background: repeating-linear-gradient(
+                  60deg,
+                  transparent 0 6px,
+                  rgba(212, 169, 106, 0.13) 6px 7px
+                );
+              "
+            ></div>
+            <div
+              class="img-border img-etiqueta1-ajuste"
+              style="border-color: rgba(212, 169, 106, 0.3)"
+            >
+              <img src="/img/portifolio/laser-1.jpg" alt="" />
+            </div>
+          </div>
+          <div class="galeria-item-tag" style="background: var(--mb-ouro)">
+            LA
+          </div>
+          <div class="galeria-item-caption">
+            <div class="galeria-texto">
+              <div class="galeria-item-title">Patch Laser</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 4 -->
+        <div class="galeria-item">
+          <div class="mb-image" style="height: 100%">
+            <div
+              class="img-gradient"
+              style="
+                background: linear-gradient(
+                  135deg,
+                  rgba(229, 102, 112, 0.19),
+                  transparent 60%
+                );
+              "
+            ></div>
+            <div
+              class="img-pattern"
+              style="
+                background: repeating-linear-gradient(
+                  90deg,
+                  transparent 0 6px,
+                  rgba(229, 102, 112, 0.13) 6px 7px
+                );
+              "
+            ></div>
+            <div
+              class="img-border img-etiqueta1-ajuste"
+              style="border-color: rgba(229, 102, 112, 0.3)"
+            >
+              <img src="img/portifolio/bordado-2.jpg" alt="" />
+            </div>
+          </div>
+          <div
+            class="galeria-item-tag"
+            style="background: var(--mb-vinho-glow)"
+          >
+            BR
+          </div>
+          <div class="galeria-item-caption">
+            <div class="galeria-texto">
+              <div class="galeria-item-title">Bordado Alta Densidade</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 5 (wide) -->
+        <div class="galeria-item wide">
+          <div class="mb-image" style="height: 100%">
+            <div
+              class="img-gradient"
+              style="
+                background: linear-gradient(
+                  135deg,
+                  rgba(107, 168, 232, 0.19),
+                  transparent 60%
+                );
+              "
+            ></div>
+            <div
+              class="img-pattern"
+              style="
+                background: repeating-linear-gradient(
+                  120deg,
+                  transparent 0 6px,
+                  rgba(107, 168, 232, 0.13) 6px 7px
+                );
+              "
+            ></div>
+            <div
+              class="img-border"
+              style="border-color: rgba(107, 168, 232, 0.3)"
+            >
+              <img src="img/portifolio/etiqueta-2.png" alt="" />
+            </div>
+          </div>
+          <div class="galeria-item-tag" style="background: var(--mb-azul-glow)">
+            ET
+          </div>
+          <div class="galeria-item-caption">
+            <div class="galeria-texto">
+              <div class="galeria-item-title">etiqueta Clip</div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
-
     <!-- ================================================================
        DEPOIMENTOS — 04
        ================================================================ -->
@@ -804,9 +995,7 @@
             </h2>
           </div>
           <div class="footer-cta-ctas">
-            <a
-              href="contato.html"
-              class="btn btn-primary btn-cta-center"
+            <a href="contato.html" class="btn btn-primary btn-cta-center"
               >Solicitar orçamento →</a
             >
             <button

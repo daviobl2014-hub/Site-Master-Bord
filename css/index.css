@@ -290,9 +290,7 @@
   border: none;
   cursor: pointer;
   padding: 0;
-  transition:
-    background 0.3s,
-    transform 0.3s;
+  transition: background 0.3s, transform 0.3s;
 }
 .carousel-dot:hover {
   background: rgba(242, 236, 224, 0.7);
@@ -508,11 +506,7 @@
   box-shadow: 0 0 20px rgba(196, 75, 85, 0.5);
 }
 .produto-card.is-bordado .img-gradient {
-  background: linear-gradient(
-    135deg,
-    rgba(196, 75, 85, 0.19),
-    transparent 60%
-  );
+  background: linear-gradient(135deg, rgba(196, 75, 85, 0.19), transparent 60%);
 }
 .produto-card.is-bordado .img-pattern {
   background: repeating-linear-gradient(
@@ -574,9 +568,11 @@
   padding: 96px 48px;
 }
 .galeria-filtros {
+  position: relative;
+  top: 55px;
   font-family: var(--font-mono);
   font-size: 11px;
-  color: var(--mb-ouro);
+  color: var(--mb-paper);
   letter-spacing: 0.15em;
   text-transform: uppercase;
   display: flex;
@@ -587,9 +583,25 @@
   cursor: pointer;
 }
 
-.galeria-filtros span:not(.active) {
-  color: var(--mb-muted);
+.border-baixo {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 6px;
 }
+
+.border-baixo::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+
+  width: 100%;
+  height: 2px;
+
+  background: var(--mb-ouro);
+  border-radius: 999px;
+}
+
 .galeria-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -601,6 +613,11 @@
   overflow: hidden;
   cursor: pointer;
 }
+.img-etiqueta1-ajuste img {
+  object-fit: cover;
+  object-position: center 45%;
+}
+
 .galeria-item.wide {
   grid-column: span 3;
 }
@@ -621,12 +638,27 @@
   font-size: 11px;
   letter-spacing: 0.05em;
 }
+
 .galeria-item-caption {
   position: absolute;
   bottom: 18px;
   left: 18px;
   right: 18px;
 }
+
+.galeria-texto {
+  position: absolute;
+  left: -2px;
+  bottom: -2px;
+  padding: 8px 20px;
+  background: rgba(15, 17, 22, 0.6);
+  backdrop-filter: blur(10px);
+  color: var(--mb-paper);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+}
+
 .galeria-item-title {
   font-family: var(--font-display);
   font-weight: 700;
@@ -884,10 +916,7 @@
   border: 2px solid var(--mb-line);
   flex-shrink: 0;
   cursor: pointer;
-  transition:
-    transform 0.3s,
-    border-color 0.3s,
-    opacity 0.3s;
+  transition: transform 0.3s, border-color 0.3s, opacity 0.3s;
   opacity: 0.85;
   z-index: 1;
 }
@@ -920,9 +949,7 @@
   border-radius: 4px;
   opacity: 0;
   pointer-events: none;
-  transition:
-    opacity 0.2s,
-    transform 0.2s;
+  transition: opacity 0.2s, transform 0.2s;
   z-index: 999;
 }
 
