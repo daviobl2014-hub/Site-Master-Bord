@@ -2,7 +2,7 @@
 
 > **Arquivo de continuação entre sessões com Claude.**
 > Envie este arquivo no início de cada nova conversa.
-> **Última atualização:** 09/05/2026 (Sessão 12 — limpeza inline styles + padronização ângulos por cor + PENDENCIAS.md criado)
+> **Última atualização:** 10/05/2026 (Sessão 13 — refatoração border-baixo + tooltip dos depoimentos turbinado)
 
 ---
 
@@ -579,6 +579,52 @@ Aplicado em 6 lugares: `index.css` (produto-card + galeria), `catalogo.css`, `pr
 
 Lista organizada de pendências técnicas. Próxima alta prioridade: **criar variáveis CSS centrais para as 5 cores** (RGB triples + ângulos) no `:root` do `global.css`. Hoje as cores ainda aparecem como `rgba(74, 139, 214, X)` literal espalhadas — variáveis vão centralizar tudo, mudar 1 linha = atualiza site inteiro.
 
+### Sessão 13 — Refatoração border-baixo + tooltip dos depoimentos turbinado (HOJE)
+
+**Parte 1 — Class `border-baixo` extinta (galeria filtros):**
+
+Os 3 spans dos filtros decorativos da galeria usavam `class="border-baixo"` que criava o sublinhado dourado via `::after`. Como a class só era usada nesses 3 lugares, fundi tudo no seletor pai `.galeria-filtros span` + `::after`. HTML mais limpo, escopo claro (CSS dedicado em vez de class genérica reutilizável fantasma).
+
+```css
+/* Antes: 2 regras separadas, 3 spans com class="border-baixo" */
+/* Agora: 1 bloco, spans nus */
+.galeria-filtros span { ... }
+.galeria-filtros span::after { ... }
+```
+
+**Parte 2 — Typos acidentais consertados:**
+
+`it  <head>` (linha 3 do `index.html`) e `g        <!-- Item 1 -->` (linha 320) foram inseridos por erro de digitação. Consertados.
+
+**Parte 3 — Tooltip dos depoimentos refatorado em camadas:**
+
+Davi pediu várias melhorias incrementais no tooltip:
+
+1. **Centralizar pelo card** — antes ancorava no `<a>` (largura do trecho de texto, então tooltip ficava alinhado pelo texto, não pelo card). Movi a âncora.
+2. **Card inteiro clicável** — técnica "stretched link": `::before` do `<a>` com `position: absolute; inset: 0; z-index: 1` cobre o card todo. Click em qualquer lugar abre o link do depoimento.
+3. **`cursor: pointer` no card todo** — `.depoimento-card { cursor: pointer }`.
+4. **Footer com `z-index: 2`** — garante que avatar do Instagram do autor continue clicável independentemente do stretched link.
+5. **Hover do card todo dispara tooltip** — `.depoimento-card:hover .depoimento-texto::after` em vez de hover só no `<a>`.
+6. **Tooltip aparece acima do TEXTO** (não do card todo) — mudei o `::after` do `<a>` pro `<p>`, com `data-tooltip` adicionado em cada `<p class="depoimento-texto">`. `position: relative` no `<p>` faz a âncora ser o parágrafo. Visualmente o tooltip aparece centralizado acima do texto, não acima do card.
+7. **`overflow: visible` no `.depoimento-card`** — override do `.mb-card` que tem `overflow: hidden` (importante pro accent-bar das outras cards, mas depoimento não tem accent-bar). Sem isso, tooltip era cortado.
+
+**Estrutura final do depoimento:**
+
+```html
+<div class="mb-card depoimento-card">  <!-- cursor pointer + overflow visible -->
+  <div class="depoimento-aspas">"</div>
+  <p class="depoimento-texto" data-tooltip="Depoimento smartiron">
+    <a href="..." aria-label="Depoimento smartiron">texto</a>
+    <!-- ::before do <a> = stretched link cobrindo card todo -->
+    <!-- ::after do <p> = tooltip acima do texto -->
+  </p>
+  <div class="depoimento-footer">  <!-- z-index: 2 -->
+    <a class="depoimento-avatar ..." href="..."></a>  <!-- segue clicável -->
+    ...
+  </div>
+</div>
+```
+
 ---
 
 ## 🎯 ARQUIVOS DE REFERÊNCIA NA RAIZ
@@ -590,19 +636,17 @@ Lista organizada de pendências técnicas. Próxima alta prioridade: **criar var
 
 ---
 
-## 📍 PRÓXIMAS MISSÕES (atualizadas pós-sessão 12)
+## 📍 PRÓXIMAS MISSÕES (atualizadas pós-sessão 13)
 
 > Lista detalhada com prioridades em `PENDENCIAS.md`.
 
-1. **Criar variáveis CSS centrais para as 5 cores** (RGB triples + ângulos) — alta prioridade. Centraliza tudo no `:root` do `global.css`. Detalhes em `PENDENCIAS.md` item 2.
+1. **Criar variáveis CSS centrais para as 5 cores** (RGB triples + ângulos) — alta prioridade. Centraliza tudo no `:root` do `global.css`. Detalhes em `PENDENCIAS.md` item 1 (próxima alta).
 2. **Criar caixas no Corel** seguindo `IMAGENS-INSTRUCOES.md` (42 imagens)
 3. **Exportar imagens** (sRGB, JPG q85 progressive, tamanhos 2x)
 4. **Substituir placeholders** nos `<div class="mb-image">` por `<img>` reais
-5. **Resolver filtros decorativos da galeria** (item 3 do PENDENCIAS.md)
-6. **Aplicar fluid design** nas outras 7 páginas
-7. **Substituir dados fictícios** (email, endereço, CEP, CNPJ, datas timeline, stats, depoimentos)
-8. **Limpar Font Awesome duplicado** no `index.html`
-9. **Testes finais** — 8 páginas em 1920×1080, 1280×720, 768px, 375px
-10. **Deploy** — commit `nova-interface` → push → merge `main` → verificar Pages
+5. **Aplicar fluid design** nas outras 7 páginas
+6. **Substituir dados fictícios** (email, endereço, CEP, CNPJ, datas timeline, stats, depoimentos)
+7. **Testes finais** — 8 páginas em 1920×1080, 1280×720, 768px, 375px
+8. **Deploy** — commit `nova-interface` → push → merge `main` → verificar Pages
 
-**Status sessão 12:** Limpeza profunda concluída — 0 inline styles em todas as páginas de produção, ângulos do pattern padronizados globalmente (azul=0deg, vinho=35deg, ouro=-70deg invertido), JS dormente removido. CSS arquitetura limpa pronta pra próxima fase de melhorias (variáveis centralizadas → imagens reais). ~90% do projeto.
+**Status sessão 13:** Polimento UX no depoimento (card clicável + tooltip centralizado acima do texto + cursor pointer) e refactor `border-baixo` extinta. Site continua com 0 inline styles, ângulos padronizados, e agora com tooltip elegante nos depoimentos. CSS arquitetura ainda mais enxuta. Próximo: variáveis CSS centrais. ~91% do projeto.

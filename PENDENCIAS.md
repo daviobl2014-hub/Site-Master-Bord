@@ -4,7 +4,7 @@
 > Para visão geral do projeto e sessões: ver `PROJETO-MASTER-BORD.md`.
 > Para inventário de imagens: ver `IMAGENS-INSTRUCOES.md`.
 
-**Última atualização:** 09/05/2026
+**Última atualização:** 10/05/2026
 
 ---
 
@@ -23,6 +23,17 @@
 - ✅ **JS dormente da galeria filtrada** removido (~115 linhas em `js/index.js`) — substituído por comentário explicativo.
 - ✅ **Font Awesome duplicado** em `index.html` linhas 19-22 removido — economiza 1 request HTTP.
 - ✅ **Comentário desatualizado** em `css/index.css` atualizado — não mencionava mais "ficha técnica" que não existe desde sessão 8.
+
+### Polimento UX (Sessão 13 — refatoração + tooltip depoimentos)
+
+- ✅ **Class `border-baixo` extinta + filtros da galeria aprovados como decorativos** — era usada só nos 3 spans dos filtros da galeria. Fundi tudo no seletor `.galeria-filtros span` + `::after`. HTML mais limpo, escopo claro. Os spans seguem sem função de clique (decorativos puros, aprovado pelo Davi).
+- ✅ **Typos acidentais consertados** em `index.html` — `it  <head>` (linha 3) e `g        <!-- Item 1 -->` (linha 320) inseridos por erro de digitação.
+- ✅ **Tooltip dos depoimentos refatorado** (3 melhorias):
+  1. **Centralizado pelo card** — antes ancorava no `<a>` (largura do trecho de texto), agora ancora no `<p>` (largura do card).
+  2. **Card inteiro clicável + cursor pointer** — técnica "stretched link" via `::before` do `<a>` cobrindo o card via `inset: 0`. Footer com `z-index: 2` mantém avatar do Instagram do autor clicável independentemente.
+  3. **Hover no card todo dispara tooltip** — `.depoimento-card:hover .depoimento-texto::after` em vez de `:hover` no `<a>`.
+  4. **Tooltip aparece acima do TEXTO** (não acima do card todo) — `data-tooltip` no `<p>` com âncora `position: relative` no próprio parágrafo.
+  5. **`.depoimento-card { overflow: visible }`** — override do `.mb-card` (que tem `overflow: hidden`) pro tooltip não ser cortado.
 
 ---
 
@@ -106,25 +117,7 @@
 
 ## 🔧 PEQUENAS — quando der tempo
 
-### 2. Filtros decorativos da galeria sem função
-
-[index.html:320-324](index.html#L320-L324) tem 3 spans de filtros que não fazem nada (eram controlados pelo JS removido na sessão 12).
-
-```html
-<div class="galeria-filtros">
-  <span class="border-baixo">Bordados</span>
-  <span class="border-baixo">Etiquetas</span>
-  <span class="border-baixo">Laser</span>
-</div>
-```
-
-**Opções:**
-
-- (a) **Remover o bloco inteiro** — limpa o HTML.
-- (b) **Manter visualmente** mas sem clique (decoração).
-- (c) **Re-implementar** como filtro que esconde/mostra os 5 cards via CSS `display: none` ou JS leve.
-
-### 3. Calibrar `.carousel-caption` (legenda dos slides do hero)
+### 2. Calibrar `.carousel-caption` (legenda dos slides do hero)
 
 Tamanho/posição/cor sobre a imagem ainda pode receber polimento fino — ver Sessão 8/9 do `PROJETO-MASTER-BORD.md`.
 
@@ -132,7 +125,7 @@ Tamanho/posição/cor sobre a imagem ainda pode receber polimento fino — ver S
 
 ## 🌐 CONTEÚDO — depende do cliente
 
-### 4. Substituir dados fictícios
+### 3. Substituir dados fictícios
 
 Marcados como `[SUBSTITUIR: X]` ou inventados:
 
@@ -144,7 +137,7 @@ Marcados como `[SUBSTITUIR: X]` ou inventados:
 - [ ] Estatísticas de `sobre.html` (2.400m², 32 máquinas, 48 colaboradores, 120k peças/mês)
 - [ ] Depoimentos REAIS (atualmente Juliana Farah, Rafael Teixeira, Clara Moretti = inventados)
 
-### 5. Decisões pendentes com o cliente Master Bord
+### 4. Decisões pendentes com o cliente Master Bord
 
 - [ ] Aprovar perda da "moldura técnica certificada" (cantos dourados removidos da `hero-spec-card`)
 - [ ] Decidir entre pattern do `pega/` (imagem fixa global blur) **ou** manter fullscreen carousel atual
@@ -153,7 +146,7 @@ Marcados como `[SUBSTITUIR: X]` ou inventados:
 
 ## 🖼️ IMAGENS — sessão dedicada (próxima fase)
 
-### 6. Substituir os 42 placeholders por imagens reais
+### 5. Substituir os 42 placeholders por imagens reais
 
 Detalhamento completo em `IMAGENS-INSTRUCOES.md`:
 
@@ -166,7 +159,7 @@ Detalhamento completo em `IMAGENS-INSTRUCOES.md`:
 
 ## 🏗️ ESTRUTURAL — sessão dedicada
 
-### 7. Aplicar fluid design nas outras 7 páginas
+### 6. Aplicar fluid design nas outras 7 páginas
 
 Replicar `@media (min-width: 900px)` + `clamp()` que está em `css/index.css` para:
 
@@ -180,21 +173,21 @@ Replicar `@media (min-width: 900px)` + `clamp()` que está em `css/index.css` pa
 
 ## 🧪 FINAL — testes + deploy
 
-### 8. Testes em 4 viewports
+### 7. Testes em 4 viewports
 
 - [ ] 1920×1080 (desktop grande)
 - [ ] 1280×720 (notebook 13")
 - [ ] 768px (tablet)
 - [ ] 375px (mobile)
 
-### 9. Deploy
+### 8. Deploy
 
 - [ ] Commit final em `nova-interface`
 - [ ] Push origin
 - [ ] Merge na `main`
 - [ ] Verificar GitHub Pages funcionando
 
-### 10. (Opcional) Paleta mais clara
+### 9. (Opcional) Paleta mais clara
 
 Só se cliente solicitar.
 
@@ -204,9 +197,10 @@ Só se cliente solicitar.
 
 | Categoria | Status |
 |---|---|
-| 🐛 Bugs/cleanup técnico | ✅ **6/6 resolvidos** |
+| 🐛 Bugs/cleanup técnico | ✅ **8/8 resolvidos** (sessão 12+13) |
+| 🎨 Polimento UX (tooltip depoimentos + class extinta + typos + filtros limpos) | ✅ **4/4 resolvidos** (sessão 13) |
 | 🔥 Variáveis CSS centrais | 🟡 Pendente (próxima alta prioridade) |
-| 🔧 Polimento (galeria + caption) | 🟡 2 pendentes |
+| 🔧 Polimento restante (caption do carrossel) | 🟡 1 pendente |
 | 🌐 Conteúdo cliente | 🔴 9 pendentes (bloqueado pelo cliente) |
 | 🖼️ Imagens reais | 🔴 42 caixas pendentes (próxima fase) |
 | 🏗️ Fluid design 7 páginas | 🔴 Pendente |

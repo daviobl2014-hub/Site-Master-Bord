@@ -825,22 +825,46 @@
   /* Muda a cor de fundo (opcional) */
   background-color: var(--mb-bg);
 }
-/* Âncora do tooltip: o <p> (não o <a> interno).
-   Assim o tooltip centraliza pelo CARD inteiro, não pelo trecho de texto
-   que o <a> envolve (que pode estar em qualquer lugar do parágrafo). */
-.depoimento-texto {
-  position: relative;
+/* Card inteiro clicável + cursor pointer + tooltip acima do TEXTO no hover.
+   - .mb-card já é position: relative (âncora pro stretched link do <a>)
+   - .depoimento-texto vira position: relative (âncora do tooltip = acima do <p>)
+   - ::before do <a> cobre o card todo (stretched link)
+   - ::after do <p> aparece logo acima do parágrafo (não acima do card todo) */
+.depoimento-card {
+  cursor: pointer;
+  /* override do .mb-card (overflow: hidden) — overflow: visible deixa
+     o tooltip vazar pra cima do <p> sem ser cortado */
+  overflow: visible;
 }
+
+/* Footer acima do stretched link — avatar do Instagram do autor segue clicável */
+.depoimento-footer {
+  position: relative;
+  z-index: 2;
+}
+
 .depoimento-texto a {
   cursor: pointer;
 }
 
-.depoimento-texto a::after {
-  content: attr(aria-label);
+/* Stretched link: torna o card todo clicável */
+.depoimento-texto a::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+/* Tooltip ancorado no <p> = aparece acima do TEXTO, não do card */
+.depoimento-texto {
+  position: relative;
+}
+.depoimento-texto::after {
+  content: attr(data-tooltip);
   position: absolute;
 
-  bottom: 100%; /* acima do parágrafo (= acima do card) */
-  left: 50%; /* centralizado horizontalmente no card */
+  bottom: 100%; /* acima do parágrafo (encostado no espaço acima do texto) */
+  left: 50%; /* centralizado no parágrafo */
   transform: translateX(-50%);
 
   color: var(--mb-paper);
@@ -859,7 +883,8 @@
   z-index: 10;
 }
 
-.depoimento-texto a:hover::after {
+/* Hover em qualquer parte do CARD dispara o tooltip do texto */
+.depoimento-card:hover .depoimento-texto::after {
   opacity: 1;
   transform: translateX(-50%) translateY(-4px);
 }
