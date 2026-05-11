@@ -609,11 +609,9 @@
   overflow: hidden;
   cursor: pointer;
 }
-.img-etiqueta1-ajuste img {
-  object-fit: cover;
-  object-position: center 45%;
+.img-border .img-etiqueta1-ajuste {
+  object-position: center 60% !important;
 }
-
 .galeria-item.wide {
   grid-column: span 3;
 }
@@ -691,11 +689,7 @@
 
 /* --- VINHO (BR) --- */
 .galeria-item.is-vinho .img-gradient {
-  background: linear-gradient(
-    135deg,
-    rgba(196, 75, 85, 0.19),
-    transparent 60%
-  );
+  background: linear-gradient(135deg, rgba(196, 75, 85, 0.19), transparent 60%);
 }
 .galeria-item.is-vinho .img-pattern {
   background: repeating-linear-gradient(
