@@ -149,16 +149,11 @@
   grid-template-columns: 120px 1fr;
   gap: 28px;
   align-items: start;
-  transition:
-    background 0.35s ease,
-    border-color 0.35s ease,
-    transform 0.35s ease,
-    box-shadow 0.35s ease;
+  transition: background 0.35s ease, border-color 0.35s ease,
+    transform 0.35s ease, box-shadow 0.35s ease;
 }
 .certificado-card .accent-bar {
-  transition:
-    width 0.35s ease,
-    box-shadow 0.35s ease;
+  transition: width 0.35s ease, box-shadow 0.35s ease;
 }
 .certificado-card:hover {
   background: var(--mb-card-hover);
@@ -193,9 +188,7 @@
   height: 100%;
   object-fit: contain;
   display: block;
-  transition:
-    filter 0.3s ease,
-    transform 0.3s ease;
+  transition: filter 0.3s ease, transform 0.3s ease;
 }
 
 .certificado-titulo {
@@ -227,7 +220,7 @@
 }
 .infra-grid {
   display: grid;
-  grid-template-columns: 1.4fr 1fr;
+  grid-template-columns: 1.4fr 1fr 1fr;
   gap: 24px;
 }
 .infra-img-principal {
@@ -332,11 +325,7 @@
 /* --- Infra secundária: VINHO (Teares) e OURO (Laser) ---
    Diferenciadas por modificador .is-vinho / .is-ouro */
 .infra-img-secundaria.is-vinho .img-gradient {
-  background: linear-gradient(
-    135deg,
-    rgba(196, 75, 85, 0.19),
-    transparent 60%
-  );
+  background: linear-gradient(135deg, rgba(196, 75, 85, 0.19), transparent 60%);
 }
 .infra-img-secundaria.is-vinho .img-pattern {
   background: repeating-linear-gradient(
