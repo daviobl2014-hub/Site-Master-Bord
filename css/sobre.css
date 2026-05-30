@@ -303,27 +303,45 @@
   background: var(--mb-azul-glow);
 }
 
-/* --- Infra principal: AZUL (Chão de fábrica) --- */
+/* --- Infra principal: CINZA (Chão de fábrica) --- */
 .infra-img-principal .img-gradient {
+  background: linear-gradient(
+    135deg,
+    rgba(139, 143, 153, 0.22),
+    transparent 60%
+  );
+}
+.infra-img-principal .img-pattern {
+  background: repeating-linear-gradient(
+    45deg,
+    transparent 0 6px,
+    rgba(139, 143, 153, 0.15) 6px 7px
+  );
+}
+.infra-img-principal .img-border {
+  border-color: rgba(139, 143, 153, 0.35);
+}
+
+/* --- Infra secundária: AZUL (Teares, Corte), VINHO (Bordado), OURO (Laser) ---
+   Diferenciadas por modificador .is-azul / .is-vinho / .is-ouro */
+.infra-img-secundaria.is-azul .img-gradient {
   background: linear-gradient(
     135deg,
     rgba(74, 139, 214, 0.19),
     transparent 60%
   );
 }
-.infra-img-principal .img-pattern {
+.infra-img-secundaria.is-azul .img-pattern {
   background: repeating-linear-gradient(
     0deg,
     transparent 0 6px,
     rgba(74, 139, 214, 0.13) 6px 7px
   );
 }
-.infra-img-principal .img-border {
+.infra-img-secundaria.is-azul .img-border {
   border-color: rgba(74, 139, 214, 0.3);
 }
 
-/* --- Infra secundária: VINHO (Teares) e OURO (Laser) ---
-   Diferenciadas por modificador .is-vinho / .is-ouro */
 .infra-img-secundaria.is-vinho .img-gradient {
   background: linear-gradient(135deg, rgba(196, 75, 85, 0.19), transparent 60%);
 }
