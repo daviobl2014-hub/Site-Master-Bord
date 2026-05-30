@@ -227,16 +227,6 @@
   position: relative;
   aspect-ratio: 16 / 10;
 }
-.infra-img-titulo {
-  position: absolute;
-  bottom: 5px;
-  left: 20px;
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 40px;
-  color: var(--mb-paper);
-  letter-spacing: -0.02em;
-}
 .infra-img-coluna {
   display: grid;
   grid-template-rows: 1fr 1fr;
@@ -245,6 +235,35 @@
 .infra-img-secundaria {
   position: relative;
   min-height: 0;
+}
+
+/* Imagem real dentro de .img-border preenche o container (igual galeria) */
+.sobre-infra .img-border img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+}
+
+/* Caption sobreposta com backdrop blur — padrão idêntico à .galeria-texto */
+.infra-item-caption {
+  position: absolute;
+  bottom: 18px;
+  left: 18px;
+  right: 18px;
+}
+.infra-texto {
+  position: absolute;
+  left: -2px;
+  bottom: -2px;
+  padding: 8px 20px;
+  background: rgba(15, 17, 22, 0.6);
+  backdrop-filter: blur(10px);
+  color: var(--mb-paper);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.05em;
 }
 
 /* ===== Variantes por categoria — substituem todos os style="" inline =====
