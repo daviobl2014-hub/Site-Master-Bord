@@ -220,12 +220,12 @@
 }
 .infra-grid {
   display: grid;
-  grid-template-columns: 1.4fr 1fr 1fr;
+  height: 600px;
+  grid-template-columns: 2fr 1fr 1fr;
   gap: 24px;
 }
 .infra-img-principal {
   position: relative;
-  aspect-ratio: 16 / 10;
 }
 .infra-img-coluna {
   display: grid;
