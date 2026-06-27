@@ -165,7 +165,8 @@ body[data-cor='ouro'] {
 /* Imagem do hero (placeholder com sample box embaixo) */
 .produto-hero-img {
   position: relative;
-  aspect-ratio: 3 / 4;
+  /* aspect-ratio: 3 / 4; */
+  height: 70vh;
 }
 .produto-hero-img-sample {
   position: absolute;
