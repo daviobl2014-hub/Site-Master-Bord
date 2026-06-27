@@ -173,9 +173,9 @@ body[data-cor='ouro'] {
   bottom: 20px;
   left: 20px;
   right: 20px;
-  padding: 10px 14px;
-  background: var(--mb-bg-deep);
-  border: 1px solid var(--cor-produto);
+  padding: 10px 20px;
+  background: rgba(15, 17, 22, 0.6);
+  backdrop-filter: blur(10px);
 }
 .produto-hero-img-sample-cod {
   font-family: var(--font-mono);
@@ -282,7 +282,11 @@ body[data-cor='ouro'] {
   position: absolute;
   bottom: 14px;
   left: 14px;
-  right: 14px;
+  right: auto;
+  max-width: calc(100% - 28px);
+  padding: 8px 16px;
+  background: rgba(15, 17, 22, 0.6);
+  backdrop-filter: blur(10px);
   font-family: var(--font-display);
   font-weight: 700;
   font-size: 17px;
