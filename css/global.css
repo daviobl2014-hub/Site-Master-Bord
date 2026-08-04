@@ -889,3 +889,19 @@ img {
     padding: 16px 20px;
   }
 }
+
+/* whatssap logo */
+
+.logo-whatssap {
+  position: fixed;
+  right: 1rem;
+  bottom: 3rem;
+
+  width: 4rem;
+  height: 4rem;
+}
+
+.logo-whatssap:hover {
+  transform: scale(0.9);
+  transition: transform 0.2s;
+}
