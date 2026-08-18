@@ -95,50 +95,10 @@
     </header>
 
     <!-- ================================================================
-       HERO — 01 / primeira dobra (FULLSCREEN com background imersivo)
+       HERO — 01 / primeira dobra (texto à esquerda, vitrine à direita)
        ================================================================ -->
     <section class="hero">
-      <!-- Carrossel agora é background fullscreen
-             (mesmas classes/IDs do JS atual — js/index.js continua funcionando) -->
-      <!-- Bolinhas de navegação fora do .carousel pra não sofrerem overlay/glow
-           do hero. JS (js/index.js) busca via document.querySelectorAll. -->
-      <div class="carousel-dots" id="mbCarouselDots">
-        <button
-          class="carousel-dot active"
-          data-slide="0"
-          aria-label="Ver slide 1"
-        ></button>
-        <button
-          class="carousel-dot"
-          data-slide="1"
-          aria-label="Ver slide 2"
-        ></button>
-        <button
-          class="carousel-dot"
-          data-slide="2"
-          aria-label="Ver slide 3"
-        ></button>
-      </div>
-
-      <div class="carousel" id="mbCarousel">
-        <div class="carousel-slide active">
-          <img src="img/ia1.png" alt="Etiqueta tecida em cetim" />
-          <div class="carousel-caption">Barudan - Bordados</div>
-        </div>
-        <div class="carousel-slide">
-          <img src="img/ia2.png" alt="Tear Barudan em produção" />
-          <div class="carousel-caption">Tear Muller - Etiquetas</div>
-        </div>
-        <div class="carousel-slide">
-          <img src="img/laser.png" alt="Corte laser de precisão" />
-          <div class="carousel-caption">Prisma - Corte laser</div>
-        </div>
-      </div>
-
-      <!-- Overlay escuro sobre o background (legibilidade do texto) -->
-      <div class="hero-bg-overlay"></div>
-
-      <!-- Glows e grid (acima do overlay) -->
+      <!-- Glows e grid -->
       <div class="tech-grid"></div>
       <div class="hero-glow-azul"></div>
       <div class="hero-glow-vinho"></div>
@@ -148,7 +108,7 @@
         <div class="text-hero">
           <div class="hero-tag-line">
             <div class="line"></div>
-            <div class="mb-tag">Etiquetas · Bordados · Corte a Laser</div>
+            <div class="mb-tag">Sua marca tem visual profissional ou entrega acabamento amador</div>
           </div>
 
           <h1 class="titulo-principal" aria-label="Master Bord">
@@ -160,266 +120,323 @@
           </h1>
 
           <p class="hero-lead">
-            Desde 1994, <strong>três décadas</strong> produzindo etiquetas,
-            bordados e cortes a laser para marcas que levam o acabamento a
-            sério. Certificados
+            Transforme o padrão da sua marca ou empresa de forma
+            <strong>garantida</strong>, com a experiência de quem produz
+            etiquetas, bordados e patches desde 1994.
+          </p>
+
+          <p class="hero-lead hero-lead-apoio">
+            Com <strong>30+ anos</strong> de experiência,
+            <strong>10.000+ clientes</strong> atendidos,
+            <strong>300+ clientes/mês</strong>, garantimos qualidade e preço de
+            fábrica para agregar valor para sua empresa. Certificados
             <abbr title="Associação Brasileira do Varejo Têxtil">ABVTEX</abbr>,
-            com tecnologia <span title="Muller">Suiça</span> ,
-            <span title="Barudan">Japonesa</span> e também tecnologia
+            com tecnologia <span title="Muller">Suiça</span>,
+            <span title="Barudan">Japonesa</span> e também
             <span title="Automatiza">Brasileira</span>.
           </p>
 
           <div class="hero-ctas">
-            <a href="produtos.html" class="btn btn-primary"
-              >Conheça nossa linha →</a
-            >
-            <a href="catalogo.html" class="btn btn-ghost">Ver catálogo</a>
+            <button type="button" class="btn btn-primary btn-hero-cta js-wa-modal">
+              Fale diretamente com a fábrica →
+            </button>
           </div>
+        </div>
 
-          <div class="hero-stats">
-            <div class="hero-stat">
-              <div class="num azul">30+</div>
-              <div class="lbl">anos de estrada</div>
+        <!-- Vitrine das 3 linhas (mesmas imagens da seção 02 / Produtos) -->
+        <div class="hero-vitrine">
+          <a href="produto-etiqueta.html" class="hero-vitrine-item is-etiqueta">
+            <div class="hero-vitrine-img">
+              <img src="img/etiqueta1.png" alt="Etiquetas personalizadas" />
             </div>
-            <div class="hero-stat">
-              <div class="num vinho">10.000+</div>
-              <div class="lbl">clientes atendidas</div>
+            <div class="hero-vitrine-nome">Etiquetas</div>
+          </a>
+          <a href="produto-bordado.html" class="hero-vitrine-item is-bordado">
+            <div class="hero-vitrine-img">
+              <img src="img/bordado1.png" alt="Bordados exclusivos" />
             </div>
-            <div class="hero-stat">
-              <div class="num azul">300+</div>
-              <div class="lbl">clientes por mês</div>
+            <div class="hero-vitrine-nome">Bordados</div>
+          </a>
+          <a href="produto-laser.html" class="hero-vitrine-item is-laser">
+            <div class="hero-vitrine-img">
+              <img src="img/laser1.png" alt="Corte a laser sob medida" />
             </div>
-            <div class="hero-stat">
-              <div class="num vinho">100%</div>
-              <div class="lbl">qualidade garantida</div>
-            </div>
-          </div>
+            <div class="hero-vitrine-nome">Corte a Laser</div>
+          </a>
         </div>
       </div>
     </section>
 
     <!-- ================================================================
-       PRODUTOS — 02
+       SOLUÇÕES — 02
        ================================================================ -->
     <section class="section-produtos">
-      <div class="section-head">
-        <div>
-          <div class="mb-tag">02 / PRODUTOS</div>
-          <div class="spacer-12"></div>
-          <h2 class="mb-title lg">
-            Três linhas, <span class="highlight-azul">Um padrão</span>
-          </h2>
-        </div>
+      <!-- Intro centralizada -->
+      <div class="solucoes-intro">
+        <div class="mb-tag">02 / SOLUÇÕES</div>
+        <h2 class="mb-title lg">
+          Soluções de Precisão Têxtil
+          <span class="highlight-azul">Sob Medida</span> para o Tamanho do Seu
+          Projeto
+        </h2>
+        <p class="solucoes-lead">
+          Seja para abastecer uma grande rede do varejo, vestir uma equipe de
+          alta performance ou lançar a primeira coleção da sua marca, nós
+          entregamos a mesma engenharia industrial. Desenvolvemos soluções
+          completas em acabamento para quem não aceita o medíocre:
+        </p>
       </div>
 
-      <div class="produtos-grid">
-        <!-- Etiqueta (azul) -->
-        <a
-          href="produto-etiqueta.html"
-          class="mb-card produto-card is-etiqueta"
-        >
-          <div class="accent-bar"></div>
-          <div class="mb-image">
-            <div class="img-gradient"></div>
-            <div class="img-pattern"></div>
-            <div class="img-border">
-              <img src="img/etiqueta1.png" alt="imagem etiqueta" />
-            </div>
-          </div>
-          <div class="produto-header">
-            <div class="produto-k">ETIQUETAS</div>
-            <div class="produto-counter">01/03</div>
-          </div>
-          <div class="produto-nome">Personalizadas</div>
-          <div class="produto-desc">
-            Alta definição e durabilidade. Produção em teares profissionais e
-            acabamento impecável, com tamanhos e cores sob medida.
-          </div>
-          <div class="produto-specs">
-            <div class="spec"><span>→</span>09mm a 200mm</div>
-            <div class="spec"><span>→</span>8 cores simultâneas</div>
-            <div class="spec">
-              <span>→</span>Poliester · Tafetá · SuperBatida
-            </div>
-          </div>
-          <div class="produto-link">VER DETALHES →</div>
-        </a>
+      <!-- Especialidades industriais -->
+      <h3 class="solucoes-subtitulo">
+        <span class="solucoes-emoji" aria-hidden="true">🧵</span> Nossas
+        Especialidades Industriais
+      </h3>
 
-        <!-- Bordado (vinho) -->
-        <a href="produto-bordado.html" class="mb-card produto-card is-bordado">
-          <div class="accent-bar"></div>
-          <div class="mb-image">
-            <div class="img-gradient"></div>
-            <div class="img-pattern"></div>
-            <div class="img-border">
-              <img src="img/bordado1.png" alt="" />
-            </div>
+      <div class="especialidades-grid">
+        <article class="mb-card especialidade-card is-etiqueta">
+          <div class="especialidade-icone" aria-hidden="true">
+            <i class="fa-solid fa-tag"></i>
           </div>
-          <div class="produto-header">
-            <div class="produto-k">BORDADO</div>
-            <div class="produto-counter">02/03</div>
-          </div>
-          <div class="produto-nome">Exclusivos</div>
-          <div class="produto-desc">
-            Alta densidade de pontos para acabamento profissional e durável,
-            mantendo aparência mesmo após várias lavagens.
-          </div>
-          <div class="produto-specs">
-            <div class="spec"><span>→</span>até 20cm</div>
-            <div class="spec"><span>→</span>cores Pantone</div>
-            <div class="spec"><span>→</span>Qualquer Tecido</div>
-          </div>
-          <div class="produto-link">VER DETALHES →</div>
-        </a>
+          <h4 class="especialidade-nome">Etiquetas Tecidas de Alta Definição</h4>
+          <p class="especialidade-desc">
+            Seladas a laser, com toque macio e cores vivas. O detalhe que assina
+            a identidade da sua marca, resiste a lavagens pesadas e elimina o
+            incômodo na pele do seu cliente.
+          </p>
+        </article>
 
-        <!-- Laser (ouro) -->
-        <a href="produto-laser.html" class="mb-card produto-card is-laser">
-          <div class="accent-bar"></div>
-          <div class="mb-image">
-            <div class="img-gradient"></div>
-            <div class="img-pattern"></div>
-            <div class="img-border">
-              <img src="img/laser1.png" alt="" />
-            </div>
+        <article class="mb-card especialidade-card is-bordado">
+          <div class="especialidade-icone" aria-hidden="true">
+            <i class="fa-solid fa-shirt"></i>
           </div>
-          <div class="produto-header">
-            <div class="produto-k">LASER</div>
-            <div class="produto-counter">03/03</div>
+          <h4 class="especialidade-nome">
+            Bordados Computadorizados e Patches Industriais
+          </h4>
+          <p class="especialidade-desc">
+            Pontos de altíssima densidade e alinhamento milimétrico em
+            maquinário japonês. Patches reforçados e bordados limpos que não
+            deformam a peça.
+          </p>
+        </article>
+
+        <article class="mb-card especialidade-card is-laser">
+          <div class="especialidade-icone" aria-hidden="true">
+            <i class="fa-solid fa-scissors"></i>
           </div>
-          <div class="produto-nome">Sob medida</div>
-          <div class="produto-desc">
-            Cortes retos, curvos ou complexos com 0,1mm de precisão. Bordas
-            seladas — não desfia.
+          <h4 class="especialidade-nome">
+            Cortes a Laser de Altíssima Precisão
+          </h4>
+          <p class="especialidade-desc">
+            Recortes complexos, formatos livres e bordas com selamento térmico
+            exclusivo que impedem o desfiar e aceleram a aplicação na sua linha
+            de produção.
+          </p>
+        </article>
+      </div>
+
+      <!-- Públicos atendidos -->
+      <h3 class="solucoes-subtitulo">
+        <span class="solucoes-emoji" aria-hidden="true">🎯</span> Quem Nós
+        Atendemos <span class="solucoes-sub-leve">(E Como Elevamos o Seu
+        Negócio)</span>
+      </h3>
+
+      <div class="publicos-grid">
+        <article class="mb-card publico-card is-bordado">
+          <div class="publico-header">
+            <span class="publico-num" aria-hidden="true">01</span>
+            <h4 class="publico-nome">
+              Equipes, CTs e Academias de Jiu-Jitsu / Artes Marciais
+            </h4>
           </div>
-          <div class="produto-specs">
-            <div class="spec"><span>→</span>0.1mm precisão</div>
-            <div class="spec"><span>→</span>forma livre</div>
-            <div class="spec"><span>→</span>Patch · Tecidos · Tags</div>
+          <div class="publico-bloco">
+            <div class="publico-k dor">A Dor</div>
+            <p>
+              Patches e bordados que rasgam na pegada, descolam após poucas
+              lutas, desbotam no suor ou travam a entrega dos quimonos da
+              equipe.
+            </p>
           </div>
-          <div class="produto-link">VER DETALHES →</div>
-        </a>
+          <div class="publico-bloco">
+            <div class="publico-k solucao">A Solução</div>
+            <p>
+              Patches e bordados de altíssima resistência e densidade extrema,
+              projetados para aguentar o atrito severo dos treinos e
+              competições. Padronização visual impecável para o kimono do seu
+              time, projetando a autoridade e o orgulho que a sua bandeira
+              merece dentro e fora do tatame.
+            </p>
+          </div>
+        </article>
+
+        <article class="mb-card publico-card is-etiqueta">
+          <div class="publico-header">
+            <span class="publico-num" aria-hidden="true">02</span>
+            <h4 class="publico-nome">
+              Marcas de Moda e Confeccionistas (Streetwear, Casual e Fightwear)
+            </h4>
+          </div>
+          <div class="publico-bloco">
+            <div class="publico-k dor">A Dor</div>
+            <p>
+              Mudar de fornecedor a cada coleção por falta de padrão e medo
+              constante de atrasar a data de lançamento.
+            </p>
+          </div>
+          <div class="publico-bloco">
+            <div class="publico-k solucao">A Solução</div>
+            <p>
+              Valor percebido de grife na sua peça, lote 100% padronizado e a
+              certeza de que sua coleção estará pronta exatamente na data
+              planejada.
+            </p>
+          </div>
+        </article>
+
+        <article class="mb-card publico-card is-laser">
+          <div class="publico-header">
+            <span class="publico-num" aria-hidden="true">03</span>
+            <h4 class="publico-nome">
+              Private Labels e Confecções de Grande Porte
+            </h4>
+          </div>
+          <div class="publico-bloco">
+            <div class="publico-k dor">A Dor</div>
+            <p>
+              Exigência de auditorias rigorosas, grande volume e o risco de
+              contratar fornecedores sem conformidade fiscal ou trabalhista.
+            </p>
+          </div>
+          <div class="publico-bloco">
+            <div class="publico-k solucao">A Solução</div>
+            <p>
+              Estrutura homologada e auditada com Certificação ABVTEX,
+              garantindo capacidade de escala para milhares de peças,
+              rastreabilidade e segurança jurídica total.
+            </p>
+          </div>
+        </article>
+
+        <article class="mb-card publico-card is-etiqueta">
+          <div class="publico-header">
+            <span class="publico-num" aria-hidden="true">04</span>
+            <h4 class="publico-nome">
+              Uniformes Corporativos, Escolares e Vestuário Profissional
+            </h4>
+          </div>
+          <div class="publico-bloco">
+            <div class="publico-k dor">A Dor</div>
+            <p>
+              Logotipos que desbotam, bordados que desfiam rapidamente e
+              etiquetas que se deterioram com a rotina de uso intenso.
+            </p>
+          </div>
+          <div class="publico-bloco">
+            <div class="publico-k solucao">A Solução</div>
+            <p>
+              Alta durabilidade, resistência a lavagens industriais e
+              padronização visual que transmite a seriedade e o profissionalismo
+              da sua empresa.
+            </p>
+          </div>
+        </article>
+      </div>
+
+      <!-- CTA + texto conectivo pro bloco seguinte -->
+      <div class="solucoes-cta">
+        <button type="button" class="btn btn-primary btn-hero-cta js-wa-modal">
+          Enviar meu projeto para análise técnica da equipe
+        </button>
+        <p class="solucoes-conector">
+          Mas ter o produto certo é apenas metade do caminho. O verdadeiro
+          desafio é encontrar quem entregue isso sem dores de cabeça.
+          <span class="conector-seta" aria-hidden="true">↓</span>
+        </p>
       </div>
     </section>
 
     <!-- ================================================================
-       GALERIA / PORTFÓLIO — 03
+       QUEBRA DE PADRÃO E PROMESSA — 03
        ================================================================ -->
-    <section class="section-galeria">
-      <div class="section-head">
-        <div>
-          <div class="mb-tag">03 / PORTFÓLIO</div>
-          <div class="spacer-12"></div>
-          <h2 class="mb-title lg">
-            Últimas <span class="highlight-vinho">produções</span>
+    <section class="section-historia">
+      <div class="historia-grid">
+        <!-- Coluna esquerda: dor → promessa -->
+        <div class="historia-texto">
+          <div class="hero-tag-line">
+            <div class="line"></div>
+            <div class="mb-tag">03 / QUEBRA DE PADRÃO E PROMESSA</div>
+          </div>
+
+          <p class="historia-abertura">
+            Você criou sua empresa para ser uma referência no mercado e
+            transmitir autoridade em cada detalhe.
+          </p>
+
+          <p>
+            Mas a sua rotina de produção virou um pesadelo: lançamentos
+            atrasados, fornecedores que somem e peças devolvidas por bordados
+            tortos ou etiquetas que desbotam e desfiam. Você gasta mais tempo
+            apagando incêndios do que escalando suas vendas.
+          </p>
+
+          <p>
+            Você não precisa refazer toda a sua coleção para parecer
+            <em>premium</em>. O que você precisa é de uma estrutura que abastece
+            as maiores redes do país: teares de precisão suíça, maquinário
+            japonês Barudan e certificação ABVTEX.
+          </p>
+
+          <blockquote class="historia-promessa">
+            Garantimos entrega no prazo e o padrão milimétrico do 1º ao 10.000º
+            item. Transformamos suas peças em símbolos de credibilidade visual,
+            eliminando o retrabalho e devolvendo a sua margem de lucro.
+          </blockquote>
+
+          <p class="historia-conector">
+            Entenda como a escolha do parceiro certo transforma o dia a dia da
+            sua produção e a força da sua marca.
+            <span class="conector-seta" aria-hidden="true">↓</span>
+          </p>
+        </div>
+
+        <!-- Coluna direita: a história da fábrica -->
+        <div class="mb-card historia-card">
+          <span class="historia-ano" aria-hidden="true">1994</span>
+
+          <h2 class="mb-title historia-titulo">
+            Desde 1994, aprendemos que negócios são feitos de
+            <span class="highlight-azul">pessoas para pessoas</span>.
           </h2>
-        </div>
-        <div class="galeria-filtros">
-          <span>Bordados</span>
-          <span>Etiquetas</span>
-          <span>Laser</span>
-        </div>
-      </div>
 
-      <div class="galeria-grid">
-        <!-- Item 1 (wide + tall) - VINHO -->
-        <div class="galeria-item wide tall is-vinho">
-          <div class="mb-image">
-            <div class="img-gradient"></div>
-            <div class="img-pattern"></div>
-            <div class="img-border">
-              <img
-                src="img/portifolio/bordado-1.jpg"
-                alt="Uniforme corporativo bordado"
-              />
-            </div>
-          </div>
-          <div class="galeria-item-tag">BR</div>
-          <div class="galeria-item-caption">
-            <div class="galeria-texto">
-              <div class="galeria-item-title">bordado cordão + rechelieu</div>
-            </div>
-          </div>
-        </div>
+          <p>
+            Há 30 anos, essa fábrica começou pequena, alimentada pelo mesmo
+            sonho e pela mesma coragem que moveram você a abrir a sua empresa.
+          </p>
 
-        <!-- Item 2 - AZUL -->
-        <div class="galeria-item is-azul">
-          <div class="mb-image">
-            <div class="img-gradient"></div>
-            <div class="img-pattern"></div>
-            <div class="img-border">
-              <img
-                src="img/portifolio/etiqueta-1.png"
-                alt="Etiqueta Palito"
-                class="img-etiqueta1-mobile-up"
-              />
-            </div>
-          </div>
-          <div class="galeria-item-tag">ET</div>
-          <div class="galeria-item-caption">
-            <div class="galeria-texto">
-              <div class="galeria-item-title">Etiqueta Palito</div>
-            </div>
-          </div>
-        </div>
+          <p>
+            É por isso que entendemos perfeitamente a sua ansiedade com uma data
+            de lançamento, a sua exigência por um acabamento limpo e a sua dor
+            de cabeça quando algo sai do controle. A sua marca é o seu bem mais
+            precioso — e nós cuidamos de cada bordado, etiqueta e patch como se
+            fosse para a nossa própria coleção.
+          </p>
 
-        <!-- Item 3 - OURO -->
-        <div class="galeria-item is-ouro">
-          <div class="mb-image">
-            <div class="img-gradient"></div>
-            <div class="img-pattern"></div>
-            <div class="img-border">
-              <img src="img/portifolio/laser-1.png" alt="Patch Laser" />
-            </div>
-          </div>
-          <div class="galeria-item-tag">LA</div>
-          <div class="galeria-item-caption">
-            <div class="galeria-texto">
-              <div class="galeria-item-title">Patch Laser</div>
-            </div>
-          </div>
-        </div>
+          <p>
+            Quando o seu cliente elogia a sua peça, quem sorri aqui do outro
+            lado somos nós. Porque o seu sucesso é, literalmente, a nossa razão
+            de existir.
+          </p>
 
-        <!-- Item 4 - VINHO-GLOW -->
-        <div class="galeria-item is-vinho-glow">
-          <div class="mb-image">
-            <div class="img-gradient"></div>
-            <div class="img-pattern"></div>
-            <div class="img-border">
-              <img
-                src="img/portifolio/bordado-2.jpg"
-                alt="Bordado Alta Densidade"
-                class="img-etiqueta1-ajuste"
-              />
-            </div>
-          </div>
-          <div class="galeria-item-tag">BR</div>
-          <div class="galeria-item-caption">
-            <div class="galeria-texto">
-              <div class="galeria-item-title">
-                Bordado Lã - Opção pro chenille
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Item 5 (wide) - AZUL-GLOW -->
-        <div class="galeria-item wide is-azul-glow">
-          <div class="mb-image">
-            <div class="img-gradient"></div>
-            <div class="img-pattern"></div>
-            <div class="img-border">
-              <img src="img/portifolio/etiqueta-2.jpg" alt="Etiqueta Clip" />
-            </div>
-          </div>
-          <div class="galeria-item-tag">ET</div>
-          <div class="galeria-item-caption">
-            <div class="galeria-texto">
-              <div class="galeria-item-title">Etiqueta Tamanhos</div>
-            </div>
-          </div>
+          <p class="historia-conector">
+            Veja o que dizem as marcas que já confiam a sua produção e a sua
+            história à nossa fábrica.
+            <span class="conector-seta" aria-hidden="true">↓</span>
+          </p>
         </div>
       </div>
     </section>
+
     <!-- ================================================================
        DEPOIMENTOS — 04
        ================================================================ -->
@@ -870,35 +887,492 @@
     </section>
 
     <!-- ================================================================
+       DECISÃO / COMPARATIVO — 06
+       Substitui o antigo CTA "Pronto para produzir com a gente"
+       ================================================================ -->
+    <section class="section-decisao">
+      <div class="decisao-intro">
+        <div class="mb-tag">06 / A DECISÃO</div>
+        <h2 class="mb-title lg">
+          Você pode adiar a decisão de mudar de fornecedor. Mas o seu
+          <span class="highlight-vinho">concorrente não vai esperar</span>.
+        </h2>
+        <p class="decisao-lead">
+          Muitas confecções e marcas deixam para resolver o acabamento no último
+          minuto ou aceitam o risco de continuar com fornecedores amadores por
+          medo de mudar. A verdade é simples:
+          <strong
+            >cada lote produzido sem a qualidade ideal é uma oportunidade
+            perdida de consolidar sua marca e aumentar sua margem.</strong
+          >
+        </p>
+      </div>
+
+      <!-- 4 objeções respondidas -->
+      <div class="objecoes-grid">
+        <article class="mb-card objecao-card is-vinho">
+          <div class="objecao-header">
+            <span class="objecao-icone" aria-hidden="true"
+              ><i class="fa-solid fa-shield-halved"></i
+            ></span>
+            <span class="objecao-num">1</span>
+          </div>
+          <h3 class="objecao-titulo">
+            O Risco é 100% Nosso: Garantia de Padrão e Prazo em Contrato
+          </h3>
+          <p class="objecao-fala">
+            <span class="objecao-k">Objeção:</span> “E se o meu lote vier com
+            defeito ou atrasar meu lançamento?”
+          </p>
+          <p class="objecao-resposta">
+            Nós não trabalhamos com estimativas genéricas. Garantimos a entrega
+            no prazo combinado e a fidelidade exata do gabarito aprovado, da 1ª
+            à 10.000ª peça. Se o produto entregue estiver fora da especificação
+            técnica aprovada por você,
+            <strong>nós refazemos o seu lote sem custos adicionais.</strong> A
+            responsabilidade do resultado é da Master Bord.
+          </p>
+        </article>
+
+        <article class="mb-card objecao-card is-azul">
+          <div class="objecao-header">
+            <span class="objecao-icone" aria-hidden="true"
+              ><i class="fa-solid fa-headset"></i
+            ></span>
+            <span class="objecao-num">2</span>
+          </div>
+          <h3 class="objecao-titulo">
+            Suporte Técnico de Verdade: Do Layout à Linha de Produção
+          </h3>
+          <p class="objecao-fala">
+            <span class="objecao-k">Objeção:</span> “Tenho medo de mandar o
+            arquivo e a etiqueta/bordado sair errado ou inadequado pro meu
+            tecido.”
+          </p>
+          <p class="objecao-resposta">
+            Você não interage com um sistema automatizado sem rosto. Nosso time
+            de especialistas analisa a densidade do tecido, a aplicação final e
+            a viabilidade do design antes de rodar o maquinário. Ajustamos
+            vetores, indicamos a melhor tecnologia (suíça ou japonesa) e
+            aprovamos a amostra técnica com você para que o resultado supere
+            suas expectativas.
+          </p>
+        </article>
+
+        <article class="mb-card objecao-card is-azul">
+          <div class="objecao-header">
+            <span class="objecao-icone" aria-hidden="true"
+              ><i class="fa-solid fa-gem"></i
+            ></span>
+            <span class="objecao-num">3</span>
+          </div>
+          <h3 class="objecao-titulo">
+            Elevação de Valor Percebido: O Detalhe que Justifica o Preço do Seu
+            Produto
+          </h3>
+          <p class="objecao-fala">
+            <span class="objecao-k">Objeção:</span> “Acho que meu cliente não
+            vai reparar no acabamento do bordado ou da etiqueta.”
+          </p>
+          <p class="objecao-resposta">
+            O consumidor final pode não entender de engenharia têxtil, mas ele
+            sente o acabamento no toque e na estética. Uma etiqueta tecida
+            selada a laser (que não incomoda a pele) e um bordado de altíssima
+            densidade são responsáveis por transformar uma peça comum em um
+            artigo de desejo. É o acabamento industrial que permite à sua marca
+            cobrar mais e ser percebida como uma grande grife.
+          </p>
+        </article>
+
+        <article class="mb-card objecao-card is-ouro">
+          <div class="objecao-header">
+            <span class="objecao-icone" aria-hidden="true"
+              ><i class="fa-solid fa-industry"></i
+            ></span>
+            <span class="objecao-num">4</span>
+          </div>
+          <h3 class="objecao-titulo">
+            Tradição, Certificação ABVTEX e Capacidade Fabril
+          </h3>
+          <p class="objecao-fala">
+            <span class="objecao-k">Objeção:</span> “Como sei que essa empresa
+            tem estrutura para aguentar minha demanda com o tempo?”
+          </p>
+          <p class="objecao-resposta">
+            Desde 1994 no mercado, produzimos mais de
+            <strong>120 mil peças por mês</strong> para mais de
+            <strong>500 clientes ativos</strong>. Possuímos a certificação
+            auditada <strong>ABVTEX</strong>, o selo máximo de responsabilidade
+            social, ética e conformidade trabalhista exigido pelas maiores redes
+            de moda do país. Segurança jurídica e operacional total para o seu
+            negócio.
+          </p>
+        </article>
+      </div>
+
+      <!-- Urgência -->
+      <div class="decisao-urgencia">
+        <div class="urgencia-selo">
+          <span class="line" aria-hidden="true"></span>
+          <span class="mb-tag"
+            ><span aria-hidden="true">⏳</span> Por que tomar essa decisão agora
+            e não na próxima coleção?</span
+          >
+        </div>
+        <p class="urgencia-texto">
+          Quanto mais cedo você alinha sua linha de produção com uma fábrica de
+          alta precisão, mais rápido você ganha três coisas que o mercado não
+          espera:
+          <strong
+            >reputação inquestionável, fidelização do seu cliente e
+            tranquilidade operacional.</strong
+          >
+        </p>
+        <p class="urgencia-texto">
+          Continuar com o fornecedor atual por comodidade significa continuar
+          correndo o risco de lançamentos atrasados, devoluções e desvalorização
+          da sua marca.
+        </p>
+      </div>
+
+      <!-- Comparativo -->
+      <div class="comparativo-wrap">
+        <table class="comparativo">
+          <thead>
+            <tr>
+              <th scope="col">O que está em jogo</th>
+              <th scope="col">Oficina comum / Intermediários</th>
+              <th scope="col">Outras soluções / Fornecedor padrão</th>
+              <th scope="col" class="col-destaque">
+                Nossa estrutura fabril (30 anos)
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Preço por peça</th>
+              <td>Aparece como “mais barato” à primeira vista</td>
+              <td>Média de mercado</td>
+              <td class="col-destaque">
+                <strong>Preço justo direto de fábrica</strong> (sem
+                intermediários)
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">Taxa de Refugo e Defeitos</th>
+              <td>Alta (bordados repuxados, etiquetas desfiadas)</td>
+              <td>Média (exige conferência manual constante)</td>
+              <td class="col-destaque">
+                <strong>Zero Refugo</strong> (tolerância zero e amostra técnica
+                pré-aprovada)
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">Risco de Atraso no Lançamento</th>
+              <td>Recorrente (prometem prazos que não cumprem)</td>
+              <td>Frequente em datas comemorativas</td>
+              <td class="col-destaque">
+                <strong>Garantia de Entrega em Contrato</strong> (seu calendário
+                blindado)
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">Sensação no Cliente Final</th>
+              <td>Pinica, incomoda, desbota e desvaloriza a peça</td>
+              <td>Aceitável, mas sem destaque visual</td>
+              <td class="col-destaque">
+                <strong>Valor Percebido de Grife</strong> (toque macio, brilho e
+                simetria cravada)
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">Segurança Jurídica e Suporte</th>
+              <td>Nenhuma (sem conformidade ou fiscalização)</td>
+              <td>Suporte básico e demorado</td>
+              <td class="col-destaque">
+                <strong>Certificação ABVTEX</strong> + Atendimento técnico
+                dedicado
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">O Verdadeiro Custo Final</th>
+              <td>CARO: Coleções atrasadas, reembolsos e perda de imagem</td>
+              <td>INCERTO: Margem corroída por retrabalho e estresse</td>
+              <td class="col-destaque">
+                <strong>O MENOR CUSTO TOTAL:</strong> Margem protegida, escala e
+                reputação no topo
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Custo de economizar errado -->
+      <div class="mb-card custo-card">
+        <p class="custo-titulo">
+          Economizar alguns centavos por peça em um fornecedor amador pode
+          custar:
+        </p>
+        <ul class="custo-lista">
+          <li>
+            <strong>R$ 2.000,00+</strong> em anúncios de marketing jogados fora
+            porque a coleção atrasou a data de lançamento.
+          </li>
+          <li>
+            <strong>Dezenas de devoluções</strong> de clientes insatisfeitos com
+            bordados arranhando ou etiquetas desbotando na primeira lavagem.
+          </li>
+          <li>
+            <strong>A perda do valor da sua marca</strong>, que passa a ser
+            vista como um produto genérico de baixo valor.
+          </li>
+        </ul>
+      </div>
+
+      <p class="decisao-remate">
+        A verdadeira economia não está no preço da etiqueta, mas no lucro que
+        você não perde por falha na produção.
+      </p>
+
+      <div class="decisao-cta">
+        <button type="button" class="btn btn-primary btn-hero-cta js-wa-modal">
+          Proteger minha margem — pedir cotação direto de fábrica
+        </button>
+      </div>
+    </section>
+
+    <!-- ================================================================
+       FAQ TÉCNICO — 07
+       Acordeão nativo (<details>/<summary>) — não precisa de JS
+       ================================================================ -->
+    <section class="section-faq">
+      <div class="faq-grid">
+        <!-- Coluna esquerda: título -->
+        <div class="faq-intro">
+          <div class="hero-tag-line">
+            <div class="line"></div>
+            <div class="mb-tag">07 / FAQ</div>
+          </div>
+          <h2 class="mb-title lg">
+            Respostas Diretas para o Seu
+            <span class="highlight-azul">Planejamento</span> (FAQ Técnico)
+          </h2>
+        </div>
+
+        <!-- Coluna direita: perguntas -->
+        <div class="faq-lista">
+          <h3 class="faq-categoria">
+            <span class="faq-emoji" aria-hidden="true">📦</span> Sobre Pedidos e
+            Produção
+          </h3>
+
+          <details class="faq-item">
+            <summary>
+              Qual é a quantidade mínima (MOQ) para pedidos?
+              <span class="faq-sinal" aria-hidden="true"></span>
+            </summary>
+            <div class="faq-resposta">
+              <p>
+                Trabalhamos com lotes flexíveis ajustados para atender desde
+                marcas em fase de crescimento e linhas private label até grandes
+                demandas corporativas. Fale com nosso time para alinhar a
+                quantidade ideal para o seu momento.
+              </p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              É possível ver uma amostra antes de rodar a produção total?
+              <span class="faq-sinal" aria-hidden="true"></span>
+            </summary>
+            <div class="faq-resposta">
+              <p>
+                Sim! Enviamos a aprovação virtual detalhada e, dependendo do
+                projeto e volume, desenvolvemos amostra física/piloto para
+                validação de toque, cores e acabamento antes de ligarmos as
+                máquinas para o lote total.
+              </p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              Como funciona o custo da matriz de bordado / setup inicial?
+              <span class="faq-sinal" aria-hidden="true"></span>
+            </summary>
+            <div class="faq-resposta">
+              <p>
+                Trabalhamos com total transparência. A criação e vetorização da
+                matriz técnica têm valor justo e focado na precisão dos pontos.
+                Em reprogramações ou reordenamentos do mesmo layout, você não
+                paga pelo desenvolvimento novamente.
+              </p>
+            </div>
+          </details>
+
+          <h3 class="faq-categoria">
+            <span class="faq-emoji" aria-hidden="true">🧵</span> Sobre
+            Qualidade, Durabilidade e Aplicação
+          </h3>
+
+          <details class="faq-item">
+            <summary>
+              As etiquetas tecidas e bordados aguentam lavagens pesadas e
+              secadora?
+              <span class="faq-sinal" aria-hidden="true"></span>
+            </summary>
+            <div class="faq-resposta">
+              <p>
+                Com certeza. Utilizamos fios de alta fixação e processo de
+                selagem térmica nas bordas das etiquetas. Elas não desfiam, não
+                “pinicam” a pele e não desbotam na secadora nem em lavagens
+                frequentes.
+              </p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              Os patches para Kimonos de Jiu-Jitsu e uniformes esportivos
+              resistem ao atrito?
+              <span class="faq-sinal" aria-hidden="true"></span>
+            </summary>
+            <div class="faq-resposta">
+              <p>
+                Sim. Nossos patches esportivos são fabricados com base reforçada
+                e linhas de alta resistência mecânica, projetados especificamente
+                para suportar o atrito severo do tatame, puxões e lavagens
+                diárias.
+              </p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              Como podem ser aplicados os patches?
+              <span class="faq-sinal" aria-hidden="true"></span>
+            </summary>
+            <div class="faq-resposta">
+              <p>
+                Oferecemos opções de aplicação versáteis conforme a sua
+                necessidade:
+              </p>
+              <ul>
+                <li>
+                  <strong>Para Costura:</strong> Borda reforçada ideal para
+                  aplicação direta na peça/kimono.
+                </li>
+                <li>
+                  <strong>Termocolante:</strong> Com filme de alta aderência
+                  para aplicação via prensa térmica ou ferro.
+                </li>
+                <li>
+                  <strong>Velcro (Macho/Fêmea):</strong> Ideal para uniformes
+                  táticos, corporativos ou operacionais.
+                </li>
+              </ul>
+            </div>
+          </details>
+
+          <h3 class="faq-categoria">
+            <span class="faq-emoji" aria-hidden="true">🎨</span> Sobre Design e
+            Acabamentos
+          </h3>
+
+          <details class="faq-item">
+            <summary>
+              Qual a diferença entre Etiqueta Tecida (Bordada) e Etiqueta
+              Impressa?
+              <span class="faq-sinal" aria-hidden="true"></span>
+            </summary>
+            <div class="faq-resposta">
+              <p>
+                A etiqueta tecida é produzida pelo entrelaçamento dos próprios
+                fios de alta definição, garantindo relevo, sofisticação e
+                durabilidade vitalícia. A etiqueta impressa recebe tinta sobre
+                uma fita (como cetim), sendo mais simples e com menor vida útil.
+                Para marcas que buscam posicionamento premium, a tecida é o
+                padrão do mercado.
+              </p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              É possível reproduzir letras pequenas e detalhes finos no meu
+              logotipo?
+              <span class="faq-sinal" aria-hidden="true"></span>
+            </summary>
+            <div class="faq-resposta">
+              <p>
+                Sim! Nossos teares e máquinas de bordar operam com alta
+                resolução de pontos. Caso seu logo tenha detalhes microscópicos,
+                nossos designers têxteis farão microadaptações preservando a
+                identidade da sua marca sem comprometer a leitura.
+              </p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              Quais são as opções de acabamento para as etiquetas tecidas?
+              <span class="faq-sinal" aria-hidden="true"></span>
+            </summary>
+            <div class="faq-resposta">
+              <p>Oferecemos todos os formatos do mercado:</p>
+              <ul>
+                <li>
+                  <strong>Corte Reto:</strong> Para costura total nas laterais
+                  ou aplicação em patch.
+                </li>
+                <li>
+                  <strong>Dobra ao Meio (Central):</strong> Ideal para golas,
+                  barras e bandeirolas externas.
+                </li>
+                <li>
+                  <strong>Dobra Lateral (Pontas):</strong> Perfeita para afixar
+                  nas extremidades sem sobra de costura.
+                </li>
+              </ul>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+    <!-- ================================================================
+       GARANTIA / RISCO ZERO — 07
+       ================================================================ -->
+    <section class="section-garantia">
+      <div class="garantia-glow" aria-hidden="true"></div>
+
+      <div class="garantia-conteudo">
+        <h2 class="mb-title lg garantia-titulo">
+          Você foca na venda. Nós assumimos
+          <span class="highlight-azul">100% do risco</span> da produção.
+        </h2>
+
+        <p class="garantia-lead">
+          Sua tranquilidade é respaldada por contrato e por 30 anos de reputação
+          fabril. Se o lote entregue não corresponder exatamente ao gabarito
+          aprovado, nós refazemos o material imediatamente sem nenhum custo
+          adicional para a sua empresa.
+        </p>
+
+        <button
+          type="button"
+          class="btn btn-primary btn-hero-cta btn-garantia js-wa-modal"
+        >
+          Garantir a qualidade do meu lote sem risco →
+        </button>
+      </div>
+    </section>
+
+    <!-- ================================================================
        FOOTER
        (repetido em todas as páginas — CSS vem de global.css)
        ================================================================ -->
     <footer class="footer">
-      <!-- CTA final -->
-      <div class="footer-cta">
-        <div class="footer-cta-bg"></div>
-        <div class="footer-cta-grid">
-          <div>
-            <div class="mb-tag">RESPOSTA EM 2H</div>
-            <h2 class="mb-title xl">
-              <span class="highlight-azul">Pronto</span> para<br />produzir com
-              a <span class="highlight-vinho">gente</span>
-            </h2>
-          </div>
-          <div class="footer-cta-ctas">
-            <a href="contato.html" class="btn btn-primary btn-cta-center"
-              >Solicitar orçamento →</a
-            >
-            <button
-              type="button"
-              class="btn btn-secondary js-wa-modal btn-cta-center"
-            >
-              WhatsApp direto
-            </button>
-          </div>
-        </div>
-      </div>
-
       <!-- Colunas -->
       <div class="footer-cols">
         <div class="footer-about">
