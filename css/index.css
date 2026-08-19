@@ -244,68 +244,162 @@
   }
 }
 
-/* ---- Vitrine do hero: 3 linhas com imagem + título ---- */
-.hero-vitrine {
+/* ---- Galeria circular 3D do hero: tambor fechado de 6 faces ----
+   Cada .galeria3d-item é uma face posicionada por --i (0..5).
+   Para as faces se encostarem (sem vão mostrando o fundo), o raio
+   tem que ser o apótema do hexágono: raio = largura / (2·tan(30°)),
+   ou seja ≈ 0,866 × largura. O giro é aplicado no palco por js/index.js. */
+.hero-galeria {
   position: relative;
   z-index: 10;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
+  --card-w: 210px;
+  --card-h: 280px;
+  --raio: calc(var(--card-w) * 0.866);
+  height: 400px;
+  perspective: 1600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.hero-vitrine-item {
+.galeria3d-palco {
+  position: relative;
+  width: var(--card-w);
+  height: var(--card-h);
+  transform-style: preserve-3d;
+  transform: rotateY(0deg);
+  will-change: transform;
+}
+.galeria3d-item {
+  position: absolute;
+  inset: 0;
   display: block;
   text-decoration: none;
-  border: 1px solid var(--mb-line);
-  border-radius: 10px;
+  /* Sem cantos arredondados: as faces precisam encostar sem folga */
+  border-radius: 0;
   overflow: hidden;
   background: var(--mb-card);
-  transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+  /* Meio pixel a mais elimina a linha de fundo que aparece na emenda */
+  outline: 0.5px solid var(--mb-card);
+  transform: rotateY(calc(var(--i) * 60deg)) translateZ(var(--raio));
+  backface-visibility: hidden;
+  transition: box-shadow 0.25s;
 }
-.hero-vitrine-item:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.45);
+/* Hover/foco: linha da cor da linha por dentro, sem mexer na emenda */
+.galeria3d-item.is-etiqueta:hover .galeria3d-img::before,
+.galeria3d-item.is-etiqueta:focus-visible .galeria3d-img::before {
+  box-shadow: inset 0 0 0 2px var(--mb-azul);
 }
-.hero-vitrine-item.is-etiqueta:hover {
-  border-color: var(--mb-azul);
+.galeria3d-item.is-bordado:hover .galeria3d-img::before,
+.galeria3d-item.is-bordado:focus-visible .galeria3d-img::before {
+  box-shadow: inset 0 0 0 2px var(--mb-vinho);
 }
-.hero-vitrine-item.is-bordado:hover {
-  border-color: var(--mb-vinho);
+.galeria3d-item.is-laser:hover .galeria3d-img::before,
+.galeria3d-item.is-laser:focus-visible .galeria3d-img::before {
+  box-shadow: inset 0 0 0 2px var(--mb-ouro);
 }
-.hero-vitrine-item.is-laser:hover {
-  border-color: var(--mb-ouro);
+.galeria3d-item:focus-visible {
+  outline: none;
 }
-.hero-vitrine-img {
-  aspect-ratio: 4 / 3;
-  overflow: hidden;
+.galeria3d-item:focus-visible .galeria3d-img::before {
+  box-shadow: inset 0 0 0 3px var(--mb-paper);
 }
-.hero-vitrine-img img {
+
+.galeria3d-img {
+  position: absolute;
+  inset: 0;
+}
+.galeria3d-img img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform 0.4s ease;
 }
-.hero-vitrine-item:hover .hero-vitrine-img img {
-  transform: scale(1.06);
+/* Véu escuro pra legenda ficar legível sobre qualquer foto */
+.galeria3d-img::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.85) 0%,
+    rgba(0, 0, 0, 0.25) 45%,
+    transparent 75%
+  );
 }
-.hero-vitrine-nome {
+/* Moldura interna usada pelo hover/foco (não interfere na emenda) */
+.galeria3d-img::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  box-shadow: inset 0 0 0 0 transparent;
+  transition: box-shadow 0.25s;
+}
+
+.galeria3d-info {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.galeria3d-nome {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: -0.01em;
+  color: var(--mb-paper);
+}
+.galeria3d-link {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 10px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  text-align: center;
-  padding: 14px 8px;
-  color: var(--mb-paper);
-  border-top: 1px solid var(--mb-line);
 }
-.hero-vitrine-item.is-etiqueta .hero-vitrine-nome {
-  color: var(--mb-azul-glow, var(--mb-azul));
+.galeria3d-item.is-etiqueta .galeria3d-link {
+  color: var(--mb-azul-glow);
 }
-.hero-vitrine-item.is-bordado .hero-vitrine-nome {
-  color: var(--mb-vinho-glow, var(--mb-vinho));
+.galeria3d-item.is-bordado .galeria3d-link {
+  color: var(--mb-vinho-glow);
 }
-.hero-vitrine-item.is-laser .hero-vitrine-nome {
+.galeria3d-item.is-laser .galeria3d-link {
   color: var(--mb-ouro);
+}
+
+/* Sem 3D: quem pediu menos movimento vê as 3 abas lado a lado */
+@media (prefers-reduced-motion: reduce) {
+  .hero-galeria {
+    height: auto !important;
+    min-height: 0 !important;
+    align-items: center !important;
+    perspective: none;
+  }
+  .galeria3d-palco {
+    width: 100%;
+    height: auto !important;
+    transform: none !important;
+    transform-style: flat;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+  .galeria3d-item {
+    position: relative;
+    inset: auto;
+    transform: none !important;
+    opacity: 1 !important;
+    filter: none !important;
+    border-radius: 12px;
+    aspect-ratio: 3 / 4;
+  }
+  /* Sem giro, as 3 faces repetidas seriam duplicata visual */
+  .galeria3d-item:nth-child(n + 4) {
+    display: none;
+  }
 }
 
 .hero-stats {
@@ -469,7 +563,7 @@
   }
   .hero-grid {
     grid-template-columns: 1fr 1fr;
-    align-items: center;
+    align-items: stretch;
     max-width: 1500px;
     margin: 0 auto;
     gap: clamp(32px, 4vw, 64px);
@@ -478,20 +572,17 @@
     max-width: 720px;
     align-self: center;
   }
-  /* Vitrine: 3 cards lado a lado, centralizados com o texto da esquerda */
-  .hero-vitrine {
-    grid-template-columns: repeat(3, 1fr);
-    align-self: center;
-    gap: clamp(10px, 1vw, 16px);
-  }
-  .hero-vitrine-img {
-    aspect-ratio: 3 / 4;
-  }
-  .hero-vitrine-nome {
-    font-size: clamp(9px, 0.72vw, 11px);
-    letter-spacing: 0.12em;
-    padding: 12px 6px;
-    white-space: nowrap;
+  /* Galeria 3D: ocupa toda a altura da coluna do texto.
+     --raio NÃO é definido aqui de propósito — vem do cálculo do
+     tambor fechado (0,866 × largura) lá na regra base. */
+  .hero-galeria {
+    align-self: stretch;
+    align-items: center;
+    height: auto;
+    min-height: 360px;
+    /* Card 40% mais largo e 30% mais baixo que a altura da coluna */
+    --card-w: clamp(252px, 19.6vw, 336px);
+    --card-h: 70%;
   }
   .hero-lead {
     font-size: clamp(15px, 1.2vw, 19px);
@@ -1797,16 +1888,18 @@
     padding: 18px 20px;
     font-size: 13px;
   }
-  .hero-vitrine {
-    gap: 10px;
+  /* Galeria 3D no mobile: menor, pra caber sem cortar os cards.
+     --raio continua saindo do cálculo do tambor fechado. */
+  .hero-galeria {
+    --card-w: 150px;
+    --card-h: 200px;
+    height: 280px;
   }
-  .hero-vitrine-img {
-    aspect-ratio: 1 / 1;
+  .galeria3d-nome {
+    font-size: 17px;
   }
-  .hero-vitrine-nome {
-    font-size: 9px;
-    letter-spacing: 0.1em;
-    padding: 10px 4px;
+  .galeria3d-info {
+    padding: 12px 14px;
   }
   .hero-stats {
     gap: 8px;

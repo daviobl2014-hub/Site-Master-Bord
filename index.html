@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
@@ -107,8 +107,9 @@
       <div class="hero-grid">
         <div class="text-hero">
           <div class="hero-tag-line">
-            <div class="line"></div>
-            <div class="mb-tag">Sua marca tem visual profissional ou entrega acabamento amador</div>
+            <div class="mb-tag">
+              Sua marca tem visual profissional ou entrega acabamento amador?
+            </div>
           </div>
 
           <h1 class="titulo-principal" aria-label="Master Bord">
@@ -137,32 +138,119 @@
           </p>
 
           <div class="hero-ctas">
-            <button type="button" class="btn btn-primary btn-hero-cta js-wa-modal">
+            <button
+              type="button"
+              class="btn btn-primary btn-hero-cta js-wa-modal"
+            >
               Fale diretamente com a fábrica →
             </button>
           </div>
         </div>
 
-        <!-- Vitrine das 3 linhas (mesmas imagens da seção 02 / Produtos) -->
-        <div class="hero-vitrine">
-          <a href="produto-etiqueta.html" class="hero-vitrine-item is-etiqueta">
-            <div class="hero-vitrine-img">
-              <img src="img/etiqueta1.png" alt="Etiquetas personalizadas" />
-            </div>
-            <div class="hero-vitrine-nome">Etiquetas</div>
-          </a>
-          <a href="produto-bordado.html" class="hero-vitrine-item is-bordado">
-            <div class="hero-vitrine-img">
-              <img src="img/bordado1.png" alt="Bordados exclusivos" />
-            </div>
-            <div class="hero-vitrine-nome">Bordados</div>
-          </a>
-          <a href="produto-laser.html" class="hero-vitrine-item is-laser">
-            <div class="hero-vitrine-img">
-              <img src="img/laser1.png" alt="Corte a laser sob medida" />
-            </div>
-            <div class="hero-vitrine-nome">Corte a Laser</div>
-          </a>
+        <!-- Galeria circular 3D — tambor fechado de 6 faces: as 3 abas
+             aparecem duas vezes (fotos diferentes), então as faces se
+             encostam e nunca abre vão pro fundo.
+             Gira sozinha (js/index.js), pausa no hover e no foco do teclado. -->
+        <div
+          class="hero-galeria"
+          id="mbGaleria3d"
+          role="region"
+          aria-label="Nossas linhas de produção"
+        >
+          <div class="galeria3d-palco" id="mbGaleria3dPalco">
+            <a
+              href="produto-etiqueta.html"
+              class="galeria3d-item is-etiqueta"
+              style="--i: 0"
+            >
+              <div class="galeria3d-img">
+                <img src="img/etiqueta1.png" alt="Etiquetas tecidas" />
+              </div>
+              <div class="galeria3d-info">
+                <span class="galeria3d-nome">Etiquetas</span>
+                <span class="galeria3d-link">Ver trabalhos →</span>
+              </div>
+            </a>
+
+            <a
+              href="produto-bordado.html"
+              class="galeria3d-item is-bordado"
+              style="--i: 1"
+            >
+              <div class="galeria3d-img">
+                <img src="img/bordado1.png" alt="Bordados computadorizados" />
+              </div>
+              <div class="galeria3d-info">
+                <span class="galeria3d-nome">Bordados</span>
+                <span class="galeria3d-link">Ver trabalhos →</span>
+              </div>
+            </a>
+
+            <a
+              href="produto-laser.html"
+              class="galeria3d-item is-laser"
+              style="--i: 2"
+            >
+              <div class="galeria3d-img">
+                <img src="img/laser1.png" alt="Corte a laser sob medida" />
+              </div>
+              <div class="galeria3d-info">
+                <span class="galeria3d-nome">Corte a Laser</span>
+                <span class="galeria3d-link">Ver trabalhos →</span>
+              </div>
+            </a>
+
+            <a
+              href="produto-etiqueta.html"
+              class="galeria3d-item is-etiqueta"
+              style="--i: 3"
+            >
+              <div class="galeria3d-img">
+                <img
+                  src="img/produtos/etiqueta-1.png"
+                  alt="Etiquetas personalizadas"
+                />
+              </div>
+              <div class="galeria3d-info">
+                <span class="galeria3d-nome">Etiquetas</span>
+                <span class="galeria3d-link">Ver trabalhos →</span>
+              </div>
+            </a>
+
+            <a
+              href="produto-bordado.html"
+              class="galeria3d-item is-bordado"
+              style="--i: 4"
+            >
+              <div class="galeria3d-img">
+                <img
+                  src="img/produtos/bordado-1.png"
+                  alt="Bordados de alta densidade"
+                />
+              </div>
+              <div class="galeria3d-info">
+                <span class="galeria3d-nome">Bordados</span>
+                <span class="galeria3d-link">Ver trabalhos →</span>
+              </div>
+            </a>
+
+            <a
+              href="produto-laser.html"
+              class="galeria3d-item is-laser"
+              style="--i: 5"
+            >
+              <div class="galeria3d-img">
+                <img
+                  src="img/produtos/laser-1.png"
+                  alt="Peças cortadas a laser"
+                />
+              </div>
+              <div class="galeria3d-info">
+                <span class="galeria3d-nome">Corte a Laser</span>
+                <span class="galeria3d-link">Ver trabalhos →</span>
+              </div>
+            </a>
+          </div>
         </div>
       </div>
     </section>
@@ -198,7 +286,9 @@
           <div class="especialidade-icone" aria-hidden="true">
             <i class="fa-solid fa-tag"></i>
           </div>
-          <h4 class="especialidade-nome">Etiquetas Tecidas de Alta Definição</h4>
+          <h4 class="especialidade-nome">
+            Etiquetas Tecidas de Alta Definição
+          </h4>
           <p class="especialidade-desc">
             Seladas a laser, com toque macio e cores vivas. O detalhe que assina
             a identidade da sua marca, resiste a lavagens pesadas e elimina o
@@ -238,8 +328,8 @@
       <!-- Públicos atendidos -->
       <h3 class="solucoes-subtitulo">
         <span class="solucoes-emoji" aria-hidden="true">🎯</span> Quem Nós
-        Atendemos <span class="solucoes-sub-leve">(E Como Elevamos o Seu
-        Negócio)</span>
+        Atendemos
+        <span class="solucoes-sub-leve">(E Como Elevamos o Seu Negócio)</span>
       </h3>
 
       <div class="publicos-grid">
@@ -1241,9 +1331,9 @@
             <div class="faq-resposta">
               <p>
                 Sim. Nossos patches esportivos são fabricados com base reforçada
-                e linhas de alta resistência mecânica, projetados especificamente
-                para suportar o atrito severo do tatame, puxões e lavagens
-                diárias.
+                e linhas de alta resistência mecânica, projetados
+                especificamente para suportar o atrito severo do tatame, puxões
+                e lavagens diárias.
               </p>
             </div>
           </details>

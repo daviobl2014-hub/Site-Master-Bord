@@ -226,3 +226,104 @@
     window.addEventListener('load', inicializar);
   }
 })();
+
+/* ================================================================
+   3. GALERIA CIRCULAR 3D DO HERO
+   - 3 abas (Etiquetas / Bordados / Patches) dispostas num círculo
+   - Gira sozinha devagar, pausa no hover e quando um card recebe
+     foco pelo teclado
+   - Os cards do fundo perdem opacidade e param de receber clique,
+     pra ninguém clicar num link que não está visível
+   - Respeita prefers-reduced-motion (CSS já exibe as 3 lado a lado)
+   ================================================================ */
+
+(function () {
+  const palco = document.getElementById('mbGaleria3dPalco');
+  if (!palco) return; // outras páginas não têm a galeria
+
+  const container = document.getElementById('mbGaleria3d');
+  const itens = Array.prototype.slice.call(
+    palco.querySelectorAll('.galeria3d-item')
+  );
+  if (!itens.length) return;
+
+  const prefereSemAnimacao = window.matchMedia(
+    '(prefers-reduced-motion: reduce)'
+  ).matches;
+
+  const anguloPorItem = 360 / itens.length;
+  // Graus por frame a 60fps. 0.45 ≈ 27°/s: uma volta completa em ~13s,
+  // com cada aba passando pela frente a cada ~4,5s.
+  const VELOCIDADE = 0.45;
+  let rotacao = 0;
+  let pausado = false;
+  let frame = null;
+
+  // Escurece as faces laterais e define qual é clicável.
+  // Usa brightness (não opacity) de propósito: face transparente deixaria
+  // o fundo preto vazar pela emenda, que é justamente o que queremos evitar.
+  function atualizarItens() {
+    itens.forEach(function (item, i) {
+      // Ângulo da face em relação a quem está olhando (0 = de frente)
+      let relativo = (i * anguloPorItem + rotacao) % 360;
+      if (relativo < 0) relativo += 360;
+      const desvio = relativo > 180 ? 360 - relativo : relativo;
+
+      // De frente = 1 (cor cheia), de lado = 0.35 (bem escurecida)
+      const brilho = Math.max(0.35, 1 - desvio / 110);
+      item.style.filter = 'brightness(' + brilho + ')';
+
+      // Só a face de frente recebe clique/tab (faces a 60° já estão de lado)
+      const naFrente = desvio < 30;
+      item.style.pointerEvents = naFrente ? 'auto' : 'none';
+      item.setAttribute('aria-hidden', naFrente ? 'false' : 'true');
+      item.tabIndex = naFrente ? 0 : -1;
+    });
+  }
+
+  function girar() {
+    if (!pausado) {
+      rotacao = (rotacao + VELOCIDADE) % 360;
+      palco.style.transform = 'rotateY(' + rotacao + 'deg)';
+      atualizarItens();
+    }
+    frame = requestAnimationFrame(girar);
+  }
+
+  function pausar() {
+    pausado = true;
+  }
+  function retomar() {
+    pausado = false;
+  }
+
+  if (container) {
+    container.addEventListener('mouseenter', pausar);
+    container.addEventListener('mouseleave', retomar);
+    container.addEventListener('focusin', pausar);
+    container.addEventListener('focusout', retomar);
+  }
+
+  // Não gasta frame quando a aba está em segundo plano
+  document.addEventListener('visibilitychange', function () {
+    if (document.hidden) {
+      if (frame) cancelAnimationFrame(frame);
+      frame = null;
+    } else if (!frame && !prefereSemAnimacao) {
+      frame = requestAnimationFrame(girar);
+    }
+  });
+
+  if (prefereSemAnimacao) {
+    // CSS já mostra as 3 lado a lado; garante que todas fiquem clicáveis
+    itens.forEach(function (item) {
+      item.style.pointerEvents = 'auto';
+      item.tabIndex = 0;
+      item.setAttribute('aria-hidden', 'false');
+    });
+    return;
+  }
+
+  atualizarItens();
+  frame = requestAnimationFrame(girar);
+})();
