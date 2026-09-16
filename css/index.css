@@ -93,12 +93,14 @@
 /* Tag do hero em caixa arredondada (sobrescreve o .mb-tag global) */
 .hero-tag-line .mb-tag {
   display: inline-block;
-  padding: 10px 20px;
+  padding: 16px 28px;
   border: 1px solid rgba(212, 169, 106, 0.45);
   border-radius: 999px;
   background: rgba(212, 169, 106, 0.1);
   color: var(--mb-ouro);
-  font-size: 12px;
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 600;
   letter-spacing: 0.14em;
   line-height: 1.5;
   backdrop-filter: blur(4px);
@@ -184,7 +186,7 @@
   color: var(--mb-paper-dim);
   line-height: 1.5;
   max-width: 650px;
-  margin: 40px 0 0;
+  margin: 16px 0 0;
   text-shadow: 0 2px 14px rgba(0, 0, 0, 0.85);
 }
 .hero-lead strong {
@@ -198,7 +200,7 @@
 /* Parágrafo de apoio (prova social + certificações) */
 .hero-lead-apoio {
   font-size: 16px;
-  margin-top: 20px;
+  margin-top: 10px;
   max-width: 620px;
 }
 .hero-lead-apoio strong {
@@ -208,7 +210,7 @@
 .hero-ctas {
   display: flex;
   gap: 12px;
-  margin-top: 36px;
+  margin-top: 18px;
   flex-wrap: wrap;
   position: relative;
   z-index: 50; /* botões acima de glows/tech-grid (z:3), cores originais */
@@ -586,15 +588,15 @@
   }
   .hero-lead {
     font-size: clamp(15px, 1.2vw, 19px);
-    margin-top: clamp(20px, 2.5vh, 36px);
+    margin-top: clamp(10px, 1.2vh, 18px);
     max-width: 600px;
   }
   .hero-lead-apoio {
     font-size: clamp(13px, 0.95vw, 16px);
-    margin-top: clamp(14px, 1.8vh, 22px);
+    margin-top: clamp(8px, 1vh, 12px);
   }
   .hero-ctas {
-    margin-top: clamp(20px, 2.5vh, 36px);
+    margin-top: clamp(10px, 1.2vh, 18px);
   }
   .hero-stats {
     margin-top: clamp(24px, 3vh, 48px);
@@ -729,44 +731,90 @@
   gap: 20px;
 }
 .publico-card {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  text-align: left;
   transition: transform 0.2s, background 0.2s, border-color 0.2s;
 }
 .publico-card:hover {
   transform: translateY(-6px);
   background: var(--mb-card-hover);
 }
-.publico-header {
+.publico-foto {
+  width: calc(100% + 48px);
+  margin: -24px -24px 22px;
+  aspect-ratio: 16 / 9;
+  background: var(--mb-bg);
+  border-bottom: 1px solid var(--mb-line);
   display: flex;
-  align-items: flex-start;
-  gap: 14px;
-  margin-bottom: 22px;
-}
-.publico-num {
-  flex: none;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 8px;
+  color: var(--mb-muted);
   font-family: var(--font-mono);
   font-size: 11px;
-  font-weight: 700;
-  background: var(--mb-bg);
-  color: var(--mb-paper);
-  border: 1px solid var(--mb-line);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
-.publico-card.is-etiqueta .publico-num {
-  color: var(--mb-azul);
-  border-color: rgba(74, 139, 214, 0.5);
+.publico-foto i {
+  font-size: 22px;
+  opacity: 0.6;
 }
-.publico-card.is-bordado .publico-num {
-  color: var(--mb-vinho);
-  border-color: rgba(196, 75, 85, 0.5);
+.publico-foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
-.publico-card.is-laser .publico-num {
-  color: var(--mb-ouro);
-  border-color: rgba(212, 169, 106, 0.5);
+.publico-foto-abvtex img {
+  width: 92%;
+  height: 92%;
+  object-fit: contain;
+}
+.publico-foto-duo {
+  flex-direction: row;
+  gap: 18px;
+}
+.publico-foto-duo img {
+  width: auto;
+  height: auto;
+  max-width: calc(50% - 9px);
+  max-height: 86%;
+  object-fit: contain;
+}
+.publico-foto-grid6 {
+  aspect-ratio: 16 / 11;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 4px;
+  padding: 14px;
+  box-sizing: border-box;
+}
+.publico-foto-grid6 img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 6px;
+  box-sizing: border-box;
+}
+.publico-foto-grid8 {
+  aspect-ratio: 16 / 12;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 4px;
+  padding: 14px;
+  box-sizing: border-box;
+}
+.publico-foto-grid8 img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 6px;
+  box-sizing: border-box;
 }
 .publico-nome {
   font-family: var(--font-display);
@@ -776,10 +824,12 @@
   letter-spacing: -0.01em;
   color: var(--mb-paper);
   margin: 0;
-  padding-top: 3px;
+}
+.publico-desc {
+  margin-top: 14px;
 }
 .publico-bloco + .publico-bloco {
-  margin-top: 20px;
+  margin-top: 16px;
 }
 .publico-bloco p {
   margin: 0;
@@ -787,21 +837,15 @@
   line-height: 1.65;
   color: var(--mb-muted);
 }
-.publico-k {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  margin-bottom: 7px;
+.publico-emoji {
+  font-style: normal;
+  margin-right: 4px;
 }
-.publico-k.dor {
-  color: var(--mb-vinho);
+.publico-bloco-dor p em {
+  font-style: italic;
 }
-.publico-k.solucao {
-  color: var(--mb-green);
-}
-.publico-bloco:has(.solucao) p {
+.publico-bloco-solucao p {
+  font-size: 15.5px;
   color: var(--mb-paper-dim);
 }
 
@@ -1148,6 +1192,21 @@
   text-align: center;
   /* Removido: border-right, padding-right (não é mais coluna lateral) */
   /* Removido: z-index, background (não tem mais conflito com logos) */
+}
+
+/* Bloco amarelo para QUEM CONFIA EM NÓS */
+.logos-tag-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.logos-tag {
+  font-family: var(--font-display) !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  padding: 14px 26px !important;
+  letter-spacing: 0.12em !important;
 }
 
 /* TRACK — container do carrossel, ocupa toda largura */
@@ -1502,6 +1561,15 @@
   height: 1px;
   background: var(--mb-ouro);
 }
+
+/* Bloco amarelo para urgência */
+.urgencia-tag {
+  font-family: var(--font-display) !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  padding: 14px 26px !important;
+  letter-spacing: 0.12em !important;
+}
 .urgencia-texto {
   font-size: 16px;
   line-height: 1.75;
@@ -1846,7 +1914,7 @@
 /* ================================================================
    9. MEDIA QUERIES MOBILE (só do que é específico da home)
    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   ⚠️ ATENÇÃO: ESSA SEÇÃO NÃO FOI ALTERADA (mobile preservado)
+   ATENÇÃO: ESSA SEÇÃO NÃO FOI ALTERADA (mobile preservado)
    ================================================================ */
 @media (max-width: 900px) {
   /* Hero */
@@ -1872,14 +1940,14 @@
   }
   .hero-lead {
     font-size: 15px;
-    margin-top: 24px;
+    margin-top: 12px;
   }
   .hero-lead-apoio {
     font-size: 13px;
-    margin-top: 16px;
+    margin-top: 8px;
   }
   .hero-ctas {
-    margin-top: 24px;
+    margin-top: 12px;
   }
   .btn-hero-cta {
     width: 100%;

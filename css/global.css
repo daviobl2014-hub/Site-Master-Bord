@@ -257,6 +257,28 @@ img {
 /* Logo dentro do footer (era style="font-size: 22px") */
 .footer-logo {
   font-size: 22px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.footer-logo svg {
+  width: 2rem;
+  flex-shrink: 0;
+}
+
+/* SVG da logo no rodapé */
+.footer-logo-svg {
+  width: 3rem;
+  height: 3rem;
+  flex-shrink: 0;
+  fill: var(--mb-ouro);
+}
+
+/* Texto da logo no rodapé */
+.footer-text-logo {
+  display: flex;
+  align-items: baseline;
+  gap: 0;
 }
 
 /* Espaçador vertical de 12px entre .mb-tag e .mb-title */
@@ -700,7 +722,7 @@ img {
     ),
     linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
 
-  background-size: 60px 60px; /* 🔥 antes era 80px */
+  background-size: 60px 60px; /* antes era 80px */
   opacity: 0.4;
   pointer-events: none;
 }
