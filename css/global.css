@@ -51,6 +51,11 @@
 *::after {
   box-sizing: border-box;
 }
+
+html {
+  font-size: 62.5%; /* Agora 1rem = 10px */
+}
+
 html,
 body {
   margin: 0;
@@ -702,6 +707,7 @@ img {
   padding: 24px;
   position: relative;
   overflow: hidden;
+  text-align: center;
 }
 .mb-card .accent-bar {
   position: absolute;
