@@ -913,37 +913,76 @@
     </section>
 
     <!-- ================================================================
-       PROCESSO — 05
+       PROMESSA — quebra de padrão (entre Logos e Processo)
+       Quebra de padrão: dor (vinho) → solução (azul) → promessa (ouro)
        ================================================================ -->
-    <section>
-      <!-- Coluna esquerda: dor → promessa -->
-      <div class="historia-texto">
-        <p class="historia-abertura">
-          Você criou sua empresa para ser uma referência no mercado e transmitir
-          autoridade em cada detalhe.
-        </p>
+    <section class="section-promessa">
+      <div class="promessa-inner">
+        <!-- Intro centralizada -->
+        <div class="promessa-intro">
+          <span class="mb-tag">Chega de improviso</span>
+          <h2 class="mb-title lg promessa-titulo flex col">
+            Sua marca merece um fornecedor
+            <span class="highlight-azul">à altura dela</span>
+          </h2>
+          <p class="promessa-abertura">
+            Você criou sua empresa para ser uma referência no mercado e
+            transmitir autoridade em cada detalhe.
+          </p>
+        </div>
 
-        <p>
-          Mas a sua rotina de produção virou um pesadelo: lançamentos atrasados,
-          fornecedores que somem e peças devolvidas por bordados tortos ou
-          etiquetas que desbotam e desfiam. Você gasta mais tempo apagando
-          incêndios do que escalando suas vendas.
-        </p>
+        <!-- Dor → Solução -->
+        <div class="promessa-grid">
+          <article class="mb-card promessa-card promessa-card-dor">
+            <div class="accent-bar"></div>
+            <span class="promessa-card-label">Hoje</span>
+            <h3 class="promessa-card-titulo">A rotina virou um pesadelo</h3>
+            <p>
+              Lançamentos atrasados, fornecedores que somem e peças devolvidas
+              por bordados tortos ou etiquetas que desbotam e desfiam. Você
+              gasta mais tempo <em>apagando incêndios</em> do que escalando suas
+              vendas.
+            </p>
+            <ul class="promessa-chips" aria-label="Problemas comuns">
+              <li>Atrasos</li>
+              <li>Retrabalho</li>
+              <li>Peças devolvidas</li>
+            </ul>
+          </article>
 
-        <p>
-          Você não precisa refazer toda a sua coleção para parecer
-          <em>premium</em>. O que você precisa é de uma estrutura que abastece
-          as maiores redes do país: teares de precisão suíça, maquinário japonês
-          Barudan e certificação ABVTEX.
-        </p>
+          <div class="promessa-seta" aria-hidden="true">→</div>
 
-        <blockquote class="historia-promessa">
-          Garantimos entrega no prazo e o padrão milimétrico do 1º ao 10.000º
-          item. Transformamos suas peças em símbolos de credibilidade visual,
-          eliminando o retrabalho e devolvendo a sua margem de lucro.
+          <article class="mb-card promessa-card promessa-card-solucao">
+            <div class="accent-bar"></div>
+            <span class="promessa-card-label">Com a Master Bord</span>
+            <h3 class="promessa-card-titulo">Estrutura de grande rede</h3>
+            <p>
+              Você não precisa refazer toda a sua coleção para parecer
+              <em>premium</em>. O que você precisa é de uma estrutura que
+              abastece as maiores redes do país.
+            </p>
+            <ul class="promessa-chips" aria-label="Nossa estrutura">
+              <li>Teares de precisão suíça</li>
+              <li>Maquinário japonês Barudan</li>
+              <li>Certificação ABVTEX</li>
+            </ul>
+          </article>
+        </div>
+
+        <!-- Promessa em destaque -->
+        <blockquote class="promessa-destaque">
+          <span class="promessa-destaque-numero" aria-hidden="true"
+            >1º → 10.000º</span
+          >
+          <p>
+            Garantimos entrega no prazo e o padrão milimétrico do 1º ao 10.000º
+            item. Transformamos suas peças em
+            <span class="highlight-ouro">símbolos de credibilidade visual</span
+            >, eliminando o retrabalho e devolvendo a sua margem de lucro.
+          </p>
         </blockquote>
 
-        <p class="historia-conector">
+        <p class="solucoes-conector">
           Entenda como a escolha do parceiro certo transforma o dia a dia da sua
           produção e a força da sua marca.
           <span class="conector-seta" aria-hidden="true">↓</span>
@@ -955,18 +994,15 @@
        PROCESSO — 05
        ================================================================ -->
     <section class="section-processo">
-      <div class="section-head">
-        <div>
-          <div class="spacer-12"></div>
-          <h2 class="mb-title lg">
-            Da arte à <span class="highlight-ouro">entrega</span>
-          </h2>
-        </div>
-
-        <div class="subtitle-right hide-mobile">
+      <!-- Intro centralizada: título + subtítulo abaixo -->
+      <div class="processo-intro">
+        <h2 class="mb-title lg">
+          Da arte à <span class="highlight-ouro">entrega</span>
+        </h2>
+        <p class="processo-subtitulo">
           Cada produto passa por 4 checkpoints de qualidade antes de sair da
           fábrica.
-        </div>
+        </p>
       </div>
 
       <div class="processo-grid">

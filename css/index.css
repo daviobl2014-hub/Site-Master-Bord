@@ -106,10 +106,6 @@
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
 }
-.hero-tag-line .mb-tag::before,
-.hero-tag-line .mb-tag::after {
-  content: none;
-}
 
 /* TÍTULO MASTER BORD (SVG) — INTOCADO em estrutura, sombra reforçada */
 .titulo-principal {
@@ -908,37 +904,6 @@
   margin: 0 auto;
 }
 
-/* ---- Coluna esquerda ---- */
-.historia-texto p {
-  font-size: 15px;
-  line-height: 1.75;
-  color: var(--mb-muted);
-  margin: 0 0 20px;
-}
-.historia-texto .historia-abertura {
-  font-size: 17px;
-  line-height: 1.65;
-  color: var(--mb-paper-dim);
-  margin-bottom: 28px;
-}
-.historia-texto em {
-  font-style: italic;
-  color: var(--mb-paper-dim);
-}
-
-.historia-promessa {
-  margin: 0 0 24px;
-  padding: 20px 24px;
-  border-left: 3px solid var(--mb-azul);
-  border-radius: 0 8px 8px 0;
-  background: rgba(74, 139, 214, 0.08);
-  font-family: var(--font-sans);
-  font-weight: 600;
-  font-size: 15px;
-  line-height: 1.7;
-  color: var(--mb-paper);
-}
-
 .bloco-anos {
   display: grid;
   grid-template-columns: 1fr 1.15fr; /* "30 anos" à esquerda, texto à direita */
@@ -1031,7 +996,6 @@
   line-height: 1;
   color: var(--mb-vinho);
   margin-bottom: 12px;
-  text-transform: uppercase;
 }
 .historia-titulo.mb-title {
   font-size: 38px;
@@ -1430,12 +1394,282 @@
 }
 
 /* ================================================================
+   PROMESSA — quebra de padrão (entre Logos e Processo)
+   Intro centralizada → card dor (vinho) → card solução (azul)
+   → promessa em destaque (ouro) → conector com seta
+   ================================================================ */
+.section-promessa {
+  position: relative;
+  overflow: hidden;
+  background: var(--mb-bg);
+  padding: 9.6rem 4.8rem;
+}
+
+/* Glows suaves de fundo (mesma linguagem da hero) */
+.promessa-glow {
+  position: absolute;
+  width: 52rem;
+  height: 52rem;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.18;
+  pointer-events: none;
+}
+.promessa-glow-vinho {
+  top: 10%;
+  left: -18rem;
+  background: var(--mb-vinho);
+}
+.promessa-glow-azul {
+  bottom: 5%;
+  right: -18rem;
+  background: var(--mb-azul);
+}
+
+.promessa-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 120rem;
+  margin: 0 auto;
+}
+
+/* ---- Intro centralizada ---- */
+.promessa-intro {
+  max-width: 86rem;
+  margin: 0 auto 56px;
+  text-align: center;
+}
+.promessa-intro .mb-tag {
+  display: block;
+  margin-bottom: 16px;
+}
+.promessa-titulo.mb-title {
+  line-height: 1.05;
+  margin-bottom: 24px;
+}
+.promessa-abertura {
+  margin: 0;
+  font-size: 18px;
+  width: max-content;
+  line-height: 1.65;
+  color: var(--mb-paper-dim);
+}
+
+/* ---- Dor → Solução ---- */
+.promessa-grid {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: stretch;
+  gap: 20px;
+}
+.promessa-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 36px 32px;
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    background-color 0.25s ease;
+}
+.promessa-card:hover {
+  transform: translateY(-6px);
+  background-color: var(--mb-card-hover);
+}
+.promessa-card-dor .accent-bar {
+  background: var(--mb-vinho);
+}
+.promessa-card-solucao .accent-bar {
+  background: var(--mb-azul);
+}
+.promessa-card-dor:hover {
+  border-color: rgba(196, 75, 85, 0.5);
+}
+.promessa-card-solucao:hover {
+  border-color: rgba(74, 139, 214, 0.5);
+}
+
+.promessa-card-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.promessa-card-dor .promessa-card-label {
+  color: var(--mb-vinho-glow);
+}
+.promessa-card-solucao .promessa-card-label {
+  color: var(--mb-azul-glow);
+}
+.promessa-card-titulo {
+  margin: 0 0 16px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 1.15;
+  color: var(--mb-paper);
+}
+.promessa-card p {
+  margin: 0 0 24px;
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--mb-muted);
+}
+.promessa-card em {
+  font-style: italic;
+  color: var(--mb-paper-dim);
+}
+
+/* Chips (tags) no rodapé dos cards */
+.promessa-chips {
+  list-style: none;
+  margin: auto 0 0; /* empurra os chips pro fim do card */
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+.promessa-chips li {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid;
+}
+.promessa-card-dor .promessa-chips li {
+  color: var(--mb-vinho-glow);
+  border-color: rgba(196, 75, 85, 0.4);
+  background: rgba(196, 75, 85, 0.08);
+  text-decoration: line-through;
+  text-decoration-color: rgba(229, 102, 112, 0.6);
+}
+.promessa-card-solucao .promessa-chips li {
+  color: var(--mb-azul-glow);
+  border-color: rgba(74, 139, 214, 0.4);
+  background: rgba(74, 139, 214, 0.08);
+}
+
+/* Seta entre os cards */
+.promessa-seta {
+  align-self: center;
+  font-size: 32px;
+  color: var(--mb-ouro);
+}
+
+/* ---- Promessa em destaque ---- */
+.promessa-destaque {
+  position: relative;
+  max-width: 90rem;
+  margin: 56px auto 0;
+  padding: 40px 40px 36px;
+  text-align: center;
+  border: 1px solid rgba(212, 169, 106, 0.35);
+  border-radius: 12px;
+  background: linear-gradient(
+    180deg,
+    rgba(212, 169, 106, 0.1) 0%,
+    rgba(212, 169, 106, 0.02) 100%
+  );
+}
+.promessa-destaque-numero {
+  display: inline-block;
+  margin-bottom: 16px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 44px;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--mb-ouro);
+}
+.promessa-destaque p {
+  margin: 0;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 1.7;
+  color: var(--mb-paper);
+}
+
+.section-promessa .solucoes-conector {
+  margin-top: 56px;
+}
+
+@media (max-width: 900px) {
+  .section-promessa {
+    padding: 56px 20px;
+  }
+  .promessa-intro {
+    margin-bottom: 36px;
+  }
+  .promessa-abertura {
+    font-size: 15px;
+  }
+  .promessa-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .promessa-seta {
+    transform: rotate(90deg); /* vira ↓ no empilhado */
+    font-size: 26px;
+  }
+  .promessa-card {
+    padding: 28px 22px;
+  }
+  .promessa-card-titulo {
+    font-size: 22px;
+  }
+  .promessa-destaque {
+    margin-top: 36px;
+    padding: 28px 20px;
+  }
+  .promessa-destaque-numero {
+    font-size: 32px;
+  }
+  .promessa-destaque p {
+    font-size: 15.5px;
+  }
+  .section-promessa .solucoes-conector {
+    margin-top: 36px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .promessa-card {
+    transition: none;
+  }
+  .promessa-card:hover {
+    transform: none;
+  }
+}
+
+/* ================================================================
    6. PROCESSO — 05
    ================================================================ */
 .section-processo {
   background: var(--mb-bg-soft);
   padding: 96px 48px;
 }
+
+/* ---- Intro centralizada (mesmo padrão da seção Promessa) ---- */
+.processo-intro {
+  max-width: 86rem;
+  margin: 0 auto 56px;
+  text-align: center;
+}
+.processo-intro .mb-title {
+  line-height: 1.05;
+  margin-bottom: 24px;
+}
+.processo-subtitulo {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.65;
+  color: var(--mb-paper-dim);
+}
+
 .processo-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -2097,9 +2331,6 @@
     grid-template-columns: 1fr;
     gap: 32px;
   }
-  .historia-texto .historia-abertura {
-    font-size: 15px;
-  }
   .historia-card {
     padding: 28px 24px 24px;
   }
@@ -2135,6 +2366,12 @@
   /* Processo */
   .section-processo {
     padding: 56px 20px;
+  }
+  .processo-intro {
+    margin-bottom: 36px;
+  }
+  .processo-subtitulo {
+    font-size: 15px;
   }
   .processo-grid {
     grid-template-columns: 1fr;

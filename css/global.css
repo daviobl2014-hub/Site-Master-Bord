@@ -85,6 +85,14 @@ img {
   display: block;
 }
 
+.flex {
+  display: flex;
+}
+
+.col {
+  flex-direction: column;
+}
+
 /* ================================================================
    3. HEADER — barra superior fixa (presente em todas as páginas)
    ================================================================ */
@@ -682,19 +690,13 @@ img {
    (tag, título, card, grid técnica, logo, imagem)
    ================================================================ */
 
-/* Tag técnica "[ TEXTO ]" — usada em toda página pra marcar seções */
+/* Tag técnica — usada em toda página pra marcar seções */
 .mb-tag {
   font-family: var(--font-mono);
   font-size: 11px;
   color: var(--mb-ouro);
   letter-spacing: 0.25em;
   text-transform: uppercase;
-}
-.mb-tag::before {
-  content: '[ ';
-}
-.mb-tag::after {
-  content: ' ]';
 }
 
 /* Título grande industrial */
