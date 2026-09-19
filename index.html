@@ -498,6 +498,7 @@
       <div class="historia-grid">
         <span class="historia-ano" aria-hidden="true"> Desde 1994</span>
         <div class="mb-card historia-card">
+          <div class="accent-bar" aria-hidden="true"></div>
           <h2 class="mb-title historia-titulo">
             Aprendemos que negócios são feitos de
             <span class="highlight-azul">pessoas para pessoas</span>.
@@ -1063,146 +1064,198 @@
        ================================================================ -->
     <section class="section-decisao">
       <div class="decisao-intro">
-        <h2 class="mb-title lg">
-          Você pode adiar a decisão de mudar de fornecedor. Mas o seu
-          <span class="highlight-vinho">concorrente não vai esperar</span>.
-        </h2>
+        <span class="mb-tag">Hora de decidir</span>
+        <!-- Título em duas linhas: frase principal + destaque vinho abaixo -->
+        <div class="flex col decisao-titulo">
+          <h2 class="mb-title lg">
+            Você pode adiar a decisão de mudar de fornecedor.
+          </h2>
+          <p class="mb-title lg highlight-vinho">
+            Mas o seu concorrente não vai esperar.
+          </p>
+        </div>
         <p class="decisao-lead">
           Muitas confecções e marcas deixam para resolver o acabamento no último
           minuto ou aceitam o risco de continuar com fornecedores amadores por
           medo de mudar. A verdade é simples:
-          <strong
-            >cada lote produzido sem a qualidade ideal é uma oportunidade
-            perdida de consolidar sua marca e aumentar sua margem.</strong
-          >
+        </p>
+        <p class="decisao-destaque">
+          Cada lote produzido sem a qualidade ideal é uma oportunidade perdida
+          de consolidar sua marca e aumentar sua margem.
         </p>
       </div>
 
-      <!-- 4 objeções respondidas -->
+      <!-- 4 objeções respondidas — acordeão em coluna, só os títulos,
+           o clique abre a pergunta + resposta. <details> nativo (sem JS);
+           name="objecoes" deixa só um aberto por vez -->
       <div class="objecoes-grid">
-        <article class="mb-card objecao-card is-vinho">
-          <div class="objecao-header">
-            <span class="objecao-icone" aria-hidden="true"
-              ><i class="fa-solid fa-shield-halved"></i
-            ></span>
-            <span class="objecao-num">1</span>
+        <details class="mb-card objecao-card is-vinho" name="objecoes">
+          <summary>
+            <h3 class="objecao-titulo">
+              O Risco é 100% Nosso: Garantia de Padrão e Prazo em Contrato
+            </h3>
+            <span class="objecao-sinal" aria-hidden="true"></span>
+          </summary>
+          <div class="objecao-conteudo">
+            <p class="objecao-fala">
+              “E se o meu lote vier com defeito ou atrasar meu lançamento?”
+            </p>
+            <p class="objecao-resposta">
+              Nós não trabalhamos com estimativas genéricas. Garantimos a
+              entrega no prazo combinado e a fidelidade exata do gabarito
+              aprovado, da 1ª à 10.000ª peça. Se o produto entregue estiver fora
+              da especificação técnica aprovada por você,
+              <strong>nós refazemos o seu lote sem custos adicionais.</strong> A
+              responsabilidade do resultado é da Master Bord.
+            </p>
           </div>
-          <h3 class="objecao-titulo">
-            O Risco é 100% Nosso: Garantia de Padrão e Prazo em Contrato
-          </h3>
-          <p class="objecao-fala">
-            “E se o meu lote vier com defeito ou atrasar meu lançamento?”
-          </p>
-          <p class="objecao-resposta">
-            Nós não trabalhamos com estimativas genéricas. Garantimos a entrega
-            no prazo combinado e a fidelidade exata do gabarito aprovado, da 1ª
-            à 10.000ª peça. Se o produto entregue estiver fora da especificação
-            técnica aprovada por você,
-            <strong>nós refazemos o seu lote sem custos adicionais.</strong> A
-            responsabilidade do resultado é da Master Bord.
-          </p>
-        </article>
+        </details>
 
-        <article class="mb-card objecao-card is-azul">
-          <div class="objecao-header">
-            <span class="objecao-icone" aria-hidden="true"
-              ><i class="fa-solid fa-headset"></i
-            ></span>
-            <span class="objecao-num">2</span>
+        <details class="mb-card objecao-card is-azul" name="objecoes">
+          <summary>
+            <h3 class="objecao-titulo">
+              Suporte Técnico de Verdade: Do Layout à Linha de Produção
+            </h3>
+            <span class="objecao-sinal" aria-hidden="true"></span>
+          </summary>
+          <div class="objecao-conteudo">
+            <p class="objecao-fala">
+              “Tenho medo de mandar o arquivo e a etiqueta/bordado sair errado
+              ou inadequado pro meu tecido.”
+            </p>
+            <p class="objecao-resposta">
+              Você não interage com um sistema automatizado sem rosto. Nosso
+              time de especialistas analisa a densidade do tecido, a aplicação
+              final e a viabilidade do design antes de rodar o maquinário.
+              Ajustamos vetores, indicamos a melhor tecnologia (suíça ou
+              japonesa) e aprovamos a amostra técnica com você para que o
+              resultado supere suas expectativas.
+            </p>
           </div>
-          <h3 class="objecao-titulo">
-            Suporte Técnico de Verdade: Do Layout à Linha de Produção
-          </h3>
-          <p class="objecao-fala">
-            “Tenho medo de mandar o arquivo e a etiqueta/bordado sair errado ou
-            inadequado pro meu tecido.”
-          </p>
-          <p class="objecao-resposta">
-            Você não interage com um sistema automatizado sem rosto. Nosso time
-            de especialistas analisa a densidade do tecido, a aplicação final e
-            a viabilidade do design antes de rodar o maquinário. Ajustamos
-            vetores, indicamos a melhor tecnologia (suíça ou japonesa) e
-            aprovamos a amostra técnica com você para que o resultado supere
-            suas expectativas.
-          </p>
-        </article>
+        </details>
 
-        <article class="mb-card objecao-card is-azul">
-          <div class="objecao-header">
-            <span class="objecao-icone" aria-hidden="true"
-              ><i class="fa-solid fa-gem"></i
-            ></span>
-            <span class="objecao-num">3</span>
+        <details class="mb-card objecao-card is-azul" name="objecoes">
+          <summary>
+            <h3 class="objecao-titulo">
+              Elevação de Valor Percebido: O Detalhe que Justifica o Preço do
+              Seu Produto
+            </h3>
+            <span class="objecao-sinal" aria-hidden="true"></span>
+          </summary>
+          <div class="objecao-conteudo">
+            <p class="objecao-fala">
+              “Acho que meu cliente não vai reparar no acabamento do bordado ou
+              da etiqueta.”
+            </p>
+            <p class="objecao-resposta">
+              O consumidor final pode não entender de engenharia têxtil, mas ele
+              sente o acabamento no toque e na estética. Uma etiqueta tecida
+              selada a laser (que não incomoda a pele) e um bordado de altíssima
+              densidade são responsáveis por transformar uma peça comum em um
+              artigo de desejo. É o acabamento industrial que permite à sua
+              marca cobrar mais e ser percebida como uma grande grife.
+            </p>
           </div>
-          <h3 class="objecao-titulo">
-            Elevação de Valor Percebido: O Detalhe que Justifica o Preço do Seu
-            Produto
-          </h3>
-          <p class="objecao-fala">
-            “Acho que meu cliente não vai reparar no acabamento do bordado ou da
-            etiqueta.”
-          </p>
-          <p class="objecao-resposta">
-            O consumidor final pode não entender de engenharia têxtil, mas ele
-            sente o acabamento no toque e na estética. Uma etiqueta tecida
-            selada a laser (que não incomoda a pele) e um bordado de altíssima
-            densidade são responsáveis por transformar uma peça comum em um
-            artigo de desejo. É o acabamento industrial que permite à sua marca
-            cobrar mais e ser percebida como uma grande grife.
-          </p>
-        </article>
+        </details>
 
-        <article class="mb-card objecao-card is-ouro">
-          <div class="objecao-header">
-            <span class="objecao-icone" aria-hidden="true"
-              ><i class="fa-solid fa-industry"></i
-            ></span>
-            <span class="objecao-num">4</span>
+        <details class="mb-card objecao-card is-ouro" name="objecoes">
+          <summary>
+            <h3 class="objecao-titulo">
+              Tradição, Certificação ABVTEX e Capacidade Fabril
+            </h3>
+            <span class="objecao-sinal" aria-hidden="true"></span>
+          </summary>
+          <div class="objecao-conteudo">
+            <p class="objecao-fala">
+              “Como sei que essa empresa tem estrutura para aguentar minha
+              demanda com o tempo?”
+            </p>
+            <p class="objecao-resposta">
+              Desde 1994 no mercado, produzimos mais de
+              <strong>120 mil peças por mês</strong> para mais de
+              <strong>500 clientes ativos</strong>. Possuímos a certificação
+              auditada <strong>ABVTEX</strong>, o selo máximo de
+              responsabilidade social, ética e conformidade trabalhista exigido
+              pelas maiores redes de moda do país. Segurança jurídica e
+              operacional total para o seu negócio.
+            </p>
           </div>
-          <h3 class="objecao-titulo">
-            Tradição, Certificação ABVTEX e Capacidade Fabril
-          </h3>
-          <p class="objecao-fala">
-            “Como sei que essa empresa tem estrutura para aguentar minha demanda
-            com o tempo?”
-          </p>
-          <p class="objecao-resposta">
-            Desde 1994 no mercado, produzimos mais de
-            <strong>120 mil peças por mês</strong> para mais de
-            <strong>500 clientes ativos</strong>. Possuímos a certificação
-            auditada <strong>ABVTEX</strong>, o selo máximo de responsabilidade
-            social, ética e conformidade trabalhista exigido pelas maiores redes
-            de moda do país. Segurança jurídica e operacional total para o seu
-            negócio.
-          </p>
-        </article>
+        </details>
       </div>
+    </section>
 
-      <!-- Urgência -->
-      <div class="decisao-urgencia">
-        <div class="urgencia-selo">
-          <span class="line" aria-hidden="true"></span>
-          <span class="mb-tag urgencia-tag"
-            ><span aria-hidden="true">⏳</span> Por que tomar essa decisão agora
-            e não na próxima coleção?</span
-          >
+    <!-- ================================================================
+       URGÊNCIA — por que decidir agora
+       Intro → 3 ganhos (cards) → risco de esperar (vinho) → conector
+       ================================================================ -->
+    <section class="section-urgencia">
+      <div class="urgencia-glow" aria-hidden="true"></div>
+
+      <div class="urgencia-inner">
+        <!-- Intro centralizada: mini título → título → subtítulo -->
+        <div class="urgencia-intro">
+          <span class="mb-tag">O momento certo</span>
+          <div class="flex col urgencia-titulo">
+            <h2 class="mb-title lg">Por que tomar essa decisão agora</h2>
+            <p class="mb-title lg highlight-ouro">e não na próxima coleção?</p>
+          </div>
+          <p class="urgencia-lead">
+            Quanto mais cedo você alinha sua linha de produção com uma fábrica
+            de alta precisão, mais rápido você ganha três coisas que o mercado
+            não espera:
+          </p>
         </div>
-        <p class="urgencia-texto">
-          Quanto mais cedo você alinha sua linha de produção com uma fábrica de
-          alta precisão, mais rápido você ganha três coisas que o mercado não
-          espera:
-          <strong
-            >reputação inquestionável, fidelização do seu cliente e
-            tranquilidade operacional.</strong
-          >
-        </p>
-        <p class="urgencia-texto">
-          Continuar com o fornecedor atual por comodidade significa continuar
-          correndo o risco de lançamentos atrasados, devoluções e desvalorização
-          da sua marca.
+
+        <!-- 3 ganhos -->
+        <div class="urgencia-ganhos">
+          <article class="mb-card urgencia-ganho">
+            <h3 class="urgencia-ganho-titulo">Reputação inquestionável</h3>
+            <p>
+              Peças com acabamento de grife fazem a sua marca ser lembrada pelo
+              padrão, não pelos problemas.
+            </p>
+          </article>
+          <article class="mb-card urgencia-ganho">
+            <h3 class="urgencia-ganho-titulo">Fidelização do seu cliente</h3>
+            <p>
+              Quem compra uma peça bem acabada volta a comprar e indica a sua
+              marca.
+            </p>
+          </article>
+          <article class="mb-card urgencia-ganho">
+            <h3 class="urgencia-ganho-titulo">Tranquilidade operacional</h3>
+            <p>
+              Prazo cumprido e lote no padrão: você volta a cuidar das vendas,
+              não dos incêndios.
+            </p>
+          </article>
+        </div>
+
+        <!-- Risco de esperar -->
+        <div class="urgencia-risco">
+          <p>
+            Continuar com o fornecedor atual por comodidade significa continuar
+            correndo o risco de:
+          </p>
+          <ul class="urgencia-risco-lista" aria-label="Riscos de esperar">
+            <li>Lançamentos atrasados</li>
+            <li>Devoluções</li>
+            <li>Desvalorização da sua marca</li>
+          </ul>
+        </div>
+
+        <p class="solucoes-conector">
+          Coloque lado a lado e veja o que realmente está em jogo em cada
+          escolha.
+          <span class="conector-seta" aria-hidden="true">↓</span>
         </p>
       </div>
+    </section>
 
+    <!-- ================================================================
+       COMPARATIVO — tabela → custo de economizar errado → CTA
+       ================================================================ -->
+    <section class="section-comparativo">
       <!-- Comparativo -->
       <div class="comparativo-wrap">
         <table class="comparativo">

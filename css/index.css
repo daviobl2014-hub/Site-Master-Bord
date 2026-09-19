@@ -988,6 +988,10 @@
   overflow: hidden;
   padding: 2.8rem;
 }
+/* Faixa dourada na borda esquerda (usa o .accent-bar do .mb-card) */
+.historia-card .accent-bar {
+  background: var(--mb-ouro);
+}
 .historia-ano {
   display: block;
   font-family: var(--font-display);
@@ -1467,14 +1471,6 @@
   flex-direction: column;
   align-items: center;
   padding: 36px 32px;
-  transition:
-    transform 0.25s ease,
-    border-color 0.25s ease,
-    background-color 0.25s ease;
-}
-.promessa-card:hover {
-  transform: translateY(-6px);
-  background-color: var(--mb-card-hover);
 }
 .promessa-card-dor .accent-bar {
   background: var(--mb-vinho);
@@ -1726,8 +1722,9 @@
 }
 
 /* ---- Intro centralizada ---- */
+/* Mesmo padrão da seção Promessa: mini título → título → subtítulo */
 .decisao-intro {
-  max-width: 900px;
+  max-width: 120rem;
   margin: 0 auto 56px;
   text-align: center;
 }
@@ -1735,77 +1732,173 @@
   display: block;
   margin-bottom: 16px;
 }
-.decisao-intro .mb-title {
-  margin-bottom: 24px;
+/* .flex .col (global) — frase principal em cima, destaque vinho embaixo */
+.decisao-titulo {
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+.decisao-titulo .mb-title {
+  line-height: 1.05;
+}
+/* Lead e destaque ocupam a largura do texto (max-content),
+   mas quebram linha quando a tela é menor */
+.decisao-lead,
+.decisao-destaque {
+  width: max-content;
+  max-width: 100%;
+  margin: 0 auto;
 }
 .decisao-lead {
-  font-size: 16px;
-  line-height: 1.75;
-  color: var(--mb-muted);
-  margin: 0;
+  font-size: 18px;
+  line-height: 1.65;
+  color: var(--mb-paper-dim);
 }
-.decisao-lead strong {
-  color: var(--mb-paper);
+.decisao-destaque {
+  margin-top: 16px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 1.4;
+  color: var(--mb-ouro);
 }
 
-/* ---- 4 objeções respondidas (2x2) ---- */
+/* ---- 4 objeções respondidas — acordeão ----
+   Flex em coluna: 4 cards um abaixo do outro, ocupando toda a largura
+   da seção e mostrando só o título. Clique abre a pergunta e a resposta
+   (<details> nativo; name="objecoes" = um aberto por vez).
+   Cada card define --objecao-cor (vinho/azul/ouro) pra faixa e o sinal. */
 .objecoes-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-  margin-bottom: 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch; /* cada card ocupa a largura toda */
+  gap: 12px;
+  width: 100%;
+  margin: 0; /* último bloco da seção — sem margem embaixo */
 }
 .objecao-card {
+  --objecao-cor: var(--mb-line);
+  padding: 0;
+  text-align: center;
+  border-top: 3px solid var(--objecao-cor);
   transition:
     transform 0.2s,
     background 0.2s,
     border-color 0.2s;
 }
+.objecao-card.is-vinho {
+  --objecao-cor: var(--mb-vinho);
+}
+.objecao-card.is-azul {
+  --objecao-cor: var(--mb-azul);
+}
+.objecao-card.is-ouro {
+  --objecao-cor: var(--mb-ouro);
+}
 .objecao-card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-4px);
   background: var(--mb-card-hover);
 }
-.objecao-header {
+.objecao-card[open] {
+  background: var(--mb-card-hover);
+  border-color: var(--objecao-cor);
+  border-top-width: 3px;
+}
+
+/* Cabeçalho clicável: título + sinal de + */
+/* Título e sinal lado a lado, centralizados na barra */
+.objecao-card summary {
   display: flex;
   align-items: center;
-  gap: 10px;
-  margin-bottom: 16px;
+  justify-content: center;
+  gap: 16px;
+  padding: 22px 28px;
+  cursor: pointer;
+  list-style: none;
 }
-.objecao-icone {
-  font-size: 15px;
-  line-height: 1;
+.objecao-card summary::-webkit-details-marker {
+  display: none;
 }
-.objecao-num {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  color: var(--mb-muted);
+.objecao-card summary::marker {
+  content: '';
+}
+.objecao-card summary:focus-visible {
+  outline: 2px solid var(--objecao-cor);
+  outline-offset: -2px;
 }
 .objecao-titulo {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 18px;
-  line-height: 1.35;
+  font-size: 17px;
+  line-height: 1.3;
   letter-spacing: -0.01em;
   color: var(--mb-paper);
-  margin: 0 0 14px;
+  margin: 0;
+}
+
+/* Sinal de + que vira − ao abrir (mesmo desenho do FAQ) */
+.objecao-sinal {
+  flex: none;
+  position: relative;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 1px solid var(--mb-line);
+  background: var(--mb-bg);
+  transition:
+    transform 0.25s,
+    border-color 0.2s;
+}
+.objecao-sinal::before,
+.objecao-sinal::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 10px;
+  height: 1.5px;
+  background: var(--objecao-cor);
+  transform: translate(-50%, -50%);
+  transition: opacity 0.25s;
+}
+.objecao-sinal::after {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+.objecao-card:hover .objecao-sinal,
+.objecao-card[open] .objecao-sinal {
+  border-color: var(--objecao-cor);
+}
+.objecao-card[open] .objecao-sinal {
+  transform: rotate(180deg);
+}
+.objecao-card[open] .objecao-sinal::after {
+  opacity: 0;
+}
+
+/* Conteúdo que abre: pergunta + resposta, tudo centralizado */
+.objecao-conteudo {
+  padding: 0 28px 26px;
+  text-align: center;
+  animation: objecaoAbrir 0.3s ease;
+}
+@keyframes objecaoAbrir {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 .objecao-fala {
   font-style: italic;
   font-size: 13.5px;
-  line-height: 1.6;
+  line-height: 1.55;
   margin: 0 0 14px;
+  padding-top: 18px;
+  border-top: 1px solid var(--mb-line);
   color: var(--mb-paper-dim);
-}
-.objecao-k {
-  font-style: normal;
-  font-family: var(--font-mono);
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  margin-right: 6px;
 }
 .objecao-resposta {
   font-size: 14px;
@@ -1816,57 +1909,150 @@
 .objecao-resposta strong {
   color: var(--mb-paper);
 }
-.objecao-card.is-vinho .objecao-icone,
-.objecao-card.is-vinho .objecao-fala .objecao-k {
-  color: var(--mb-vinho);
-}
-.objecao-card.is-azul .objecao-icone,
-.objecao-card.is-azul .objecao-fala .objecao-k {
-  color: var(--mb-azul);
-}
-.objecao-card.is-ouro .objecao-icone,
-.objecao-card.is-ouro .objecao-fala .objecao-k {
-  color: var(--mb-ouro);
+
+@media (prefers-reduced-motion: reduce) {
+  .objecao-card,
+  .objecao-sinal {
+    transition: none;
+  }
+  .objecao-card:hover {
+    transform: none;
+  }
+  .objecao-conteudo {
+    animation: none;
+  }
 }
 
-/* ---- Urgência ---- */
-.decisao-urgencia {
-  max-width: 900px;
+/* ================================================================
+   URGÊNCIA — por que decidir agora
+   Intro → 3 ganhos (cards) → risco de esperar (vinho) → conector
+   ================================================================ */
+.section-urgencia {
+  position: relative;
+  overflow: hidden;
+  background: var(--mb-bg-soft);
+  padding: 96px 48px;
+}
+
+.urgencia-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 120rem;
+  margin: 0 auto;
+}
+
+/* ---- Intro centralizada (mesmo padrão da Decisão) ---- */
+.urgencia-intro {
   margin: 0 auto 56px;
   text-align: center;
 }
-.urgencia-selo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  margin-bottom: 20px;
+.urgencia-intro .mb-tag {
+  display: block;
+  margin-bottom: 16px;
 }
-.urgencia-selo .line {
-  width: 40px;
-  height: 1px;
-  background: var(--mb-ouro);
+.urgencia-titulo {
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+.urgencia-titulo .mb-title {
+  line-height: 1.05;
+}
+.urgencia-lead {
+  width: max-content;
+  max-width: 100%;
+  margin: 0 auto;
+  font-size: 18px;
+  line-height: 1.65;
+  color: var(--mb-paper-dim);
 }
 
-/* Bloco amarelo para urgência */
-.urgencia-tag {
-  font-family: var(--font-display) !important;
-  font-size: 16px !important;
-  font-weight: 600 !important;
-  padding: 14px 26px !important;
-  letter-spacing: 0.12em !important;
+/* ---- 3 ganhos ---- */
+.urgencia-ganhos {
+  display: flex;
+  gap: 16px;
 }
-.urgencia-texto {
-  font-size: 16px;
-  line-height: 1.75;
-  color: var(--mb-muted);
-  margin: 0 0 16px;
+.urgencia-ganho {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px 28px;
+  border-top: 3px solid var(--mb-ouro);
 }
-.urgencia-texto:last-child {
-  margin-bottom: 0;
-}
-.urgencia-texto strong {
+
+.urgencia-ganho-titulo {
+  margin: 0 0 12px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.25;
   color: var(--mb-paper);
+}
+.urgencia-ganho p {
+  margin: 0;
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: var(--mb-muted);
+}
+
+/* ---- Risco de esperar (vinho) ---- */
+.urgencia-risco {
+  width: max-content;
+  max-width: 100%;
+  margin: 40px auto 0;
+  padding: 24px 32px;
+  text-align: center;
+  border: 1px solid rgba(196, 75, 85, 0.35);
+  border-radius: 12px;
+  background: rgba(196, 75, 85, 0.06);
+}
+.urgencia-risco p {
+  margin: 0 0 16px;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--mb-paper-dim);
+}
+.urgencia-risco-lista {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+.urgencia-risco-lista li {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 6px 12px;
+  border-radius: 999px;
+  color: var(--mb-vinho-glow);
+  border: 1px solid rgba(196, 75, 85, 0.4);
+  background: rgba(196, 75, 85, 0.08);
+}
+
+.section-urgencia .solucoes-conector {
+  margin-top: 56px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .urgencia-ganho {
+    transition: none;
+  }
+  .urgencia-ganho:hover {
+    transform: none;
+  }
+}
+
+/* ================================================================
+   COMPARATIVO — tabela → custo → CTA (continuação da Decisão)
+   ================================================================ */
+.section-comparativo {
+  background: var(--mb-bg);
+  padding: 96px 48px;
 }
 
 /* ---- Tabela comparativa ---- */
@@ -2394,19 +2580,71 @@
   .decisao-lead {
     font-size: 15px;
   }
-  .objecoes-grid {
-    grid-template-columns: 1fr;
-    gap: 16px;
-    margin-bottom: 40px;
-  }
-  .objecao-titulo {
+  .decisao-destaque {
     font-size: 17px;
   }
-  .decisao-urgencia {
-    margin-bottom: 40px;
+  .decisao-titulo {
+    gap: 6px;
+    margin-bottom: 20px;
   }
-  .urgencia-texto {
+  /* Celular: mesma coluna, só menos espaço */
+  .objecoes-grid {
+    gap: 10px;
+  }
+  .objecao-card summary {
+    gap: 12px;
+    padding: 18px 20px;
+  }
+  .objecao-conteudo {
+    padding: 0 20px 22px;
+  }
+  .objecao-card:hover {
+    transform: none;
+  }
+  .objecao-titulo {
+    font-size: 16px;
+  }
+  /* Urgência */
+  .section-urgencia {
+    padding: 56px 20px;
+  }
+  .urgencia-intro {
+    margin-bottom: 36px;
+  }
+  .urgencia-titulo {
+    gap: 6px;
+    margin-bottom: 20px;
+  }
+  .urgencia-lead {
     font-size: 15px;
+  }
+  .urgencia-ganhos {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .urgencia-ganho {
+    padding: 24px 20px;
+  }
+  .urgencia-ganho-numero {
+    font-size: 34px;
+  }
+  .urgencia-ganho-titulo {
+    font-size: 18px;
+  }
+  .urgencia-risco {
+    margin-top: 28px;
+    padding: 20px;
+  }
+  .urgencia-risco p {
+    font-size: 15px;
+  }
+  .section-urgencia .solucoes-conector {
+    margin-top: 36px;
+  }
+
+  /* Comparativo */
+  .section-comparativo {
+    padding: 56px 20px;
   }
   .comparativo th,
   .comparativo td {
