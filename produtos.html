@@ -31,14 +31,14 @@
        HEADER
        (repetido em todas as páginas — CSS vem de global.css)
        ================================================================ -->
-    <header class="header" id="mbHeader">
+    <header class="cabecalho" id="mbHeader">
       <!-- Faixa utilitária superior -->
-      <div class="utility-strip">
+      <div class="cabecalho__faixa">
         <span>📍 Petrópolis - RJ</span>
 
-        <span class="hide-mobile"> 🚚 Entregamos para todo o Brasil </span>
+        <span class="oculto-celular"> 🚚 Entregamos para todo o Brasil </span>
 
-        <span class="social">
+        <span class="cabecalho__redes">
           <a
             href="https://www.instagram.com/masterbordbordados/"
             target="_blank"
@@ -52,8 +52,8 @@
       </div>
 
       <!-- Navegação principal -->
-      <nav class="main-nav">
-        <div class="nav-left" onclick="location.href='index.html'">
+      <nav class="cabecalho__navegacao">
+        <div class="cabecalho__esquerda" onclick="location.href='index.html'">
           <div class="logo">
             <svg viewBox="0 0 86.5 58.36">
               <g>
@@ -69,28 +69,34 @@
               </g>
             </svg>
           </div>
-          <div class="nav-divider hide-mobile"></div>
-          <div class="nav-links hide-mobile">
-            <a href="index.html">Home</a>
-            <a href="sobre.html">Sobre</a>
-            <a href="produtos.html" class="active">Produtos</a>
-            <a href="catalogo.html">Catálogo</a>
-            <a href="contato.html">Contato</a>
+          <div class="cabecalho__divisor oculto-celular"></div>
+          <div class="cabecalho__links oculto-celular">
+            <a href="index.html" class="cabecalho__link">Home</a>
+            <a href="sobre.html" class="cabecalho__link">Sobre</a>
+            <a
+              href="produtos.html"
+              class="cabecalho__link cabecalho__link--ativo"
+              >Produtos</a
+            >
+            <a href="contato.html" class="cabecalho__link">Contato</a>
           </div>
         </div>
-        <div class="nav-right">
-          <div class="nav-phone hide-mobile">(24) 2231-7666</div>
-          <a href="contato.html" class="btn btn-primary btn-sm">Orçamento →</a>
+        <div class="cabecalho__direita">
+          <div class="cabecalho__telefone oculto-celular">(24) 2231-7666</div>
+          <a href="contato.html" class="botao botao--primario botao--pequeno">Orçamento →</a>
         </div>
       </nav>
 
       <!-- Strip de navegação só-mobile -->
-      <div class="mobile-nav-strip show-mobile">
-        <a href="index.html">Home</a>
-        <a href="sobre.html">Sobre</a>
-        <a href="produtos.html" class="active">Produtos</a>
-        <a href="catalogo.html">Catálogo</a>
-        <a href="contato.html">Contato</a>
+      <div class="cabecalho__menu-celular so-celular">
+        <a href="index.html" class="cabecalho__menu-link">Home</a>
+        <a href="sobre.html" class="cabecalho__menu-link">Sobre</a>
+        <a
+          href="produtos.html"
+          class="cabecalho__menu-link cabecalho__menu-link--ativo"
+          >Produtos</a
+        >
+        <a href="contato.html" class="cabecalho__menu-link">Contato</a>
       </div>
     </header>
 
@@ -98,11 +104,11 @@
        HERO — capa "Três produtos, um padrão"
        ================================================================ -->
     <section class="produtos-hero">
-      <div class="tech-grid"></div>
-      <div class="mb-tag">CATÁLOGO DE OFÍCIOS</div>
+      <div class="grade-tecnica"></div>
+      <div class="rotulo">CATÁLOGO DE OFÍCIOS</div>
       <h1 class="produtos-hero-title">
-        Três <span class="highlight-azul">produtos</span>,<br />
-        um <span class="highlight-vinho">padrão</span>
+        Três <span class="destaque destaque--azul">produtos</span>,<br />
+        um <span class="destaque destaque--vinho">padrão</span>
       </h1>
     </section>
 
@@ -114,13 +120,13 @@
         <!-- Etiqueta (azul) -->
         <a
           href="produto-etiqueta.html"
-          class="mb-card produto-index-card is-etiqueta"
+          class="cartao produto-index-card is-etiqueta"
         >
-          <div class="accent-bar"></div>
-          <div class="mb-image produto-index-image">
-            <div class="img-gradient"></div>
-            <div class="img-pattern"></div>
-            <div class="img-border">
+          <div class="cartao__faixa"></div>
+          <div class="imagem produto-index-image">
+            <div class="imagem--gradiente"></div>
+            <div class="imagem--padrao"></div>
+            <div class="imagem--borda">
               <img src="img/produtos/etiqueta-1.png" alt="" />
             </div>
           </div>
@@ -133,13 +139,13 @@
         <!-- Bordado (vinho) -->
         <a
           href="produto-bordado.html"
-          class="mb-card produto-index-card is-bordado"
+          class="cartao produto-index-card is-bordado"
         >
-          <div class="accent-bar"></div>
-          <div class="mb-image produto-index-image">
-            <div class="img-gradient"></div>
-            <div class="img-pattern"></div>
-            <div class="img-border">
+          <div class="cartao__faixa"></div>
+          <div class="imagem produto-index-image">
+            <div class="imagem--gradiente"></div>
+            <div class="imagem--padrao"></div>
+            <div class="imagem--borda">
               <img src="img/produtos/bordado-1.png" alt="" />
             </div>
           </div>
@@ -152,13 +158,13 @@
         <!-- Laser (ouro) -->
         <a
           href="produto-laser.html"
-          class="mb-card produto-index-card is-laser"
+          class="cartao produto-index-card is-laser"
         >
-          <div class="accent-bar"></div>
-          <div class="mb-image produto-index-image">
-            <div class="img-gradient"></div>
-            <div class="img-pattern"></div>
-            <div class="img-border">
+          <div class="cartao__faixa"></div>
+          <div class="imagem produto-index-image">
+            <div class="imagem--gradiente"></div>
+            <div class="imagem--padrao"></div>
+            <div class="imagem--borda">
               <img src="img/produtos/laser-1.png" alt="" />
             </div>
           </div>
@@ -176,24 +182,24 @@
        FOOTER
        (repetido em todas as páginas — CSS vem de global.css)
        ================================================================ -->
-    <footer class="footer">
+    <footer class="rodape">
       <!-- CTA final -->
-      <div class="footer-cta">
-        <div class="footer-cta-bg"></div>
-        <div class="footer-cta-grid">
+      <div class="rodape__chamada">
+        <div class="rodape__chamada-fundo"></div>
+        <div class="rodape__chamada-grade">
           <div>
-            <h2 class="mb-title xl">
-              <span class="highlight-azul">Pronto</span> para<br />produzir com
-              a <span class="highlight-vinho">gente</span>
+            <h2 class="titulo titulo--enorme">
+              <span class="destaque destaque--azul">Pronto</span> para<br />produzir com
+              a <span class="destaque destaque--vinho">gente</span>
             </h2>
           </div>
-          <div class="footer-cta-ctas">
-            <a href="contato.html" class="btn btn-primary btn-cta-center"
+          <div class="rodape__chamada-acoes">
+            <a href="contato.html" class="botao botao--primario botao--centralizado"
               >Solicitar orçamento →</a
             >
             <button
               type="button"
-              class="btn btn-secondary js-wa-modal btn-cta-center"
+              class="botao botao--secundario js-modal-whatsapp botao--centralizado"
             >
               WhatsApp direto
             </button>
@@ -202,19 +208,19 @@
       </div>
 
       <!-- Colunas -->
-      <div class="footer-cols">
-        <div class="footer-about">
-          <div class="logo footer-logo">
-            <span class="logo-master">Master</span
-            ><span class="logo-bord">Bord</span>
+      <div class="rodape__colunas">
+        <div class="rodape__sobre">
+          <div class="logo rodape__logo">
+            <span>Master</span
+            ><span>Bord</span>
           </div>
           <p>
             Desde 1994 transformando ideias em etiquetas, bordados e cortes
             laser. Parceiro certificado ABVTEX.
           </p>
-          <div class="footer-socials">
+          <div class="rodape__redes">
             <a
-              class="social"
+              class="rodape__rede"
               href="https://www.instagram.com/masterbordbordados/"
               target="_blank"
               rel="noopener noreferrer"
@@ -223,7 +229,7 @@
               ><i class="fab fa-instagram"></i
             ></a>
             <a
-              class="social"
+              class="rodape__rede"
               href="https://wa.me/5524981190914"
               target="_blank"
               rel="noopener noreferrer"
@@ -232,7 +238,7 @@
               ><i class="fab fa-whatsapp"></i
             ></a>
             <a
-              class="social"
+              class="rodape__rede"
               href="https://wa.me/5524992808372"
               target="_blank"
               rel="noopener noreferrer"
@@ -241,7 +247,7 @@
               ><i class="fab fa-whatsapp"></i
             ></a>
             <a
-              class="social"
+              class="rodape__rede"
               href="https://www.facebook.com/masterbordbordados/"
               target="_blank"
               rel="noopener noreferrer"
@@ -252,19 +258,18 @@
           </div>
         </div>
 
-        <div class="footer-col">
-          <div class="footer-col-title">Navegar</div>
+        <div class="rodape__coluna">
+          <div class="rodape__coluna-titulo">Navegar</div>
           <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="sobre.html">Sobre</a></li>
             <li><a href="produtos.html">Produtos</a></li>
-            <li><a href="catalogo.html">Catálogo</a></li>
             <li><a href="contato.html">Contato</a></li>
           </ul>
         </div>
 
-        <div class="footer-col">
-          <div class="footer-col-title">Produtos</div>
+        <div class="rodape__coluna">
+          <div class="rodape__coluna-titulo">Produtos</div>
           <ul>
             <li><a href="produto-etiqueta.html">Etiquetas Tecidas</a></li>
             <li><a href="produto-bordado.html">Bordados</a></li>
@@ -272,8 +277,8 @@
           </ul>
         </div>
 
-        <div class="footer-col">
-          <div class="footer-col-title">Institucional</div>
+        <div class="rodape__coluna">
+          <div class="rodape__coluna-titulo">Institucional</div>
           <ul>
             <li><a href="politicas.html#frete">Política de Frete</a></li>
             <li><a href="politicas.html#entrega">Política de Entrega</a></li>
@@ -284,8 +289,8 @@
           </ul>
         </div>
 
-        <div class="footer-col">
-          <div class="footer-col-title">Contato</div>
+        <div class="rodape__coluna">
+          <div class="rodape__coluna-titulo">Contato</div>
           <ul>
             <li>(24) 2231-7666</li>
             <li>vendas@bordado.com.br</li>
@@ -297,7 +302,7 @@
       </div>
 
       <!-- Rodapé legal -->
-      <div class="footer-bottom">
+      <div class="rodape__base">
         <span>© DESDE 1994 MASTER BORD · TODOS OS DIREITOS RESERVADOS</span>
         <span>CNPJ 02.404.908/0001-96 · PRIVACIDADE · TERMOS</span>
       </div>

@@ -3,102 +3,12 @@
    Scripts específicos da página inicial (index.html).
 
    Conteúdo:
-   1. Carrossel do hero (automático com fade + controles manuais)
+   1. Carrossel infinito de marcas (clientes)
+   2. Galeria 3D da primeira dobra
    ================================================================ */
 
 /* ================================================================
-   1. CARROSSEL DO HERO
-   - Troca automática a cada 5 segundos
-   - Clique nas bolinhas pra ir direto num slide específico
-   - Pausa quando o mouse fica em cima
-   - Retoma quando o mouse sai
-   ================================================================ */
-
-(function () {
-  // Pega os elementos do HTML
-  const carousel = document.getElementById('mbCarousel');
-  if (!carousel) return; // Se não tem carrossel, sai (evita erro em outras páginas)
-
-  const slides = carousel.querySelectorAll('.carousel-slide');
-  // Dots agora vivem FORA do .carousel — busca pelo container próprio (#mbCarouselDots)
-  // pra não acoplar com o DOM do carrossel (seguro pra futuros re-arranjos do hero).
-  const dotsContainer = document.getElementById('mbCarouselDots');
-  const dots = dotsContainer
-    ? dotsContainer.querySelectorAll('.carousel-dot')
-    : document.querySelectorAll('.carousel-dot');
-
-  // Configurações
-  const INTERVALO = 8000; // 8 segundos — tempo ideal pro Ken Burns
-  let slideAtual = 0;
-  let timerAutomatico = null;
-
-  /**
-   * Troca pro slide de índice N.
-   * Remove .active de todos e adiciona só no slide certo.
-   */
-  function irParaSlide(n) {
-    slides.forEach((slide, i) => {
-      slide.classList.toggle('active', i === n);
-    });
-    dots.forEach((dot, i) => {
-      dot.classList.toggle('active', i === n);
-    });
-    slideAtual = n;
-  }
-
-  /**
-   * Avança pro próximo slide (ciclicamente — volta pro 0 depois do último).
-   */
-  function proximoSlide() {
-    const proximo = (slideAtual + 1) % slides.length;
-    irParaSlide(proximo);
-  }
-
-  /**
-   * Liga a troca automática.
-   */
-  function iniciarAutomatico() {
-    pararAutomatico(); // Garante que não tem outro timer rodando
-    timerAutomatico = setInterval(proximoSlide, INTERVALO);
-  }
-
-  /**
-   * Desliga a troca automática.
-   */
-  function pararAutomatico() {
-    if (timerAutomatico) {
-      clearInterval(timerAutomatico);
-      timerAutomatico = null;
-    }
-  }
-
-  // Clique nas bolinhas → vai pro slide clicado e reinicia o timer
-  dots.forEach((dot) => {
-    dot.addEventListener('click', () => {
-      const n = parseInt(dot.dataset.slide, 10);
-      irParaSlide(n);
-      iniciarAutomatico(); // Reinicia o timer pra dar 5s completos a partir daqui
-    });
-  });
-
-  // Pausa quando o mouse fica em cima do carrossel
-  carousel.addEventListener('mouseenter', pararAutomatico);
-  carousel.addEventListener('mouseleave', iniciarAutomatico);
-
-  // Começa tudo
-  iniciarAutomatico();
-})();
-
-/* ================================================================
-   2. GALERIA — DESATIVADA (sessão de cleanup, ~100 linhas removidas)
-   Antes: JS preenchia 5 slots com banco de 15 imagens + filtros.
-   Agora: imagens estão direto no HTML (5 cards .galeria-item.is-X
-   com <img src> fixo) e cores via CSS modifier classes.
-   Filtros (.galeria-filtros span) ficaram decorativos por enquanto.
-   ================================================================ */
-
-/* ================================================================
-   3. CARROSSEL INFINITO DE LOGOS — controle preciso por JavaScript
+   1. CARROSSEL INFINITO DE MARCAS — controle preciso por JavaScript
    - Calcula a largura exata do grupo 1 de logos
    - Anima translateX usando requestAnimationFrame (suave 60fps)
    - Reset invisível: quando completa o grupo 1, volta pra 0 sem salto
@@ -106,10 +16,10 @@
    ================================================================ */
 
 (function () {
-  const lista = document.querySelector('.section-logos-list');
+  const lista = document.querySelector('.marcas__lista');
   if (!lista) return;
 
-  const track = document.querySelector('.section-logos-track');
+  const track = document.querySelector('.marcas__trilho');
   if (!track) return;
 
   // Configuração — VELOCIDADE em pixels por segundo
@@ -126,7 +36,7 @@
    * É essa a distância que precisa rolar antes de "resetar" pra posição 0.
    */
   function calcularLarguraGrupo1() {
-    const logos = lista.querySelectorAll('.marca-logo');
+    const logos = lista.querySelectorAll('.marcas__item');
     if (logos.length < 17) return 0;
 
     // Mede a posição X do logo 1 e do logo 17 (que é a CÓPIA do logo 1).
@@ -184,7 +94,7 @@
 
     while (lista.scrollWidth < tamanhoNecessario) {
       const grupoOriginal = Array.from(
-        lista.querySelectorAll('.marca-logo')
+        lista.querySelectorAll('.marcas__item')
       ).slice(0, 16);
       grupoOriginal.forEach((logo) => lista.appendChild(logo.cloneNode(true)));
     }
@@ -228,7 +138,7 @@
 })();
 
 /* ================================================================
-   3. GALERIA CIRCULAR 3D DO HERO
+   2. GALERIA CIRCULAR 3D DA PRIMEIRA DOBRA
    - 3 abas (Etiquetas / Bordados / Patches) dispostas num círculo
    - Gira sozinha devagar, pausa no hover e quando um card recebe
      foco pelo teclado
@@ -243,7 +153,7 @@
 
   const container = document.getElementById('mbGaleria3d');
   const itens = Array.prototype.slice.call(
-    palco.querySelectorAll('.galeria3d-item')
+    palco.querySelectorAll('.galeria-3d__item')
   );
   if (!itens.length) return;
 

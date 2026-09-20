@@ -31,14 +31,14 @@
        HEADER
        (repetido em todas as páginas — CSS vem de global.css)
        ================================================================ -->
-    <header class="header" id="mbHeader">
+    <header class="cabecalho" id="mbHeader">
       <!-- Faixa utilitária superior -->
-      <div class="utility-strip">
+      <div class="cabecalho__faixa">
         <span>📍 Petrópolis - RJ</span>
 
-        <span class="hide-mobile"> 🚚 Entregamos para todo o Brasil </span>
+        <span class="oculto-celular"> 🚚 Entregamos para todo o Brasil </span>
 
-        <span class="social">
+        <span class="cabecalho__redes">
           <a
             href="https://www.instagram.com/masterbordbordados/"
             target="_blank"
@@ -52,8 +52,8 @@
       </div>
 
       <!-- Navegação principal -->
-      <nav class="main-nav">
-        <div class="nav-left" onclick="location.href = 'index.html'">
+      <nav class="cabecalho__navegacao">
+        <div class="cabecalho__esquerda" onclick="location.href = 'index.html'">
           <div class="logo">
             <svg viewBox="0 0 86.5 58.36">
               <g>
@@ -69,64 +69,74 @@
               </g>
             </svg>
           </div>
-          <div class="nav-divider hide-mobile"></div>
-          <div class="nav-links hide-mobile">
-            <a href="index.html" class="active">Home</a>
-            <a href="sobre.html">Sobre</a>
-            <a href="produtos.html">Produtos</a>
-            <a href="catalogo.html">Catálogo</a>
-            <a href="contato.html">Contato</a>
+          <div class="cabecalho__divisor oculto-celular"></div>
+          <div class="cabecalho__links oculto-celular">
+            <a href="index.html" class="cabecalho__link cabecalho__link--ativo"
+              >Home</a
+            >
+            <a href="sobre.html" class="cabecalho__link">Sobre</a>
+            <a href="produtos.html" class="cabecalho__link">Produtos</a>
+            <a href="contato.html" class="cabecalho__link">Contato</a>
           </div>
         </div>
-        <div class="nav-right">
-          <div class="nav-phone hide-mobile">(24) 2231-7666</div>
-          <a href="contato.html" class="btn btn-primary btn-sm">Orçamento →</a>
+        <div class="cabecalho__direita">
+          <div class="cabecalho__telefone oculto-celular">(24) 2231-7666</div>
+          <a href="contato.html" class="botao botao--primario botao--pequeno"
+            >Orçamento →</a
+          >
         </div>
       </nav>
 
       <!-- Strip de navegação só-mobile -->
-      <div class="mobile-nav-strip show-mobile">
-        <a href="index.html" class="active">Home</a>
-        <a href="sobre.html">Sobre</a>
-        <a href="produtos.html">Produtos</a>
-        <a href="catalogo.html">Catálogo</a>
-        <a href="contato.html">Contato</a>
+      <div class="cabecalho__menu-celular so-celular">
+        <a
+          href="index.html"
+          class="cabecalho__menu-link cabecalho__menu-link--ativo"
+          >Home</a
+        >
+        <a href="sobre.html" class="cabecalho__menu-link">Sobre</a>
+        <a href="produtos.html" class="cabecalho__menu-link">Produtos</a>
+        <a href="contato.html" class="cabecalho__menu-link">Contato</a>
       </div>
     </header>
 
     <!-- ================================================================
-       HERO — 01 / primeira dobra (texto à esquerda, vitrine à direita)
+       HERO — 01 
        ================================================================ -->
-    <section class="hero">
+    <section class="principal">
       <!-- Glows e grid -->
-      <div class="tech-grid"></div>
-      <div class="hero-glow-azul"></div>
-      <div class="hero-glow-vinho"></div>
+      <div class="grade-tecnica"></div>
+      <div class="principal__brilho principal__brilho--azul"></div>
+      <div class="principal__brilho principal__brilho--vinho"></div>
 
       <!-- Conteúdo textual sobre tudo -->
-      <div class="hero-grid">
-        <div class="text-hero">
-          <div class="hero-tag-line">
-            <div class="mb-tag">
+      <div class="principal__grade">
+        <div class="principal__texto">
+          <div class="principal__tag">
+            <div class="rotulo">
               Sua marca tem visual profissional ou entrega acabamento amador?
             </div>
           </div>
 
-          <h1 class="titulo-principal" aria-label="Master Bord">
-            <span class="titulo-master" role="img" aria-hidden="true"></span>
-            <span class="titulo-row" aria-hidden="true">
-              <span class="titulo-logo"></span>
-              <span class="titulo-bord"></span>
+          <h1 class="principal__titulo" aria-label="Master Bord">
+            <span
+              class="principal__titulo-master"
+              role="img"
+              aria-hidden="true"
+            ></span>
+            <span class="principal__titulo-linha" aria-hidden="true">
+              <span class="principal__titulo-logo"></span>
+              <span class="principal__titulo-bord"></span>
             </span>
           </h1>
 
-          <p class="hero-lead">
+          <p class="principal__chamada">
             Transforme o padrão da sua marca ou empresa de forma
             <strong>garantida</strong>, com a experiência de quem produz
             etiquetas, bordados e patches desde 1994.
           </p>
 
-          <p class="hero-lead hero-lead-apoio">
+          <p class="principal__chamada principal__chamada--apoio">
             Com <strong>30+ anos</strong> de experiência,
             <strong>10.000+ clientes</strong> atendidos,
             <strong>300+ clientes/mês</strong>, garantimos qualidade e preço de
@@ -137,10 +147,10 @@
             <span title="Automatiza">Brasileira</span>.
           </p>
 
-          <div class="hero-ctas">
+          <div class="principal__acoes">
             <button
               type="button"
-              class="btn btn-primary btn-hero-cta js-wa-modal"
+              class="botao botao--primario botao--destaque js-modal-whatsapp"
             >
               Fale diretamente com a fábrica →
             </button>
@@ -152,102 +162,102 @@
              encostam e nunca abre vão pro fundo.
              Gira sozinha (js/index.js), pausa no hover e no foco do teclado. -->
         <div
-          class="hero-galeria"
+          class="principal__galeria galeria-3d"
           id="mbGaleria3d"
           role="region"
           aria-label="Nossas linhas de produção"
         >
-          <div class="galeria3d-palco" id="mbGaleria3dPalco">
+          <div class="galeria-3d__palco" id="mbGaleria3dPalco">
             <a
               href="produto-etiqueta.html"
-              class="galeria3d-item is-etiqueta"
+              class="galeria-3d__item galeria-3d__item--etiqueta"
               style="--i: 0"
             >
-              <div class="galeria3d-img">
+              <div class="galeria-3d__imagem">
                 <img src="img/etiqueta1.png" alt="Etiquetas tecidas" />
               </div>
-              <div class="galeria3d-info">
-                <span class="galeria3d-nome">Etiquetas</span>
-                <span class="galeria3d-link">Ver trabalhos →</span>
+              <div class="galeria-3d__info">
+                <span class="galeria-3d__nome">Etiquetas</span>
+                <span class="galeria-3d__link">Ver trabalhos →</span>
               </div>
             </a>
 
             <a
               href="produto-bordado.html"
-              class="galeria3d-item is-bordado"
+              class="galeria-3d__item galeria-3d__item--bordado"
               style="--i: 1"
             >
-              <div class="galeria3d-img">
+              <div class="galeria-3d__imagem">
                 <img src="img/bordado1.png" alt="Bordados computadorizados" />
               </div>
-              <div class="galeria3d-info">
-                <span class="galeria3d-nome">Bordados</span>
-                <span class="galeria3d-link">Ver trabalhos →</span>
+              <div class="galeria-3d__info">
+                <span class="galeria-3d__nome">Bordados</span>
+                <span class="galeria-3d__link">Ver trabalhos →</span>
               </div>
             </a>
 
             <a
               href="produto-laser.html"
-              class="galeria3d-item is-laser"
+              class="galeria-3d__item galeria-3d__item--laser"
               style="--i: 2"
             >
-              <div class="galeria3d-img">
+              <div class="galeria-3d__imagem">
                 <img src="img/laser1.png" alt="Corte a laser sob medida" />
               </div>
-              <div class="galeria3d-info">
-                <span class="galeria3d-nome">Corte a Laser</span>
-                <span class="galeria3d-link">Ver trabalhos →</span>
+              <div class="galeria-3d__info">
+                <span class="galeria-3d__nome">Corte a Laser</span>
+                <span class="galeria-3d__link">Ver trabalhos →</span>
               </div>
             </a>
 
             <a
               href="produto-etiqueta.html"
-              class="galeria3d-item is-etiqueta"
+              class="galeria-3d__item galeria-3d__item--etiqueta"
               style="--i: 3"
             >
-              <div class="galeria3d-img">
+              <div class="galeria-3d__imagem">
                 <img
                   src="img/produtos/etiqueta-1.png"
                   alt="Etiquetas personalizadas"
                 />
               </div>
-              <div class="galeria3d-info">
-                <span class="galeria3d-nome">Etiquetas</span>
-                <span class="galeria3d-link">Ver trabalhos →</span>
+              <div class="galeria-3d__info">
+                <span class="galeria-3d__nome">Etiquetas</span>
+                <span class="galeria-3d__link">Ver trabalhos →</span>
               </div>
             </a>
 
             <a
               href="produto-bordado.html"
-              class="galeria3d-item is-bordado"
+              class="galeria-3d__item galeria-3d__item--bordado"
               style="--i: 4"
             >
-              <div class="galeria3d-img">
+              <div class="galeria-3d__imagem">
                 <img
                   src="img/produtos/bordado-1.png"
                   alt="Bordados de alta densidade"
                 />
               </div>
-              <div class="galeria3d-info">
-                <span class="galeria3d-nome">Bordados</span>
-                <span class="galeria3d-link">Ver trabalhos →</span>
+              <div class="galeria-3d__info">
+                <span class="galeria-3d__nome">Bordados</span>
+                <span class="galeria-3d__link">Ver trabalhos →</span>
               </div>
             </a>
 
             <a
               href="produto-laser.html"
-              class="galeria3d-item is-laser"
+              class="galeria-3d__item galeria-3d__item--laser"
               style="--i: 5"
             >
-              <div class="galeria3d-img">
+              <div class="galeria-3d__imagem">
                 <img
                   src="img/produtos/laser-1.png"
                   alt="Peças cortadas a laser"
                 />
               </div>
-              <div class="galeria3d-info">
-                <span class="galeria3d-nome">Corte a Laser</span>
-                <span class="galeria3d-link">Ver trabalhos →</span>
+              <div class="galeria-3d__info">
+                <span class="galeria-3d__nome">Corte a Laser</span>
+                <span class="galeria-3d__link">Ver trabalhos →</span>
               </div>
             </a>
           </div>
@@ -258,11 +268,13 @@
     <!-- ================================================================
        SOLUÇÕES — 02
        ================================================================ -->
-    <section class="section-solucoes">
+    <section class="solucoes">
       <!-- Intro centralizada -->
-      <div class="solucoes-intro">
-        <h2 class="mb-title lg highlight-azul">Sob Medida</h2>
-        <p class="solucoes-lead">
+      <div class="intro">
+        <h2 class="titulo titulo--grande destaque destaque--azul">
+          Sob Medida
+        </h2>
+        <p class="intro__chamada">
           Seja para abastecer uma grande rede do varejo, vestir uma equipe de
           alta performance ou lançar a primeira coleção da sua marca, nós
           entregamos a mesma engenharia industrial. Desenvolvemos soluções
@@ -271,36 +283,36 @@
       </div>
 
       <!-- Especialidades industriais -->
-      <h3 class="solucoes-subtitulo">Nossas Especialidades Industriais</h3>
+      <h3 class="solucoes__subtitulo">Nossas Especialidades Industriais</h3>
 
-      <div class="especialidades-grid">
-        <article class="mb-card especialidade-card">
-          <h4 class="especialidade-nome">
+      <div class="solucoes__especialidades">
+        <article class="cartao solucoes__especialidade">
+          <h4 class="solucoes__especialidade-nome">
             Etiquetas Tecidas de Alta Definição
           </h4>
-          <p class="especialidade-desc">
+          <p class="solucoes__especialidade-desc">
             Com toque macio e cores vivas. O detalhe que assina a identidade da
             sua marca, resiste a lavagens pesadas e elimina o incômodo na pele
             do seu cliente.
           </p>
         </article>
 
-        <article class="mb-card especialidade-card">
-          <h4 class="especialidade-nome">
+        <article class="cartao solucoes__especialidade">
+          <h4 class="solucoes__especialidade-nome">
             Bordados Computadorizados e Patches Industriais
           </h4>
-          <p class="especialidade-desc">
+          <p class="solucoes__especialidade-desc">
             Pontos de altíssima densidade e alinhamento milimétrico em
             maquinário japonês. Patches reforçados e bordados limpos que não
             deformam a peça.
           </p>
         </article>
 
-        <article class="mb-card especialidade-card">
-          <h4 class="especialidade-nome">
+        <article class="cartao solucoes__especialidade">
+          <h4 class="solucoes__especialidade-nome">
             Cortes a Laser de Altíssima Precisão
           </h4>
-          <p class="especialidade-desc">
+          <p class="solucoes__especialidade-desc">
             Recortes complexos, formatos livres e bordas com selamento térmico
             exclusivo que impedem o desfiar e aceleram a aplicação na sua linha
             de produção.
@@ -309,14 +321,16 @@
       </div>
 
       <!-- Públicos atendidos -->
-      <h3 class="solucoes-subtitulo">
+      <h3 class="solucoes__subtitulo">
         Quem Nós Atendemos
-        <span class="solucoes-sub-leve">(E Como Elevamos o Seu Negócio)</span>
+        <span class="solucoes__subtitulo-leve"
+          >(E Como Elevamos o Seu Negócio)</span
+        >
       </h3>
 
-      <div class="publicos-grid">
-        <article class="mb-card publico-card">
-          <div class="publico-foto publico-foto-duo">
+      <div class="solucoes__publicos">
+        <article class="cartao publico">
+          <div class="publico__foto publico__foto--duo">
             <img
               src="img/patch-american-top-team.png"
               alt="Patch American Top Team"
@@ -327,13 +341,11 @@
             />
           </div>
 
-          <div class="publico-header">
-            <h4 class="publico-nome">
-              Equipes, CTs e Academias de Jiu-Jitsu / Artes Marciais
-            </h4>
-          </div>
-          <div class="container-bloco-publico">
-            <div class="publico-bloco">
+          <h4 class="publico__nome">
+            Equipes, CTs e Academias de Jiu-Jitsu / Artes Marciais
+          </h4>
+          <div class="publico__blocos">
+            <div class="publico__bloco publico__bloco--dor">
               <p>
                 <em
                   >Patches e bordados que rasgam na pegada, descolam após poucas
@@ -342,7 +354,7 @@
                 >
               </p>
             </div>
-            <div class="publico-bloco">
+            <div class="publico__bloco publico__bloco--solucao">
               <p>
                 <strong
                   >Patches e bordados de altíssima resistência e densidade
@@ -356,8 +368,8 @@
           </div>
         </article>
 
-        <article class="mb-card publico-card">
-          <div class="publico-foto publico-foto-grid6">
+        <article class="cartao publico">
+          <div class="publico__foto publico__foto--grade6">
             <img
               src="img/etiquetas-marcas/deliriyou.png"
               alt="Etiqueta Deliriyou"
@@ -377,13 +389,11 @@
             />
             <img src="img/etiquetas-marcas/knulu.png" alt="Etiqueta Knulu" />
           </div>
-          <div class="publico-header">
-            <h4 class="publico-nome">
-              Marcas de Moda e Confeccionistas (Streetwear, Casual e Fightwear)
-            </h4>
-          </div>
-          <div class="container-bloco-publico">
-            <div class="publico-bloco">
+          <h4 class="publico__nome">
+            Marcas de Moda e Confeccionistas (Streetwear, Casual e Fightwear)
+          </h4>
+          <div class="publico__blocos">
+            <div class="publico__bloco publico__bloco--dor">
               <p>
                 <em
                   >Mudar de fornecedor a cada coleção por falta de padrão e medo
@@ -391,7 +401,7 @@
                 >
               </p>
             </div>
-            <div class="publico-bloco">
+            <div class="publico__bloco publico__bloco--solucao">
               <p>
                 <strong
                   >Valor percebido de grife na sua peça, lote 100% padronizado e
@@ -403,17 +413,15 @@
           </div>
         </article>
 
-        <article class="mb-card publico-card">
-          <div class="publico-foto publico-foto-abvtex">
+        <article class="cartao publico">
+          <div class="publico__foto publico__foto--abvtex">
             <img src="img/selo-abvtex.png" alt="Selo ABVTEX" />
           </div>
-          <div class="publico-header">
-            <h4 class="publico-nome">
-              Private Labels e Confecções de Grande Porte
-            </h4>
-          </div>
-          <div class="container-bloco-publico">
-            <div class="publico-bloco">
+          <h4 class="publico__nome">
+            Private Labels e Confecções de Grande Porte
+          </h4>
+          <div class="publico__blocos">
+            <div class="publico__bloco publico__bloco--dor">
               <p>
                 <em
                   >Exigência de auditorias rigorosas, grande volume e o risco de
@@ -422,7 +430,7 @@
                 >
               </p>
             </div>
-            <div class="publico-bloco">
+            <div class="publico__bloco publico__bloco--solucao">
               <p>
                 <strong
                   >Estrutura homologada e auditada com Certificação ABVTEX,
@@ -434,8 +442,8 @@
           </div>
         </article>
 
-        <article class="mb-card publico-card">
-          <div class="publico-foto publico-foto-grid8">
+        <article class="cartao publico">
+          <div class="publico__foto publico__foto--grade8">
             <img src="img/uniformes-clientes/shell.png" alt="Logo Shell" />
             <img
               src="img/uniformes-clientes/colegio.png"
@@ -451,13 +459,11 @@
             <img src="img/uniformes-clientes/aguia.png" alt="Logo Águia" />
             <img src="img/uniformes-clientes/bocaina.png" alt="Logo Bocaina" />
           </div>
-          <div class="publico-header">
-            <h4 class="publico-nome">
-              Uniformes Corporativos, Escolares e Vestuário Profissional
-            </h4>
-          </div>
-          <div class="container-bloco-publico">
-            <div class="publico-bloco">
+          <h4 class="publico__nome">
+            Uniformes Corporativos, Escolares e Vestuário Profissional
+          </h4>
+          <div class="publico__blocos">
+            <div class="publico__bloco publico__bloco--dor">
               <p>
                 <em
                   >Logotipos que desbotam, bordados que desfiam rapidamente e
@@ -465,7 +471,7 @@
                 </em>
               </p>
             </div>
-            <div class="publico-bloco">
+            <div class="publico__bloco publico__bloco--solucao">
               <p>
                 <strong
                   >Alta durabilidade, resistência a lavagens industriais e
@@ -479,14 +485,17 @@
       </div>
 
       <!-- CTA + texto conectivo pro bloco seguinte -->
-      <div class="solucoes-cta">
-        <button type="button" class="btn btn-primary btn-hero-cta js-wa-modal">
+      <div class="solucoes__acoes">
+        <button
+          type="button"
+          class="botao botao--primario botao--destaque js-modal-whatsapp"
+        >
           Enviar meu projeto para análise técnica da equipe
         </button>
-        <p class="solucoes-conector">
+        <p class="conector">
           Mas ter o produto certo é apenas metade do caminho. O verdadeiro
           desafio é encontrar quem entregue isso sem dores de cabeça.
-          <span class="conector-seta" aria-hidden="true">↓</span>
+          <span class="conector__seta" aria-hidden="true">↓</span>
         </p>
       </div>
     </section>
@@ -494,22 +503,22 @@
     <!-- ================================================================
        HISTORIA — 03
        ================================================================ -->
-    <section class="section-historia">
-      <div class="historia-grid">
-        <span class="historia-ano" aria-hidden="true"> Desde 1994</span>
-        <div class="mb-card historia-card">
-          <div class="accent-bar" aria-hidden="true"></div>
-          <h2 class="mb-title historia-titulo">
+    <section class="historia">
+      <div class="historia__grade">
+        <span class="historia__ano" aria-hidden="true"> Desde 1994</span>
+        <div class="cartao historia__cartao">
+          <div class="cartao__faixa" aria-hidden="true"></div>
+          <h2 class="titulo historia__titulo">
             Aprendemos que negócios são feitos de
-            <span class="highlight-azul">pessoas para pessoas</span>.
+            <span class="destaque destaque--azul">pessoas para pessoas</span>.
           </h2>
 
-          <div class="bloco-anos">
-            <div class="bloco-title">
-              <h3 class="mb-title anos-title">30</h3>
-              <h3 class="anos">anos</h3>
+          <div class="historia__anos">
+            <div class="historia__anos-numero">
+              <h3 class="titulo historia__numero">30</h3>
+              <h3 class="historia__anos-rotulo">anos</h3>
             </div>
-            <div class="ano-paragrafo">
+            <div class="historia__texto">
               <p>
                 Essa fábrica começou pequena, alimentada pelo mesmo sonho e pela
                 mesma coragem que moveram você a abrir a sua empresa.
@@ -529,10 +538,10 @@
             </div>
           </div>
         </div>
-        <p class="solucoes-conector">
+        <p class="conector">
           Veja o que dizem as marcas que já confiam a sua produção e a sua
           história à nossa fábrica.
-          <span class="conector-seta" aria-hidden="true">↓</span>
+          <span class="conector__seta" aria-hidden="true">↓</span>
         </p>
       </div>
     </section>
@@ -540,17 +549,17 @@
     <!-- ================================================================
        DEPOIMENTOS — 04
        ================================================================ -->
-    <section class="section-depoimentos">
-      <div class="depoimentos-head">
-        <h2 class="mb-title lg">
-          Dito por <span class="highlight-azul">quem produz</span>
+    <section class="depoimentos">
+      <div class="depoimentos__cabecalho">
+        <h2 class="titulo titulo--grande">
+          Dito por <span class="destaque destaque--azul">quem produz</span>
         </h2>
       </div>
 
-      <div class="depoimentos-grid">
-        <div class="mb-card depoimento-card">
-          <div class="depoimento-aspas">"</div>
-          <p class="depoimento-texto" data-tooltip="Depoimento smartiron">
+      <div class="depoimentos__grade">
+        <div class="cartao depoimento">
+          <div class="depoimento__aspas">"</div>
+          <p class="depoimento__texto" data-tooltip="Depoimento smartiron">
             <a
               href="https://www.instagram.com/p/DWygf0WjQDU/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
               target="_blank"
@@ -562,27 +571,27 @@
               compravamos.
             </a>
           </p>
-          <div class="depoimento-footer">
-            <div class="depoimento-autor">
+          <div class="depoimento__rodape">
+            <div class="depoimento__autor">
               <a
                 href="https://www.instagram.com/smartiron.oficial"
-                class="depoimento-avatar smartiron"
+                class="depoimento__avatar depoimento__avatar--smartiron"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram do smartiron"
               ></a>
               <div>
-                <div class="depoimento-nome">Smart Iron</div>
-                <div class="depoimento-empresa">@smartiron.oficial</div>
+                <div class="depoimento__nome">Smart Iron</div>
+                <div class="depoimento__empresa">@smartiron.oficial</div>
               </div>
             </div>
-            <div class="depoimento-estrelas">★★★★★</div>
+            <div class="depoimento__estrelas">★★★★★</div>
           </div>
         </div>
 
-        <div class="mb-card depoimento-card">
-          <div class="depoimento-aspas">"</div>
-          <p class="depoimento-texto" data-tooltip="Depoimento meuraiodesol">
+        <div class="cartao depoimento">
+          <div class="depoimento__aspas">"</div>
+          <p class="depoimento__texto" data-tooltip="Depoimento meuraiodesol">
             <a
               href="https://www.instagram.com/p/DPL3vgrjbau/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
               target="_blank"
@@ -591,27 +600,27 @@
               >Amamos demais! Impecável, nossas etiquetas!</a
             >
           </p>
-          <div class="depoimento-footer">
-            <div class="depoimento-autor">
+          <div class="depoimento__rodape">
+            <div class="depoimento__autor">
               <a
                 href="https://www.instagram.com/meuraiodesoloficial?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
-                class="depoimento-avatar meuraiodesol"
+                class="depoimento__avatar depoimento__avatar--meuraiodesol"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram do meu raio de sol"
               ></a>
               <div>
-                <div class="depoimento-nome">Meu Raio de Sol</div>
-                <div class="depoimento-empresa">@meuraiodesoloficial</div>
+                <div class="depoimento__nome">Meu Raio de Sol</div>
+                <div class="depoimento__empresa">@meuraiodesoloficial</div>
               </div>
             </div>
-            <div class="depoimento-estrelas">★★★★★</div>
+            <div class="depoimento__estrelas">★★★★★</div>
           </div>
         </div>
 
-        <div class="mb-card depoimento-card">
-          <div class="depoimento-aspas">"</div>
-          <p class="depoimento-texto" data-tooltip="Depoimento dechelles">
+        <div class="cartao depoimento">
+          <div class="depoimento__aspas">"</div>
+          <p class="depoimento__texto" data-tooltip="Depoimento dechelles">
             <a
               href="https://www.instagram.com/p/DW8xU3_DYfN/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
               target="_blank"
@@ -623,21 +632,21 @@
               quantidade.
             </a>
           </p>
-          <div class="depoimento-footer">
-            <div class="depoimento-autor">
+          <div class="depoimento__rodape">
+            <div class="depoimento__autor">
               <a
                 href="https://www.instagram.com/dechelles?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
-                class="depoimento-avatar dechelles"
+                class="depoimento__avatar depoimento__avatar--dechelles"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram do De Chelles"
               ></a>
               <div>
-                <div class="depoimento-nome">De Chelles</div>
-                <div class="depoimento-empresa">@dechelles</div>
+                <div class="depoimento__nome">De Chelles</div>
+                <div class="depoimento__empresa">@dechelles</div>
               </div>
             </div>
-            <div class="depoimento-estrelas">★★★★★</div>
+            <div class="depoimento__estrelas">★★★★★</div>
           </div>
         </div>
       </div>
@@ -646,16 +655,16 @@
     <!-- ================================================================
        LOGOS DE CLIENTES
        ================================================================ -->
-    <section class="section-logos">
-      <div class="logos-tag">QUEM CONFIA EM NÓS ↓</div>
-      <div class="section-logos-track">
-        <div class="section-logos-list">
+    <section class="marcas">
+      <div class="marcas__tag">QUEM CONFIA EM NÓS ↓</div>
+      <div class="marcas__trilho">
+        <div class="marcas__lista">
           <!-- ===== GRUPO 1 (original) ===== -->
           <a
             href="https://www.instagram.com/dressto?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
             target="_blank"
             rel="noopener noreferrer"
-            class="marca-logo dressto"
+            class="marcas__item marcas__item--dressto"
             aria-label="Cliente Dress To"
             data-nome="Dress To"
           ></a>
@@ -663,7 +672,7 @@
             href="https://www.instagram.com/sacadacom?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
             target="_blank"
             rel="noopener noreferrer"
-            class="marca-logo sacada"
+            class="marcas__item marcas__item--sacada"
             aria-label="Cliente Sacada"
             data-nome="Sacada"
           ></a>
@@ -671,7 +680,7 @@
             href="https://www.instagram.com/metal_carbono?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
             target="_blank"
             rel="noopener noreferrer"
-            class="marca-logo metal"
+            class="marcas__item marcas__item--metal"
             aria-label="Cliente Metal"
             data-nome="Metal-Carbono"
           ></a>
@@ -679,7 +688,7 @@
             href="https://www.instagram.com/sealy?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
             target="_blank"
             rel="noopener noreferrer"
-            class="marca-logo sealy"
+            class="marcas__item marcas__item--sealy"
             aria-label="Cliente Sealy"
             data-nome="Sealy"
           ></a>
@@ -687,7 +696,7 @@
             href="https://www.instagram.com/brazilcombat?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
             target="_blank"
             rel="noopener noreferrer"
-            class="marca-logo brazil"
+            class="marcas__item marcas__item--brazil"
             aria-label="Cliente Brazil-Combat"
             data-nome="Brazil-Combat"
           ></a>
@@ -695,7 +704,7 @@
             href="https://www.instagram.com/braziline.oficial?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==e"
             target="_blank"
             rel="noopener noreferrer"
-            class="marca-logo braziline"
+            class="marcas__item marcas__item--braziline"
             aria-label="Cliente Braziline"
             data-nome="Braziline"
           ></a>
@@ -703,7 +712,7 @@
             href="https://www.instagram.com/cacayoficial?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==y"
             target="_blank"
             rel="noopener noreferrer"
-            class="marca-logo cacay"
+            class="marcas__item marcas__item--cacay"
             aria-label="Cliente Cacay"
             data-nome="Cacay"
           ></a>
@@ -711,7 +720,7 @@
             href="https://www.instagram.com/lojasemporio?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
             target="_blank"
             rel="noopener noreferrer"
-            class="marca-logo emporio"
+            class="marcas__item marcas__item--emporio"
             aria-label="Cliente Emporio"
             data-nome="Empório"
           ></a>
@@ -719,7 +728,7 @@
             href="https://www.instagram.com/porto.blue?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
             target="_blank"
             rel="noopener noreferrer"
-            class="marca-logo porto"
+            class="marcas__item marcas__item--porto"
             aria-label="Cliente Porto-Blue"
             data-nome="Porto-Blue"
           ></a>
@@ -727,7 +736,7 @@
             href="https://www.instagram.com/myplaceoficial?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
             target="_blank"
             rel="noopener noreferrer"
-            class="marca-logo myplace"
+            class="marcas__item marcas__item--myplace"
             aria-label="Cliente My Place"
             data-nome="My Place"
           ></a>
@@ -735,7 +744,7 @@
             href="https://www.instagram.com/adorofarm?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
             target="_blank"
             rel="noopener noreferrer"
-            class="marca-logo farm"
+            class="marcas__item marcas__item--farm"
             aria-label="Cliente Farm"
             data-nome="Farm"
           ></a>
@@ -743,7 +752,7 @@
             href="https://www.instagram.com/knulu_oficial?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
             target="_blank"
             rel="noopener noreferrer"
-            class="marca-logo knulu"
+            class="marcas__item marcas__item--knulu"
             aria-label="Cliente Knulu"
             data-nome="Knulu"
           ></a>
@@ -751,7 +760,7 @@
             href="https://www.instagram.com/passarolivreloja?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
             target="_blank"
             rel="noopener noreferrer"
-            class="marca-logo passaro"
+            class="marcas__item marcas__item--passaro"
             aria-label="Cliente Passaro Livre"
             data-nome="Pássaro Livre"
           ></a>
@@ -759,7 +768,7 @@
             href="https://www.instagram.com/glitter_jeans?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
             target="_blank"
             rel="noopener noreferrer"
-            class="marca-logo glitter"
+            class="marcas__item marcas__item--glitter"
             aria-label="Cliente Glitter"
             data-nome="Glitter"
           ></a>
@@ -767,7 +776,7 @@
             href="https://www.instagram.com/breno_rio?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
             target="_blank"
             rel="noopener noreferrer"
-            class="marca-logo breno-rio"
+            class="marcas__item marcas__item--breno-rio"
             aria-label="Cliente Breno Rio"
             data-nome="Breno Rio"
           ></a>
@@ -775,7 +784,7 @@
             href="https://www.instagram.com/rededor_oficial?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
             target="_blank"
             rel="noopener noreferrer"
-            class="marca-logo rede-dor"
+            class="marcas__item marcas__item--rede-dor"
             aria-label="Cliente Rede D'Or"
             data-nome="Rede D'Or"
           ></a>
@@ -785,7 +794,7 @@
             href="https://www.instagram.com/dressto?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
             target="_blank"
             rel="noopener noreferrer"
-            class="marca-logo dressto"
+            class="marcas__item marcas__item--dressto"
             aria-label="Cliente Dress To"
             data-nome="Dress To"
           ></a>
@@ -793,7 +802,7 @@
             href="https://www.instagram.com/sacadacom?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
             target="_blank"
             rel="noopener noreferrer"
-            class="marca-logo sacada"
+            class="marcas__item marcas__item--sacada"
             aria-label="Cliente Sacada"
             data-nome="Sacada"
           ></a>
@@ -801,7 +810,7 @@
             href="https://www.instagram.com/metal_carbono?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
             target="_blank"
             rel="noopener noreferrer"
-            class="marca-logo metal"
+            class="marcas__item marcas__item--metal"
             aria-label="Cliente Metal"
             data-nome="Metal-Carbono"
           ></a>
@@ -809,7 +818,7 @@
             href="https://www.instagram.com/sealy?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
             target="_blank"
             rel="noopener noreferrer"
-            class="marca-logo sealy"
+            class="marcas__item marcas__item--sealy"
             aria-label="Cliente Sealy"
             data-nome="Sealy"
           ></a>
@@ -817,7 +826,7 @@
             href="https://www.instagram.com/brazilcombat?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
             target="_blank"
             rel="noopener noreferrer"
-            class="marca-logo brazil"
+            class="marcas__item marcas__item--brazil"
             aria-label="Cliente Brazil-Combat"
             data-nome="Brazil-Combat"
           ></a>
@@ -825,7 +834,7 @@
             href="https://www.instagram.com/braziline.oficial?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==e"
             target="_blank"
             rel="noopener noreferrer"
-            class="marca-logo braziline"
+            class="marcas__item marcas__item--braziline"
             aria-label="Cliente Braziline"
             data-nome="Braziline"
           ></a>
@@ -833,7 +842,7 @@
             href="https://www.instagram.com/cacayoficial?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==y"
             target="_blank"
             rel="noopener noreferrer"
-            class="marca-logo cacay"
+            class="marcas__item marcas__item--cacay"
             aria-label="Cliente Cacay"
             data-nome="Cacay"
           ></a>
@@ -841,7 +850,7 @@
             href="https://www.instagram.com/lojasemporio?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
             target="_blank"
             rel="noopener noreferrer"
-            class="marca-logo emporio"
+            class="marcas__item marcas__item--emporio"
             aria-label="Cliente Emporio"
             data-nome="Empório"
           ></a>
@@ -849,7 +858,7 @@
             href="https://www.instagram.com/porto.blue?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
             target="_blank"
             rel="noopener noreferrer"
-            class="marca-logo porto"
+            class="marcas__item marcas__item--porto"
             aria-label="Cliente Porto-Blue"
             data-nome="Porto-Blue"
           ></a>
@@ -857,7 +866,7 @@
             href="https://www.instagram.com/myplaceoficial?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
             target="_blank"
             rel="noopener noreferrer"
-            class="marca-logo myplace"
+            class="marcas__item marcas__item--myplace"
             aria-label="Cliente My Place"
             data-nome="My Place"
           ></a>
@@ -865,7 +874,7 @@
             href="https://www.instagram.com/adorofarm?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
             target="_blank"
             rel="noopener noreferrer"
-            class="marca-logo farm"
+            class="marcas__item marcas__item--farm"
             aria-label="Cliente Farm"
             data-nome="Farm"
           ></a>
@@ -873,7 +882,7 @@
             href="https://www.instagram.com/knulu_oficial?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
             target="_blank"
             rel="noopener noreferrer"
-            class="marca-logo knulu"
+            class="marcas__item marcas__item--knulu"
             aria-label="Cliente Knulu"
             data-nome="Knulu"
           ></a>
@@ -881,7 +890,7 @@
             href="https://www.instagram.com/passarolivreloja?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
             target="_blank"
             rel="noopener noreferrer"
-            class="marca-logo passaro"
+            class="marcas__item marcas__item--passaro"
             aria-label="Cliente Passaro Livre"
             data-nome="Pássaro Livre"
           ></a>
@@ -889,7 +898,7 @@
             href="https://www.instagram.com/glitter_jeans?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
             target="_blank"
             rel="noopener noreferrer"
-            class="marca-logo glitter"
+            class="marcas__item marcas__item--glitter"
             aria-label="Cliente Glitter"
             data-nome="Glitter"
           ></a>
@@ -897,7 +906,7 @@
             href="https://www.instagram.com/breno_rio?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
             target="_blank"
             rel="noopener noreferrer"
-            class="marca-logo breno-rio"
+            class="marcas__item marcas__item--breno-rio"
             aria-label="Cliente Breno Rio"
             data-nome="Breno Rio"
           ></a>
@@ -905,7 +914,7 @@
             href="https://www.instagram.com/rededor_oficial?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
             target="_blank"
             rel="noopener noreferrer"
-            class="marca-logo rede-dor"
+            class="marcas__item marcas__item--rede-dor"
             aria-label="Cliente Rede D'Or"
             data-nome="Rede D'Or"
           ></a>
@@ -917,52 +926,55 @@
        PROMESSA — quebra de padrão (entre Logos e Processo)
        Quebra de padrão: dor (vinho) → solução (azul) → promessa (ouro)
        ================================================================ -->
-    <section class="section-promessa">
-      <div class="promessa-inner">
+    <section class="promessa">
+      <div class="promessa__interno">
         <!-- Intro centralizada -->
-        <div class="promessa-intro">
-          <span class="mb-tag">Chega de improviso</span>
-          <h2 class="mb-title lg promessa-titulo flex col">
+        <div class="intro">
+          <span class="rotulo">Chega de improviso</span>
+          <h2 class="titulo titulo--grande intro__titulo flex coluna">
             Sua marca merece um fornecedor
-            <span class="highlight-azul">à altura dela</span>
+            <span class="destaque destaque--azul">à altura dela</span>
           </h2>
-          <p class="promessa-abertura">
+          <p class="intro__chamada">
             Você criou sua empresa para ser uma referência no mercado e
             transmitir autoridade em cada detalhe.
           </p>
         </div>
 
         <!-- Dor → Solução -->
-        <div class="promessa-grid">
-          <article class="mb-card promessa-card promessa-card-dor">
-            <div class="accent-bar"></div>
-            <span class="promessa-card-label">Hoje</span>
-            <h3 class="promessa-card-titulo">A rotina virou um pesadelo</h3>
+        <div class="promessa__grade">
+          <article class="cartao promessa__cartao promessa__cartao--dor">
+            <div class="cartao__faixa"></div>
+            <span class="promessa__cartao-rotulo">Hoje</span>
+            <h3 class="promessa__cartao-titulo">A rotina virou um pesadelo</h3>
             <p>
               Lançamentos atrasados, fornecedores que somem e peças devolvidas
               por bordados tortos ou etiquetas que desbotam e desfiam. Você
               gasta mais tempo <em>apagando incêndios</em> do que escalando suas
               vendas.
             </p>
-            <ul class="promessa-chips" aria-label="Problemas comuns">
+            <ul
+              class="etiquetas etiquetas--vinho etiquetas--riscado"
+              aria-label="Problemas comuns"
+            >
               <li>Atrasos</li>
               <li>Retrabalho</li>
               <li>Peças devolvidas</li>
             </ul>
           </article>
 
-          <div class="promessa-seta" aria-hidden="true">→</div>
+          <div class="promessa__seta" aria-hidden="true">→</div>
 
-          <article class="mb-card promessa-card promessa-card-solucao">
-            <div class="accent-bar"></div>
-            <span class="promessa-card-label">Com a Master Bord</span>
-            <h3 class="promessa-card-titulo">Estrutura de grande rede</h3>
+          <article class="cartao promessa__cartao promessa__cartao--solucao">
+            <div class="cartao__faixa"></div>
+            <span class="promessa__cartao-rotulo">Com a Master Bord</span>
+            <h3 class="promessa__cartao-titulo">Estrutura de grande rede</h3>
             <p>
               Você não precisa refazer toda a sua coleção para parecer
               <em>premium</em>. O que você precisa é de uma estrutura que
               abastece as maiores redes do país.
             </p>
-            <ul class="promessa-chips" aria-label="Nossa estrutura">
+            <ul class="etiquetas etiquetas--azul" aria-label="Nossa estrutura">
               <li>Teares de precisão suíça</li>
               <li>Maquinário japonês Barudan</li>
               <li>Certificação ABVTEX</li>
@@ -971,22 +983,23 @@
         </div>
 
         <!-- Promessa em destaque -->
-        <blockquote class="promessa-destaque">
-          <span class="promessa-destaque-numero" aria-hidden="true"
+        <blockquote class="promessa__destaque">
+          <span class="promessa__destaque-numero" aria-hidden="true"
             >1º → 10.000º</span
           >
           <p>
             Garantimos entrega no prazo e o padrão milimétrico do 1º ao 10.000º
             item. Transformamos suas peças em
-            <span class="highlight-ouro">símbolos de credibilidade visual</span
+            <span class="destaque destaque--ouro"
+              >símbolos de credibilidade visual</span
             >, eliminando o retrabalho e devolvendo a sua margem de lucro.
           </p>
         </blockquote>
 
-        <p class="solucoes-conector">
+        <p class="conector">
           Entenda como a escolha do parceiro certo transforma o dia a dia da sua
           produção e a força da sua marca.
-          <span class="conector-seta" aria-hidden="true">↓</span>
+          <span class="conector__seta" aria-hidden="true">↓</span>
         </p>
       </div>
     </section>
@@ -994,63 +1007,63 @@
     <!-- ================================================================
        PROCESSO — 05
        ================================================================ -->
-    <section class="section-processo">
+    <section class="processo">
       <!-- Intro centralizada: título + subtítulo abaixo -->
-      <div class="processo-intro">
-        <h2 class="mb-title lg">
-          Da arte à <span class="highlight-ouro">entrega</span>
+      <div class="intro">
+        <h2 class="titulo titulo--grande">
+          Da arte à <span class="destaque destaque--ouro">entrega</span>
         </h2>
-        <p class="processo-subtitulo">
+        <p class="intro__chamada">
           Cada produto passa por 4 checkpoints de qualidade antes de sair da
           fábrica.
         </p>
       </div>
 
-      <div class="processo-grid">
-        <div class="mb-card">
-          <div class="etapa-header">
-            <div class="etapa-numero">01</div>
-            <!-- <div class="etapa-tempo">48h</div> -->
+      <div class="processo__grade">
+        <div class="cartao etapa">
+          <div class="etapa__cabecalho">
+            <div class="etapa__numero">01</div>
+            <!-- <div class="etapa__tempo">48h</div> -->
           </div>
-          <div class="etapa-titulo">Briefing</div>
-          <div class="etapa-barra"></div>
-          <div class="etapa-desc">
+          <div class="etapa__titulo">Briefing</div>
+          <div class="etapa__barra"></div>
+          <div class="etapa__descricao">
             Envie arte, tecido-alvo, prazo e volume. Recebemos por e-mail ou
             WhatsApp.
           </div>
         </div>
-        <div class="mb-card">
-          <div class="etapa-header">
-            <div class="etapa-numero">02</div>
-            <!-- <div class="etapa-tempo">5d</div> -->
+        <div class="cartao etapa">
+          <div class="etapa__cabecalho">
+            <div class="etapa__numero">02</div>
+            <!-- <div class="etapa__tempo">5d</div> -->
           </div>
-          <div class="etapa-titulo">Amostra física</div>
-          <div class="etapa-barra"></div>
-          <div class="etapa-desc">
+          <div class="etapa__titulo">Amostra física</div>
+          <div class="etapa__barra"></div>
+          <div class="etapa__descricao">
             Amostra do seu Produto produzida e enviada para sua aprovação formal
             antes do lote.
           </div>
         </div>
-        <div class="mb-card">
-          <div class="etapa-header">
-            <div class="etapa-numero">03</div>
-            <!-- <div class="etapa-tempo">10-15d</div> -->
+        <div class="cartao etapa">
+          <div class="etapa__cabecalho">
+            <div class="etapa__numero">03</div>
+            <!-- <div class="etapa__tempo">10-15d</div> -->
           </div>
-          <div class="etapa-titulo">Produção</div>
-          <div class="etapa-barra"></div>
-          <div class="etapa-desc">
+          <div class="etapa__titulo">Produção</div>
+          <div class="etapa__barra"></div>
+          <div class="etapa__descricao">
             Lote entra na linha de produção com inspeção 100% — peça por peça,
             etiqueta por etiqueta até o último acabamento.
           </div>
         </div>
-        <div class="mb-card">
-          <div class="etapa-header">
-            <div class="etapa-numero">04</div>
-            <!-- <div class="etapa-tempo">48h</div> -->
+        <div class="cartao etapa">
+          <div class="etapa__cabecalho">
+            <div class="etapa__numero">04</div>
+            <!-- <div class="etapa__tempo">48h</div> -->
           </div>
-          <div class="etapa-titulo">Entrega</div>
-          <div class="etapa-barra"></div>
-          <div class="etapa-desc">
+          <div class="etapa__titulo">Entrega</div>
+          <div class="etapa__barra"></div>
+          <div class="etapa__descricao">
             Finalizado será embalada com nota fiscal e rastreio em tempo real
             até sua porta.
           </div>
@@ -1062,24 +1075,24 @@
        DECISÃO / COMPARATIVO — 06
        Substitui o antigo CTA "Pronto para produzir com a gente"
        ================================================================ -->
-    <section class="section-decisao">
-      <div class="decisao-intro">
-        <span class="mb-tag">Hora de decidir</span>
+    <section class="decisao">
+      <div class="intro intro--largo">
+        <span class="rotulo">Hora de decidir</span>
         <!-- Título em duas linhas: frase principal + destaque vinho abaixo -->
-        <div class="flex col decisao-titulo">
-          <h2 class="mb-title lg">
+        <div class="intro__titulo flex coluna">
+          <h2 class="titulo titulo--grande">
             Você pode adiar a decisão de mudar de fornecedor.
           </h2>
-          <p class="mb-title lg highlight-vinho">
+          <p class="titulo titulo--grande destaque destaque--vinho">
             Mas o seu concorrente não vai esperar.
           </p>
         </div>
-        <p class="decisao-lead">
+        <p class="intro__chamada">
           Muitas confecções e marcas deixam para resolver o acabamento no último
           minuto ou aceitam o risco de continuar com fornecedores amadores por
           medo de mudar. A verdade é simples:
         </p>
-        <p class="decisao-destaque">
+        <p class="decisao__destaque">
           Cada lote produzido sem a qualidade ideal é uma oportunidade perdida
           de consolidar sua marca e aumentar sua margem.
         </p>
@@ -1088,19 +1101,19 @@
       <!-- 4 objeções respondidas — acordeão em coluna, só os títulos,
            o clique abre a pergunta + resposta. <details> nativo (sem JS);
            name="objecoes" deixa só um aberto por vez -->
-      <div class="objecoes-grid">
-        <details class="mb-card objecao-card is-vinho" name="objecoes">
+      <div class="decisao__objecoes">
+        <details class="cartao objecao objecao--vinho" name="objecoes">
           <summary>
-            <h3 class="objecao-titulo">
+            <h3 class="objecao__titulo">
               O Risco é 100% Nosso: Garantia de Padrão e Prazo em Contrato
             </h3>
-            <span class="objecao-sinal" aria-hidden="true"></span>
+            <span class="objecao__sinal" aria-hidden="true"></span>
           </summary>
-          <div class="objecao-conteudo">
-            <p class="objecao-fala">
+          <div class="objecao__conteudo">
+            <p class="objecao__fala">
               “E se o meu lote vier com defeito ou atrasar meu lançamento?”
             </p>
-            <p class="objecao-resposta">
+            <p class="objecao__resposta">
               Nós não trabalhamos com estimativas genéricas. Garantimos a
               entrega no prazo combinado e a fidelidade exata do gabarito
               aprovado, da 1ª à 10.000ª peça. Se o produto entregue estiver fora
@@ -1111,19 +1124,19 @@
           </div>
         </details>
 
-        <details class="mb-card objecao-card is-azul" name="objecoes">
+        <details class="cartao objecao objecao--azul" name="objecoes">
           <summary>
-            <h3 class="objecao-titulo">
+            <h3 class="objecao__titulo">
               Suporte Técnico de Verdade: Do Layout à Linha de Produção
             </h3>
-            <span class="objecao-sinal" aria-hidden="true"></span>
+            <span class="objecao__sinal" aria-hidden="true"></span>
           </summary>
-          <div class="objecao-conteudo">
-            <p class="objecao-fala">
+          <div class="objecao__conteudo">
+            <p class="objecao__fala">
               “Tenho medo de mandar o arquivo e a etiqueta/bordado sair errado
               ou inadequado pro meu tecido.”
             </p>
-            <p class="objecao-resposta">
+            <p class="objecao__resposta">
               Você não interage com um sistema automatizado sem rosto. Nosso
               time de especialistas analisa a densidade do tecido, a aplicação
               final e a viabilidade do design antes de rodar o maquinário.
@@ -1134,20 +1147,20 @@
           </div>
         </details>
 
-        <details class="mb-card objecao-card is-azul" name="objecoes">
+        <details class="cartao objecao objecao--azul" name="objecoes">
           <summary>
-            <h3 class="objecao-titulo">
+            <h3 class="objecao__titulo">
               Elevação de Valor Percebido: O Detalhe que Justifica o Preço do
               Seu Produto
             </h3>
-            <span class="objecao-sinal" aria-hidden="true"></span>
+            <span class="objecao__sinal" aria-hidden="true"></span>
           </summary>
-          <div class="objecao-conteudo">
-            <p class="objecao-fala">
+          <div class="objecao__conteudo">
+            <p class="objecao__fala">
               “Acho que meu cliente não vai reparar no acabamento do bordado ou
               da etiqueta.”
             </p>
-            <p class="objecao-resposta">
+            <p class="objecao__resposta">
               O consumidor final pode não entender de engenharia têxtil, mas ele
               sente o acabamento no toque e na estética. Uma etiqueta tecida
               selada a laser (que não incomoda a pele) e um bordado de altíssima
@@ -1158,19 +1171,19 @@
           </div>
         </details>
 
-        <details class="mb-card objecao-card is-ouro" name="objecoes">
+        <details class="cartao objecao objecao--ouro" name="objecoes">
           <summary>
-            <h3 class="objecao-titulo">
+            <h3 class="objecao__titulo">
               Tradição, Certificação ABVTEX e Capacidade Fabril
             </h3>
-            <span class="objecao-sinal" aria-hidden="true"></span>
+            <span class="objecao__sinal" aria-hidden="true"></span>
           </summary>
-          <div class="objecao-conteudo">
-            <p class="objecao-fala">
+          <div class="objecao__conteudo">
+            <p class="objecao__fala">
               “Como sei que essa empresa tem estrutura para aguentar minha
               demanda com o tempo?”
             </p>
-            <p class="objecao-resposta">
+            <p class="objecao__resposta">
               Desde 1994 no mercado, produzimos mais de
               <strong>120 mil peças por mês</strong> para mais de
               <strong>500 clientes ativos</strong>. Possuímos a certificação
@@ -1188,18 +1201,20 @@
        URGÊNCIA — por que decidir agora
        Intro → 3 ganhos (cards) → risco de esperar (vinho) → conector
        ================================================================ -->
-    <section class="section-urgencia">
-      <div class="urgencia-glow" aria-hidden="true"></div>
-
-      <div class="urgencia-inner">
+    <section class="urgencia">
+      <div class="urgencia__interno">
         <!-- Intro centralizada: mini título → título → subtítulo -->
-        <div class="urgencia-intro">
-          <span class="mb-tag">O momento certo</span>
-          <div class="flex col urgencia-titulo">
-            <h2 class="mb-title lg">Por que tomar essa decisão agora</h2>
-            <p class="mb-title lg highlight-ouro">e não na próxima coleção?</p>
+        <div class="intro">
+          <span class="rotulo">O momento certo</span>
+          <div class="intro__titulo flex coluna">
+            <h2 class="titulo titulo--grande">
+              Por que tomar essa decisão agora
+            </h2>
+            <p class="titulo titulo--grande destaque destaque--ouro">
+              e não na próxima coleção?
+            </p>
           </div>
-          <p class="urgencia-lead">
+          <p class="intro__chamada">
             Quanto mais cedo você alinha sua linha de produção com uma fábrica
             de alta precisão, mais rápido você ganha três coisas que o mercado
             não espera:
@@ -1207,23 +1222,23 @@
         </div>
 
         <!-- 3 ganhos -->
-        <div class="urgencia-ganhos">
-          <article class="mb-card urgencia-ganho">
-            <h3 class="urgencia-ganho-titulo">Reputação inquestionável</h3>
+        <div class="urgencia__ganhos">
+          <article class="cartao urgencia__ganho">
+            <h3 class="urgencia__ganho-titulo">Reputação inquestionável</h3>
             <p>
               Peças com acabamento de grife fazem a sua marca ser lembrada pelo
               padrão, não pelos problemas.
             </p>
           </article>
-          <article class="mb-card urgencia-ganho">
-            <h3 class="urgencia-ganho-titulo">Fidelização do seu cliente</h3>
+          <article class="cartao urgencia__ganho">
+            <h3 class="urgencia__ganho-titulo">Fidelização do seu cliente</h3>
             <p>
               Quem compra uma peça bem acabada volta a comprar e indica a sua
               marca.
             </p>
           </article>
-          <article class="mb-card urgencia-ganho">
-            <h3 class="urgencia-ganho-titulo">Tranquilidade operacional</h3>
+          <article class="cartao urgencia__ganho">
+            <h3 class="urgencia__ganho-titulo">Tranquilidade operacional</h3>
             <p>
               Prazo cumprido e lote no padrão: você volta a cuidar das vendas,
               não dos incêndios.
@@ -1232,22 +1247,22 @@
         </div>
 
         <!-- Risco de esperar -->
-        <div class="urgencia-risco">
+        <div class="urgencia__risco">
           <p>
             Continuar com o fornecedor atual por comodidade significa continuar
             correndo o risco de:
           </p>
-          <ul class="urgencia-risco-lista" aria-label="Riscos de esperar">
+          <ul class="etiquetas etiquetas--vinho" aria-label="Riscos de esperar">
             <li>Lançamentos atrasados</li>
             <li>Devoluções</li>
             <li>Desvalorização da sua marca</li>
           </ul>
         </div>
 
-        <p class="solucoes-conector">
+        <p class="conector">
           Coloque lado a lado e veja o que realmente está em jogo em cada
           escolha.
-          <span class="conector-seta" aria-hidden="true">↓</span>
+          <span class="conector__seta" aria-hidden="true">↓</span>
         </p>
       </div>
     </section>
@@ -1255,16 +1270,16 @@
     <!-- ================================================================
        COMPARATIVO — tabela → custo de economizar errado → CTA
        ================================================================ -->
-    <section class="section-comparativo">
+    <section class="comparativo">
       <!-- Comparativo -->
-      <div class="comparativo-wrap">
-        <table class="comparativo">
+      <div class="comparativo__caixa">
+        <table class="comparativo__tabela">
           <thead>
             <tr>
               <th scope="col">O que está em jogo</th>
               <th scope="col">Oficina comum / Intermediários</th>
               <th scope="col">Outras soluções / Fornecedor padrão</th>
-              <th scope="col" class="col-destaque">
+              <th scope="col" class="comparativo__destaque">
                 Nossa estrutura fabril (30 anos)
               </th>
             </tr>
@@ -1274,7 +1289,7 @@
               <th scope="row">Preço por peça</th>
               <td>Aparece como “mais barato” à primeira vista</td>
               <td>Média de mercado</td>
-              <td class="col-destaque">
+              <td class="comparativo__destaque">
                 <strong>Preço justo direto de fábrica</strong> (sem
                 intermediários)
               </td>
@@ -1283,7 +1298,7 @@
               <th scope="row">Taxa de Refugo e Defeitos</th>
               <td>Alta (bordados repuxados, etiquetas desfiadas)</td>
               <td>Média (exige conferência manual constante)</td>
-              <td class="col-destaque">
+              <td class="comparativo__destaque">
                 <strong>Zero Refugo</strong> (tolerância zero e amostra técnica
                 pré-aprovada)
               </td>
@@ -1292,7 +1307,7 @@
               <th scope="row">Risco de Atraso no Lançamento</th>
               <td>Recorrente (prometem prazos que não cumprem)</td>
               <td>Frequente em datas comemorativas</td>
-              <td class="col-destaque">
+              <td class="comparativo__destaque">
                 <strong>Garantia em qualquer época do ano</strong> (seu
                 calendário blindado)
               </td>
@@ -1301,7 +1316,7 @@
               <th scope="row">Sensação no Cliente Final</th>
               <td>Pinica, incomoda, desbota e desvaloriza a peça</td>
               <td>Aceitável, mas sem destaque visual</td>
-              <td class="col-destaque">
+              <td class="comparativo__destaque">
                 <strong>Valor Percebido de Grife</strong> (toque macio, brilho e
                 simetria cravada)
               </td>
@@ -1310,7 +1325,7 @@
               <th scope="row">Segurança Jurídica e Suporte</th>
               <td>Nenhuma (sem conformidade ou fiscalização)</td>
               <td>Suporte básico e demorado</td>
-              <td class="col-destaque">
+              <td class="comparativo__destaque">
                 <strong>Certificação ABVTEX</strong> + Atendimento técnico
                 dedicado
               </td>
@@ -1319,7 +1334,7 @@
               <th scope="row">O Verdadeiro Custo Final</th>
               <td>CARO: Coleções atrasadas, reembolsos e perda de imagem</td>
               <td>INCERTO: Margem corroída por retrabalho e estresse</td>
-              <td class="col-destaque">
+              <td class="comparativo__destaque">
                 <strong>O MENOR CUSTO TOTAL:</strong> Margem protegida, escala e
                 reputação no topo
               </td>
@@ -1329,12 +1344,12 @@
       </div>
 
       <!-- Custo de economizar errado -->
-      <div class="mb-card custo-card">
-        <p class="custo-titulo">
+      <div class="cartao custo">
+        <p class="custo__titulo">
           Economizar alguns centavos por peça em um fornecedor amador pode
           custar:
         </p>
-        <ul class="custo-lista">
+        <ul class="custo__lista">
           <li>
             <strong>R$ 2.000,00+</strong> em anúncios de marketing jogados fora
             porque a coleção atrasou a data de lançamento.
@@ -1350,13 +1365,16 @@
         </ul>
       </div>
 
-      <p class="decisao-remate">
+      <p class="comparativo__remate">
         A verdadeira economia não está no preço da etiqueta, mas no lucro que
         você não perde por falha na produção.
       </p>
 
-      <div class="decisao-cta">
-        <button type="button" class="btn btn-primary btn-hero-cta js-wa-modal">
+      <div class="comparativo__acoes">
+        <button
+          type="button"
+          class="botao botao--primario botao--destaque js-modal-whatsapp"
+        >
           Proteger minha margem — pedir cotação direto de fábrica
         </button>
       </div>
@@ -1366,29 +1384,30 @@
        FAQ TÉCNICO — 07
        Acordeão nativo (<details>/<summary>) — não precisa de JS
        ================================================================ -->
-    <section class="section-faq">
-      <div class="faq-grid">
+    <section class="perguntas">
+      <div class="perguntas__grade">
         <!-- Coluna esquerda: título -->
-        <div class="faq-intro">
-          <h2 class="mb-title lg">
+        <div class="perguntas__intro">
+          <h2 class="titulo titulo--grande">
             Respostas Diretas para o Seu
-            <span class="highlight-azul">Planejamento</span> (FAQ Técnico)
+            <span class="destaque destaque--azul">Planejamento</span> (FAQ
+            Técnico)
           </h2>
         </div>
 
         <!-- Coluna direita: perguntas -->
-        <div class="faq-lista">
-          <h3 class="faq-categoria">
-            <span class="faq-emoji" aria-hidden="true">📦</span> Sobre Pedidos e
-            Produção
+        <div>
+          <h3 class="perguntas__categoria">
+            <span class="perguntas__emoji" aria-hidden="true">📦</span> Sobre
+            Pedidos e Produção
           </h3>
 
-          <details class="faq-item">
+          <details class="perguntas__item">
             <summary>
               Qual é a quantidade mínima (MOQ) para pedidos?
-              <span class="faq-sinal" aria-hidden="true"></span>
+              <span class="perguntas__sinal" aria-hidden="true"></span>
             </summary>
-            <div class="faq-resposta">
+            <div class="perguntas__resposta">
               <p>
                 Trabalhamos com lotes flexíveis ajustados para atender desde
                 marcas em fase de crescimento e linhas private label até grandes
@@ -1398,12 +1417,12 @@
             </div>
           </details>
 
-          <details class="faq-item">
+          <details class="perguntas__item">
             <summary>
               É possível ver uma amostra antes de rodar a produção total?
-              <span class="faq-sinal" aria-hidden="true"></span>
+              <span class="perguntas__sinal" aria-hidden="true"></span>
             </summary>
-            <div class="faq-resposta">
+            <div class="perguntas__resposta">
               <p>
                 Sim! Enviamos a aprovação virtual detalhada e, dependendo do
                 projeto e volume, desenvolvemos amostra física/piloto para
@@ -1413,12 +1432,12 @@
             </div>
           </details>
 
-          <details class="faq-item">
+          <details class="perguntas__item">
             <summary>
               Como funciona o custo da matriz de bordado / setup inicial?
-              <span class="faq-sinal" aria-hidden="true"></span>
+              <span class="perguntas__sinal" aria-hidden="true"></span>
             </summary>
-            <div class="faq-resposta">
+            <div class="perguntas__resposta">
               <p>
                 Trabalhamos com total transparência. A criação e vetorização da
                 matriz técnica têm valor justo e focado na precisão dos pontos.
@@ -1428,18 +1447,18 @@
             </div>
           </details>
 
-          <h3 class="faq-categoria">
-            <span class="faq-emoji" aria-hidden="true">🧵</span> Sobre
+          <h3 class="perguntas__categoria">
+            <span class="perguntas__emoji" aria-hidden="true">🧵</span> Sobre
             Qualidade, Durabilidade e Aplicação
           </h3>
 
-          <details class="faq-item">
+          <details class="perguntas__item">
             <summary>
               As etiquetas tecidas e bordados aguentam lavagens pesadas e
               secadora?
-              <span class="faq-sinal" aria-hidden="true"></span>
+              <span class="perguntas__sinal" aria-hidden="true"></span>
             </summary>
-            <div class="faq-resposta">
+            <div class="perguntas__resposta">
               <p>
                 Com certeza. Utilizamos fios de alta fixação e processo de
                 selagem térmica nas bordas das etiquetas. Elas não desfiam, não
@@ -1449,13 +1468,13 @@
             </div>
           </details>
 
-          <details class="faq-item">
+          <details class="perguntas__item">
             <summary>
               Os patches para Kimonos de Jiu-Jitsu e uniformes esportivos
               resistem ao atrito?
-              <span class="faq-sinal" aria-hidden="true"></span>
+              <span class="perguntas__sinal" aria-hidden="true"></span>
             </summary>
-            <div class="faq-resposta">
+            <div class="perguntas__resposta">
               <p>
                 Sim. Nossos patches esportivos são fabricados com base reforçada
                 e linhas de alta resistência mecânica, projetados
@@ -1465,12 +1484,12 @@
             </div>
           </details>
 
-          <details class="faq-item">
+          <details class="perguntas__item">
             <summary>
               Como podem ser aplicados os patches?
-              <span class="faq-sinal" aria-hidden="true"></span>
+              <span class="perguntas__sinal" aria-hidden="true"></span>
             </summary>
-            <div class="faq-resposta">
+            <div class="perguntas__resposta">
               <p>
                 Oferecemos opções de aplicação versáteis conforme a sua
                 necessidade:
@@ -1492,18 +1511,18 @@
             </div>
           </details>
 
-          <h3 class="faq-categoria">
-            <span class="faq-emoji" aria-hidden="true">🎨</span> Sobre Design e
-            Acabamentos
+          <h3 class="perguntas__categoria">
+            <span class="perguntas__emoji" aria-hidden="true">🎨</span> Sobre
+            Design e Acabamentos
           </h3>
 
-          <details class="faq-item">
+          <details class="perguntas__item">
             <summary>
               Qual a diferença entre Etiqueta Tecida (Bordada) e Etiqueta
               Impressa?
-              <span class="faq-sinal" aria-hidden="true"></span>
+              <span class="perguntas__sinal" aria-hidden="true"></span>
             </summary>
-            <div class="faq-resposta">
+            <div class="perguntas__resposta">
               <p>
                 A etiqueta tecida é produzida pelo entrelaçamento dos próprios
                 fios de alta definição, garantindo relevo, sofisticação e
@@ -1515,13 +1534,13 @@
             </div>
           </details>
 
-          <details class="faq-item">
+          <details class="perguntas__item">
             <summary>
               É possível reproduzir letras pequenas e detalhes finos no meu
               logotipo?
-              <span class="faq-sinal" aria-hidden="true"></span>
+              <span class="perguntas__sinal" aria-hidden="true"></span>
             </summary>
-            <div class="faq-resposta">
+            <div class="perguntas__resposta">
               <p>
                 Sim! Nossos teares e máquinas de bordar operam com alta
                 resolução de pontos. Caso seu logo tenha detalhes microscópicos,
@@ -1531,12 +1550,12 @@
             </div>
           </details>
 
-          <details class="faq-item">
+          <details class="perguntas__item">
             <summary>
               Quais são as opções de acabamento para as etiquetas tecidas?
-              <span class="faq-sinal" aria-hidden="true"></span>
+              <span class="perguntas__sinal" aria-hidden="true"></span>
             </summary>
-            <div class="faq-resposta">
+            <div class="perguntas__resposta">
               <p>Oferecemos todos os formatos do mercado:</p>
               <ul>
                 <li>
@@ -1560,16 +1579,17 @@
     <!-- ================================================================
        GARANTIA / RISCO ZERO — 07
        ================================================================ -->
-    <section class="section-garantia">
-      <div class="garantia-glow" aria-hidden="true"></div>
+    <section class="garantia">
+      <div class="garantia__brilho" aria-hidden="true"></div>
 
-      <div class="garantia-conteudo">
-        <h2 class="mb-title lg garantia-titulo">
+      <div class="garantia__conteudo">
+        <h2 class="titulo titulo--grande garantia__titulo">
           Você foca na venda. Nós assumimos
-          <span class="highlight-azul">100% do risco</span> da produção.
+          <span class="destaque destaque--azul">100% do risco</span> da
+          produção.
         </h2>
 
-        <p class="garantia-lead">
+        <p class="garantia__chamada">
           Sua tranquilidade é respaldada por contrato e por 30 anos de reputação
           fabril. Se o lote entregue não corresponder exatamente ao gabarito
           aprovado, nós refazemos o material imediatamente sem nenhum custo
@@ -1578,7 +1598,7 @@
 
         <button
           type="button"
-          class="btn btn-primary btn-hero-cta btn-garantia js-wa-modal"
+          class="botao botao--primario botao--destaque js-modal-whatsapp"
         >
           Garantir a qualidade do meu lote sem risco →
         </button>
@@ -1589,36 +1609,20 @@
        FOOTER
        (repetido em todas as páginas — CSS vem de global.css)
        ================================================================ -->
-    <footer class="footer">
+    <footer class="rodape">
       <!-- Colunas -->
-      <div class="footer-cols">
-        <div class="footer-about">
-          <div class="logo footer-logo">
-            <svg viewBox="0 0 86.5 58.36" class="footer-logo-svg">
-              <g>
-                <path
-                  d="M39.52 24.67l0 8.86 7.4 0 0 -8.29c-2.52,-0.17 -4.98,-0.36 -7.4,-0.57z"
-                />
-                <path
-                  d="M-0 19.77l0 4.79c1.09,-0.3 2.19,-0.59 3.3,-0.84 2.71,-0.62 5.44,-1.11 8.2,-1.43 5.53,-0.64 11.11,-0.38 16.66,0.06 2.83,0.22 5.64,0.46 8.46,0.72 1.85,0.18 3.71,0.33 5.56,0.47 1.59,0.13 3.18,0.24 4.76,0.35l0 -2.63 0 -1.01 0 -8.32 -7.41 0 0 7.82c-0.27,-0.02 -0.53,-0.04 -0.8,-0.06 -1.5,-0.12 -3.01,-0.24 -4.51,-0.39l0 -0.8 0 -18.49 -9.55 0c-3.29,-0.03 -6.48,1.17 -8.84,3.46 -2.25,2.2 -3.61,5.16 -3.68,8.29l0 6.43c-0.46,0.02 -0.93,0.05 -1.39,0.08 -2.65,0.18 -5.29,0.51 -7.92,0.96 -0.95,0.16 -1.9,0.34 -2.84,0.54z"
-                />
-                <path
-                  d="M12.15 58.36l49.73 0c3.3,0 6.52,-1.16 8.88,-3.46 2.26,-2.2 3.61,-5.17 3.68,-8.31l0 -22.79c2.32,-0.12 4.64,-0.43 6.91,-0.91 1.74,-0.37 3.47,-0.86 5.16,-1.44l0 -5.2c-1.53,0.61 -3.09,1.14 -4.68,1.61 -2.42,0.71 -4.89,1.27 -7.39,1.64l0 -19.49 -22.15 0 0.02 25.93c0,1.22 0.07,2.43 0,3.64 -0.05,1 -0.14,2 -0.29,2.99 -0.23,1.52 -0.66,3 -1.08,4.49 -0.94,3.36 -2.11,6.66 -3.29,9.95 -0.45,1.25 -0.9,2.5 -1.35,3.75 -0.21,0.59 -0.41,1.19 -0.7,1.74 -0.12,0.23 -0.25,0.46 -0.39,0.68 -0.22,0.33 -0.44,0.65 -0.75,0.88 -0.21,0.16 -0.42,0.3 -0.67,0.38 -0.31,0.1 -0.64,0.1 -0.96,0 -0.23,-0.07 -0.43,-0.18 -0.62,-0.32 -0.21,-0.15 -0.38,-0.35 -0.54,-0.55 -0.26,-0.32 -0.45,-0.7 -0.64,-1.07 -0.29,-0.56 -0.5,-1.16 -0.72,-1.74 -0.47,-1.24 -0.9,-2.5 -1.35,-3.75 -1.17,-3.29 -2.34,-6.58 -3.28,-9.95 -0.41,-1.48 -0.85,-2.97 -1.08,-4.49 -0.15,-0.99 -0.23,-1.99 -0.29,-2.99 -0.08,-1.21 -0.06,-2.08 -0.06,-3.29l0 -2.02c-5.04,-0.53 -10.11,-0.91 -15.17,-0.91 -2.31,0 -4.61,0.13 -6.92,0.35l0 34.65z"
-                />
-              </g>
-            </svg>
-            <div class="footer-text-logo">
-              <span class="logo-master">Master</span
-              ><span class="logo-bord">Bord</span>
-            </div>
+      <div class="rodape__colunas">
+        <div class="rodape__sobre">
+          <div class="logo rodape__logo">
+            <span>Master</span><span>Bord</span>
           </div>
           <p>
             Desde 1994 transformando ideias em etiquetas, bordados e cortes
             laser. Parceiro certificado ABVTEX.
           </p>
-          <div class="footer-socials">
+          <div class="rodape__redes">
             <a
-              class="social"
+              class="rodape__rede"
               href="https://www.instagram.com/masterbordbordados/"
               target="_blank"
               rel="noopener noreferrer"
@@ -1627,7 +1631,7 @@
               ><i class="fab fa-instagram"></i
             ></a>
             <a
-              class="social"
+              class="rodape__rede"
               href="https://wa.me/5524981190914"
               target="_blank"
               rel="noopener noreferrer"
@@ -1636,7 +1640,7 @@
               ><i class="fab fa-whatsapp"></i
             ></a>
             <a
-              class="social"
+              class="rodape__rede"
               href="https://wa.me/5524992808372"
               target="_blank"
               rel="noopener noreferrer"
@@ -1645,7 +1649,7 @@
               ><i class="fab fa-whatsapp"></i
             ></a>
             <a
-              class="social"
+              class="rodape__rede"
               href="https://www.facebook.com/masterbordbordados/"
               target="_blank"
               rel="noopener noreferrer"
@@ -1656,19 +1660,18 @@
           </div>
         </div>
 
-        <div class="footer-col">
-          <div class="footer-col-title">Navegar</div>
+        <div class="rodape__coluna">
+          <div class="rodape__coluna-titulo">Navegar</div>
           <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="sobre.html">Sobre</a></li>
             <li><a href="produtos.html">Produtos</a></li>
-            <li><a href="catalogo.html">Catálogo</a></li>
             <li><a href="contato.html">Contato</a></li>
           </ul>
         </div>
 
-        <div class="footer-col">
-          <div class="footer-col-title">Produtos</div>
+        <div class="rodape__coluna">
+          <div class="rodape__coluna-titulo">Produtos</div>
           <ul>
             <li><a href="produto-etiqueta.html">Etiquetas Tecidas</a></li>
             <li><a href="produto-bordado.html">Bordados</a></li>
@@ -1676,8 +1679,8 @@
           </ul>
         </div>
 
-        <div class="footer-col">
-          <div class="footer-col-title">Institucional</div>
+        <div class="rodape__coluna">
+          <div class="rodape__coluna-titulo">Institucional</div>
           <ul>
             <li><a href="politicas.html#frete">Política de Frete</a></li>
             <li><a href="politicas.html#entrega">Política de Entrega</a></li>
@@ -1688,8 +1691,8 @@
           </ul>
         </div>
 
-        <div class="footer-col">
-          <div class="footer-col-title">Contato</div>
+        <div class="rodape__coluna">
+          <div class="rodape__coluna-titulo">Contato</div>
           <ul>
             <li>(24) 2231-7666</li>
             <li>vendas@bordado.com.br</li>
@@ -1701,14 +1704,14 @@
       </div>
 
       <!-- Rodapé legal -->
-      <div class="footer-bottom">
+      <div class="rodape__base">
         <span>© DESDE 1994 MASTER BORD · TODOS OS DIREITOS RESERVADOS</span>
         <span>CNPJ 02.404.908/0001-96 · PRIVACIDADE · TERMOS</span>
       </div>
     </footer>
 
-    <div class="logo-whatssap">
-      <a href="https://wa.me/5524981190914" class="js-wa-modal"
+    <div class="botao-whatsapp">
+      <a href="https://wa.me/5524981190914" class="js-modal-whatsapp"
         ><img src="img/svg/whatssap.png" alt="whatssap MasterBord"
       /></a>
     </div>

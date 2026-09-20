@@ -1,21 +1,19 @@
 /* ================================================================
-   GLOBAL.CSS — Master Bord
-   Tudo que aparece em MAIS DE UMA página do site.
-   Esse arquivo é carregado por TODAS as páginas HTML.
+   GLOBAL.CSS — Master Bord (todas as páginas)
 
-   Seções:
-   1. Variáveis de tema (cores e fontes)
-   2. Reset e base
-   3. Header (topo do site)
-   4. Footer (rodapé)
-   5. Botões (.btn e variantes)
-   6. Componentes reutilizáveis (tag, título, card, grid, logo, imagem)
-   7. Media queries mobile do que é global
+   Organização: um bloco BEM por seção, com CSS aninhado.
+   - bloco .............. .rodape
+   - elemento ........... .rodape__coluna   (dois underlines)
+   - modificador ........ .botao--primario  (dois hifens)
+
+   Cada bloco guarda tudo que é dele: regras, animações e as media
+   queries, aninhadas no próprio bloco. Nomes em português.
+   O que é exclusivo de uma página fica no CSS daquela página.
    ================================================================ */
 
 /* ================================================================
-   1. VARIÁVEIS DE TEMA — cores e fontes da Master Bord
-   Para mudar uma cor em TODO o site, edite aqui.
+   VARIÁVEIS, RESET E UTILITÁRIOS
+   Para mudar uma cor em TODO o site, edite as variáveis abaixo.
    ================================================================ */
 :root {
   /* Cores — extraídas do mb-theme.jsx */
@@ -43,19 +41,14 @@
   --font-serif: 'Playfair Display', serif;
 }
 
-/* ================================================================
-   2. RESET E BASE
-   ================================================================ */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
-
 html {
   font-size: 62.5%; /* Agora 1rem = 10px */
 }
-
 html,
 body {
   margin: 0;
@@ -84,19 +77,33 @@ img {
   max-width: 100%;
   display: block;
 }
-
 .flex {
   display: flex;
 }
-
-.col {
+.coluna {
   flex-direction: column;
+}
+/* Utilitários de exibição por tamanho de tela */
+.so-celular {
+  display: none;
+}
+@media (max-width: 900px) {
+  /* Utilitários de exibição */
+  .so-celular {
+    display: flex;
+  }
+  .oculto-celular {
+    display: inline;
+    justify-content: space-between;
+  }
 }
 
 /* ================================================================
-   3. HEADER — barra superior fixa (presente em todas as páginas)
+   CABEÇALHO — barra do topo (todas as páginas)
+   Tudo que pertence ao header fica aninhado dentro de .cabecalho,
+   inclusive a media query do mobile — o bloco inteiro num lugar só.
    ================================================================ */
-.header {
+.cabecalho {
   position: sticky;
   top: 0;
   z-index: 100;
@@ -105,543 +112,404 @@ img {
   transition:
     background 0.3s ease,
     backdrop-filter 0.3s ease;
-}
-.header.scrolled {
-  background: rgba(15, 17, 22, 0.92);
-  backdrop-filter: blur(16px);
-}
 
-/* Faixa utilitária (SYS · SP · STATUS ONLINE) */
-.utility-strip {
-  display: flex;
-  justify-content: space-between;
-  padding: 8px 40px;
-  background: var(--mb-bg-deep);
-  border-bottom: 1px solid var(--mb-line-soft);
-  font-family: var(--font-mono);
-  font-size: 10px;
-  color: var(--mb-muted);
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  align-items: center;
-}
-.utility-strip span:nth-child(1) {
-  text-align: left;
-}
-.utility-strip span:nth-child(2) {
-  text-align: center;
-}
-.utility-strip span:nth-child(3) {
-  text-align: right;
-}
-.utility-strip .social {
-  display: flex;
-  gap: 10px;
-}
-.utility-strip .social a {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 24px;
-  height: 24px;
-  text-decoration: none;
-}
+  /* Modificador: ligado pelo js/global.js quando a página rola */
+  &.cabecalho--rolado {
+    background: rgba(15, 17, 22, 0.92);
+    backdrop-filter: blur(16px);
+  }
 
-.utility-strip .social i {
-  font-size: 14px; /* tamanho pequeno */
-  color: #fff;
-  transition: 0.3s;
-}
+  /* ---- Faixa utilitária (local · frete · redes) ---- */
+  & .cabecalho__faixa {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 40px;
+    background: var(--mb-bg-deep);
+    border-bottom: 1px solid var(--mb-line-soft);
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--mb-muted);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
 
-/* efeito ao passar o mouse */
-.utility-strip .social a:hover i {
-  color: #ccc;
-}
+    /* 1º item à esquerda, 2º no centro, 3º à direita */
+    & span:nth-child(1) {
+      text-align: left;
+    }
+    & span:nth-child(2) {
+      text-align: center;
+    }
+    & span:nth-child(3) {
+      text-align: right;
+    }
+  }
 
-/* Navegação principal */
-.main-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 40px;
-}
-.nav-left {
-  display: flex;
-  align-items: center;
-  gap: 28px;
-  cursor: pointer;
-}
-.nav-divider {
-  width: 1px;
-  height: 16px;
-  background: var(--mb-line);
-}
-.nav-links {
-  display: flex;
-  gap: 22px;
-}
-.nav-links a {
-  color: var(--mb-muted);
-  font-size: 13px;
-  font-weight: 500;
-  padding-bottom: 2px;
-  border-bottom: 1px solid transparent;
-  transition:
-    color 0.2s,
-    border-color 0.2s;
-}
-.nav-links a.active,
-.nav-links a:hover {
-  color: var(--mb-paper);
-  border-bottom-color: var(--mb-vinho);
-}
-.nav-right {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
-.nav-phone {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  color: var(--mb-ouro);
-  letter-spacing: 0.15em;
-}
+  /* ---- Redes sociais dentro da faixa ---- */
+  & .cabecalho__redes {
+    display: flex;
+    gap: 10px;
 
-/* Strip de navegação só-mobile */
-.mobile-nav-strip {
-  display: flex;
-  gap: 14px;
-  padding: 6px 16px 10px;
-  border-top: 1px solid var(--mb-line-soft);
-  overflow-x: auto;
-  font-size: 12px;
-}
-.mobile-nav-strip a {
-  color: var(--mb-muted);
-  white-space: nowrap;
-  padding-bottom: 2px;
-  border-bottom: 1px solid transparent;
-}
-.mobile-nav-strip a.active {
-  color: var(--mb-paper);
-  border-bottom-color: var(--mb-vinho);
-}
+    & a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      text-decoration: none;
+    }
 
-/* ================================================================
-   4. FOOTER — rodapé (presente em todas as páginas)
-   ================================================================ */
-.footer {
-  background: var(--mb-bg-deep);
-  border-top: 1px solid var(--mb-line);
-}
-.footer-cta {
-  padding: 64px 48px;
-  position: relative;
-  overflow: hidden;
-}
-.footer-cta-bg {
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(
-      circle at 20% 50%,
-      rgba(74, 139, 214, 0.1),
-      transparent 50%
-    ),
-    radial-gradient(circle at 80% 50%, rgba(196, 75, 85, 0.1), transparent 50%);
-}
-.footer-cta-grid {
-  position: relative;
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 48px;
-  align-items: end;
-}
-.footer-cta-ctas {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-.footer-cols {
-  padding: 24px 48px;
-  border-top: 1px solid var(--mb-line);
-  display: grid;
-  grid-template-columns: 1.3fr 1fr 1fr 1fr 1.2fr;
-  gap: 40px;
-}
+    & i {
+      font-size: 14px;
+      color: #fff;
+      transition: 0.3s;
+    }
 
-/* ===== UTILITÁRIOS GLOBAIS (substituem inline styles que se repetiam em várias páginas) ===== */
+    & a:hover i {
+      color: #ccc;
+    }
+  }
 
-/* Logo dentro do footer (era style="font-size: 22px") */
-.footer-logo {
-  font-size: 22px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.footer-logo svg {
-  width: 2rem;
-  flex-shrink: 0;
-}
+  /* ---- Navegação principal ---- */
+  & .cabecalho__navegacao {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 40px;
+  }
 
-/* SVG da logo no rodapé */
-.footer-logo-svg {
-  width: 3rem;
-  height: 3rem;
-  flex-shrink: 0;
-  fill: var(--mb-ouro);
-}
+  & .cabecalho__esquerda {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    cursor: pointer;
+  }
 
-/* Texto da logo no rodapé */
-.footer-text-logo {
-  display: flex;
-  align-items: baseline;
-  gap: 0;
-}
+  & .cabecalho__direita {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
 
-/* Espaçador vertical de 12px entre .mb-tag e .mb-title */
-.spacer-12 {
-  height: 12px;
-}
+  & .cabecalho__divisor {
+    width: 1px;
+    height: 16px;
+    background: var(--mb-line);
+  }
 
-/* Botões do footer-cta com texto centralizado */
-.btn-cta-center {
-  justify-content: center;
-}
+  & .cabecalho__telefone {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--mb-ouro);
+    letter-spacing: 0.15em;
+  }
 
-/* Margin-top no h2 grande do footer-cta-grid */
-.footer-cta-grid .mb-title.xl {
-  margin-top: 14px;
-}
-.footer-about p {
-  font-size: 13px;
-  color: var(--mb-muted);
-  line-height: 1.6;
-  margin: 14px 0 0;
-  max-width: 280px;
-}
-.footer-socials {
-  display: flex;
-  gap: 8px;
-  margin-top: 16px;
-}
+  /* ---- Links do menu (desktop) ---- */
+  & .cabecalho__links {
+    display: flex;
+    gap: 22px;
+  }
 
-.footer-socials .social {
-  position: relative;
-  width: 32px;
-  height: 32px;
-  border: 1px solid var(--mb-line);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-mono);
-  font-size: 14px;
-  color: var(--mb-muted);
-  letter-spacing: 0.1em;
-  transition:
-    color 0.25s ease,
-    border-color 0.25s ease,
-    transform 0.25s ease,
-    background 0.25s ease;
-}
-.footer-socials .social:hover {
-  color: var(--mb-paper);
-  border-color: var(--mb-ouro);
-  transform: translateY(-2px);
-  background: rgba(212, 169, 106, 0.08);
-}
+  & .cabecalho__link {
+    color: var(--mb-muted);
+    font-size: 13px;
+    font-weight: 500;
+    padding-bottom: 2px;
+    border-bottom: 1px solid transparent;
+    transition:
+      color 0.2s,
+      border-color 0.2s;
 
-/* Tooltip — aparece acima do ícone com nome da rede */
-.footer-socials .social::before,
-.footer-socials .social::after {
-  position: absolute;
-  left: 50%;
-  opacity: 0;
-  pointer-events: none;
-  transition:
-    opacity 0.25s ease,
-    transform 0.25s ease;
-}
-.footer-socials .social::before {
-  content: attr(data-tooltip);
-  bottom: calc(100% + 10px);
-  transform: translateX(-50%) translateY(4px);
-  background: var(--mb-bg-deep);
-  border: 1px solid var(--mb-ouro);
-  color: var(--mb-paper);
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  padding: 6px 10px;
-  white-space: nowrap;
-}
-.footer-socials .social::after {
-  content: '';
-  bottom: calc(100% + 5px);
-  transform: translateX(-50%) translateY(4px);
-  border: 5px solid transparent;
-  border-top-color: var(--mb-ouro);
-}
-.footer-socials .social:hover::before,
-.footer-socials .social:hover::after {
-  opacity: 1;
-  transform: translateX(-50%) translateY(0);
-}
-/* Esconde o tooltip se o link não tiver data-tooltip definido */
-.footer-socials .social:not([data-tooltip])::before,
-.footer-socials .social:not([data-tooltip])::after {
-  display: none;
-}
-.footer-col-title {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  color: var(--mb-ouro);
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  margin-bottom: 16px;
-}
-.footer-col ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-.footer-col li {
-  font-size: 13px;
-  color: var(--mb-paper-dim);
-}
-.footer-bottom {
-  padding: 20px 48px;
-  border-top: 1px solid var(--mb-line);
-  display: flex;
-  justify-content: space-between;
-  font-family: var(--font-mono);
-  font-size: 10px;
-  color: var(--mb-muted);
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
+    /* Modificador da página atual — mesmo visual do hover */
+    &.cabecalho__link--ativo,
+    &:hover {
+      color: var(--mb-paper);
+      border-bottom-color: var(--mb-vinho);
+    }
+  }
+
+  /* ---- Faixa de navegação só-mobile ----
+     Fica escondida por padrão e só aparece na media query lá embaixo.
+     (O aninhamento tem especificidade maior que o utilitário
+     .so-celular, então quem manda aqui é o próprio bloco.) */
+  & .cabecalho__menu-celular {
+    display: none;
+    gap: 14px;
+    padding: 6px 16px 10px;
+    border-top: 1px solid var(--mb-line-soft);
+    overflow-x: auto;
+    font-size: 12px;
+  }
+
+  & .cabecalho__menu-link {
+    color: var(--mb-muted);
+    white-space: nowrap;
+    padding-bottom: 2px;
+    border-bottom: 1px solid transparent;
+
+    &.cabecalho__menu-link--ativo {
+      color: var(--mb-paper);
+      border-bottom-color: var(--mb-vinho);
+    }
+  }
+
+  /* ---- Mobile: some com telefone, links e divisor ---- */
+  @media (max-width: 900px) {
+    & .cabecalho__faixa {
+      padding: 6px 9px;
+      font-size: 9px;
+    }
+    & .cabecalho__navegacao {
+      padding: 12px 16px;
+    }
+    & .cabecalho__telefone,
+    & .cabecalho__links,
+    & .cabecalho__divisor {
+      display: none;
+    }
+    & .cabecalho__menu-celular {
+      display: flex;
+    }
+  }
 }
 
 /* ================================================================
-   4b. MODAL WHATSAPP — disparado pelo botão "WhatsApp direto" do footer
-   Markup é injetado em runtime por js/global.js. Mantemos só o estilo aqui.
+   RODAPÉ — chamada final, colunas e base (todas as páginas)
    ================================================================ */
-.wa-modal {
+.rodape {
+  background: var(--mb-bg-deep);
+  border-top: 1px solid var(--mb-line);
+
+  & .rodape__chamada {
+    padding: 64px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  & .rodape__chamada-fundo {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(
+        circle at 20% 50%,
+        rgba(74, 139, 214, 0.1),
+        transparent 50%
+      ),
+      radial-gradient(
+        circle at 80% 50%,
+        rgba(196, 75, 85, 0.1),
+        transparent 50%
+      );
+  }
+
+  & .rodape__chamada-grade {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 48px;
+    align-items: end;
+  }
+
+  & .rodape__chamada-acoes {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  & .rodape__colunas {
+    padding: 24px 48px;
+    border-top: 1px solid var(--mb-line);
+    display: grid;
+    grid-template-columns: 1.3fr 1fr 1fr 1fr 1.2fr;
+    gap: 40px;
+  }
+
+  /* ===== UTILITÁRIOS GLOBAIS (substituem inline styles que se repetiam em várias páginas) ===== */
+  /* Logo dentro do footer (era style="font-size: 22px") */
+  & .rodape__logo {
+    font-size: 22px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  /* Margin-top no h2 grande do footer-cta-grid */
+  & .rodape__chamada-grade .titulo.titulo--enorme {
+    margin-top: 14px;
+  }
+
+  & .rodape__sobre p {
+    font-size: 13px;
+    color: var(--mb-muted);
+    line-height: 1.6;
+    margin: 14px 0 0;
+    max-width: 280px;
+  }
+
+  & .rodape__redes {
+    display: flex;
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  & .rodape__redes .rodape__rede {
+    position: relative;
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--mb-line);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-mono);
+    font-size: 14px;
+    color: var(--mb-muted);
+    letter-spacing: 0.1em;
+    transition:
+      color 0.25s ease,
+      border-color 0.25s ease,
+      transform 0.25s ease,
+      background 0.25s ease;
+  }
+
+  & .rodape__redes .rodape__rede:hover {
+    color: var(--mb-paper);
+    border-color: var(--mb-ouro);
+    transform: translateY(-2px);
+    background: rgba(212, 169, 106, 0.08);
+  }
+
+  /* Tooltip — aparece acima do ícone com nome da rede */
+  & .rodape__redes .rodape__rede::before,
+  & .rodape__redes .rodape__rede::after {
+    position: absolute;
+    left: 50%;
+    opacity: 0;
+    pointer-events: none;
+    transition:
+      opacity 0.25s ease,
+      transform 0.25s ease;
+  }
+
+  & .rodape__redes .rodape__rede::before {
+    content: attr(data-tooltip);
+    bottom: calc(100% + 10px);
+    transform: translateX(-50%) translateY(4px);
+    background: var(--mb-bg-deep);
+    border: 1px solid var(--mb-ouro);
+    color: var(--mb-paper);
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 6px 10px;
+    white-space: nowrap;
+  }
+
+  & .rodape__redes .rodape__rede::after {
+    content: '';
+    bottom: calc(100% + 5px);
+    transform: translateX(-50%) translateY(4px);
+    border: 5px solid transparent;
+    border-top-color: var(--mb-ouro);
+  }
+
+  & .rodape__redes .rodape__rede:hover::before,
+  & .rodape__redes .rodape__rede:hover::after {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  /* Esconde o tooltip se o link não tiver data-tooltip definido */
+  & .rodape__redes .rodape__rede:not([data-tooltip])::before,
+  & .rodape__redes .rodape__rede:not([data-tooltip])::after {
+    display: none;
+  }
+
+  & .rodape__coluna-titulo {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--mb-ouro);
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  & .rodape__coluna ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  & .rodape__coluna li {
+    font-size: 13px;
+    color: var(--mb-paper-dim);
+  }
+
+  & .rodape__base {
+    padding: 20px 48px;
+    border-top: 1px solid var(--mb-line);
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--mb-muted);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 900px) {
+    /* Footer */
+    & .rodape__chamada {
+      padding: 40px 20px;
+    }
+    & .rodape__chamada-grade {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+    & .rodape__colunas {
+      padding: 32px 20px;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    & .rodape__sobre {
+      grid-column: 1 / -1;
+    }
+    & .rodape__base {
+      flex-direction: column;
+      gap: 8px;
+      padding: 16px 20px;
+    }
+  }
+}
+
+/* ================================================================
+   BOTÃO WHATSAPP — ícone flutuante
+   ================================================================ */
+/* whatssap logo */
+.botao-whatsapp {
   position: fixed;
-  inset: 0;
-  z-index: 1000;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  padding: 24px;
-}
-.wa-modal[aria-hidden='false'] {
-  display: flex;
-}
-.wa-modal-backdrop {
-  position: absolute;
-  inset: 0;
-  background: rgba(15, 17, 22, 0.82);
-  backdrop-filter: blur(10px);
-  animation: waFadeIn 0.25s ease both;
-}
-.wa-modal-card {
-  position: relative;
-  width: 100%;
-  max-width: 460px;
-  background: var(--mb-card);
-  border: 1px solid var(--mb-line);
-  padding: 36px 32px 32px;
-  animation: waScaleIn 0.32s cubic-bezier(0.2, 0.8, 0.25, 1) both;
-  overflow: hidden;
-}
-.wa-modal-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: linear-gradient(
-    90deg,
-    var(--mb-vinho) 0%,
-    var(--mb-vinho) 50%,
-    var(--mb-azul) 50%,
-    var(--mb-azul) 100%
-  );
-}
-.wa-modal-close {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  width: 32px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-sans);
-  font-size: 22px;
-  line-height: 1;
-  color: var(--mb-muted);
-  border: 1px solid transparent;
-  transition:
-    color 0.2s,
-    border-color 0.2s,
-    background 0.2s;
-}
-.wa-modal-close:hover {
-  color: var(--mb-paper);
-  border-color: var(--mb-line);
-  background: var(--mb-bg-deep);
-}
-.wa-modal-title {
-  font-family: var(--font-display);
-  font-size: 30px;
-  letter-spacing: -0.02em;
-  color: var(--mb-paper);
-  margin: 14px 0 8px;
-  line-height: 1.05;
-}
-.wa-modal-sub {
-  font-size: 13px;
-  color: var(--mb-muted);
-  margin: 0 0 26px;
-  line-height: 1.5;
-}
-.wa-modal-options {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-.wa-modal-option {
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 16px 18px 16px 22px;
-  background: var(--mb-bg-soft);
-  border: 1px solid var(--mb-line);
-  color: var(--mb-paper);
-  text-decoration: none;
-  overflow: hidden;
-  transition:
-    transform 0.25s ease,
-    border-color 0.25s ease,
-    background 0.25s ease;
-}
-.wa-modal-option::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 3px;
-  height: 100%;
-}
-.wa-modal-option.vinho::before {
-  background: var(--mb-vinho);
-  box-shadow: 0 0 16px rgba(196, 75, 85, 0.5);
-}
-.wa-modal-option.azul::before {
-  background: var(--mb-azul);
-  box-shadow: 0 0 16px rgba(74, 139, 214, 0.5);
-}
-.wa-modal-option:hover {
-  transform: translateX(4px);
-  background: var(--mb-card-hover);
-}
-.wa-modal-option.vinho:hover {
-  border-color: var(--mb-vinho);
-}
-.wa-modal-option.azul:hover {
-  border-color: var(--mb-azul);
-}
-.wa-opt-icon {
-  flex-shrink: 0;
-  width: 42px;
-  height: 42px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 22px;
-  background: var(--mb-bg-deep);
-  border: 1px solid var(--mb-line);
-}
-.wa-modal-option.vinho .wa-opt-icon {
-  color: var(--mb-vinho-glow);
-}
-.wa-modal-option.azul .wa-opt-icon {
-  color: var(--mb-azul-glow);
-}
-.wa-opt-body {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-.wa-opt-label {
-  font-family: var(--font-display);
-  font-size: 18px;
-  letter-spacing: -0.01em;
-  color: var(--mb-paper);
-}
-.wa-opt-num {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  color: var(--mb-muted);
-  letter-spacing: 0.12em;
-}
-.wa-opt-arrow {
-  font-family: var(--font-mono);
-  font-size: 18px;
-  color: var(--mb-muted);
-  transition:
-    transform 0.25s ease,
-    color 0.25s ease;
-}
-.wa-modal-option:hover .wa-opt-arrow {
-  transform: translateX(4px);
-}
-.wa-modal-option.vinho:hover .wa-opt-arrow {
-  color: var(--mb-vinho-glow);
-}
-.wa-modal-option.azul:hover .wa-opt-arrow {
-  color: var(--mb-azul-glow);
-}
+  right: 1rem;
+  bottom: 3rem;
 
-@keyframes waFadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-@keyframes waScaleIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px) scale(0.96);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-@media (max-width: 600px) {
-  .wa-modal-card {
-    padding: 28px 20px 24px;
-  }
-  .wa-modal-title {
-    font-size: 24px;
+  width: 4rem;
+  height: 4rem;
+
+  &:hover {
+    transform: scale(0.9);
+    transition: transform 0.2s;
   }
 }
 
 /* ================================================================
-   5. BOTÕES — usados em qualquer página
+   BOTÃO — bloco .botao e suas variações
    ================================================================ */
-.btn {
+.botao {
+  /* Cor do brilho pulsante (RGB solto pra usar dentro de rgba) */
+  --botao-brilho: 196, 75, 85;
+
   display: inline-flex;
   align-items: center;
   gap: 10px;
@@ -655,43 +523,339 @@ img {
   transition:
     opacity 0.2s,
     transform 0.2s;
+
+  /* Botões do footer-cta com texto centralizado */
+  &.botao--centralizado {
+    justify-content: center;
+  }
+
+  &:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+  }
+
+  &.botao--primario {
+    background: var(--mb-vinho);
+    color: var(--mb-paper);
+    border-color: var(--mb-vinho);
+  }
+
+  &.botao--secundario {
+    background: var(--mb-card);
+    color: var(--mb-azul-glow);
+    border-color: var(--mb-azul);
+  }
+
+  &.botao--vazado {
+    background: var(--mb-card);
+    color: var(--mb-paper);
+    border-color: var(--mb-line);
+  }
+
+  &.botao--pequeno {
+    padding: 12px 18px;
+    font-size: 11px;
+  }
+
+  /* CTA grande com brilho pulsante — usado nas chamadas principais.
+     A cor do brilho vem de --botao-brilho, então é o mesmo código
+     para qualquer cor (ver .botao--azul). */
+  &.botao--destaque {
+    padding: 20px 38px;
+    font-size: 15px;
+    border-radius: 8px;
+    box-shadow: 0 10px 32px rgba(var(--botao-brilho), 0.55);
+    animation: pulso-botao 2.8s ease-in-out infinite;
+
+    &:hover {
+      opacity: 1;
+      transform: translateY(-2px);
+      box-shadow: 0 14px 40px rgba(var(--botao-brilho), 0.75);
+      animation-play-state: paused;
+    }
+  }
+
+  @media (max-width: 900px) {
+    &.botao--destaque {
+      width: 100%;
+      justify-content: center;
+      text-align: center;
+      padding: 18px 20px;
+      font-size: 13px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &.botao--destaque {
+      animation: none;
+    }
+  }
 }
-.btn:hover {
-  opacity: 0.9;
-  transform: translateY(-1px);
-}
-.btn-primary {
-  background: var(--mb-vinho);
-  color: var(--mb-paper);
-  border-color: var(--mb-vinho);
-}
-.btn-secondary {
-  background: var(--mb-card);
-  color: var(--mb-azul-glow);
-  border-color: var(--mb-azul);
-}
-.btn-ghost {
-  background: var(--mb-card);
-  color: var(--mb-paper);
-  border-color: var(--mb-line);
-}
-.btn-gold {
-  background: var(--mb-ouro);
-  color: var(--mb-bg);
-  border-color: var(--mb-ouro);
-}
-.btn-sm {
-  padding: 12px 18px;
-  font-size: 11px;
+
+/* Um único pulso para todos os botões de destaque */
+@keyframes pulso-botao {
+  0%,
+  100% {
+    box-shadow: 0 10px 32px rgba(var(--botao-brilho), 0.45);
+  }
+  50% {
+    box-shadow: 0 10px 38px rgba(var(--botao-brilho), 0.8);
+  }
 }
 
 /* ================================================================
-   6. COMPONENTES REUTILIZÁVEIS
-   (tag, título, card, grid técnica, logo, imagem)
+   MODAL WHATSAPP — marcação criada pelo js/global.js
+   Abre ao clicar em qualquer elemento com a classe .js-modal-whatsapp
+   Markup é injetado em runtime por js/global.js. Mantemos só o estilo aqui.
    ================================================================ */
+.modal-whatsapp {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
 
+  &[aria-hidden='false'] {
+    display: flex;
+  }
+
+  & .modal-whatsapp__fundo {
+    position: absolute;
+    inset: 0;
+    background: rgba(15, 17, 22, 0.82);
+    backdrop-filter: blur(10px);
+    animation: modal-entrada 0.25s ease both;
+  }
+
+  & .modal-whatsapp__cartao {
+    position: relative;
+    width: 100%;
+    max-width: 460px;
+    background: var(--mb-card);
+    border: 1px solid var(--mb-line);
+    padding: 36px 32px 32px;
+    animation: modal-zoom 0.32s cubic-bezier(0.2, 0.8, 0.25, 1) both;
+    overflow: hidden;
+  }
+
+  & .modal-whatsapp__cartao::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(
+      90deg,
+      var(--mb-vinho) 0%,
+      var(--mb-vinho) 50%,
+      var(--mb-azul) 50%,
+      var(--mb-azul) 100%
+    );
+  }
+
+  & .modal-whatsapp__fechar {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-sans);
+    font-size: 22px;
+    line-height: 1;
+    color: var(--mb-muted);
+    border: 1px solid transparent;
+    transition:
+      color 0.2s,
+      border-color 0.2s,
+      background 0.2s;
+  }
+
+  & .modal-whatsapp__fechar:hover {
+    color: var(--mb-paper);
+    border-color: var(--mb-line);
+    background: var(--mb-bg-deep);
+  }
+
+  & .modal-whatsapp__titulo {
+    font-family: var(--font-display);
+    font-size: 30px;
+    letter-spacing: -0.02em;
+    color: var(--mb-paper);
+    margin: 14px 0 8px;
+    line-height: 1.05;
+  }
+
+  & .modal-whatsapp__sub {
+    font-size: 13px;
+    color: var(--mb-muted);
+    margin: 0 0 26px;
+    line-height: 1.5;
+  }
+
+  & .modal-whatsapp__opcoes {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  & .modal-whatsapp__opcao {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 18px 16px 22px;
+    background: var(--mb-bg-soft);
+    border: 1px solid var(--mb-line);
+    color: var(--mb-paper);
+    text-decoration: none;
+    overflow: hidden;
+    transition:
+      transform 0.25s ease,
+      border-color 0.25s ease,
+      background 0.25s ease;
+  }
+
+  & .modal-whatsapp__opcao::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 100%;
+  }
+
+  & .modal-whatsapp__opcao.modal-whatsapp__opcao--vinho::before {
+    background: var(--mb-vinho);
+    box-shadow: 0 0 16px rgba(196, 75, 85, 0.5);
+  }
+
+  & .modal-whatsapp__opcao.modal-whatsapp__opcao--azul::before {
+    background: var(--mb-azul);
+    box-shadow: 0 0 16px rgba(74, 139, 214, 0.5);
+  }
+
+  & .modal-whatsapp__opcao:hover {
+    transform: translateX(4px);
+    background: var(--mb-card-hover);
+  }
+
+  & .modal-whatsapp__opcao.modal-whatsapp__opcao--vinho:hover {
+    border-color: var(--mb-vinho);
+  }
+
+  & .modal-whatsapp__opcao.modal-whatsapp__opcao--azul:hover {
+    border-color: var(--mb-azul);
+  }
+
+  & .modal-whatsapp__opcao-icone {
+    flex-shrink: 0;
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    background: var(--mb-bg-deep);
+    border: 1px solid var(--mb-line);
+  }
+
+  &
+    .modal-whatsapp__opcao.modal-whatsapp__opcao--vinho
+    .modal-whatsapp__opcao-icone {
+    color: var(--mb-vinho-glow);
+  }
+
+  &
+    .modal-whatsapp__opcao.modal-whatsapp__opcao--azul
+    .modal-whatsapp__opcao-icone {
+    color: var(--mb-azul-glow);
+  }
+
+  & .modal-whatsapp__opcao-corpo {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  & .modal-whatsapp__opcao-rotulo {
+    font-family: var(--font-display);
+    font-size: 18px;
+    letter-spacing: -0.01em;
+    color: var(--mb-paper);
+  }
+
+  & .modal-whatsapp__opcao-numero {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--mb-muted);
+    letter-spacing: 0.12em;
+  }
+
+  & .modal-whatsapp__opcao-seta {
+    font-family: var(--font-mono);
+    font-size: 18px;
+    color: var(--mb-muted);
+    transition:
+      transform 0.25s ease,
+      color 0.25s ease;
+  }
+
+  & .modal-whatsapp__opcao:hover .modal-whatsapp__opcao-seta {
+    transform: translateX(4px);
+  }
+
+  &
+    .modal-whatsapp__opcao.modal-whatsapp__opcao--vinho:hover
+    .modal-whatsapp__opcao-seta {
+    color: var(--mb-vinho-glow);
+  }
+
+  &
+    .modal-whatsapp__opcao.modal-whatsapp__opcao--azul:hover
+    .modal-whatsapp__opcao-seta {
+    color: var(--mb-azul-glow);
+  }
+
+  @media (max-width: 600px) {
+    & .modal-whatsapp__cartao {
+      padding: 28px 20px 24px;
+    }
+    & .modal-whatsapp__titulo {
+      font-size: 24px;
+    }
+  }
+}
+@keyframes modal-entrada {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes modal-zoom {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ================================================================
+   RÓTULO — tag técnica que abre as seções
+   ================================================================ */
 /* Tag técnica — usada em toda página pra marcar seções */
-.mb-tag {
+.rotulo {
   font-family: var(--font-mono);
   font-size: 11px;
   color: var(--mb-ouro);
@@ -699,8 +863,11 @@ img {
   text-transform: uppercase;
 }
 
+/* ================================================================
+   TÍTULO — títulos grandes e seus tamanhos
+   ================================================================ */
 /* Título grande industrial */
-.mb-title {
+.titulo {
   font-family: var(--font-display);
   font-weight: 700;
   margin: 0;
@@ -708,39 +875,60 @@ img {
   letter-spacing: -0.02em;
   color: var(--mb-paper);
   text-align: center;
-}
-.mb-title.xl {
-  font-size: 84px;
-}
-.mb-title.lg {
-  font-size: 56px;
-}
-.mb-title.md {
-  font-size: 40px;
-}
-.mb-title.sm {
-  font-size: 28px;
+
+  &.titulo--enorme {
+    font-size: 84px;
+  }
+
+  &.titulo--grande {
+    font-size: 56px;
+  }
+
+  &.titulo--medio {
+    font-size: 40px;
+  }
+
+  @media (max-width: 900px) {
+    /* Header: regras mobile agora ficam aninhadas no bloco .cabecalho */
+    /* Títulos globais */
+    &.titulo--enorme {
+      font-size: 44px;
+    }
+    &.titulo--grande {
+      font-size: 32px;
+    }
+    &.titulo--medio {
+      font-size: 26px;
+    }
+  }
 }
 
+/* ================================================================
+   CARTÃO — caixa base com faixa colorida opcional
+   ================================================================ */
 /* Card com faixa colorida lateral */
-.mb-card {
+.cartao {
   background: var(--mb-card);
   border: 1px solid var(--mb-line);
   padding: 24px 12px;
   position: relative;
   overflow: hidden;
   text-align: center;
-}
-.mb-card .accent-bar {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 3px;
-  height: 100%;
+
+  & .cartao__faixa {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 100%;
+  }
 }
 
+/* ================================================================
+   GRADE TÉCNICA — linhas cruzadas de fundo
+   ================================================================ */
 /* Grid técnica de fundo (linhas cruzadas) */
-.tech-grid {
+.grade-tecnica {
   position: absolute;
   inset: 0;
 
@@ -752,205 +940,116 @@ img {
   opacity: 0.4;
   pointer-events: none;
 }
-.hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
 
-  background-image:
-    repeating-linear-gradient(
-      0deg,
-      rgba(255, 255, 255, 0.015) 0px,
-      rgba(255, 255, 255, 0.015) 1px,
-      transparent 1px,
-      transparent 4px
-    ),
-    repeating-linear-gradient(
-      90deg,
-      rgba(255, 255, 255, 0.015) 0px,
-      rgba(255, 255, 255, 0.015) 1px,
-      transparent 1px,
-      transparent 4px
-    );
+/* ================================================================
+   LOGO — Master Bord (cabeçalho e rodapé)
+   ================================================================ */
+.logo {
+  /* Logo MasterBord. (usado no header e no footer) */
+  & svg {
+    width: 3rem; /* ajusta tamanho */
+    transition: 0.3s;
+    fill: var(--mb-azul-glow); /* cor normal */
+  }
 
-  pointer-events: none;
+  & svg:hover {
+    fill: var(--mb-azul);
+    opacity: 0.7;
+  }
 }
 
-/* Logo MasterBord. (usado no header e no footer) */
-
-.logo svg {
-  width: 3rem; /* ajusta tamanho */
-  transition: 0.3s;
-  fill: var(--mb-azul-glow); /* cor normal */
-}
-
-.logo svg:hover {
-  fill: var(--mb-azul);
-  opacity: 0.7;
-}
-
+/* ================================================================
+   IMAGEM — placeholder e variações de moldura
+   ================================================================ */
 /* Placeholder de imagem com pattern diagonal */
-.mb-image {
+.imagem {
   background: var(--mb-card);
   position: relative;
   overflow: hidden;
   border: 1px solid var(--mb-line);
-}
-.mb-image .img-gradient {
-  position: absolute;
-  inset: 0;
-}
-.mb-image .img-pattern {
-  position: absolute;
-  inset: 0;
-}
-.mb-image .img-border {
-  position: absolute;
-  inset: 14px;
-  border: 1px dashed;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.mb-image .img-border img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-}
-.mb-image .img-label {
-  position: absolute;
-  top: 16px;
-  left: 16px;
-  font-family: var(--font-mono);
-  font-size: 10px;
-  color: var(--mb-muted);
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
+
+  &.imagem--gradiente {
+    position: absolute;
+    inset: 0;
+  }
+
+  &.imagem--padrao {
+    position: absolute;
+    inset: 0;
+  }
+
+  &.imagem--borda {
+    position: absolute;
+    inset: 14px;
+    border: 1px dashed;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &.imagem--borda img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  & .imagem__rotulo {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--mb-muted);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
 }
 
-/* Destaques de cor inline (highlight-azul, vinho, ouro) */
-.highlight-azul {
-  color: var(--mb-azul);
-}
-.highlight-vinho {
-  color: var(--mb-vinho);
-}
-.highlight-ouro {
-  color: var(--mb-ouro);
+/* ================================================================
+   DESTAQUE — trechos coloridos dentro de textos
+   ================================================================ */
+.destaque {
+  /* Destaques de cor inline dentro de textos */
+  &.destaque--azul {
+    color: var(--mb-azul);
+  }
+
+  &.destaque--vinho {
+    color: var(--mb-vinho);
+  }
+
+  &.destaque--ouro {
+    color: var(--mb-ouro);
+  }
 }
 
+/* ================================================================
+   CABEÇALHO DE SEÇÃO — título com subtítulo ao lado
+   ================================================================ */
 /* Head de seção (tag + título + subtítulo opcional à direita) */
-.section-head {
+.secao-cabecalho {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
   margin-bottom: 56px;
   flex-wrap: wrap;
   gap: 16px;
-}
-.section-head .subtitle-right {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  color: var(--mb-muted);
-  max-width: 280px;
-  text-align: right;
-  line-height: 1.6;
-}
 
-/* Utilitários de exibição por tamanho de tela */
-.show-mobile {
-  display: none;
+  @media (max-width: 900px) {
+    /* Section head */
+    & {
+      margin-bottom: 32px;
+    }
+  }
 }
 
 /* ================================================================
-   7. MEDIA QUERIES MOBILE (aplicadas a tudo que é global)
-   Ponto de quebra: 900px — tudo abaixo disso é mobile
+   ESPAÇADOR — respiro vertical de 12px
    ================================================================ */
-@media (max-width: 900px) {
-  /* Utilitários de exibição */
-  .show-mobile {
-    display: flex;
-  }
-  .hide-mobile {
-    display: inline;
-    justify-content: space-between;
-  }
-
-  /* Header */
-  .utility-strip {
-    padding: 6px 9px;
-    font-size: 9px;
-  }
-  .main-nav {
-    padding: 12px 16px;
-  }
-  .nav-right .nav-phone {
-    display: none;
-  }
-  .nav-links {
-    display: none;
-  }
-  .nav-divider {
-    display: none;
-  }
-
-  /* Títulos globais */
-  .mb-title.xl {
-    font-size: 44px;
-  }
-  .mb-title.lg {
-    font-size: 32px;
-  }
-  .mb-title.md {
-    font-size: 26px;
-  }
-
-  /* Section head */
-  .section-head {
-    margin-bottom: 32px;
-  }
-  .section-head .subtitle-right {
-    display: none;
-  }
-
-  /* Footer */
-  .footer-cta {
-    padding: 40px 20px;
-  }
-  .footer-cta-grid {
-    grid-template-columns: 1fr;
-    gap: 24px;
-  }
-  .footer-cols {
-    padding: 32px 20px;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-  }
-  .footer-about {
-    grid-column: 1 / -1;
-  }
-  .footer-bottom {
-    flex-direction: column;
-    gap: 8px;
-    padding: 16px 20px;
-  }
-}
-
-/* whatssap logo */
-
-.logo-whatssap {
-  position: fixed;
-  right: 1rem;
-  bottom: 3rem;
-
-  width: 4rem;
-  height: 4rem;
-}
-
-.logo-whatssap:hover {
-  transform: scale(0.9);
-  transition: transform 0.2s;
+/* Espaçador vertical de 12px entre .rotulo e .titulo */
+.espacador {
+  height: 12px;
 }

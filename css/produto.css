@@ -298,8 +298,8 @@ body[data-cor='ouro'] {
 /* ===== Coloração via --cor-produto-rgb (substituem todos os style="" inline)
    Hero img + 5 aplicações herdam a cor da página atual via body[data-cor]. */
 
-.produto-hero-img .img-gradient,
-.produto-aplicacao .img-gradient {
+.produto-hero-img .imagem--gradiente,
+.produto-aplicacao .imagem--gradiente {
   background: linear-gradient(
     135deg,
     rgba(var(--cor-produto-rgb), 0.19),
@@ -308,32 +308,32 @@ body[data-cor='ouro'] {
 }
 /* Ângulo do pattern segue a cor da página (padrão global do site):
    azul = 0deg / vinho = 35deg / ouro = 70deg */
-body[data-cor='azul'] .produto-hero-img .img-pattern,
-body[data-cor='azul'] .produto-aplicacao .img-pattern {
+body[data-cor='azul'] .produto-hero-img .imagem--padrao,
+body[data-cor='azul'] .produto-aplicacao .imagem--padrao {
   background: repeating-linear-gradient(
     0deg,
     transparent 0 6px,
     rgba(var(--cor-produto-rgb), 0.13) 6px 7px
   );
 }
-body[data-cor='vinho'] .produto-hero-img .img-pattern,
-body[data-cor='vinho'] .produto-aplicacao .img-pattern {
+body[data-cor='vinho'] .produto-hero-img .imagem--padrao,
+body[data-cor='vinho'] .produto-aplicacao .imagem--padrao {
   background: repeating-linear-gradient(
     35deg,
     transparent 0 6px,
     rgba(var(--cor-produto-rgb), 0.13) 6px 7px
   );
 }
-body[data-cor='ouro'] .produto-hero-img .img-pattern,
-body[data-cor='ouro'] .produto-aplicacao .img-pattern {
+body[data-cor='ouro'] .produto-hero-img .imagem--padrao,
+body[data-cor='ouro'] .produto-aplicacao .imagem--padrao {
   background: repeating-linear-gradient(
     -70deg,
     transparent 0 6px,
     rgba(var(--cor-produto-rgb), 0.13) 6px 7px
   );
 }
-.produto-hero-img .img-border,
-.produto-aplicacao .img-border {
+.produto-hero-img .imagem--borda,
+.produto-aplicacao .imagem--borda {
   border-color: rgba(var(--cor-produto-rgb), 0.3);
 }
 
@@ -397,7 +397,7 @@ body[data-cor='ouro'] .produto-aplicacao .img-pattern {
 }
 
 /* Variantes do .produto-relacionado-card (cores fixas das outras categorias) */
-.produto-relacionado-card.is-azul .accent-bar {
+.produto-relacionado-card.is-azul .cartao__faixa {
   background: var(--mb-azul);
 }
 .produto-relacionado-card.is-azul .produto-relacionado-link,
@@ -405,7 +405,7 @@ body[data-cor='ouro'] .produto-aplicacao .img-pattern {
   color: var(--mb-azul);
 }
 
-.produto-relacionado-card.is-vinho .accent-bar {
+.produto-relacionado-card.is-vinho .cartao__faixa {
   background: var(--mb-vinho);
 }
 .produto-relacionado-card.is-vinho .produto-relacionado-link,
@@ -413,7 +413,7 @@ body[data-cor='ouro'] .produto-aplicacao .img-pattern {
   color: var(--mb-vinho);
 }
 
-.produto-relacionado-card.is-ouro .accent-bar {
+.produto-relacionado-card.is-ouro .cartao__faixa {
   background: var(--mb-ouro);
 }
 .produto-relacionado-card.is-ouro .produto-relacionado-link,

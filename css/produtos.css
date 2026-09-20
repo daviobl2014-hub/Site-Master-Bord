@@ -84,25 +84,25 @@
 /* ===== Variantes por categoria — substituem todos os style="" inline ===== */
 
 /* --- ETIQUETA (azul) --- */
-.produto-index-card.is-etiqueta .accent-bar {
+.produto-index-card.is-etiqueta .cartao__faixa {
   background: var(--mb-azul);
   box-shadow: 0 0 20px rgba(74, 139, 214, 0.5);
 }
-.produto-index-card.is-etiqueta .img-gradient {
+.produto-index-card.is-etiqueta .imagem--gradiente {
   background: linear-gradient(
     135deg,
     rgba(74, 139, 214, 0.19),
     transparent 60%
   );
 }
-.produto-index-card.is-etiqueta .img-pattern {
+.produto-index-card.is-etiqueta .imagem--padrao {
   background: repeating-linear-gradient(
     0deg,
     transparent 0 6px,
     rgba(74, 139, 214, 0.13) 6px 7px
   );
 }
-.produto-index-card.is-etiqueta .img-border {
+.produto-index-card.is-etiqueta .imagem--borda {
   border-color: rgba(74, 139, 214, 0.3);
 }
 .produto-index-card.is-etiqueta .produto-index-tagline,
@@ -111,25 +111,25 @@
 }
 
 /* --- BORDADO (vinho) --- */
-.produto-index-card.is-bordado .accent-bar {
+.produto-index-card.is-bordado .cartao__faixa {
   background: var(--mb-vinho);
   box-shadow: 0 0 20px rgba(196, 75, 85, 0.5);
 }
-.produto-index-card.is-bordado .img-gradient {
+.produto-index-card.is-bordado .imagem--gradiente {
   background: linear-gradient(
     135deg,
     rgba(196, 75, 85, 0.19),
     transparent 60%
   );
 }
-.produto-index-card.is-bordado .img-pattern {
+.produto-index-card.is-bordado .imagem--padrao {
   background: repeating-linear-gradient(
     35deg,
     transparent 0 6px,
     rgba(196, 75, 85, 0.13) 6px 7px
   );
 }
-.produto-index-card.is-bordado .img-border {
+.produto-index-card.is-bordado .imagem--borda {
   border-color: rgba(196, 75, 85, 0.3);
 }
 .produto-index-card.is-bordado .produto-index-tagline,
@@ -138,25 +138,25 @@
 }
 
 /* --- LASER (ouro) --- */
-.produto-index-card.is-laser .accent-bar {
+.produto-index-card.is-laser .cartao__faixa {
   background: var(--mb-ouro);
   box-shadow: 0 0 20px rgba(212, 169, 106, 0.5);
 }
-.produto-index-card.is-laser .img-gradient {
+.produto-index-card.is-laser .imagem--gradiente {
   background: linear-gradient(
     135deg,
     rgba(212, 169, 106, 0.19),
     transparent 60%
   );
 }
-.produto-index-card.is-laser .img-pattern {
+.produto-index-card.is-laser .imagem--padrao {
   background: repeating-linear-gradient(
     -70deg,
     transparent 0 6px,
     rgba(212, 169, 106, 0.13) 6px 7px
   );
 }
-.produto-index-card.is-laser .img-border {
+.produto-index-card.is-laser .imagem--borda {
   border-color: rgba(212, 169, 106, 0.3);
 }
 .produto-index-card.is-laser .produto-index-tagline,

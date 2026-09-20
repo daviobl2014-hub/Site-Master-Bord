@@ -306,7 +306,7 @@
 
 /* ===== Substituem inline styles do contato.html =====
    - .contato-info-key.is-X colore o label da linha de contato
-   - .contato-form .accent-bar fixa cor vinho do formulário
+   - .contato-form .cartao__faixa fixa cor vinho do formulário
    - .contato-mapa-img .* colore o placeholder/moldura azul do mapa
    - .form-submit-btn ajusta o botão final do formulário
    - .contato-mapa iframe remove a borda padrão */
@@ -324,26 +324,26 @@
   color: var(--mb-vinho);
 }
 
-.contato-form .accent-bar {
+.contato-form .cartao__faixa {
   background: var(--mb-vinho);
   box-shadow: 0 0 20px rgba(196, 75, 85, 0.5);
 }
 
-.contato-mapa-img .img-gradient {
+.contato-mapa-img .imagem--gradiente {
   background: linear-gradient(
     135deg,
     rgba(74, 139, 214, 0.19),
     transparent 60%
   );
 }
-.contato-mapa-img .img-pattern {
+.contato-mapa-img .imagem--padrao {
   background: repeating-linear-gradient(
     0deg,
     transparent 0 6px,
     rgba(74, 139, 214, 0.13) 6px 7px
   );
 }
-.contato-mapa-img .img-border {
+.contato-mapa-img .imagem--borda {
   border-color: rgba(74, 139, 214, 0.3);
 }
 

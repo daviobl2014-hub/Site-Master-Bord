@@ -152,7 +152,7 @@
   transition: background 0.35s ease, border-color 0.35s ease,
     transform 0.35s ease, box-shadow 0.35s ease;
 }
-.certificado-card .accent-bar {
+.certificado-card .cartao__faixa {
   transition: width 0.35s ease, box-shadow 0.35s ease;
 }
 .certificado-card:hover {
@@ -161,7 +161,7 @@
   transform: translateY(-3px);
   box-shadow: 0 14px 32px -18px rgba(0, 0, 0, 0.55);
 }
-.certificado-card:hover .accent-bar {
+.certificado-card:hover .cartao__faixa {
   width: 5px;
   box-shadow: 0 0 28px currentColor;
 }
@@ -237,8 +237,8 @@
   min-height: 0;
 }
 
-/* Imagem real dentro de .img-border preenche o container (igual galeria) */
-.sobre-infra .img-border img {
+/* Imagem real dentro de .imagem--borda preenche o container (igual galeria) */
+.sobre-infra .imagem--borda img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -271,7 +271,7 @@
    Infra: 3 imagens (Planta/Teares/Laser) */
 
 /* --- Certificado: AZUL (ABVTEX) --- */
-.certificado-card.is-azul .accent-bar {
+.certificado-card.is-azul .cartao__faixa {
   background: var(--mb-azul);
   box-shadow: 0 0 20px rgba(74, 139, 214, 0.5);
 }
@@ -284,7 +284,7 @@
 }
 
 /* --- Certificado: VINHO (Barudan) --- */
-.certificado-card.is-vinho .accent-bar {
+.certificado-card.is-vinho .cartao__faixa {
   background: var(--mb-vinho);
   box-shadow: 0 0 20px rgba(196, 75, 85, 0.5);
 }
@@ -297,7 +297,7 @@
 }
 
 /* --- Certificado: OURO (Müller) --- */
-.certificado-card.is-ouro .accent-bar {
+.certificado-card.is-ouro .cartao__faixa {
   background: var(--mb-ouro);
   box-shadow: 0 0 20px rgba(212, 169, 106, 0.5);
 }
@@ -310,7 +310,7 @@
 }
 
 /* --- Certificado: AZUL-GLOW (Qualidade Garantida) --- */
-.certificado-card.is-azul-glow .accent-bar {
+.certificado-card.is-azul-glow .cartao__faixa {
   background: var(--mb-azul-glow);
   box-shadow: 0 0 20px rgba(107, 168, 232, 0.5);
 }
@@ -323,73 +323,73 @@
 }
 
 /* --- Infra principal: CINZA (Chão de fábrica) --- */
-.infra-img-principal .img-gradient {
+.infra-img-principal .imagem--gradiente {
   background: linear-gradient(
     135deg,
     rgba(139, 143, 153, 0.22),
     transparent 60%
   );
 }
-.infra-img-principal .img-pattern {
+.infra-img-principal .imagem--padrao {
   background: repeating-linear-gradient(
     45deg,
     transparent 0 6px,
     rgba(139, 143, 153, 0.15) 6px 7px
   );
 }
-.infra-img-principal .img-border {
+.infra-img-principal .imagem--borda {
   border-color: rgba(139, 143, 153, 0.35);
 }
 
 /* --- Infra secundária: AZUL (Teares, Corte), VINHO (Bordado), OURO (Laser) ---
    Diferenciadas por modificador .is-azul / .is-vinho / .is-ouro */
-.infra-img-secundaria.is-azul .img-gradient {
+.infra-img-secundaria.is-azul .imagem--gradiente {
   background: linear-gradient(
     135deg,
     rgba(74, 139, 214, 0.19),
     transparent 60%
   );
 }
-.infra-img-secundaria.is-azul .img-pattern {
+.infra-img-secundaria.is-azul .imagem--padrao {
   background: repeating-linear-gradient(
     0deg,
     transparent 0 6px,
     rgba(74, 139, 214, 0.13) 6px 7px
   );
 }
-.infra-img-secundaria.is-azul .img-border {
+.infra-img-secundaria.is-azul .imagem--borda {
   border-color: rgba(74, 139, 214, 0.3);
 }
 
-.infra-img-secundaria.is-vinho .img-gradient {
+.infra-img-secundaria.is-vinho .imagem--gradiente {
   background: linear-gradient(135deg, rgba(196, 75, 85, 0.19), transparent 60%);
 }
-.infra-img-secundaria.is-vinho .img-pattern {
+.infra-img-secundaria.is-vinho .imagem--padrao {
   background: repeating-linear-gradient(
     35deg,
     transparent 0 6px,
     rgba(196, 75, 85, 0.13) 6px 7px
   );
 }
-.infra-img-secundaria.is-vinho .img-border {
+.infra-img-secundaria.is-vinho .imagem--borda {
   border-color: rgba(196, 75, 85, 0.3);
 }
 
-.infra-img-secundaria.is-ouro .img-gradient {
+.infra-img-secundaria.is-ouro .imagem--gradiente {
   background: linear-gradient(
     135deg,
     rgba(212, 169, 106, 0.19),
     transparent 60%
   );
 }
-.infra-img-secundaria.is-ouro .img-pattern {
+.infra-img-secundaria.is-ouro .imagem--padrao {
   background: repeating-linear-gradient(
     -70deg,
     transparent 0 6px,
     rgba(212, 169, 106, 0.13) 6px 7px
   );
 }
-.infra-img-secundaria.is-ouro .img-border {
+.infra-img-secundaria.is-ouro .imagem--borda {
   border-color: rgba(212, 169, 106, 0.3);
 }
 

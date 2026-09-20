@@ -4,7 +4,7 @@
    Carregado com <script src="js/global.js"></script>
 
    O que tem aqui:
-   1. Header: adiciona classe .scrolled ao rolar a página
+   1. Header: adiciona a classe .header--scrolled ao rolar a página
    2. Modal WhatsApp: injetado em runtime, abre ao clicar em
       qualquer elemento com a classe .js-wa-modal
 
@@ -28,9 +28,9 @@
 
   function onScroll() {
     if (window.scrollY > 20) {
-      header.classList.add('scrolled');
+      header.classList.add('cabecalho--rolado');
     } else {
-      header.classList.remove('scrolled');
+      header.classList.remove('cabecalho--rolado');
     }
   }
 
@@ -55,54 +55,54 @@
 
   const modalHTML = `
     <div
-      class="wa-modal"
+      class="modal-whatsapp"
       id="waModal"
       aria-hidden="true"
       role="dialog"
       aria-modal="true"
       aria-labelledby="waModalTitle"
     >
-      <div class="wa-modal-backdrop" data-wa-close></div>
-      <div class="wa-modal-card">
+      <div class="modal-whatsapp__fundo" data-wa-close></div>
+      <div class="modal-whatsapp__cartao">
         <button
-          class="wa-modal-close"
+          class="modal-whatsapp__fechar"
           type="button"
           data-wa-close
           aria-label="Fechar"
         >×</button>
-        <div class="mb-tag">CANAL · ATENDIMENTO DIRETO</div>
-        <h3 id="waModalTitle" class="wa-modal-title">
-          Com qual setor você<br />quer falar<span class="highlight-vinho">?</span>
+        <div class="rotulo">CANAL · ATENDIMENTO DIRETO</div>
+        <h3 id="waModalTitle" class="modal-whatsapp__titulo">
+          Com qual setor você<br />quer falar<span class="destaque--vinho">?</span>
         </h3>
-        <p class="wa-modal-sub">
+        <p class="modal-whatsapp__sub">
           Selecione abaixo e abrimos o WhatsApp pra você em uma nova aba.
         </p>
-        <div class="wa-modal-options">
+        <div class="modal-whatsapp__opcoes">
           <a
-            class="wa-modal-option vinho"
+            class="modal-whatsapp__opcao modal-whatsapp__opcao--vinho"
             href="https://wa.me/${WA_BORDADO}"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <div class="wa-opt-icon"><i class="fab fa-whatsapp"></i></div>
-            <div class="wa-opt-body">
-              <div class="wa-opt-label">Bordado</div>
-              <div class="wa-opt-num">(24) 98119-0914</div>
+            <div class="modal-whatsapp__opcao-icone"><i class="fab fa-whatsapp"></i></div>
+            <div class="modal-whatsapp__opcao-corpo">
+              <div class="modal-whatsapp__opcao-rotulo">Bordado</div>
+              <div class="modal-whatsapp__opcao-numero">(24) 98119-0914</div>
             </div>
-            <div class="wa-opt-arrow">→</div>
+            <div class="modal-whatsapp__opcao-seta">→</div>
           </a>
           <a
-            class="wa-modal-option azul"
+            class="modal-whatsapp__opcao modal-whatsapp__opcao--azul"
             href="https://wa.me/${WA_ETIQUETA}"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <div class="wa-opt-icon"><i class="fab fa-whatsapp"></i></div>
-            <div class="wa-opt-body">
-              <div class="wa-opt-label">Etiqueta</div>
-              <div class="wa-opt-num">(24) 99280-8372</div>
+            <div class="modal-whatsapp__opcao-icone"><i class="fab fa-whatsapp"></i></div>
+            <div class="modal-whatsapp__opcao-corpo">
+              <div class="modal-whatsapp__opcao-rotulo">Etiqueta</div>
+              <div class="modal-whatsapp__opcao-numero">(24) 99280-8372</div>
             </div>
-            <div class="wa-opt-arrow">→</div>
+            <div class="modal-whatsapp__opcao-seta">→</div>
           </a>
         </div>
       </div>
@@ -125,7 +125,7 @@
     }
 
     // Gatilhos: qualquer elemento com .js-wa-modal abre o modal
-    document.querySelectorAll('.js-wa-modal').forEach(function (el) {
+    document.querySelectorAll('.js-modal-whatsapp').forEach(function (el) {
       el.addEventListener('click', open);
     });
 
@@ -136,7 +136,7 @@
 
     // Ao clicar numa opção: o link já tem target="_blank",
     // fechamos o modal logo em seguida
-    modal.querySelectorAll('.wa-modal-option').forEach(function (el) {
+    modal.querySelectorAll('.modal-whatsapp__opcao').forEach(function (el) {
       el.addEventListener('click', function () {
         // pequeno atraso pra garantir que o navegador
         // dispare a abertura da nova aba antes de fechar
