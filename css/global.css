@@ -496,10 +496,19 @@ img {
 
   width: 4rem;
   height: 4rem;
+  /* no estado normal: vale na ida e na volta do hover */
+  transition: transform 0.25s ease;
 
   &:hover {
-    transform: scale(0.9);
-    transition: transform 0.2s;
+    transform: scale(1.2);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+
+    &:hover {
+      transform: none;
+    }
   }
 }
 
@@ -968,17 +977,17 @@ img {
   overflow: hidden;
   border: 1px solid var(--mb-line);
 
-  &.imagem--gradiente {
+  & .imagem__gradiente {
     position: absolute;
     inset: 0;
   }
 
-  &.imagem--padrao {
+  & .imagem__padrao {
     position: absolute;
     inset: 0;
   }
 
-  &.imagem--borda {
+  & .imagem__moldura {
     position: absolute;
     inset: 14px;
     border: 1px dashed;
@@ -988,7 +997,7 @@ img {
     justify-content: center;
   }
 
-  &.imagem--borda img {
+  & .imagem__moldura img {
     display: block;
     width: 100%;
     height: 100%;

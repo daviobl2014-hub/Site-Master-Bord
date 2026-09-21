@@ -298,8 +298,8 @@ body[data-cor='ouro'] {
 /* ===== Coloração via --cor-produto-rgb (substituem todos os style="" inline)
    Hero img + 5 aplicações herdam a cor da página atual via body[data-cor]. */
 
-.produto-hero-img .imagem--gradiente,
-.produto-aplicacao .imagem--gradiente {
+.produto-hero-img .imagem__gradiente,
+.produto-aplicacao .imagem__gradiente {
   background: linear-gradient(
     135deg,
     rgba(var(--cor-produto-rgb), 0.19),
@@ -308,32 +308,32 @@ body[data-cor='ouro'] {
 }
 /* Ângulo do pattern segue a cor da página (padrão global do site):
    azul = 0deg / vinho = 35deg / ouro = 70deg */
-body[data-cor='azul'] .produto-hero-img .imagem--padrao,
-body[data-cor='azul'] .produto-aplicacao .imagem--padrao {
+body[data-cor='azul'] .produto-hero-img .imagem__padrao,
+body[data-cor='azul'] .produto-aplicacao .imagem__padrao {
   background: repeating-linear-gradient(
     0deg,
     transparent 0 6px,
     rgba(var(--cor-produto-rgb), 0.13) 6px 7px
   );
 }
-body[data-cor='vinho'] .produto-hero-img .imagem--padrao,
-body[data-cor='vinho'] .produto-aplicacao .imagem--padrao {
+body[data-cor='vinho'] .produto-hero-img .imagem__padrao,
+body[data-cor='vinho'] .produto-aplicacao .imagem__padrao {
   background: repeating-linear-gradient(
     35deg,
     transparent 0 6px,
     rgba(var(--cor-produto-rgb), 0.13) 6px 7px
   );
 }
-body[data-cor='ouro'] .produto-hero-img .imagem--padrao,
-body[data-cor='ouro'] .produto-aplicacao .imagem--padrao {
+body[data-cor='ouro'] .produto-hero-img .imagem__padrao,
+body[data-cor='ouro'] .produto-aplicacao .imagem__padrao {
   background: repeating-linear-gradient(
     -70deg,
     transparent 0 6px,
     rgba(var(--cor-produto-rgb), 0.13) 6px 7px
   );
 }
-.produto-hero-img .imagem--borda,
-.produto-aplicacao .imagem--borda {
+.produto-hero-img .imagem__moldura,
+.produto-aplicacao .imagem__moldura {
   border-color: rgba(var(--cor-produto-rgb), 0.3);
 }
 

@@ -329,21 +329,21 @@
   box-shadow: 0 0 20px rgba(196, 75, 85, 0.5);
 }
 
-.contato-mapa-img .imagem--gradiente {
+.contato-mapa-img .imagem__gradiente {
   background: linear-gradient(
     135deg,
     rgba(74, 139, 214, 0.19),
     transparent 60%
   );
 }
-.contato-mapa-img .imagem--padrao {
+.contato-mapa-img .imagem__padrao {
   background: repeating-linear-gradient(
     0deg,
     transparent 0 6px,
     rgba(74, 139, 214, 0.13) 6px 7px
   );
 }
-.contato-mapa-img .imagem--borda {
+.contato-mapa-img .imagem__moldura {
   border-color: rgba(74, 139, 214, 0.3);
 }
 

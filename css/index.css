@@ -33,18 +33,18 @@
 
     background-image:
       repeating-linear-gradient(
-      0deg,
-      rgba(255, 255, 255, 0.015) 0px,
-      rgba(255, 255, 255, 0.015) 1px,
-      transparent 1px,
-      transparent 4px
+        0deg,
+        rgba(255, 255, 255, 0.015) 0px,
+        rgba(255, 255, 255, 0.015) 1px,
+        transparent 1px,
+        transparent 4px
       ),
       repeating-linear-gradient(
-      90deg,
-      rgba(255, 255, 255, 0.015) 0px,
-      rgba(255, 255, 255, 0.015) 1px,
-      transparent 1px,
-      transparent 4px
+        90deg,
+        rgba(255, 255, 255, 0.015) 0px,
+        rgba(255, 255, 255, 0.015) 1px,
+        transparent 1px,
+        transparent 4px
       );
 
     pointer-events: none;
@@ -65,7 +65,7 @@
         circle,
         rgba(0, 120, 255, 0.25),
         transparent 70%
-        );
+      );
       top: -120px;
       left: -120px;
     }
@@ -75,7 +75,7 @@
         circle,
         rgba(180, 0, 60, 0.25),
         transparent 70%
-        );
+      );
       bottom: -120px;
       right: -120px;
     }
@@ -137,8 +137,8 @@
   }
 
   & .principal__titulo-master,
-    & .principal__titulo-bord,
-    & .principal__titulo-logo {
+  & .principal__titulo-bord,
+  & .principal__titulo-logo {
     display: block;
     background-color: currentColor;
     -webkit-mask-repeat: no-repeat;
@@ -377,18 +377,28 @@
   }
 
   /* Hover/foco: linha da cor da linha por dentro, sem mexer na emenda */
-  & .galeria-3d__item.galeria-3d__item--etiqueta:hover .galeria-3d__imagem::before,
-    & .galeria-3d__item.galeria-3d__item--etiqueta:focus-visible .galeria-3d__imagem::before {
+  &
+    .galeria-3d__item.galeria-3d__item--etiqueta:hover
+    .galeria-3d__imagem::before,
+  &
+    .galeria-3d__item.galeria-3d__item--etiqueta:focus-visible
+    .galeria-3d__imagem::before {
     box-shadow: inset 0 0 0 2px var(--mb-azul);
   }
 
-  & .galeria-3d__item.galeria-3d__item--bordado:hover .galeria-3d__imagem::before,
-    & .galeria-3d__item.galeria-3d__item--bordado:focus-visible .galeria-3d__imagem::before {
+  &
+    .galeria-3d__item.galeria-3d__item--bordado:hover
+    .galeria-3d__imagem::before,
+  &
+    .galeria-3d__item.galeria-3d__item--bordado:focus-visible
+    .galeria-3d__imagem::before {
     box-shadow: inset 0 0 0 2px var(--mb-vinho);
   }
 
   & .galeria-3d__item.galeria-3d__item--laser:hover .galeria-3d__imagem::before,
-    & .galeria-3d__item.galeria-3d__item--laser:focus-visible .galeria-3d__imagem::before {
+  &
+    .galeria-3d__item.galeria-3d__item--laser:focus-visible
+    .galeria-3d__imagem::before {
     box-shadow: inset 0 0 0 2px var(--mb-ouro);
   }
 
@@ -422,7 +432,7 @@
       rgba(0, 0, 0, 0.85) 0%,
       rgba(0, 0, 0, 0.25) 45%,
       transparent 75%
-      );
+    );
   }
 
   /* Moldura interna usada pelo hover/foco (não interfere na emenda) */
@@ -601,7 +611,7 @@
       margin-bottom: 24px;
     }
     & .solucoes__especialidades,
-      & .solucoes__publicos {
+    & .solucoes__publicos {
       grid-template-columns: 1fr;
       gap: 16px;
     }
@@ -675,7 +685,7 @@
 
     /* Mosaicos de etiquetas: 3x2 e 4x2 */
     &.publico__foto--grade6,
-      &.publico__foto--grade8 {
+    &.publico__foto--grade8 {
       display: grid;
       gap: 4px;
       padding: 14px;
@@ -881,7 +891,7 @@
 }
 @keyframes conector-seta {
   0%,
-    100% {
+  100% {
     transform: translateY(0);
   }
   50% {
@@ -909,7 +919,7 @@
   & .historia__anos {
     display: grid;
     grid-template-columns: 1fr 1.15fr; /* "30 anos" à esquerda, texto à direita */
-      align-items: center;
+    align-items: center;
     gap: 4rem;
     margin-top: 4.8rem;
   }
@@ -943,7 +953,7 @@
     line-height: 1;
     letter-spacing: 0.35em;
     padding-left: 0.35em; /* compensa o espaçamento da última letra */
-      text-transform: uppercase;
+    text-transform: uppercase;
     color: var(--mb-paper-dim);
     margin: 8px 0 0;
   }
@@ -953,12 +963,12 @@
     flex-direction: column;
     justify-content: center;
     gap: 28px; /* espaço entre os parágrafos */
-      max-width: 56rem;
+    max-width: 56rem;
   }
 
   & .historia__cartao .historia__texto p {
     margin: 0; /* o gap controla o espaçamento */
-      font-size: 17px;
+    font-size: 17px;
     line-height: 1.6;
     text-align: left;
     color: var(--mb-muted);
@@ -973,16 +983,6 @@
   /* Faixa dourada na borda esquerda (usa o .cartao__faixa do .cartao) */
   & .historia__cartao .cartao__faixa {
     background: var(--mb-ouro);
-  }
-
-  & .historia__ano {
-    display: block;
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: 64px;
-    line-height: 1;
-    color: var(--mb-vinho);
-    margin-bottom: 12px;
   }
 
   & .historia__titulo.titulo {
@@ -1002,7 +1002,7 @@
   @media (max-width: 768px) {
     & .historia__anos {
       grid-template-columns: 1fr; /* empilha no mobile */
-        gap: 32px;
+      gap: 32px;
       margin-top: 24px;
     }
     & .historia__numero.titulo {
@@ -1027,9 +1027,6 @@
     }
     & .historia__cartao {
       padding: 28px 24px 24px;
-    }
-    & .historia__ano {
-      font-size: 44px;
     }
     & .historia__titulo.titulo {
       font-size: 26px;
@@ -1122,8 +1119,8 @@
     position: absolute;
 
     bottom: 100%; /* acima do parágrafo (encostado no espaço acima do texto) */
-      left: 50%; /* centralizado no parágrafo */
-      transform: translateX(-50%);
+    left: 50%; /* centralizado no parágrafo */
+    transform: translateX(-50%);
 
     color: var(--mb-paper);
     border: 1px solid var(--mb-ouro);
@@ -1181,13 +1178,13 @@
 
   & .depoimento__avatar {
     width: 56px; /* aumentado de 38 pra 56 — foto fica reconhecível */
-      height: 56px;
+    height: 56px;
     border-radius: 50%;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     border: 2px solid var(--mb-line); /* moldura sutil */
-      flex-shrink: 0; /* evita esmagar quando o nome do cliente é longo */
+    flex-shrink: 0; /* evita esmagar quando o nome do cliente é longo */
   }
 
   /* Foto de cada cliente — uma classe por pessoa */
@@ -1225,7 +1222,7 @@
     transform: scale(1.1);
     border-color: var(
       --mb-ouro
-      ); /* moldura dourada no hover (parecido com depoimento) */
+    ); /* moldura dourada no hover (parecido com depoimento) */
   }
 
   @media (max-width: 900px) {
@@ -1246,10 +1243,10 @@
   border-bottom: 1px solid var(--mb-line);
   display: flex;
   flex-direction: column; /* MUDANÇA CHAVE: label fica em cima */
-    align-items: center;
+  align-items: center;
   gap: 24px;
   overflow: hidden; /* impede scroll horizontal do site */
-    position: relative;
+  position: relative;
 
   & .marcas__tag {
     font-family: var(--font-display) !important;
@@ -1265,7 +1262,7 @@
     width: 100%;
     position: relative;
     overflow: visible; /* tooltips precisam vazar verticalmente */
-      min-width: 0;
+    min-width: 0;
   }
 
   /* GRADIENTES laterais REMOVIDOS — criavam fade-in/fade-out percebido
@@ -1273,7 +1270,7 @@
      transição entre o último e o primeiro fica visualmente uniforme,
      idêntica a qualquer transição entre duas logos consecutivas. */
   & .marcas__trilho::before,
-    & .marcas__trilho::after {
+  & .marcas__trilho::after {
     display: none;
   }
 
@@ -1286,7 +1283,7 @@
     /* APAGA: animation: marcas-rolagem 40s linear infinite; */
     /* APAGA: padding: 10px 35px; */
     padding: 10px 0; /* mantém só vertical */
-      will-change: transform; /* otimização de performance */
+    will-change: transform; /* otimização de performance */
   }
 
   & .marcas__lista .marcas__item {
@@ -1302,7 +1299,7 @@
   & .marcas__item {
     display: block;
     position: relative; /* IMPORTANTE: tooltip se ancora aqui */
-      width: clamp(48px, 5vw, 72px);
+    width: clamp(48px, 5vw, 72px);
     height: clamp(48px, 5vw, 72px);
     border-radius: 50%;
     background-size: cover;
@@ -1332,8 +1329,8 @@
     position: absolute;
     top: calc(
       100% + 8px
-      ); /* MUDOU: era bottom, agora top — tooltip vai PRA BAIXO */
-      left: 50%;
+    ); /* MUDOU: era bottom, agora top — tooltip vai PRA BAIXO */
+    left: 50%;
     transform: translateX(-50%);
     padding: 6px 12px;
     background: var(--mb-bg-deep);
@@ -1555,7 +1552,7 @@
       180deg,
       rgba(212, 169, 106, 0.1) 0%,
       rgba(212, 169, 106, 0.02) 100%
-      );
+    );
   }
 
   & .promessa__destaque-numero {
@@ -1587,7 +1584,7 @@
     }
     & .promessa__seta {
       transform: rotate(90deg); /* vira ↓ no empilhado */
-        font-size: 26px;
+      font-size: 26px;
     }
     & .promessa__cartao {
       padding: 28px 22px;
@@ -1680,13 +1677,6 @@
     letter-spacing: -0.01em;
   }
 
-  & .etapa__barra {
-    width: 24px;
-    height: 2px;
-    background: var(--mb-vinho);
-    margin: 10px 0 12px;
-  }
-
   & .etapa__descricao {
     font-size: 13px;
     color: var(--mb-muted);
@@ -1734,7 +1724,7 @@
     display: flex;
     flex-direction: column;
     align-items: stretch; /* cada card ocupa a largura toda */
-      gap: 12px;
+    gap: 12px;
     width: 100%;
     margin: 0; /* último bloco da seção — sem margem embaixo */
   }
@@ -1840,7 +1830,7 @@
   }
 
   & .objecao__sinal::before,
-    & .objecao__sinal::after {
+  & .objecao__sinal::after {
     content: '';
     position: absolute;
     top: 50%;
@@ -1857,7 +1847,7 @@
   }
 
   &:hover .objecao__sinal,
-    &[open] .objecao__sinal {
+  &[open] .objecao__sinal {
     border-color: var(--objecao-cor);
   }
 
@@ -1899,7 +1889,7 @@
 
   @media (prefers-reduced-motion: reduce) {
     &,
-      & .objecao__sinal {
+    & .objecao__sinal {
       transition: none;
     }
     &:hover {
@@ -2045,85 +2035,143 @@
   background: var(--mb-bg);
   padding: 96px 48px;
 
-  /* ---- Tabela comparativa ---- */
-  & .comparativo__caixa {
-    overflow-x: auto;
-    margin-bottom: 40px;
-    border: 1px solid var(--mb-line);
-    border-radius: 10px;
+  /* ---- Grade (cores invertidas: fundo claro) ----
+     linha 1: oficina | fornecedor padrão | a gente (ocupa as 2 linhas)
+     linha 2: cartão do custo, atravessando as duas primeiras colunas */
+  & .comparativo__cartoes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: stretch;
+    gap: 20px;
+    max-width: 120rem;
+    margin: 0 auto 40px;
+
+    & > .comparativo__cartao:nth-child(1) {
+      grid-column: 1;
+      grid-row: 1;
+    }
+
+    & > .comparativo__cartao:nth-child(2) {
+      grid-column: 2;
+      grid-row: 1;
+    }
+
+    /* O nosso ocupa a coluna da direita inteira */
+    & > .comparativo__cartao--nosso {
+      grid-column: 3;
+      grid-row: 1 / span 2;
+    }
+
+    /* O custo fica na linha de baixo, nas duas primeiras colunas */
+    & > .custo {
+      grid-column: 1 / span 2;
+      grid-row: 2;
+    }
   }
 
-  & .comparativo__tabela {
-    width: 100%;
-    min-width: 860px;
-    border-collapse: collapse;
-    background: var(--mb-card);
+  & .comparativo__cartao {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 32px 28px;
+    border-radius: 12px;
+    background: var(--mb-paper);
+    color: #3a3d45;
+    transition:
+      transform 0.25s,
+      box-shadow 0.25s;
+
+    &:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+    }
   }
 
-  & .comparativo__tabela th,
-    & .comparativo__tabela td {
-    padding: 18px 20px;
-    text-align: left;
-    vertical-align: top;
-    font-size: 13.5px;
-    line-height: 1.6;
-    border-bottom: 1px solid var(--mb-line);
+  /* O nosso cartão: azul, um pouco maior e em destaque */
+  & .comparativo__cartao--nosso {
+    background: var(--mb-azul);
+    color: var(--mb-paper);
+    box-shadow: 0 12px 36px rgba(74, 139, 214, 0.35);
   }
 
-  & .comparativo__tabela thead th {
+  & .comparativo__selo {
+    position: absolute;
+    top: -12px;
+    left: 28px;
+    padding: 5px 14px;
+    border-radius: 999px;
+    background: var(--mb-ouro);
+    color: var(--mb-bg);
     font-family: var(--font-mono);
     font-size: 10px;
     font-weight: 700;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: var(--mb-paper);
-    background: var(--mb-bg-deep);
-    border-bottom: 1px solid var(--mb-line);
   }
 
-  & .comparativo__tabela thead th.comparativo__destaque {
-    background: var(--mb-azul);
+  /* ---- Nome do fornecedor no topo do cartão ---- */
+  & .comparativo__nome {
+    margin: 0 0 22px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(15, 17, 22, 0.15);
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 19px;
+    line-height: 1.25;
     color: var(--mb-bg);
   }
 
-  & .comparativo__tabela tbody th {
-    font-family: var(--font-sans);
-    font-weight: 700;
-    font-size: 13.5px;
+  & .comparativo__cartao--nosso .comparativo__nome {
+    border-bottom-color: rgba(242, 236, 224, 0.35);
     color: var(--mb-paper);
-    width: 20%;
   }
 
-  & .comparativo__tabela tbody td {
-    color: var(--mb-muted);
-  }
-
-  & .comparativo__tabela tbody td.comparativo__destaque {
-    background: rgba(74, 139, 214, 0.08);
-    color: var(--mb-paper-dim);
-    border-left: 1px solid rgba(74, 139, 214, 0.35);
-  }
-
-  & .comparativo__tabela tbody td.comparativo__destaque strong {
-    color: var(--mb-azul);
-  }
-
-  & .comparativo__tabela tbody tr:last-child th,
-    & .comparativo__tabela tbody tr:last-child td {
-    border-bottom: 0;
-  }
-
-  /* ---- Remate + CTA ---- */
-  & .comparativo__remate {
+  /* ---- Critério + valor ---- */
+  & .comparativo__itens {
     margin: 0;
-    padding: 22px 28px;
-    border: 1px solid rgba(74, 139, 214, 0.35);
-    border-radius: 10px;
-    background: rgba(74, 139, 214, 0.08);
-    text-align: center;
+    flex: 1; /* ocupa a altura que sobra no cartão */
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  /* No cartão azul (que vale duas linhas) os itens se espalham
+     por toda a altura, em vez de sobrar espaço embaixo */
+  & .comparativo__cartao--nosso .comparativo__itens {
+    justify-content: space-between;
+    gap: 0;
+  }
+
+  /* Cada par critério + valor */
+  & .comparativo__item {
+    display: flex;
+    flex-direction: column;
+  }
+
+  & .comparativo__criterio {
+    margin: 0 0 4px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #8a8e96;
+  }
+
+  & .comparativo__valor {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #3a3d45;
+  }
+
+  & .comparativo__cartao--nosso .comparativo__criterio {
+    color: rgba(242, 236, 224, 0.75);
+  }
+
+  & .comparativo__cartao--nosso .comparativo__valor {
     font-weight: 600;
     font-size: 15px;
-    line-height: 1.65;
     color: var(--mb-paper);
   }
 
@@ -2133,21 +2181,48 @@
   }
 
   @media (max-width: 900px) {
-    /* Comparativo */
     & {
       padding: 56px 20px;
     }
-    & .comparativo__tabela th,
-      & .comparativo__tabela td {
-      padding: 14px 16px;
-      font-size: 12.5px;
+    & .comparativo__cartoes {
+      grid-template-columns: 1fr;
+      gap: 28px;
+      margin-bottom: 28px;
+
+      & > .comparativo__cartao:nth-child(1),
+      & > .comparativo__cartao:nth-child(2),
+      & > .comparativo__cartao--nosso,
+      & > .custo {
+        grid-column: auto;
+        grid-row: auto;
+      }
     }
-    & .comparativo__remate {
-      padding: 18px 20px;
-      font-size: 14px;
+    & .comparativo__cartao {
+      padding: 26px 22px;
+
+      &:hover {
+        transform: none;
+      }
+    }
+    & .comparativo__nome {
+      font-size: 17px;
+      margin-bottom: 18px;
+    }
+    & .comparativo__itens {
+      gap: 14px;
     }
     & .comparativo__acoes {
       margin-top: 32px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    & .comparativo__cartao {
+      transition: none;
+
+      &:hover {
+        transform: none;
+      }
     }
   }
 }
@@ -2157,35 +2232,77 @@
    ================================================================ */
 /* ---- Custo de economizar errado ---- */
 .custo {
-  margin-bottom: 24px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 32px;
+  /* mesmo canto arredondado dos cartões de cima */
+  border-radius: 12px;
+  background: var(--mb-paper);
+  border-color: rgba(196, 75, 85, 0.35);
+  text-align: center;
 
   & .custo__titulo {
+    margin: 0 0 24px;
+    font-family: var(--font-display);
     font-weight: 700;
-    font-size: 15px;
-    color: var(--mb-paper);
-    margin: 0 0 16px;
-  }
-
-  & .custo__lista {
-    margin: 0;
-    padding-left: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  & .custo__lista li {
-    font-size: 14px;
-    line-height: 1.7;
-    color: var(--mb-muted);
-  }
-
-  & .custo__lista li::marker {
+    font-size: 20px;
+    line-height: 1.35;
     color: var(--mb-vinho);
   }
 
+  /* Os três alertas em linha, do início ao fim da caixa */
+  & .custo__lista {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: stretch;
+    gap: 14px;
+    text-align: left;
+  }
+
+  & .custo__lista li {
+    padding: 20px 22px;
+    border-radius: 10px;
+    border: 1px solid rgba(196, 75, 85, 0.25);
+    border-left-width: 3px;
+    background: rgba(196, 75, 85, 0.07);
+    font-size: 14px;
+    line-height: 1.65;
+    color: #3a3d45;
+  }
+
+  /* O começo de cada item é o número/consequência — vira manchete */
   & .custo__lista strong {
-    color: var(--mb-paper);
+    display: block;
+    margin-bottom: 8px;
+    font-family: var(--font-display);
+    font-size: 21px;
+    line-height: 1.2;
+    color: var(--mb-vinho);
+  }
+
+  @media (max-width: 900px) {
+    & {
+      padding: 24px 20px;
+    }
+    & .custo__titulo {
+      font-size: 17px;
+      margin-bottom: 18px;
+    }
+    & .custo__lista {
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+    & .custo__lista li {
+      padding: 16px 18px;
+    }
+    & .custo__lista strong {
+      font-size: 18px;
+    }
   }
 }
 
@@ -2211,6 +2328,13 @@
     top: 120px;
   }
 
+  /* "(FAQ Técnico)" com risco dourado embaixo */
+  & .perguntas__selo {
+    display: inline-block;
+    padding-bottom: 6px;
+    color: var(--mb-vinho);
+  }
+
   & .perguntas__intro .titulo {
     margin: 0;
   }
@@ -2222,17 +2346,12 @@
     font-size: 18px;
     line-height: 1.35;
     letter-spacing: -0.01em;
-    color: var(--mb-paper);
+    color: var(--mb-ouro);
     margin: 40px 0 16px;
   }
 
   & .perguntas__categoria:first-child {
     margin-top: 0;
-  }
-
-  & .perguntas__emoji {
-    font-size: 0.9em;
-    margin-right: 6px;
   }
 
   /* ---- Item do acordeão ---- */
@@ -2302,7 +2421,7 @@
   }
 
   & .perguntas__sinal::before,
-    & .perguntas__sinal::after {
+  & .perguntas__sinal::after {
     content: '';
     position: absolute;
     top: 50%;
@@ -2414,7 +2533,7 @@
       ellipse at center,
       rgba(74, 139, 214, 0.22),
       transparent 70%
-      );
+    );
     filter: blur(80px);
     pointer-events: none;
     z-index: 0;
@@ -2455,5 +2574,3 @@
     }
   }
 }
-
-
