@@ -84,7 +84,12 @@
     }
   }
 
-  /* ---- Cartão central ---- */
+  /* ---- Cartão central ----
+     A sensação de altura vem de três coisas somadas:
+     1. sombras em camadas (perto = curta e densa, longe = larga e suave)
+     2. um filete de luz no topo e sombra interna na base, como se a luz
+        viesse de cima (é o que dá o relevo de caixa)
+     3. uma inclinação de 2 graus que se endireita quando o mouse chega */
   & .canal__cartao {
     position: relative;
     z-index: 10;
@@ -92,10 +97,63 @@
     max-width: 52rem;
     padding: 40px 36px;
     border: 1px solid var(--mb-line);
-    border-radius: 14px;
-    background: var(--mb-card);
+    /* a borda de cima mais clara reforça a luz vindo de cima */
+    border-top-color: rgba(242, 236, 224, 0.16);
+    border-radius: 16px;
+    background: linear-gradient(
+      165deg,
+      var(--mb-card-hover) 0%,
+      var(--mb-card) 45%,
+      #1a1e26 100%
+    );
     text-align: center;
-    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+
+    box-shadow:
+      /* relevo interno */
+      inset 0 1px 0 rgba(242, 236, 224, 0.08),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.5),
+      /* elevação: da mais curta à mais distante */
+      0 2px 4px rgba(0, 0, 0, 0.3),
+      0 8px 16px rgba(0, 0, 0, 0.35),
+      0 24px 48px rgba(0, 0, 0, 0.45),
+      0 48px 88px rgba(0, 0, 0, 0.4);
+
+    transform: perspective(1400px) rotateX(2deg);
+    transform-origin: center bottom;
+    transition:
+      transform 0.45s cubic-bezier(0.2, 0.8, 0.25, 1),
+      box-shadow 0.45s ease;
+
+    /* o cartão se endireita e sobe mais um pouco */
+    &:hover {
+      transform: perspective(1400px) rotateX(0deg) translateY(-6px);
+      box-shadow:
+        inset 0 1px 0 rgba(242, 236, 224, 0.1),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.5),
+        0 4px 8px rgba(0, 0, 0, 0.32),
+        0 14px 28px rgba(0, 0, 0, 0.38),
+        0 36px 64px rgba(0, 0, 0, 0.5),
+        0 64px 110px rgba(0, 0, 0, 0.45);
+    }
+  }
+
+  /* Sombra projetada no chão, atrás do cartão */
+  & .canal__cartao::after {
+    content: '';
+    position: absolute;
+    left: 8%;
+    right: 8%;
+    bottom: -26px;
+    height: 40px;
+    z-index: -1;
+    border-radius: 50%;
+    background: radial-gradient(
+      ellipse at center,
+      rgba(0, 0, 0, 0.55),
+      transparent 70%
+    );
+    filter: blur(10px);
+    pointer-events: none;
   }
 
   & .rotulo {
@@ -240,6 +298,14 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
+    & .canal__cartao {
+      transform: none;
+      transition: none;
+
+      &:hover {
+        transform: none;
+      }
+    }
     & .canal__opcao,
     & .canal__opcao-seta {
       transition: none;
