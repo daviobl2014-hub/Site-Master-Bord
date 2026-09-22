@@ -53,6 +53,9 @@
 (function () {
   const WA_BORDADO = '5524981190914';
   const WA_ETIQUETA = '5524992808372';
+  const WA_TEXTO = encodeURIComponent(
+    'Olá! Vim pelo site e gostaria de solicitar um orçamento gratuito.\n\nGostaria de conversar com um consultor para entender a melhor solução para a minha necessidade.'
+  );
 
   const modalHTML = `
     <div
@@ -81,7 +84,7 @@
         <div class="modal-whatsapp__opcoes">
           <a
             class="modal-whatsapp__opcao modal-whatsapp__opcao--vinho"
-            href="https://wa.me/${WA_BORDADO}"
+            href="https://wa.me/${WA_BORDADO}?text=${WA_TEXTO}"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -94,7 +97,7 @@
           </a>
           <a
             class="modal-whatsapp__opcao modal-whatsapp__opcao--azul"
-            href="https://wa.me/${WA_ETIQUETA}"
+            href="https://wa.me/${WA_ETIQUETA}?text=${WA_TEXTO}"
             target="_blank"
             rel="noopener noreferrer"
           >
