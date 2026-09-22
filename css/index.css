@@ -594,13 +594,19 @@
       font-size: 21px;
       margin-bottom: 24px;
     }
-    & .solucoes__especialidades,
-      & .solucoes__publicos {
+    & .solucoes__especialidades {
       grid-template-columns: 1fr;
       gap: 16px;
-    }
-    & .solucoes__especialidades {
       margin-bottom: 48px;
+    }
+    /* No celular vira uma coluna simples. Em flex o posicionamento
+       explícito de grid dos cartões deixa de valer, então nenhum
+       fica preso a uma 2ª coluna que não existe mais. */
+    & .solucoes__publicos {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      max-width: none;
     }
     & .solucoes__especialidade .solucoes__especialidade-nome {
       font-size: 18px;
