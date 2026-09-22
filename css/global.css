@@ -159,13 +159,13 @@ img {
       text-decoration: none;
     }
 
-    & i {
-      font-size: 14px;
+    & .icone {
+      font-size: 16px;
       color: #fff;
-      transition: 0.3s;
+      transition: color 0.3s;
     }
 
-    & a:hover i {
+    & a:hover .icone {
       color: #ccc;
     }
   }
@@ -491,11 +491,14 @@ img {
 /* whatssap logo */
 .botao-whatsapp {
   position: fixed;
-  right: 1rem;
+  right: 3rem;
   bottom: 3rem;
 
-  width: 4rem;
-  height: 4rem;
+  width: 5rem;
+  height: 5rem;
+  /* o ícone é uma máscara: a cor vem daqui */
+  color: #25d366;
+  font-size: 4rem;
   /* no estado normal: vale na ida e na volta do hover */
   transition: transform 0.25s ease;
 
@@ -882,6 +885,39 @@ img {
   to {
     opacity: 1;
     transform: translateY(0) scale(1);
+  }
+}
+
+/* ================================================================
+   ÍCONE — símbolos das redes em SVG (substitui o Font Awesome)
+   A imagem entra como máscara, então a cor vem do CSS e muda no hover.
+   ================================================================ */
+.icone {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  background-color: currentColor;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  flex: none;
+
+  &.icone--instagram {
+    -webkit-mask-image: url('../img/svg/instagram.svg');
+    mask-image: url('../img/svg/instagram.svg');
+  }
+
+  &.icone--facebook {
+    -webkit-mask-image: url('../img/svg/facebook.svg');
+    mask-image: url('../img/svg/facebook.svg');
+  }
+
+  &.icone--whatsapp {
+    -webkit-mask-image: url('../img/svg/whatsapp.svg');
+    mask-image: url('../img/svg/whatsapp.svg');
   }
 }
 

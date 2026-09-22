@@ -31,6 +31,9 @@
 
     <!-- Ícone da aba (mesma logo do cabeçalho, em SVG) -->
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <!-- Reservas: .ico pra navegador antigo, .png pra tela inicial do iPhone -->
+    <link rel="icon" sizes="32x32" href="favicon.ico" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
 
     <link rel="canonical" href="https://bordado.com.br/produto-etiqueta.html" />
     <meta name="robots" content="index, follow" />
@@ -44,19 +47,14 @@
     <meta property="og:url" content="https://bordado.com.br/produto-etiqueta.html" />
     <meta property="og:title" content="Etiquetas Tecidas · Master Bord — Alta definição em cada fio" />
     <meta property="og:description" content="Etiquetas tecidas personalizadas com 1200 dpi, até 8 cores simultâneas. Cetim, damasco e nylon. Lote mínimo 100un, amostra em 48h." />
-    <meta property="og:image" content="https://bordado.com.br/img/fundo-master.jpg" />
+    <meta property="og:image" content="https://bordado.com.br/img/og-img.jpg" />
     <meta property="og:image:alt" content="Master Bord — etiquetas tecidas, bordados e corte a laser" />
 
     <!-- Twitter / X -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Etiquetas Tecidas · Master Bord — Alta definição em cada fio" />
     <meta name="twitter:description" content="Etiquetas tecidas personalizadas com 1200 dpi, até 8 cores simultâneas. Cetim, damasco e nylon. Lote mínimo 100un, amostra em 48h." />
-    <meta name="twitter:image" content="https://bordado.com.br/img/fundo-master.jpg" />
-
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-    />
+    <meta name="twitter:image" content="https://bordado.com.br/img/og-img.jpg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -91,10 +89,10 @@
             href="https://www.instagram.com/masterbordbordados/"
             target="_blank"
           >
-            <i class="fa-brands fa-instagram"></i>
+            <span class="icone icone--instagram" aria-hidden="true"></span>
           </a>
           <a href="https://www.facebook.com/masterbordbordados" target="_blank">
-            <i class="fa-brands fa-facebook"></i>
+            <span class="icone icone--facebook" aria-hidden="true"></span>
           </a>
         </span>
       </div>
@@ -427,8 +425,7 @@
               rel="noopener noreferrer"
               data-tooltip="Instagram"
               aria-label="Instagram Master Bord"
-              ><i class="fab fa-instagram"></i
-            ></a>
+              ><span class="icone icone--instagram" aria-hidden="true"></span></a>
             <a
               class="rodape__rede"
               href="https://wa.me/5524981190914"
@@ -436,8 +433,7 @@
               rel="noopener noreferrer"
               data-tooltip="WhatsApp Bordado"
               aria-label="WhatsApp Bordado"
-              ><i class="fab fa-whatsapp"></i
-            ></a>
+              ><span class="icone icone--whatsapp" aria-hidden="true"></span></a>
             <a
               class="rodape__rede"
               href="https://wa.me/5524992808372"
@@ -445,8 +441,7 @@
               rel="noopener noreferrer"
               data-tooltip="WhatsApp Etiqueta"
               aria-label="WhatsApp Etiqueta"
-              ><i class="fab fa-whatsapp"></i
-            ></a>
+              ><span class="icone icone--whatsapp" aria-hidden="true"></span></a>
             <a
               class="rodape__rede"
               href="https://www.facebook.com/masterbordbordados/"
@@ -454,8 +449,7 @@
               rel="noopener noreferrer"
               data-tooltip="Facebook"
               aria-label="Facebook Master Bord"
-              ><i class="fab fa-facebook"></i
-            ></a>
+              ><span class="icone icone--facebook" aria-hidden="true"></span></a>
           </div>
         </div>
 
@@ -511,9 +505,12 @@
 
     <!-- Botão flutuante do WhatsApp (abre o modal de setores) -->
     <div class="botao-whatsapp">
-      <a href="https://wa.me/5524981190914" class="js-modal-whatsapp"
-        ><img src="img/svg/whatssap.png" alt="whatssap MasterBord"
-      /></a>
+      <a
+        href="https://wa.me/5524981190914"
+        class="js-modal-whatsapp"
+        aria-label="Falar no WhatsApp"
+        ><span class="icone icone--whatsapp" aria-hidden="true"></span
+      ></a>
     </div>
 
     <script src="js/global.js"></script>

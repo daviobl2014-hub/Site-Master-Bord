@@ -85,7 +85,7 @@
             target="_blank"
             rel="noopener noreferrer"
           >
-            <div class="modal-whatsapp__opcao-icone"><i class="fab fa-whatsapp"></i></div>
+            <div class="modal-whatsapp__opcao-icone"><span class="icone icone--whatsapp" aria-hidden="true"></span></div>
             <div class="modal-whatsapp__opcao-corpo">
               <div class="modal-whatsapp__opcao-rotulo">Bordado</div>
               <div class="modal-whatsapp__opcao-numero">(24) 98119-0914</div>
@@ -98,7 +98,7 @@
             target="_blank"
             rel="noopener noreferrer"
           >
-            <div class="modal-whatsapp__opcao-icone"><i class="fab fa-whatsapp"></i></div>
+            <div class="modal-whatsapp__opcao-icone"><span class="icone icone--whatsapp" aria-hidden="true"></span></div>
             <div class="modal-whatsapp__opcao-corpo">
               <div class="modal-whatsapp__opcao-rotulo">Etiqueta</div>
               <div class="modal-whatsapp__opcao-numero">(24) 99280-8372</div>

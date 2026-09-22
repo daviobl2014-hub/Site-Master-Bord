@@ -31,27 +31,51 @@
 
     <!-- Ícone da aba (mesma logo do cabeçalho, em SVG) -->
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <!-- Reservas: .ico pra navegador antigo, .png pra tela inicial do iPhone -->
+    <link rel="icon" sizes="32x32" href="favicon.ico" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
 
     <link rel="canonical" href="https://bordado.com.br/" />
     <meta name="robots" content="index, follow" />
     <meta name="author" content="Master Bord" />
-    <meta name="keywords" content="Master Bord, etiquetas, bordado, etiquetas tecidas, bordado personalizado, corte a laser, Petrópolis RJ" />
+    <meta
+      name="keywords"
+      content="Master Bord, etiquetas, bordado, etiquetas tecidas, bordado personalizado, corte a laser, Petrópolis RJ"
+    />
 
     <!-- Open Graph (WhatsApp, Facebook, LinkedIn) -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Master Bord" />
     <meta property="og:locale" content="pt_BR" />
     <meta property="og:url" content="https://bordado.com.br/" />
-    <meta property="og:title" content="Master Bord · Etiquetas, Bordados e Corte a Laser desde 1994" />
-    <meta property="og:description" content="Master Bord: etiquetas tecidas, bordados profissionais e corte a laser. Certificados ABVTEX, teares Barudan, atendendo mais de 500 marcas desde 1994." />
-    <meta property="og:image" content="https://bordado.com.br/img/fundo-master.jpg" />
-    <meta property="og:image:alt" content="Master Bord — etiquetas tecidas, bordados e corte a laser" />
+    <meta
+      property="og:title"
+      content="Master Bord · Etiquetas, Bordados e Corte a Laser desde 1994"
+    />
+    <meta
+      property="og:description"
+      content="Master Bord: etiquetas tecidas, bordados profissionais e corte a laser. Certificados ABVTEX, teares Barudan, atendendo mais de 500 marcas desde 1994."
+    />
+    <meta property="og:image" content="https://bordado.com.br/img/og-img.jpg" />
+    <meta
+      property="og:image:alt"
+      content="Master Bord — etiquetas tecidas, bordados e corte a laser"
+    />
 
     <!-- Twitter / X -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Master Bord · Etiquetas, Bordados e Corte a Laser desde 1994" />
-    <meta name="twitter:description" content="Master Bord: etiquetas tecidas, bordados profissionais e corte a laser. Certificados ABVTEX, teares Barudan, atendendo mais de 500 marcas desde 1994." />
-    <meta name="twitter:image" content="https://bordado.com.br/img/fundo-master.jpg" />
+    <meta
+      name="twitter:title"
+      content="Master Bord · Etiquetas, Bordados e Corte a Laser desde 1994"
+    />
+    <meta
+      name="twitter:description"
+      content="Master Bord: etiquetas tecidas, bordados profissionais e corte a laser. Certificados ABVTEX, teares Barudan, atendendo mais de 500 marcas desde 1994."
+    />
+    <meta
+      name="twitter:image"
+      content="https://bordado.com.br/img/og-img.jpg"
+    />
 
     <!-- Dados estruturados: quem é a empresa (aparece na busca do Google) -->
     <script type="application/ld+json">
@@ -66,7 +90,7 @@
         "telephone": "+552422317666",
         "foundingDate": "1994",
         "priceRange": "$$",
-        "image": "https://bordado.com.br/img/fundo-master.jpg",
+        "image": "https://bordado.com.br/img/og-img.jpg",
         "address": {
           "@type": "PostalAddress",
           "addressLocality": "Petrópolis",
@@ -105,10 +129,6 @@
     </script>
 
     <!-- Fontes: Google Fonts + Bauhaus via CDN -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -148,10 +168,10 @@
             href="https://www.instagram.com/masterbordbordados/"
             target="_blank"
           >
-            <i class="fa-brands fa-instagram"></i>
+            <span class="icone icone--instagram" aria-hidden="true"></span>
           </a>
           <a href="https://www.facebook.com/masterbordbordados" target="_blank">
-            <i class="fa-brands fa-facebook"></i>
+            <span class="icone icone--facebook" aria-hidden="true"></span>
           </a>
         </span>
       </div>
@@ -281,7 +301,11 @@
               <div class="galeria-3d__imagem">
                 <img
                   src="img/portifolio/etiqueta-1.webp"
-                  alt="Etiquetas tecidas"
+                  alt="Etiqueta tecida personalizada produzida pela Master Bord"
+                  width="760"
+                  height="1013"
+                  fetchpriority="high"
+                  decoding="async"
                 />
               </div>
               <div class="galeria-3d__info">
@@ -297,7 +321,11 @@
               <div class="galeria-3d__imagem">
                 <img
                   src="img/portifolio/bordado-1.webp"
-                  alt="Bordados computadorizados"
+                  alt="Bordado computadorizado de alta densidade em peça"
+                  width="760"
+                  height="1013"
+                  fetchpriority="high"
+                  decoding="async"
                 />
               </div>
               <div class="galeria-3d__info">
@@ -313,7 +341,11 @@
               <div class="galeria-3d__imagem">
                 <img
                   src="img/portifolio/laser-2.webp"
-                  alt="Corte a laser sob medida"
+                  alt="Patch cortado a laser com bordas seladas"
+                  width="760"
+                  height="1013"
+                  fetchpriority="high"
+                  decoding="async"
                 />
               </div>
               <div class="galeria-3d__info">
@@ -328,8 +360,12 @@
             >
               <div class="galeria-3d__imagem">
                 <img
-                  src="img/produtos/etiqueta-1.png"
-                  alt="Etiquetas personalizadas"
+                  src="img/portifolio/etiqueta-2.webp"
+                  alt="Etiquetas tecidas aplicadas em peça de roupa"
+                  width="720"
+                  height="960"
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
               <div class="galeria-3d__info">
@@ -345,7 +381,11 @@
               <div class="galeria-3d__imagem">
                 <img
                   src="img/portifolio/bordado-2.webp"
-                  alt="Bordados de alta densidade"
+                  alt="Bordado personalizado aplicado em uniforme"
+                  width="760"
+                  height="1013"
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
               <div class="galeria-3d__info">
@@ -361,7 +401,11 @@
               <div class="galeria-3d__imagem">
                 <img
                   src="img/portifolio/laser-1.webp"
-                  alt="Peças cortadas a laser"
+                  alt="Peça com acabamento em corte a laser"
+                  width="760"
+                  height="1013"
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
               <div class="galeria-3d__info">
@@ -370,7 +414,6 @@
             </a>
           </div>
         </div>
-
       </div>
     </section>
 
@@ -438,12 +481,20 @@
         <article class="cartao publico">
           <div class="publico__foto publico__foto--duo">
             <img
-              src="img/patch-american-top-team.png"
+              src="img/sob-medida/patch-american-top-team.webp"
               alt="Patch American Top Team"
+              width="520"
+              height="503"
+              loading="lazy"
+              decoding="async"
             />
             <img
-              src="img/patch-brigadeiro-jj.png"
+              src="img/sob-medida/patch-brigadeiro-jj.webp"
               alt="Patch Brigadeiro Brazilian Jiu-Jitsu"
+              width="514"
+              height="520"
+              loading="lazy"
+              decoding="async"
             />
           </div>
 
@@ -477,23 +528,53 @@
         <article class="cartao publico">
           <div class="publico__foto publico__foto--grade6">
             <img
-              src="img/etiquetas-marcas/deliriyou.png"
+              src="img/sob-medida/deliriyou.webp"
               alt="Etiqueta Deliriyou"
+              width="360"
+              height="120"
+              loading="lazy"
+              decoding="async"
             />
-            <img src="img/etiquetas-marcas/cacay.png" alt="Etiqueta Cacay" />
             <img
-              src="img/etiquetas-marcas/surfgang.png"
+              src="img/sob-medida/cacay.webp"
+              alt="Etiqueta Cacay"
+              width="360"
+              height="240"
+              loading="lazy"
+              decoding="async"
+            />
+            <img
+              src="img/sob-medida/surfgang.webp"
               alt="Etiqueta Surfgang"
+              width="360"
+              height="240"
+              loading="lazy"
+              decoding="async"
             />
             <img
-              src="img/etiquetas-marcas/metal-carbono.png"
+              src="img/sob-medida/metal-carbono.webp"
               alt="Etiqueta Metal Carbono"
+              width="360"
+              height="180"
+              loading="lazy"
+              decoding="async"
             />
             <img
-              src="img/etiquetas-marcas/gangster.png"
+              src="img/sob-medida/gangster.webp"
               alt="Etiqueta Gangster"
+              width="360"
+              height="360"
+              loading="lazy"
+              decoding="async"
             />
-            <img src="img/etiquetas-marcas/knulu.png" alt="Etiqueta Knulu" />
+            <img
+              src="img/sob-medida/knulu.webp"
+              alt="Etiqueta Knulu"
+              width="360"
+              height="134"
+              loading="lazy"
+              decoding="async"
+            />
           </div>
           <h4 class="publico__nome">
             Marcas de Moda e Confeccionistas (Streetwear, Casual e Fightwear)
@@ -521,7 +602,14 @@
 
         <article class="cartao publico">
           <div class="publico__foto publico__foto--abvtex">
-            <img src="img/selo-abvtex.png" alt="Selo ABVTEX" />
+            <img
+              src="img/sob-medida/selo-abvtex.webp"
+              alt="Selo ABVTEX"
+              width="200"
+              height="187"
+              loading="lazy"
+              decoding="async"
+            />
           </div>
           <h4 class="publico__nome">
             Private Labels e Confecções de Grande Porte
@@ -550,20 +638,70 @@
 
         <article class="cartao publico">
           <div class="publico__foto publico__foto--grade8">
-            <img src="img/uniformes-clientes/shell.png" alt="Logo Shell" />
             <img
-              src="img/uniformes-clientes/colegio.png"
+              src="img/sob-medida/shell.webp"
+              alt="Logo Shell"
+              width="320"
+              height="133"
+              loading="lazy"
+              decoding="async"
+            />
+            <img
+              src="img/sob-medida/colegio.webp"
               alt="Logo colégio parceiro"
+              width="320"
+              height="308"
+              loading="lazy"
+              decoding="async"
             />
             <img
-              src="img/uniformes-clientes/postos.png"
+              src="img/sob-medida/postos.webp"
               alt="Logo rede de postos"
+              width="320"
+              height="160"
+              loading="lazy"
+              decoding="async"
             />
-            <img src="img/uniformes-clientes/macae.png" alt="Logo Macaé" />
-            <img src="img/uniformes-clientes/pm.png" alt="Logo PM" />
-            <img src="img/uniformes-clientes/odin.png" alt="Logo Odin" />
-            <img src="img/uniformes-clientes/aguia.png" alt="Logo Águia" />
-            <img src="img/uniformes-clientes/bocaina.png" alt="Logo Bocaina" />
+            <img
+              src="img/sob-medida/macae.webp"
+              alt="Logo Macaé"
+              width="320"
+              height="292"
+              loading="lazy"
+              decoding="async"
+            />
+            <img
+              src="img/sob-medida/pm.webp"
+              alt="Logo PM"
+              width="320"
+              height="320"
+              loading="lazy"
+              decoding="async"
+            />
+            <img
+              src="img/sob-medida/odin.webp"
+              alt="Logo Odin"
+              width="320"
+              height="160"
+              loading="lazy"
+              decoding="async"
+            />
+            <img
+              src="img/sob-medida/aguia.webp"
+              alt="Logo Águia"
+              width="320"
+              height="296"
+              loading="lazy"
+              decoding="async"
+            />
+            <img
+              src="img/sob-medida/bocaina.webp"
+              alt="Logo Bocaina"
+              width="320"
+              height="292"
+              loading="lazy"
+              decoding="async"
+            />
           </div>
           <h4 class="publico__nome">
             Uniformes Corporativos, Escolares e Vestuário Profissional
@@ -1796,8 +1934,7 @@
               rel="noopener noreferrer"
               data-tooltip="Instagram"
               aria-label="Instagram Master Bord"
-              ><i class="fab fa-instagram"></i
-            ></a>
+              ><span class="icone icone--instagram" aria-hidden="true"></span></a>
             <a
               class="rodape__rede"
               href="https://wa.me/5524981190914"
@@ -1805,8 +1942,7 @@
               rel="noopener noreferrer"
               data-tooltip="WhatsApp Bordado"
               aria-label="WhatsApp Bordado"
-              ><i class="fab fa-whatsapp"></i
-            ></a>
+              ><span class="icone icone--whatsapp" aria-hidden="true"></span></a>
             <a
               class="rodape__rede"
               href="https://wa.me/5524992808372"
@@ -1814,8 +1950,7 @@
               rel="noopener noreferrer"
               data-tooltip="WhatsApp Etiqueta"
               aria-label="WhatsApp Etiqueta"
-              ><i class="fab fa-whatsapp"></i
-            ></a>
+              ><span class="icone icone--whatsapp" aria-hidden="true"></span></a>
             <a
               class="rodape__rede"
               href="https://www.facebook.com/masterbordbordados/"
@@ -1823,8 +1958,7 @@
               rel="noopener noreferrer"
               data-tooltip="Facebook"
               aria-label="Facebook Master Bord"
-              ><i class="fab fa-facebook"></i
-            ></a>
+              ><span class="icone icone--facebook" aria-hidden="true"></span></a>
           </div>
         </div>
 
@@ -1879,9 +2013,12 @@
     </footer>
 
     <div class="botao-whatsapp">
-      <a href="https://wa.me/5524981190914" class="js-modal-whatsapp"
-        ><img src="img/svg/whatssap.png" alt="whatssap MasterBord"
-      /></a>
+      <a
+        href="https://wa.me/5524981190914"
+        class="js-modal-whatsapp"
+        aria-label="Falar no WhatsApp"
+        ><span class="icone icone--whatsapp" aria-hidden="true"></span
+      ></a>
     </div>
 
     <!-- JavaScript global (header scroll, etc.) -->

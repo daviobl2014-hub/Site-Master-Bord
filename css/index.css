@@ -1075,12 +1075,6 @@
     overflow: visible;
   }
 
-  /* Footer acima do stretched link — avatar do Instagram do autor segue clicável */
-  & .depoimento__rodape {
-    position: relative;
-    z-index: 2;
-  }
-
   & .depoimento__texto a {
     cursor: pointer;
   }
@@ -1093,18 +1087,13 @@
     z-index: 1;
   }
 
-  /* Tooltip ancorado no <p> = aparece acima do TEXTO, não do card */
-  & .depoimento__texto {
-    position: relative;
-  }
-
   & .depoimento__texto::after {
     content: attr(data-tooltip);
     position: absolute;
 
-    bottom: 100%; /* acima do parágrafo (encostado no espaço acima do texto) */
-      left: 50%; /* centralizado no parágrafo */
-      transform: translateX(-50%);
+    bottom: 100%; /* acima do parágrafo */
+    left: 50%; /* centralizado no parágrafo */
+    transform: translateX(-50%);
 
     color: var(--mb-paper);
     border: 1px solid var(--mb-ouro);
@@ -1137,21 +1126,26 @@
     margin-bottom: 14px;
   }
 
+  /* O position ancora o tooltip no parágrafo (e não no cartão) */
   & .depoimento__texto {
+    position: relative;
+    flex: 1;
+    margin: 0;
     font-size: 16px;
     line-height: 1.5;
     color: var(--mb-paper);
-    margin: 0;
-    flex: 1;
   }
 
+  /* z-index acima do link esticado: o avatar do Instagram segue clicável */
   & .depoimento__rodape {
-    margin-top: 24px;
-    padding-top: 16px;
-    border-top: 1px solid var(--mb-line);
+    position: relative;
+    z-index: 2;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 1px solid var(--mb-line);
   }
 
   & .depoimento__autor {
@@ -1689,9 +1683,6 @@
     width: max-content;
     max-width: 100%;
     margin: 16px auto 0;
-  }
-
-  & .decisao__destaque {
     font-family: var(--font-display);
     font-weight: 700;
     font-size: 22px;
@@ -2558,5 +2549,4 @@
     }
   }
 }
-
 
