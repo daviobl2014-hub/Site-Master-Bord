@@ -199,13 +199,6 @@ img {
     background: var(--mb-line);
   }
 
-  & .cabecalho__telefone {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    color: var(--mb-ouro);
-    letter-spacing: 0.15em;
-  }
-
   /* ---- Links do menu (desktop) ---- */
   & .cabecalho__links {
     display: flex;
@@ -264,7 +257,6 @@ img {
     & .cabecalho__navegacao {
       padding: 12px 16px;
     }
-    & .cabecalho__telefone,
     & .cabecalho__links,
     & .cabecalho__divisor {
       display: none;
