@@ -2064,7 +2064,8 @@
 
   /* O nosso cartão: azul, um pouco maior e em destaque */
   & .comparativo__cartao--nosso {
-    background: var(--mb-azul);
+    /* azul mais fechado: o texto claro por cima precisa de contraste */
+    background: #35649a;
     color: var(--mb-paper);
     box-shadow: 0 12px 36px rgba(74, 139, 214, 0.35);
   }
@@ -2130,7 +2131,7 @@
     font-weight: 700;
     letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: #8a8e96;
+    color: #62666e;
   }
 
   & .comparativo__valor {
@@ -2141,7 +2142,7 @@
   }
 
   & .comparativo__cartao--nosso .comparativo__criterio {
-    color: rgba(242, 236, 224, 0.75);
+    color: rgba(242, 236, 224, 0.95);
   }
 
   & .comparativo__cartao--nosso .comparativo__valor {

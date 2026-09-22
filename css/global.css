@@ -28,6 +28,8 @@
   --mb-azul-glow: #6ba8e8;
   --mb-vinho: #c44b55;
   --mb-vinho-glow: #e56670;
+  /* vinho um pouco mais escuro, para texto claro por cima ter contraste AA */
+  --mb-vinho-fundo: #b0444d;
   --mb-ouro: #d4a96a;
   --mb-muted: #8b8f99;
   --mb-line: #2e3340;
@@ -493,6 +495,7 @@ img {
   position: fixed;
   right: 3rem;
   bottom: 3rem;
+  z-index: 999;
 
   width: 5rem;
   height: 5rem;
@@ -547,9 +550,9 @@ img {
   }
 
   &.botao--primario {
-    background: var(--mb-vinho);
+    background: var(--mb-vinho-fundo);
     color: var(--mb-paper);
-    border-color: var(--mb-vinho);
+    border-color: var(--mb-vinho-fundo);
   }
 
   &.botao--secundario {
@@ -605,7 +608,7 @@ img {
       inset: 0;
       z-index: -1;
       border-radius: inherit;
-      background: var(--mb-vinho);
+      background: var(--mb-vinho-fundo);
       transition: background 0.2s ease;
     }
 
@@ -618,7 +621,7 @@ img {
       }
 
       &::after {
-        background: #b0434c;
+        background: #9d3c44;
       }
     }
   }
