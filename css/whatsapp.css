@@ -1,0 +1,254 @@
+/* ================================================================
+   WHATSAPP.CSS — Master Bord (página whatsapp.html)
+
+   Uma tela só: o cartão de escolha do setor, centralizado.
+   Era o modal que abria por cima das páginas; virou a própria
+   página, para onde todos os botões de WhatsApp do site apontam.
+
+   O fundo repete as camadas da primeira dobra da home: cor base,
+   textura de linhas finas (::before), grade técnica e os dois brilhos.
+   Quando entrar uma foto, acrescente no .canal:
+     background: url('../img/....webp') center / cover no-repeat;
+   e escureça com um véu, senão o cartão não se lê.
+   ================================================================ */
+
+.canal {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  /* ocupa a tela menos a navegação do topo (medida no js/global.js) */
+  min-height: calc(100vh - var(--altura-cabecalho, 96px));
+  min-height: calc(100svh - var(--altura-cabecalho, 96px));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 20px;
+  background: var(--mb-bg);
+
+  /* Textura de linhas finas — a mesma da primeira dobra da home */
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      repeating-linear-gradient(
+        0deg,
+        rgba(255, 255, 255, 0.015) 0px,
+        rgba(255, 255, 255, 0.015) 1px,
+        transparent 1px,
+        transparent 4px
+      ),
+      repeating-linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0.015) 0px,
+        rgba(255, 255, 255, 0.015) 1px,
+        transparent 1px,
+        transparent 4px
+      );
+    pointer-events: none;
+  }
+
+  /* A grade técnica (global) fica por baixo do cartão */
+  & .grade-tecnica {
+    z-index: 0;
+  }
+
+  /* Brilhos de fundo, como na home: a cor vem do modificador */
+  & .canal__brilho {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    filter: blur(100px);
+    opacity: 0.4;
+    pointer-events: none;
+    z-index: 0;
+
+    &.canal__brilho--azul {
+      background: radial-gradient(
+        circle,
+        rgba(0, 120, 255, 0.25),
+        transparent 70%
+      );
+      top: -120px;
+      left: -120px;
+    }
+
+    &.canal__brilho--vinho {
+      background: radial-gradient(
+        circle,
+        rgba(180, 0, 60, 0.25),
+        transparent 70%
+      );
+      bottom: -120px;
+      right: -120px;
+    }
+  }
+
+  /* ---- Cartão central ---- */
+  & .canal__cartao {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    max-width: 52rem;
+    padding: 40px 36px;
+    border: 1px solid var(--mb-line);
+    border-radius: 14px;
+    background: var(--mb-card);
+    text-align: center;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+  }
+
+  & .rotulo {
+    display: block;
+    margin-bottom: 16px;
+  }
+
+  & .canal__titulo {
+    margin: 0 0 12px;
+    font-size: 34px;
+    line-height: 1.15;
+  }
+
+  & .canal__apoio {
+    margin: 0 0 28px;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--mb-muted);
+  }
+
+  /* ---- As duas opções de setor ---- */
+  & .canal__opcoes {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  & .canal__opcao {
+    --canal-cor: var(--mb-vinho);
+
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 18px;
+    border: 1px solid var(--mb-line);
+    border-left: 3px solid var(--canal-cor);
+    border-radius: 10px;
+    background: var(--mb-bg);
+    text-align: left;
+    transition:
+      background 0.2s ease,
+      border-color 0.2s ease,
+      transform 0.2s ease;
+
+    &:hover {
+      background: var(--mb-card-hover);
+      border-color: var(--canal-cor);
+      transform: translateX(4px);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--canal-cor);
+      outline-offset: 2px;
+    }
+
+    &.canal__opcao--vinho {
+      --canal-cor: var(--mb-vinho);
+    }
+
+    &.canal__opcao--azul {
+      --canal-cor: var(--mb-azul);
+    }
+  }
+
+  & .canal__opcao-icone {
+    flex: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: rgba(127, 194, 145, 0.12);
+    color: var(--mb-green);
+    font-size: 22px;
+  }
+
+  & .canal__opcao-corpo {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  & .canal__opcao-rotulo {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 17px;
+    color: var(--mb-paper);
+  }
+
+  & .canal__opcao-numero {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    color: var(--mb-muted);
+  }
+
+  & .canal__opcao-seta {
+    flex: none;
+    font-size: 18px;
+    color: var(--canal-cor);
+    transition: transform 0.2s ease;
+  }
+
+  & .canal__opcao:hover .canal__opcao-seta {
+    transform: translateX(4px);
+  }
+
+  /* ---- Saída alternativa: formulário e telefone ---- */
+  & .canal__alternativa {
+    margin: 26px 0 0;
+    font-size: 13.5px;
+    line-height: 1.7;
+    color: var(--mb-muted);
+
+    & a {
+      color: var(--mb-ouro);
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s ease;
+
+      &:hover {
+        border-bottom-color: var(--mb-ouro);
+      }
+    }
+  }
+
+  @media (max-width: 900px) {
+    & {
+      padding: 32px 16px;
+    }
+    & .canal__cartao {
+      padding: 28px 22px;
+    }
+    & .canal__titulo {
+      font-size: 26px;
+    }
+    & .canal__apoio {
+      font-size: 14px;
+      margin-bottom: 22px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    & .canal__opcao,
+    & .canal__opcao-seta {
+      transition: none;
+    }
+    & .canal__opcao:hover {
+      transform: none;
+    }
+    & .canal__opcao:hover .canal__opcao-seta {
+      transform: none;
+    }
+  }
+}
