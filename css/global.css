@@ -708,6 +708,7 @@ img {
 
   &.titulo--enorme {
     font-size: 84px;
+    text-align: left;
   }
 
   &.titulo--grande {
