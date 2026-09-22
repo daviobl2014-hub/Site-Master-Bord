@@ -184,7 +184,10 @@
 /* ================================================================
    3. FORMULÁRIO
    ================================================================ */
+/* precisa ajusta esse formulario a principio ele vai sumir mais vamos ser modificado */
+
 .contato-form {
+  display: none !important;
   padding: 32px;
   display: flex;
   flex-direction: column;
@@ -263,7 +266,9 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  transition: border-color 0.2s, color 0.2s;
+  transition:
+    border-color 0.2s,
+    color 0.2s;
 }
 .form-check:hover {
   border-color: var(--mb-vinho);

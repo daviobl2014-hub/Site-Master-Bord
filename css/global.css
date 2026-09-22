@@ -509,6 +509,12 @@ img {
     width: 100%;
     height: 100%;
   }
+
+  /* tamanho explícito: não depende de herdar font-size */
+  & .icone {
+    width: 100%;
+    height: 100%;
+  }
   /* no estado normal: vale na ida e na volta do hover */
   transition: transform 0.25s ease;
 
