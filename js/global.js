@@ -4,9 +4,10 @@
    Carregado com <script src="js/global.js"></script>
 
    O que tem aqui:
-   1. Header: adiciona a classe .header--scrolled ao rolar a página
+   1. Cabeçalho: adiciona a classe .cabecalho--rolado ao rolar a página
    2. Modal WhatsApp: injetado em runtime, abre ao clicar em
-      qualquer elemento com a classe .js-wa-modal
+      qualquer elemento com a classe .js-modal-whatsapp
+   3. Altura do cabeçalho na variável CSS --altura-cabecalho
 
    Futuro:
    - Menu hambúrguer mobile (quando criarmos)
@@ -157,4 +158,27 @@
   } else {
     init();
   }
+})();
+
+/* ================================================================
+   3. ALTURA DO CABEÇALHO
+   Guarda a altura real do cabeçalho em --altura-cabecalho para o
+   CSS poder fazer "altura da tela menos a navegação".
+   Recalcula ao redimensionar (no celular a faixa de menu muda a altura).
+   ================================================================ */
+
+(function () {
+  const cabecalho = document.getElementById('mbHeader');
+  if (!cabecalho) return;
+
+  function medir() {
+    document.documentElement.style.setProperty(
+      '--altura-cabecalho',
+      cabecalho.offsetHeight + 'px'
+    );
+  }
+
+  medir();
+  window.addEventListener('load', medir);
+  window.addEventListener('resize', medir);
 })();

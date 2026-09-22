@@ -15,12 +15,17 @@
    PRINCIPAL — primeira dobra (antigo hero)
    ================================================================ */
 .principal {
+  /* altura da tela menos a navegação do topo (--altura-cabecalho
+     é medida pelo js/global.js; 96px é só o palpite inicial).
+     A 1ª linha é o reserva pra navegador sem svh. */
+  min-height: calc(100vh - var(--altura-cabecalho, 96px));
+  min-height: calc(100svh - var(--altura-cabecalho, 96px));
   display: flex;
   align-items: center;
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  padding: 40px 48px 96px;
+  padding: 32px 48px 48px;
   background: var(--mb-bg);
   box-sizing: border-box;
 
@@ -33,18 +38,18 @@
 
     background-image:
       repeating-linear-gradient(
-        0deg,
-        rgba(255, 255, 255, 0.015) 0px,
-        rgba(255, 255, 255, 0.015) 1px,
-        transparent 1px,
-        transparent 4px
+      0deg,
+      rgba(255, 255, 255, 0.015) 0px,
+      rgba(255, 255, 255, 0.015) 1px,
+      transparent 1px,
+      transparent 4px
       ),
       repeating-linear-gradient(
-        90deg,
-        rgba(255, 255, 255, 0.015) 0px,
-        rgba(255, 255, 255, 0.015) 1px,
-        transparent 1px,
-        transparent 4px
+      90deg,
+      rgba(255, 255, 255, 0.015) 0px,
+      rgba(255, 255, 255, 0.015) 1px,
+      transparent 1px,
+      transparent 4px
       );
 
     pointer-events: none;
@@ -65,7 +70,7 @@
         circle,
         rgba(0, 120, 255, 0.25),
         transparent 70%
-      );
+        );
       top: -120px;
       left: -120px;
     }
@@ -75,7 +80,7 @@
         circle,
         rgba(180, 0, 60, 0.25),
         transparent 70%
-      );
+        );
       bottom: -120px;
       right: -120px;
     }
@@ -87,7 +92,8 @@
   }
 
   & .principal__texto {
-    display: grid;
+    display: flex;
+    flex-direction: column;
   }
 
   & .principal__grade {
@@ -95,7 +101,8 @@
     z-index: 10;
     display: grid;
     grid-template-columns: 1fr;
-    gap: 40px;
+    /* linha x coluna: a faixa de baixo cola no texto */
+    gap: 12px 40px;
     align-items: start;
     width: 100%;
     max-width: 1500px;
@@ -112,18 +119,18 @@
   /* Tag do hero em caixa arredondada (sobrescreve o .rotulo global) */
   & .principal__tag .rotulo {
     display: inline-block;
-    padding: 16px 28px;
-    border: 1px solid rgba(212, 169, 106, 0.45);
-    border-radius: 999px;
-    background: rgba(212, 169, 106, 0.1);
+    /* padding: 16px 28px; */
+    /* border: 1px solid rgba(212, 169, 106, 0.45); */
+    /* border-radius: 999px; */
+    /* background: rgba(212, 169, 106, 0.1); */
     color: var(--mb-ouro);
     font-family: var(--font-display);
-    font-size: 18px;
+    font-size: 12px;
     font-weight: 600;
     letter-spacing: 0.14em;
     line-height: 1.5;
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
+    /* backdrop-filter: blur(4px);
+       -webkit-backdrop-filter: blur(4px); */
   }
 
   /* TÍTULO MASTER BORD (SVG) — INTOCADO em estrutura, sombra reforçada */
@@ -137,8 +144,8 @@
   }
 
   & .principal__titulo-master,
-  & .principal__titulo-bord,
-  & .principal__titulo-logo {
+    & .principal__titulo-bord,
+    & .principal__titulo-logo {
     display: block;
     background-color: currentColor;
     -webkit-mask-repeat: no-repeat;
@@ -218,9 +225,11 @@
   }
 
   & .principal__acoes {
+    /* empurrado pro fim da coluna: fica na mesma linha do fim da galeria */
+    margin-top: auto;
+    padding-top: 24px;
     display: flex;
     gap: 12px;
-    margin-top: 18px;
     flex-wrap: wrap;
     position: relative;
     z-index: 50; /* botões acima de glows/tech-grid (z:3), cores originais */
@@ -234,7 +243,7 @@
   & .principal__galeria {
     position: relative;
     z-index: 10;
-    --card-w: 210px;
+    --card-w: 230px;
     --card-h: 280px;
     --raio: calc(var(--card-w) * 0.866);
     height: 400px;
@@ -255,20 +264,22 @@
 
   @media (min-width: 900px) {
     & {
-      min-height: 90vh;
-      padding: clamp(48px, 6vh, 80px) clamp(24px, 3vw, 64px)
-        clamp(64px, 8vh, 100px);
+      min-height: calc(100vh - var(--altura-cabecalho, 96px));
+      min-height: calc(100svh - var(--altura-cabecalho, 96px));
+      padding: clamp(28px, 4vh, 56px) clamp(24px, 3vw, 64px)
+        clamp(32px, 4vh, 64px);
     }
     & .principal__grade {
       grid-template-columns: 1fr 1fr;
       align-items: stretch;
       max-width: 1500px;
       margin: 0 auto;
-      gap: clamp(32px, 4vw, 64px);
+      gap: clamp(4px, 0.8vh, 12px) clamp(32px, 4vw, 64px);
     }
     & .principal__texto {
       max-width: 720px;
-      align-self: center;
+      align-self: stretch;
+      justify-content: center;
     }
     /* Galeria 3D: ocupa toda a altura da coluna do texto.
        --raio NÃO é definido aqui de propósito — vem do cálculo do
@@ -277,10 +288,11 @@
       align-self: stretch;
       align-items: center;
       height: auto;
-      min-height: 360px;
-      /* Card 40% mais largo e 30% mais baixo que a altura da coluna */
-      --card-w: clamp(252px, 19.6vw, 336px);
-      --card-h: 70%;
+      min-height: 440px;
+      /* O card acompanha a altura da coluna de texto ao lado
+         (a galeria estica com o grid; 100% = altura cheia da linha) */
+      --card-w: clamp(268px, 20.5vw, 352px);
+      --card-h: 88%;
     }
     & .principal__chamada {
       font-size: clamp(15px, 1.2vw, 19px);
@@ -290,12 +302,6 @@
     & .principal__chamada--apoio {
       font-size: clamp(13px, 0.95vw, 16px);
       margin-top: clamp(8px, 1vh, 12px);
-    }
-    & .principal__acoes {
-      margin-top: clamp(10px, 1.2vh, 18px);
-    }
-    & .principal__tag {
-      margin-bottom: clamp(16px, 2vh, 28px);
     }
   }
 
@@ -308,10 +314,7 @@
     }
     & .principal__grade {
       grid-template-columns: 1fr;
-      gap: 32px;
-    }
-    & .principal__tag {
-      margin-bottom: 20px;
+      gap: 20px;
     }
     & .principal__tag .rotulo {
       padding: 8px 16px;
@@ -326,15 +329,12 @@
       font-size: 13px;
       margin-top: 8px;
     }
-    & .principal__acoes {
-      margin-top: 12px;
-    }
     /* Galeria 3D no mobile: menor, pra caber sem cortar os cards.
        --raio continua saindo do cálculo do tambor fechado. */
     & .principal__galeria {
-      --card-w: 150px;
-      --card-h: 200px;
-      height: 280px;
+      --card-w: 164px;
+      --card-h: 218px;
+      height: 300px;
     }
   }
 }
@@ -380,7 +380,7 @@
   &
     .galeria-3d__item.galeria-3d__item--etiqueta:hover
     .galeria-3d__imagem::before,
-  &
+    &
     .galeria-3d__item.galeria-3d__item--etiqueta:focus-visible
     .galeria-3d__imagem::before {
     box-shadow: inset 0 0 0 2px var(--mb-azul);
@@ -389,14 +389,14 @@
   &
     .galeria-3d__item.galeria-3d__item--bordado:hover
     .galeria-3d__imagem::before,
-  &
+    &
     .galeria-3d__item.galeria-3d__item--bordado:focus-visible
     .galeria-3d__imagem::before {
     box-shadow: inset 0 0 0 2px var(--mb-vinho);
   }
 
   & .galeria-3d__item.galeria-3d__item--laser:hover .galeria-3d__imagem::before,
-  &
+    &
     .galeria-3d__item.galeria-3d__item--laser:focus-visible
     .galeria-3d__imagem::before {
     box-shadow: inset 0 0 0 2px var(--mb-ouro);
@@ -432,7 +432,7 @@
       rgba(0, 0, 0, 0.85) 0%,
       rgba(0, 0, 0, 0.25) 45%,
       transparent 75%
-    );
+      );
   }
 
   /* Moldura interna usada pelo hover/foco (não interfere na emenda) */
@@ -451,10 +451,13 @@
     left: 0;
     bottom: 0;
     width: 100%;
-    padding: 16px 18px;
+    padding: 8px 18px;
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 4px;
+    background: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(4px);
   }
 
   & .galeria-3d__nome {
@@ -463,25 +466,6 @@
     font-size: 20px;
     letter-spacing: -0.01em;
     color: var(--mb-paper);
-  }
-
-  & .galeria-3d__link {
-    font-family: var(--font-mono);
-    font-size: 10px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-  }
-
-  & .galeria-3d__item.galeria-3d__item--etiqueta .galeria-3d__link {
-    color: var(--mb-azul-glow);
-  }
-
-  & .galeria-3d__item.galeria-3d__item--bordado .galeria-3d__link {
-    color: var(--mb-vinho-glow);
-  }
-
-  & .galeria-3d__item.galeria-3d__item--laser .galeria-3d__link {
-    color: var(--mb-ouro);
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -611,7 +595,7 @@
       margin-bottom: 24px;
     }
     & .solucoes__especialidades,
-    & .solucoes__publicos {
+      & .solucoes__publicos {
       grid-template-columns: 1fr;
       gap: 16px;
     }
@@ -685,7 +669,7 @@
 
     /* Mosaicos de etiquetas: 3x2 e 4x2 */
     &.publico__foto--grade6,
-    &.publico__foto--grade8 {
+      &.publico__foto--grade8 {
       display: grid;
       gap: 4px;
       padding: 14px;
@@ -891,7 +875,7 @@
 }
 @keyframes conector-seta {
   0%,
-  100% {
+    100% {
     transform: translateY(0);
   }
   50% {
@@ -919,7 +903,7 @@
   & .historia__anos {
     display: grid;
     grid-template-columns: 1fr 1.15fr; /* "30 anos" à esquerda, texto à direita */
-    align-items: center;
+      align-items: center;
     gap: 4rem;
     margin-top: 4.8rem;
   }
@@ -953,7 +937,7 @@
     line-height: 1;
     letter-spacing: 0.35em;
     padding-left: 0.35em; /* compensa o espaçamento da última letra */
-    text-transform: uppercase;
+      text-transform: uppercase;
     color: var(--mb-paper-dim);
     margin: 8px 0 0;
   }
@@ -963,12 +947,12 @@
     flex-direction: column;
     justify-content: center;
     gap: 28px; /* espaço entre os parágrafos */
-    max-width: 56rem;
+      max-width: 56rem;
   }
 
   & .historia__cartao .historia__texto p {
     margin: 0; /* o gap controla o espaçamento */
-    font-size: 17px;
+      font-size: 17px;
     line-height: 1.6;
     text-align: left;
     color: var(--mb-muted);
@@ -1002,7 +986,7 @@
   @media (max-width: 768px) {
     & .historia__anos {
       grid-template-columns: 1fr; /* empilha no mobile */
-      gap: 32px;
+        gap: 32px;
       margin-top: 24px;
     }
     & .historia__numero.titulo {
@@ -1119,8 +1103,8 @@
     position: absolute;
 
     bottom: 100%; /* acima do parágrafo (encostado no espaço acima do texto) */
-    left: 50%; /* centralizado no parágrafo */
-    transform: translateX(-50%);
+      left: 50%; /* centralizado no parágrafo */
+      transform: translateX(-50%);
 
     color: var(--mb-paper);
     border: 1px solid var(--mb-ouro);
@@ -1178,13 +1162,13 @@
 
   & .depoimento__avatar {
     width: 56px; /* aumentado de 38 pra 56 — foto fica reconhecível */
-    height: 56px;
+      height: 56px;
     border-radius: 50%;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     border: 2px solid var(--mb-line); /* moldura sutil */
-    flex-shrink: 0; /* evita esmagar quando o nome do cliente é longo */
+      flex-shrink: 0; /* evita esmagar quando o nome do cliente é longo */
   }
 
   /* Foto de cada cliente — uma classe por pessoa */
@@ -1222,7 +1206,7 @@
     transform: scale(1.1);
     border-color: var(
       --mb-ouro
-    ); /* moldura dourada no hover (parecido com depoimento) */
+      ); /* moldura dourada no hover (parecido com depoimento) */
   }
 
   @media (max-width: 900px) {
@@ -1243,10 +1227,10 @@
   border-bottom: 1px solid var(--mb-line);
   display: flex;
   flex-direction: column; /* MUDANÇA CHAVE: label fica em cima */
-  align-items: center;
+    align-items: center;
   gap: 24px;
   overflow: hidden; /* impede scroll horizontal do site */
-  position: relative;
+    position: relative;
 
   & .marcas__tag {
     font-family: var(--font-display) !important;
@@ -1262,7 +1246,7 @@
     width: 100%;
     position: relative;
     overflow: visible; /* tooltips precisam vazar verticalmente */
-    min-width: 0;
+      min-width: 0;
   }
 
   /* GRADIENTES laterais REMOVIDOS — criavam fade-in/fade-out percebido
@@ -1270,7 +1254,7 @@
      transição entre o último e o primeiro fica visualmente uniforme,
      idêntica a qualquer transição entre duas logos consecutivas. */
   & .marcas__trilho::before,
-  & .marcas__trilho::after {
+    & .marcas__trilho::after {
     display: none;
   }
 
@@ -1283,7 +1267,7 @@
     /* APAGA: animation: marcas-rolagem 40s linear infinite; */
     /* APAGA: padding: 10px 35px; */
     padding: 10px 0; /* mantém só vertical */
-    will-change: transform; /* otimização de performance */
+      will-change: transform; /* otimização de performance */
   }
 
   & .marcas__lista .marcas__item {
@@ -1299,7 +1283,7 @@
   & .marcas__item {
     display: block;
     position: relative; /* IMPORTANTE: tooltip se ancora aqui */
-    width: clamp(48px, 5vw, 72px);
+      width: clamp(48px, 5vw, 72px);
     height: clamp(48px, 5vw, 72px);
     border-radius: 50%;
     background-size: cover;
@@ -1329,8 +1313,8 @@
     position: absolute;
     top: calc(
       100% + 8px
-    ); /* MUDOU: era bottom, agora top — tooltip vai PRA BAIXO */
-    left: 50%;
+      ); /* MUDOU: era bottom, agora top — tooltip vai PRA BAIXO */
+      left: 50%;
     transform: translateX(-50%);
     padding: 6px 12px;
     background: var(--mb-bg-deep);
@@ -1552,7 +1536,7 @@
       180deg,
       rgba(212, 169, 106, 0.1) 0%,
       rgba(212, 169, 106, 0.02) 100%
-    );
+      );
   }
 
   & .promessa__destaque-numero {
@@ -1584,7 +1568,7 @@
     }
     & .promessa__seta {
       transform: rotate(90deg); /* vira ↓ no empilhado */
-      font-size: 26px;
+        font-size: 26px;
     }
     & .promessa__cartao {
       padding: 28px 22px;
@@ -1724,7 +1708,7 @@
     display: flex;
     flex-direction: column;
     align-items: stretch; /* cada card ocupa a largura toda */
-    gap: 12px;
+      gap: 12px;
     width: 100%;
     margin: 0; /* último bloco da seção — sem margem embaixo */
   }
@@ -1830,7 +1814,7 @@
   }
 
   & .objecao__sinal::before,
-  & .objecao__sinal::after {
+    & .objecao__sinal::after {
     content: '';
     position: absolute;
     top: 50%;
@@ -1847,7 +1831,7 @@
   }
 
   &:hover .objecao__sinal,
-  &[open] .objecao__sinal {
+    &[open] .objecao__sinal {
     border-color: var(--objecao-cor);
   }
 
@@ -1889,7 +1873,7 @@
 
   @media (prefers-reduced-motion: reduce) {
     &,
-    & .objecao__sinal {
+      & .objecao__sinal {
       transition: none;
     }
     &:hover {
@@ -2130,7 +2114,7 @@
   & .comparativo__itens {
     margin: 0;
     flex: 1; /* ocupa a altura que sobra no cartão */
-    display: flex;
+      display: flex;
     flex-direction: column;
     gap: 18px;
   }
@@ -2190,9 +2174,9 @@
       margin-bottom: 28px;
 
       & > .comparativo__cartao:nth-child(1),
-      & > .comparativo__cartao:nth-child(2),
-      & > .comparativo__cartao--nosso,
-      & > .custo {
+        & > .comparativo__cartao:nth-child(2),
+        & > .comparativo__cartao--nosso,
+        & > .custo {
         grid-column: auto;
         grid-row: auto;
       }
@@ -2421,7 +2405,7 @@
   }
 
   & .perguntas__sinal::before,
-  & .perguntas__sinal::after {
+    & .perguntas__sinal::after {
     content: '';
     position: absolute;
     top: 50%;
@@ -2533,7 +2517,7 @@
       ellipse at center,
       rgba(74, 139, 214, 0.22),
       transparent 70%
-    );
+      );
     filter: blur(80px);
     pointer-events: none;
     z-index: 0;
@@ -2574,3 +2558,5 @@
     }
   }
 }
+
+

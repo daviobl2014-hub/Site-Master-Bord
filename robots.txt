@@ -1,0 +1,5 @@
+# Master Bord — bordado.com.br
+User-agent: *
+Allow: /
+
+Sitemap: https://bordado.com.br/sitemap.xml

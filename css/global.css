@@ -566,21 +566,57 @@ img {
     font-size: 11px;
   }
 
-  /* CTA grande com brilho pulsante — usado nas chamadas principais.
-     A cor do brilho vem de --botao-brilho, então é o mesmo código
-     para qualquer cor (ver .botao--azul). */
+  /* CTA grande. Em repouso é um botão liso; o halo colorido só
+     aparece quando o mouse passa por cima.
+     ::before = halo desfocado (invisível até o hover)
+     ::after  = fundo sólido, pintado por cima do halo */
   &.botao--destaque {
+    position: relative;
+    isolation: isolate;
     padding: 20px 38px;
     font-size: 15px;
     border-radius: 8px;
-    box-shadow: 0 10px 32px rgba(var(--botao-brilho), 0.55);
-    animation: pulso-botao 2.8s ease-in-out infinite;
+    background: transparent;
+    border-color: transparent;
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      z-index: -1;
+      border-radius: inherit;
+      background: linear-gradient(
+        90deg,
+        rgba(var(--botao-brilho), 0.95),
+        var(--mb-ouro),
+        var(--mb-azul)
+      );
+      filter: blur(14px);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      border-radius: inherit;
+      background: var(--mb-vinho);
+      transition: background 0.2s ease;
+    }
 
     &:hover {
       opacity: 1;
       transform: translateY(-2px);
-      box-shadow: 0 14px 40px rgba(var(--botao-brilho), 0.75);
-      animation-play-state: paused;
+
+      &::before {
+        opacity: 1;
+      }
+
+      &::after {
+        background: #b0434c;
+      }
     }
   }
 
@@ -595,20 +631,9 @@ img {
   }
 
   @media (prefers-reduced-motion: reduce) {
-    &.botao--destaque {
-      animation: none;
+    &.botao--destaque:hover {
+      transform: none;
     }
-  }
-}
-
-/* Um único pulso para todos os botões de destaque */
-@keyframes pulso-botao {
-  0%,
-  100% {
-    box-shadow: 0 10px 32px rgba(var(--botao-brilho), 0.45);
-  }
-  50% {
-    box-shadow: 0 10px 38px rgba(var(--botao-brilho), 0.8);
   }
 }
 
