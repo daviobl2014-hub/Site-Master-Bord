@@ -1568,7 +1568,8 @@
       padding: 56px 20px;
     }
     & .promessa__grade {
-      grid-template-columns: 1fr;
+      display: flex;
+      flex-direction: column;
       gap: 12px;
     }
     & .promessa__seta {

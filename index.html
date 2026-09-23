@@ -261,12 +261,12 @@
             </div>
           </div>
 
-          <h1 class="principal__titulo" aria-label="Master Bord">
-            <span
-              class="principal__titulo-master"
-              role="img"
-              aria-hidden="true"
-            ></span>
+          <!-- O h1 é a logo desenhada com máscaras SVG. O texto real fica no
+               .so-leitor: buscador e leitor de tela leem "Master Bord", e as
+               máscaras por cima são decorativas (aria-hidden). -->
+          <h1 class="principal__titulo">
+            <span class="so-leitor">Master Bord</span>
+            <span class="principal__titulo-master" aria-hidden="true"></span>
             <span class="principal__titulo-linha" aria-hidden="true">
               <span class="principal__titulo-logo"></span>
               <span class="principal__titulo-bord"></span>
