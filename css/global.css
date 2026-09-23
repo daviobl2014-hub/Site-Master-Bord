@@ -299,15 +299,21 @@ img {
   & .rodape__chamada-grade {
     position: relative;
     display: grid;
-    grid-template-columns: 1.2fr 1fr;
-    gap: 48px;
-    align-items: end;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 32px;
   }
 
   & .rodape__chamada-acoes {
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 12px;
+  }
+
+  /* Botão da chamada final é mais largo que os botões das outras seções */
+  & .rodape__chamada-acoes .botao {
+    padding: 1.6rem 8.8rem;
   }
 
   & .rodape__colunas {
@@ -330,6 +336,7 @@ img {
   /* Margin-top no h2 grande do footer-cta-grid */
   & .rodape__chamada-grade .titulo.titulo--enorme {
     margin-top: 14px;
+    text-align: center;
   }
 
   & .rodape__sobre p {
@@ -460,8 +467,14 @@ img {
       padding: 40px 20px;
     }
     & .rodape__chamada-grade {
-      grid-template-columns: 1fr;
       gap: 24px;
+    }
+    & .rodape__chamada-acoes,
+    & .rodape__chamada-acoes .botao {
+      width: 100%;
+    }
+    & .rodape__chamada-acoes .botao {
+      padding: 1.8rem 2rem;
     }
     & .rodape__colunas {
       padding: 32px 20px;

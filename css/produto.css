@@ -262,7 +262,7 @@ body[data-cor='ouro'] {
    4. APLICAÇÕES — 5 imagens
    ================================================================ */
 .produto-aplicacoes {
-  background: var(--mb-bg);
+  background: var(--mb-bg-soft);
   color: var(--mb-paper);
   padding: 96px 48px;
 }
@@ -343,7 +343,7 @@ body[data-cor='ouro'] .produto-aplicacao .imagem__padrao {
    5. OUTROS PRODUTOS — 2 cards
    ================================================================ */
 .produto-relacionados {
-  background: var(--mb-bg-soft);
+  background: var(--mb-bg);
   color: var(--mb-paper);
   padding: 96px 48px;
 }
