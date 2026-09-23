@@ -4,6 +4,21 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=AW-627331568"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'AW-627331568');
+    </script>
+
     <!-- Google Tag Manager -->
     <script>
       (function (w, d, s, l, i) {
@@ -180,11 +195,11 @@
     </header>
 
     <!-- ================================================================
-       HERO + FORMULÁRIO — capa da página de contato
+       HERO — capa da página de contato
        ================================================================ -->
     <section class="contato-hero">
       <div class="grade-tecnica"></div>
-      <div class="contato-hero-glow"></div>
+      <!-- <div class="contato-hero-glow"></div> -->
 
       <div class="contato-grid">
         <!-- Coluna esquerda: texto + dados de contato -->
@@ -199,38 +214,48 @@
             proposta inicial e cronograma de amostra.
           </p>
         </div>
+      </div>
+    </section>
 
-        <!-- Coluna direita: formulário -->
-        <div class="cartao contato-form">
-          <div class="contato-info">
-            <div class="contato-info-row">
-              <div class="contato-info-key is-whatsapp">WHATSAPP</div>
-              <div class="contato-info-val">
-                <div class="n-etiqueta" data-tooltip="Atendimento Etiquetas">
-                  ( 24 ) 99280 - 8372
-                </div>
+    <!-- ================================================================
+       BLOCO DE DADOS — número, horário e endereço
+       ================================================================ -->
+    <section class="contato-dados">
+      <div class="secao-cabecalho">
+        <h2 class="titulo titulo--grande">
+          Informação de
+          <span class="destaque destaque--ouro">atendimento</span>
+        </h2>
+      </div>
+      <div class="cartao contato-dados-cartao">
+        <div class="contato-info">
+          <div class="contato-info-row">
+            <div class="contato-info-key is-whatsapp">WHATSAPP</div>
+            <div class="contato-info-val">
+              <div class="n-etiqueta" data-tooltip="Atendimento Etiquetas">
+                ( 24 ) 99280 - 8372
+              </div>
 
-                <span>/</span>
+              <span>/</span>
 
-                <div class="n-bordado" data-tooltip="Atendimento Bordado">
-                  ( 24 ) 98119 - 0914
-                </div>
+              <div class="n-bordado" data-tooltip="Atendimento Bordado">
+                ( 24 ) 98119 - 0914
               </div>
             </div>
-            <div class="contato-info-row">
-              <div class="contato-info-key is-email">E-MAIL</div>
-              <div class="contato-info-val">vendas@bordado.com.br</div>
+          </div>
+          <div class="contato-info-row">
+            <div class="contato-info-key is-email">E-MAIL</div>
+            <div class="contato-info-val">vendas@bordado.com.br</div>
+          </div>
+          <div class="contato-info-row">
+            <div class="contato-info-key is-endereco">ENDEREÇO</div>
+            <div class="contato-info-val">
+              R. São Sebastião, 269 · Petrópolis - RJ
             </div>
-            <div class="contato-info-row">
-              <div class="contato-info-key is-endereco">ENDEREÇO</div>
-              <div class="contato-info-val">
-                R. São Sebastião, 269 · Petrópolis - RJ
-              </div>
-            </div>
-            <div class="contato-info-row">
-              <div class="contato-info-key is-horario">HORÁRIO</div>
-              <div class="contato-info-val">Seg–Sex · 08h às 18h</div>
-            </div>
+          </div>
+          <div class="contato-info-row">
+            <div class="contato-info-key is-horario">HORÁRIO</div>
+            <div class="contato-info-val">Seg–Sex · 08h às 18h</div>
           </div>
         </div>
       </div>
@@ -244,7 +269,7 @@
         <div>
           <div class="rotulo">LOCALIZAÇÃO · PETRÓPOLIS - RJ</div>
           <div class="espacador"></div>
-          <h2 class="titulo titulo--medio">
+          <h2 class="titulo titulo--grande">
             Venha conhecer a
             <span class="destaque destaque--ouro">fábrica</span>
           </h2>
@@ -404,8 +429,7 @@
       ></a>
     </div>
 
-    <!-- JavaScript global + da página de contato -->
+    <!-- JavaScript global -->
     <script src="js/global.js"></script>
-    <script src="js/contato.js"></script>
   </body>
 </html>

@@ -1,48 +1,19 @@
 /* ================================================================
-   1. VARIÁVEIS DE TEMA — cores e fontes da Master Bord
-   Para mudar uma cor em TODO o site, edite aqui.
-   ================================================================ */
-:root {
-  /* Cores — extraídas do mb-theme.jsx */
-  --mb-bg: #0f1116;
-  --mb-bg-soft: #181b22;
-  --mb-bg-deep: #10100a;
-  --mb-card: #20242d;
-  --mb-card-hover: #262b36;
-  --mb-paper: #f2ece0;
-  --mb-paper-dim: #d4cfc3;
-  --mb-azul: #4a8bd6;
-  --mb-azul-glow: #6ba8e8;
-  --mb-vinho: #c44b55;
-  --mb-vinho-glow: #e56670;
-  --mb-ouro: #d4a96a;
-  --mb-muted: #8b8f99;
-  --mb-line: #2e3340;
-  --mb-line-soft: #1f2430;
-  --mb-green: #7fc291;
-
-  /* Fontes */
-  --font-display: Bauhaus, 'Space Grotesk', sans-serif;
-  --font-sans: Inter, system-ui, sans-serif;
-  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
-  --font-serif: 'Playfair Display', serif;
-}
-
-/* ================================================================
    CONTATO.CSS — Master Bord
    CSS exclusivo da PÁGINA CONTATO (contato.html).
    NÃO carregue em outras páginas.
+   (as variáveis de tema e os blocos compartilhados vêm de global.css)
 
    Seções:
-   1. Hero + Grid (texto+info à esquerda, formulário à direita)
-   2. Lista de informações de contato
-   3. Formulário (inputs, checkboxes, textarea, erros)
+   1. Hero
+   2. Bloco de dados (número, horário e endereço)
+   3. Tooltip dos números de WhatsApp
    4. Mapa / localização
    5. Media queries mobile
    ================================================================ */
 
 /* ================================================================
-   1. HERO + GRID
+   1. HERO
    ================================================================ */
 .contato-hero {
   position: relative;
@@ -51,20 +22,10 @@
   color: var(--mb-paper);
   padding: 72px 48px 96px;
 }
-.contato-hero-glow {
-  position: absolute;
-  top: 30%;
-  left: -10%;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(196, 75, 85, 0.13), transparent 60%);
-  filter: blur(40px);
-  pointer-events: none;
-}
+
 .contato-grid {
   position: relative;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
   gap: 56px;
   align-items: start;
 }
@@ -76,21 +37,34 @@
   letter-spacing: -0.02em;
   color: var(--mb-paper);
   margin: 0;
+  max-width: 80rem;
 }
 .contato-hero-lead {
   font-family: var(--font-sans);
   font-size: 17px;
   color: var(--mb-paper-dim);
   line-height: 1.6;
-  margin: 20px 0 0;
-  max-width: 460px;
+  margin: 3rem 0 0;
+  max-width: max-content;
 }
 
 /* ================================================================
-   2. LISTA DE INFORMAÇÕES DE CONTATO
+   2. BLOCO DE DADOS — número, horário e endereço
+   (ocupa o lugar do antigo formulário)
    ================================================================ */
+.contato-dados {
+  background: var(--mb-bg-soft);
+  color: var(--mb-paper);
+  padding: 96px 48px;
+}
+.contato-dados-cartao {
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
 .contato-info {
-  margin-top: 48px;
+  /* margin-top: 3.2rem; */
   display: flex;
   flex-direction: column;
 }
@@ -104,7 +78,7 @@
 }
 .contato-info-key {
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: 1.4rem;
   letter-spacing: 0.25em;
 }
 .contato-info-val {
@@ -116,6 +90,23 @@
   font-weight: 500;
 }
 
+/* Cor do rótulo de cada linha (substitui inline styles do HTML) */
+.contato-info-key.is-whatsapp {
+  color: var(--mb-green);
+}
+.contato-info-key.is-email {
+  color: var(--mb-azul);
+}
+.contato-info-key.is-endereco {
+  color: var(--mb-ouro);
+}
+.contato-info-key.is-horario {
+  color: var(--mb-vinho);
+}
+
+/* ================================================================
+   3. TOOLTIP DOS NÚMEROS DE WHATSAPP
+   ================================================================ */
 .n-bordado,
 .n-etiqueta {
   position: relative;
@@ -128,8 +119,7 @@
   transform: translateY(-2px);
   background: rgba(212, 169, 106, 0.08);
 }
-/* tooltip escondido */
-/* TEXTO DO TOOLTIP */
+/* TEXTO DO TOOLTIP (escondido até o hover) */
 .n-bordado::before,
 .n-etiqueta::before {
   content: attr(data-tooltip);
@@ -182,157 +172,20 @@
 }
 
 /* ================================================================
-   3. FORMULÁRIO
-   ================================================================ */
-/* precisa ajusta esse formulario a principio ele vai sumir mais vamos ser modificado */
-
-.contato-form {
-  padding: 32px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-.form-eyebrow {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  color: var(--mb-ouro);
-  letter-spacing: 0.25em;
-}
-.form-titulo {
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 28px;
-  color: var(--mb-paper);
-  margin: 8px 0 16px;
-  letter-spacing: -0.01em;
-}
-.form-campo {
-  display: flex;
-  flex-direction: column;
-}
-.form-label {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  color: var(--mb-muted);
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  margin-bottom: 6px;
-}
-.form-input {
-  width: 100%;
-  padding: 12px 14px;
-  background: var(--mb-bg-deep);
-  border: 1px solid var(--mb-line);
-  color: var(--mb-paper);
-  font-family: var(--font-sans);
-  font-size: 14px;
-  outline: none;
-  box-sizing: border-box;
-  transition: border-color 0.2s;
-}
-.form-input:focus {
-  border-color: var(--mb-azul);
-}
-.form-input.invalid {
-  border-color: var(--mb-vinho);
-}
-.form-textarea {
-  resize: vertical;
-  min-height: 96px;
-}
-.form-erro {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  color: var(--mb-vinho);
-  letter-spacing: 0.1em;
-  margin-top: 6px;
-  min-height: 12px;
-}
-
-.form-checks {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-.form-check {
-  padding: 8px 14px;
-  background: var(--mb-bg-deep);
-  border: 1px solid var(--mb-line);
-  color: var(--mb-paper-dim);
-  font-family: var(--font-sans);
-  font-size: 12px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  transition:
-    border-color 0.2s,
-    color 0.2s;
-}
-.form-check:hover {
-  border-color: var(--mb-vinho);
-  color: var(--mb-paper);
-}
-.form-check input[type='checkbox'] {
-  accent-color: var(--mb-vinho);
-}
-
-.form-sucesso {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  color: var(--mb-green);
-  letter-spacing: 0.15em;
-  text-align: center;
-  padding: 12px;
-  border: 1px dashed var(--mb-green);
-  margin-top: 4px;
-}
-.form-disclaimer {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  color: var(--mb-muted);
-  letter-spacing: 0.15em;
-  text-align: center;
-  margin-top: 4px;
-}
-
-/* ================================================================
    4. MAPA / LOCALIZAÇÃO
    ================================================================ */
 .contato-mapa {
-  background: var(--mb-bg-soft);
+  background: var(--mb-bg);
   padding: 80px 48px;
+}
+.contato-mapa iframe {
+  border: 0;
 }
 .contato-mapa-img {
   position: relative;
   aspect-ratio: 16 / 6;
 }
-
-/* ===== Substituem inline styles do contato.html =====
-   - .contato-info-key.is-X colore o label da linha de contato
-   - .contato-form .cartao__faixa fixa cor vinho do formulário
-   - .contato-mapa-img .* colore o placeholder/moldura azul do mapa
-   - .form-submit-btn ajusta o botão final do formulário
-   - .contato-mapa iframe remove a borda padrão */
-
-.contato-info-key.is-whatsapp {
-  color: var(--mb-green);
-}
-.contato-info-key.is-email {
-  color: var(--mb-azul);
-}
-.contato-info-key.is-endereco {
-  color: var(--mb-ouro);
-}
-.contato-info-key.is-horario {
-  color: var(--mb-vinho);
-}
-
-.contato-form .cartao__faixa {
-  background: var(--mb-vinho);
-  box-shadow: 0 0 20px rgba(196, 75, 85, 0.5);
-}
-
+/* Placeholder/moldura azul do mapa (substitui inline styles do HTML) */
 .contato-mapa-img .imagem__gradiente {
   background: linear-gradient(
     135deg,
@@ -351,15 +204,6 @@
   border-color: rgba(74, 139, 214, 0.3);
 }
 
-.form-submit-btn {
-  justify-content: center;
-  margin-top: 6px;
-}
-
-.contato-mapa iframe {
-  border: 0;
-}
-
 /* ================================================================
    5. MEDIA QUERIES MOBILE
    Ponto de quebra: 900px
@@ -370,7 +214,6 @@
     padding: 48px 20px 72px;
   }
   .contato-grid {
-    grid-template-columns: 1fr;
     gap: 32px;
   }
   .contato-hero-title {
@@ -380,7 +223,13 @@
     font-size: 15px;
   }
 
-  /* Info */
+  /* Bloco de dados */
+  .contato-dados {
+    padding: 56px 20px;
+  }
+  .contato-dados-cartao {
+    padding: 24px;
+  }
   .contato-info {
     margin-top: 32px;
   }
@@ -390,14 +239,6 @@
   }
   .contato-info-val {
     font-size: 14px;
-  }
-
-  /* Formulário */
-  .contato-form {
-    padding: 24px;
-  }
-  .form-titulo {
-    font-size: 22px;
   }
 
   /* Mapa */
