@@ -35,7 +35,7 @@
   line-height: 0.88;
   letter-spacing: -0.02em;
   color: var(--mb-paper);
-  margin: 32px 0 0;
+  margin: 0;
 }
 .sobre-hero-lead {
   font-family: var(--font-sans);

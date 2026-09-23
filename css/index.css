@@ -38,18 +38,18 @@
 
     background-image:
       repeating-linear-gradient(
-      0deg,
-      rgba(255, 255, 255, 0.015) 0px,
-      rgba(255, 255, 255, 0.015) 1px,
-      transparent 1px,
-      transparent 4px
+        0deg,
+        rgba(255, 255, 255, 0.015) 0px,
+        rgba(255, 255, 255, 0.015) 1px,
+        transparent 1px,
+        transparent 4px
       ),
       repeating-linear-gradient(
-      90deg,
-      rgba(255, 255, 255, 0.015) 0px,
-      rgba(255, 255, 255, 0.015) 1px,
-      transparent 1px,
-      transparent 4px
+        90deg,
+        rgba(255, 255, 255, 0.015) 0px,
+        rgba(255, 255, 255, 0.015) 1px,
+        transparent 1px,
+        transparent 4px
       );
 
     pointer-events: none;
@@ -70,7 +70,7 @@
         circle,
         rgba(0, 120, 255, 0.25),
         transparent 70%
-        );
+      );
       top: -120px;
       left: -120px;
     }
@@ -80,7 +80,7 @@
         circle,
         rgba(180, 0, 60, 0.25),
         transparent 70%
-        );
+      );
       bottom: -120px;
       right: -120px;
     }
@@ -144,8 +144,8 @@
   }
 
   & .principal__titulo-master,
-    & .principal__titulo-bord,
-    & .principal__titulo-logo {
+  & .principal__titulo-bord,
+  & .principal__titulo-logo {
     display: block;
     background-color: currentColor;
     -webkit-mask-repeat: no-repeat;
@@ -380,7 +380,7 @@
   &
     .galeria-3d__item.galeria-3d__item--etiqueta:hover
     .galeria-3d__imagem::before,
-    &
+  &
     .galeria-3d__item.galeria-3d__item--etiqueta:focus-visible
     .galeria-3d__imagem::before {
     box-shadow: inset 0 0 0 2px var(--mb-azul);
@@ -389,14 +389,14 @@
   &
     .galeria-3d__item.galeria-3d__item--bordado:hover
     .galeria-3d__imagem::before,
-    &
+  &
     .galeria-3d__item.galeria-3d__item--bordado:focus-visible
     .galeria-3d__imagem::before {
     box-shadow: inset 0 0 0 2px var(--mb-vinho);
   }
 
   & .galeria-3d__item.galeria-3d__item--laser:hover .galeria-3d__imagem::before,
-    &
+  &
     .galeria-3d__item.galeria-3d__item--laser:focus-visible
     .galeria-3d__imagem::before {
     box-shadow: inset 0 0 0 2px var(--mb-ouro);
@@ -432,7 +432,7 @@
       rgba(0, 0, 0, 0.85) 0%,
       rgba(0, 0, 0, 0.25) 45%,
       transparent 75%
-      );
+    );
   }
 
   /* Moldura interna usada pelo hover/foco (não interfere na emenda) */
@@ -552,6 +552,7 @@
       font-size: 14px;
       line-height: 1.65;
       color: var(--mb-muted);
+      text-align: center;
     }
   }
 
@@ -675,7 +676,7 @@
 
     /* Mosaicos de etiquetas: 3x2 e 4x2 */
     &.publico__foto--grade6,
-      &.publico__foto--grade8 {
+    &.publico__foto--grade8 {
       display: grid;
       gap: 4px;
       padding: 14px;
@@ -717,6 +718,7 @@
     display: flex;
     flex-flow: column;
     gap: 1.2rem;
+    text-align: center;
   }
 
   & .publico__bloco {
@@ -881,7 +883,7 @@
 }
 @keyframes conector-seta {
   0%,
-    100% {
+  100% {
     transform: translateY(0);
   }
   50% {
@@ -909,7 +911,7 @@
   & .historia__anos {
     display: grid;
     grid-template-columns: 1fr 1.15fr; /* "30 anos" à esquerda, texto à direita */
-      align-items: center;
+    align-items: center;
     gap: 4rem;
     margin-top: 4.8rem;
   }
@@ -943,7 +945,7 @@
     line-height: 1;
     letter-spacing: 0.35em;
     padding-left: 0.35em; /* compensa o espaçamento da última letra */
-      text-transform: uppercase;
+    text-transform: uppercase;
     color: var(--mb-paper-dim);
     margin: 8px 0 0;
   }
@@ -953,12 +955,12 @@
     flex-direction: column;
     justify-content: center;
     gap: 28px; /* espaço entre os parágrafos */
-      max-width: 56rem;
+    max-width: 56rem;
   }
 
   & .historia__cartao .historia__texto p {
     margin: 0; /* o gap controla o espaçamento */
-      font-size: 17px;
+    font-size: 17px;
     line-height: 1.6;
     text-align: left;
     color: var(--mb-muted);
@@ -992,7 +994,7 @@
   @media (max-width: 768px) {
     & .historia__anos {
       grid-template-columns: 1fr; /* empilha no mobile */
-        gap: 32px;
+      gap: 32px;
       margin-top: 24px;
     }
     & .historia__numero.titulo {
@@ -1037,6 +1039,8 @@
   /* Margin-bottom da section-head dos depoimentos (era inline style, só no index) */
   & .depoimentos__cabecalho {
     margin-bottom: 48px;
+    /* Centraliza o titulo (nao esta dentro de .intro, que faria isso) */
+    text-align: center;
   }
 
   & .depoimentos__grade {
@@ -1162,13 +1166,13 @@
 
   & .depoimento__avatar {
     width: 56px; /* aumentado de 38 pra 56 — foto fica reconhecível */
-      height: 56px;
+    height: 56px;
     border-radius: 50%;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     border: 2px solid var(--mb-line); /* moldura sutil */
-      flex-shrink: 0; /* evita esmagar quando o nome do cliente é longo */
+    flex-shrink: 0; /* evita esmagar quando o nome do cliente é longo */
   }
 
   /* Foto de cada cliente — uma classe por pessoa */
@@ -1206,7 +1210,7 @@
     transform: scale(1.1);
     border-color: var(
       --mb-ouro
-      ); /* moldura dourada no hover (parecido com depoimento) */
+    ); /* moldura dourada no hover (parecido com depoimento) */
   }
 
   @media (max-width: 900px) {
@@ -1227,10 +1231,10 @@
   border-bottom: 1px solid var(--mb-line);
   display: flex;
   flex-direction: column; /* MUDANÇA CHAVE: label fica em cima */
-    align-items: center;
+  align-items: center;
   gap: 24px;
   overflow: hidden; /* impede scroll horizontal do site */
-    position: relative;
+  position: relative;
 
   & .marcas__tag {
     font-family: var(--font-display) !important;
@@ -1246,7 +1250,7 @@
     width: 100%;
     position: relative;
     overflow: visible; /* tooltips precisam vazar verticalmente */
-      min-width: 0;
+    min-width: 0;
   }
 
   /* GRADIENTES laterais REMOVIDOS — criavam fade-in/fade-out percebido
@@ -1254,7 +1258,7 @@
      transição entre o último e o primeiro fica visualmente uniforme,
      idêntica a qualquer transição entre duas logos consecutivas. */
   & .marcas__trilho::before,
-    & .marcas__trilho::after {
+  & .marcas__trilho::after {
     display: none;
   }
 
@@ -1267,7 +1271,7 @@
     /* APAGA: animation: marcas-rolagem 40s linear infinite; */
     /* APAGA: padding: 10px 35px; */
     padding: 10px 0; /* mantém só vertical */
-      will-change: transform; /* otimização de performance */
+    will-change: transform; /* otimização de performance */
   }
 
   & .marcas__lista .marcas__item {
@@ -1283,7 +1287,7 @@
   & .marcas__item {
     display: block;
     position: relative; /* IMPORTANTE: tooltip se ancora aqui */
-      width: clamp(48px, 5vw, 72px);
+    width: clamp(48px, 5vw, 72px);
     height: clamp(48px, 5vw, 72px);
     border-radius: 50%;
     background-size: cover;
@@ -1313,8 +1317,8 @@
     position: absolute;
     top: calc(
       100% + 8px
-      ); /* MUDOU: era bottom, agora top — tooltip vai PRA BAIXO */
-      left: 50%;
+    ); /* MUDOU: era bottom, agora top — tooltip vai PRA BAIXO */
+    left: 50%;
     transform: translateX(-50%);
     padding: 6px 12px;
     background: var(--mb-bg-deep);
@@ -1504,6 +1508,7 @@
     font-size: 15px;
     line-height: 1.75;
     color: var(--mb-muted);
+    text-align: center;
   }
 
   & .promessa__cartao em {
@@ -1536,7 +1541,7 @@
       180deg,
       rgba(212, 169, 106, 0.1) 0%,
       rgba(212, 169, 106, 0.02) 100%
-      );
+    );
   }
 
   & .promessa__destaque-numero {
@@ -1568,7 +1573,7 @@
     }
     & .promessa__seta {
       transform: rotate(90deg); /* vira ↓ no empilhado */
-        font-size: 26px;
+      font-size: 26px;
     }
     & .promessa__cartao {
       padding: 28px 22px;
@@ -1705,7 +1710,7 @@
     display: flex;
     flex-direction: column;
     align-items: stretch; /* cada card ocupa a largura toda */
-      gap: 12px;
+    gap: 12px;
     width: 100%;
     margin: 0; /* último bloco da seção — sem margem embaixo */
   }
@@ -1811,7 +1816,7 @@
   }
 
   & .objecao__sinal::before,
-    & .objecao__sinal::after {
+  & .objecao__sinal::after {
     content: '';
     position: absolute;
     top: 50%;
@@ -1828,7 +1833,7 @@
   }
 
   &:hover .objecao__sinal,
-    &[open] .objecao__sinal {
+  &[open] .objecao__sinal {
     border-color: var(--objecao-cor);
   }
 
@@ -1870,7 +1875,7 @@
 
   @media (prefers-reduced-motion: reduce) {
     &,
-      & .objecao__sinal {
+    & .objecao__sinal {
       transition: none;
     }
     &:hover {
@@ -1954,6 +1959,7 @@
     font-size: 14.5px;
     line-height: 1.7;
     color: var(--mb-muted);
+    text-align: center;
   }
 
   /* ---- Risco de esperar (vinho) ---- */
@@ -2112,7 +2118,7 @@
   & .comparativo__itens {
     margin: 0;
     flex: 1; /* ocupa a altura que sobra no cartão */
-      display: flex;
+    display: flex;
     flex-direction: column;
     gap: 18px;
   }
@@ -2172,9 +2178,9 @@
       margin-bottom: 28px;
 
       & > .comparativo__cartao:nth-child(1),
-        & > .comparativo__cartao:nth-child(2),
-        & > .comparativo__cartao--nosso,
-        & > .custo {
+      & > .comparativo__cartao:nth-child(2),
+      & > .comparativo__cartao--nosso,
+      & > .custo {
         grid-column: auto;
         grid-row: auto;
       }
@@ -2403,7 +2409,7 @@
   }
 
   & .perguntas__sinal::before,
-    & .perguntas__sinal::after {
+  & .perguntas__sinal::after {
     content: '';
     position: absolute;
     top: 50%;
@@ -2515,7 +2521,7 @@
       ellipse at center,
       rgba(74, 139, 214, 0.22),
       transparent 70%
-      );
+    );
     filter: blur(80px);
     pointer-events: none;
     z-index: 0;
@@ -2556,4 +2562,3 @@
     }
   }
 }
-

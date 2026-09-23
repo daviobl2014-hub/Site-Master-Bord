@@ -704,7 +704,7 @@ img {
   line-height: 0.95;
   letter-spacing: -0.02em;
   color: var(--mb-paper);
-  text-align: center;
+  /* text-align: center; */
 
   &.titulo--enorme {
     font-size: 84px;
@@ -744,7 +744,7 @@ img {
   padding: 24px 12px;
   position: relative;
   overflow: hidden;
-  text-align: center;
+  /* text-align: center; */
 
   & .cartao__faixa {
     position: absolute;

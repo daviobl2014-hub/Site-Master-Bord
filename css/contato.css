@@ -75,7 +75,7 @@
   line-height: 0.9;
   letter-spacing: -0.02em;
   color: var(--mb-paper);
-  margin: 16px 0 0;
+  margin: 0;
 }
 .contato-hero-lead {
   font-family: var(--font-sans);
@@ -187,7 +187,6 @@
 /* precisa ajusta esse formulario a principio ele vai sumir mais vamos ser modificado */
 
 .contato-form {
-  display: none !important;
   padding: 32px;
   display: flex;
   flex-direction: column;
