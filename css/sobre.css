@@ -62,7 +62,7 @@
 .timeline-line {
   position: absolute;
   top: 6px;
-  left: 5%;
+  left: 0;
   right: 5%;
   height: 2px;
   background: var(--mb-line);
@@ -125,7 +125,7 @@
 }
 .timeline-desc {
   font-family: var(--font-sans);
-  font-size: 13px;
+  font-size: 1.33rem;
   color: var(--mb-muted);
   line-height: 1.5;
   margin-top: 8px;
@@ -391,12 +391,19 @@
 }
 
 .infra-stats {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
   gap: 20px;
   margin-top: 48px;
   padding-top: 36px;
   border-top: 1px solid var(--mb-line);
+}
+
+.infra-stat {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
 }
 .infra-stat-num {
   font-family: var(--font-display);
@@ -404,6 +411,7 @@
   font-size: 44px;
   line-height: 1;
   letter-spacing: -0.02em;
+  margin-right: 1.02rem;
 }
 .infra-stat-num.azul {
   color: var(--mb-azul);

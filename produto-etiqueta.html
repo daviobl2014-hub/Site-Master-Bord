@@ -254,70 +254,6 @@
     </section>
 
     <!-- ================================================================
-       SPECS — ficha técnica
-       ================================================================ -->
-    <!-- <section class="produto-specs">
-      <div class="produto-specs-grid">
-        <div>
-          <div class="espacador"></div>
-          <h2 class="titulo titulo--grande">
-            A ficha <span class="cor-produto">técnica</span>
-          </h2>
-          <p class="produto-specs-intro">
-            Valores-padrão. Projetos fora desses limites: converse com a equipe
-            de engenharia.
-          </p>
-        </div>
-
-        <div class="cartao produto-specs-card">
-          <div class="cartao__faixa bg-cor-produto"></div>
-          <div class="produto-specs-cols">
-            <div>
-              <div class="spec-row">
-                <div class="spec-key">Tecido base</div>
-                <div class="spec-val">Tecida · 100% Poliéster</div>
-              </div>
-              <div class="spec-row">
-                <div class="spec-key">largura</div>
-                <div class="spec-val">09mm a 200mm</div>
-              </div>
-              <div class="spec-row">
-                <div class="spec-key">cores</div>
-                <div class="spec-val">Fundo + 7 Cores : 8 Simultâneas</div>
-              </div>
-              <div class="spec-row">
-                <div class="spec-key">definição</div>
-                <div class="spec-val">Super Batidas · Tafétas</div>
-              </div>
-            </div>
-            <div>
-              <div class="spec-row">
-                <div class="spec-key">acabamento</div>
-                <div class="spec-val">Só Corte ou Dobras</div>
-              </div>
-              <div class="spec-row">
-                <div class="spec-key">lote mínimo</div>
-                <div class="spec-val">1000 Unidades</div>
-              </div>
-              <div class="spec-row">
-                <div class="spec-key">prazo</div>
-                <div class="spec-val">20 a 30 Dias</div>
-              </div>
-              <div class="spec-row">
-                <div class="spec-key">Durabilidade</div>
-                <div class="spec-val">Resistente ao Uso Diário</div>
-              </div>
-            </div>
-          </div>
-          <div class="produto-specs-rodape">
-            <span>Master Bord</span>
-            <span class="versao">2026</span>
-          </div>
-        </div>
-      </div>
-    </section> -->
-
-    <!-- ================================================================
        APLICAÇÕES — onde vai bem
        ================================================================ -->
     <section class="produto-aplicacoes">
@@ -328,87 +264,108 @@
         </h2>
       </div>
 
-      <div class="produto-aplicacoes-grid">
-        <div class="imagem produto-aplicacao">
-          <div class="imagem__gradiente"></div>
-          <div class="imagem__padrao"></div>
-          <div class="imagem__moldura">
-            <img
-              src="img/Etiquetas/palito-3.webp"
-              alt="Etiqueta tipo palito aplicada na peça"
-              width="900"
-              height="900"
-              loading="lazy"
-              decoding="async"
-            />
-          </div>
+      <div class="carrossel">
+        <button
+          class="carrossel__seta carrossel__seta--anterior carrossel__seta--azul"
+          type="button"
+          aria-label="Imagem anterior"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M15 18l-6-6 6-6" />
+          </svg>
+        </button>
 
-          <div class="produto-aplicacao-titulo">Vestuário</div>
-        </div>
-        <div class="imagem produto-aplicacao">
-          <div class="imagem__gradiente"></div>
-          <div class="imagem__padrao"></div>
-          <div class="imagem__moldura">
-            <img
-              src="img/Etiquetas/gola-1.webp"
-              alt="Etiqueta de gola em peça de vestuário"
-              width="900"
-              height="900"
-              loading="lazy"
-              decoding="async"
-            />
-          </div>
+        <div class="carrossel__trilho">
+          <div class="imagem produto-aplicacao carrossel__item">
+            <div class="imagem__gradiente"></div>
+            <div class="imagem__padrao"></div>
+            <div class="imagem__moldura">
+              <img
+                src="img/Etiquetas/palito-3.webp"
+                alt="Etiqueta tipo palito aplicada na peça"
+                width="900"
+                height="900"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
 
-          <div class="produto-aplicacao-titulo">Uniformes</div>
-        </div>
-        <div class="imagem produto-aplicacao">
-          <div class="imagem__gradiente"></div>
-          <div class="imagem__padrao"></div>
-          <div class="imagem__moldura">
-            <img
-              src="img/Etiquetas/so-corte.webp"
-              alt="Etiqueta aplicada em uniforme"
-              width="900"
-              height="900"
-              loading="lazy"
-              decoding="async"
-            />
+            <div class="produto-aplicacao-titulo">Vestuário</div>
           </div>
+          <div class="imagem produto-aplicacao carrossel__item">
+            <div class="imagem__gradiente"></div>
+            <div class="imagem__padrao"></div>
+            <div class="imagem__moldura">
+              <img
+                src="img/Etiquetas/gola-1.webp"
+                alt="Etiqueta de gola em peça de vestuário"
+                width="900"
+                height="900"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
 
-          <div class="produto-aplicacao-titulo">Acessórios</div>
-        </div>
-        <div class="imagem produto-aplicacao">
-          <div class="imagem__gradiente"></div>
-          <div class="imagem__padrao"></div>
-          <div class="imagem__moldura">
-            <img
-              src="img/Etiquetas/decoracao.png"
-              alt="Etiqueta em acessório"
-              width="900"
-              height="900"
-              loading="lazy"
-              decoding="async"
-            />
+            <div class="produto-aplicacao-titulo">Uniformes</div>
           </div>
+          <div class="imagem produto-aplicacao carrossel__item">
+            <div class="imagem__gradiente"></div>
+            <div class="imagem__padrao"></div>
+            <div class="imagem__moldura">
+              <img
+                src="img/Etiquetas/so-corte.webp"
+                alt="Etiqueta aplicada em uniforme"
+                width="900"
+                height="900"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
 
-          <div class="produto-aplicacao-titulo">Decoração</div>
-        </div>
-        <div class="imagem produto-aplicacao">
-          <div class="imagem__gradiente"></div>
-          <div class="imagem__padrao"></div>
-          <div class="imagem__moldura">
-            <img
-              src="img/Etiquetas/bolsa-artenasal.png"
-              alt="Etiqueta lateral em item de decoração"
-              width="900"
-              height="900"
-              loading="lazy"
-              decoding="async"
-            />
+            <div class="produto-aplicacao-titulo">Acessórios</div>
           </div>
+          <div class="imagem produto-aplicacao carrossel__item">
+            <div class="imagem__gradiente"></div>
+            <div class="imagem__padrao"></div>
+            <div class="imagem__moldura">
+              <img
+                src="img/Etiquetas/decoracao.png"
+                alt="Etiqueta em acessório"
+                width="900"
+                height="900"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
 
-          <div class="produto-aplicacao-titulo">Produtos artesanais</div>
+            <div class="produto-aplicacao-titulo">Decoração</div>
+          </div>
+          <div class="imagem produto-aplicacao carrossel__item">
+            <div class="imagem__gradiente"></div>
+            <div class="imagem__padrao"></div>
+            <div class="imagem__moldura">
+              <img
+                src="img/Etiquetas/bolsa-artenasal.png"
+                alt="Etiqueta lateral em item de decoração"
+                width="900"
+                height="900"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+
+            <div class="produto-aplicacao-titulo">Produtos artesanais</div>
+          </div>
         </div>
+        <button
+          class="carrossel__seta carrossel__seta--proxima carrossel__seta--azul"
+          type="button"
+          aria-label="Próxima imagem"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M9 6l6 6-6 6" />
+          </svg>
+        </button>
       </div>
     </section>
 

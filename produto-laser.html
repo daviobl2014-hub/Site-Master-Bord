@@ -254,72 +254,6 @@
     </section>
 
     <!-- ================================================================
-       SPECS — ficha técnica
-       ================================================================ -->
-    <!-- <section class="produto-specs">
-      <div class="produto-specs-grid">
-        <div>
-          <div class="espacador"></div>
-          <h2 class="titulo titulo--grande">
-            A ficha <span class="cor-produto">técnica</span>
-          </h2>
-          <p class="produto-specs-intro">
-            Valores-padrão. Projetos fora desses limites: converse com a equipe
-            de engenharia.
-          </p>
-        </div>
-
-        <div class="cartao produto-specs-card">
-          <div class="cartao__faixa bg-cor-produto"></div>
-          <div class="produto-specs-cols">
-            <div>
-              <div class="spec-row">
-                <div class="spec-key">precisão</div>
-                <div class="spec-val">0,1 mm</div>
-              </div>
-              <div class="spec-row">
-                <div class="spec-key">área útil</div>
-                <div class="spec-val">90 × 60 cm</div>
-              </div>
-              <div class="spec-row">
-                <div class="spec-key">materiais</div>
-                <div class="spec-val">
-                  couro · sintético · tecido · acrílico
-                </div>
-              </div>
-              <div class="spec-row">
-                <div class="spec-key">espessura</div>
-                <div class="spec-val">0,1 a 6 mm</div>
-              </div>
-            </div>
-            <div>
-              <div class="spec-row">
-                <div class="spec-key">formas</div>
-                <div class="spec-val">livres · vetoriais</div>
-              </div>
-              <div class="spec-row">
-                <div class="spec-key">acabamento</div>
-                <div class="spec-val">bordas seladas</div>
-              </div>
-              <div class="spec-row">
-                <div class="spec-key">lote mínimo</div>
-                <div class="spec-val">50 peças</div>
-              </div>
-              <div class="spec-row">
-                <div class="spec-key">prazo</div>
-                <div class="spec-val">3 a 8 dias úteis</div>
-              </div>
-            </div>
-          </div>
-          <div class="produto-specs-rodape">
-            <span>Master Bord</span>
-            <span class="versao">2026</span>
-          </div>
-        </div>
-      </div>
-    </section> -->
-
-    <!-- ================================================================
        APLICAÇÕES — onde vai bem
        ================================================================ -->
     <section class="produto-aplicacoes">
@@ -330,77 +264,103 @@
         </h2>
       </div>
 
-      <div class="produto-aplicacoes-grid">
-        <div class="imagem produto-aplicacao">
-          <div class="imagem__gradiente"></div>
-          <div class="imagem__padrao"></div>
-          <div class="imagem__moldura">
-            <img
-              src="img/patch/patch-socorrista.png"
-              alt="Patch com borda selada a laser"
-              width="900"
-              height="900"
-              loading="lazy"
-              decoding="async"
-            />
+      <div class="carrossel">
+        <button
+          class="carrossel__seta carrossel__seta--anterior carrossel__seta--ouro"
+          type="button"
+          aria-label="Imagem anterior"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M15 18l-6-6 6-6" />
+          </svg>
+        </button>
+
+        <div class="carrossel__trilho">
+          <div class="imagem produto-aplicacao carrossel__item">
+            <div class="imagem__gradiente"></div>
+            <div class="imagem__padrao"></div>
+            <div class="imagem__moldura">
+              <img
+                src="img/patch/patch-socorrista.png"
+                alt="Patch socorrista aplicado em bolsa"
+                width="900"
+                height="900"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="produto-aplicacao-titulo">Patches</div>
           </div>
-          <div class="produto-aplicacao-titulo">Patches</div>
-        </div>
-        <div class="imagem produto-aplicacao">
-          <div class="imagem__gradiente"></div>
-          <div class="imagem__padrao"></div>
-          <div class="imagem__moldura">
-            <img
-              src="img/patch/kimono-1.webp"
-              alt="Patch aplicado em kimono de jiu-jitsu"
-              width="900"
-              height="900"
-              loading="lazy"
-              decoding="async"
-            />
+          <div class="imagem produto-aplicacao carrossel__item">
+            <div class="imagem__gradiente"></div>
+            <div class="imagem__padrao"></div>
+            <div class="imagem__moldura">
+              <img
+                src="img/patch/kimono-1.webp"
+                alt="Patch aplicado em kimono de jiu-jitsu"
+                width="900"
+                height="900"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+
+            <div class="produto-aplicacao-titulo">Kimonos</div>
           </div>
 
-          <div class="produto-aplicacao-titulo">Kimonos</div>
-        </div>
-        <div class="imagem produto-aplicacao">
-          <div class="imagem__gradiente"></div>
-          <div class="imagem__padrao"></div>
-          <div class="imagem__moldura">
-            <img
-              src="img/patch/patch-termocolante.webp"
-              alt="Patch termocolante pronto para aplicação"
-              width="900"
-              height="900"
-              loading="lazy"
-              decoding="async"
-            />
+          <div class="imagem produto-aplicacao carrossel__item">
+            <div class="imagem__gradiente"></div>
+            <div class="imagem__padrao"></div>
+            <div class="imagem__moldura">
+              <img
+                src="img/patch/bolsa-clutch.png"
+                alt="bolsa pequena de mao com Laser cutting"
+              />
+            </div>
+            <div class="produto-aplicacao-titulo">Clutch</div>
           </div>
 
-          <div class="produto-aplicacao-titulo">Uniformes</div>
-        </div>
-        <div class="imagem produto-aplicacao">
-          <div class="imagem__gradiente"></div>
-          <div class="imagem__padrao"></div>
-          <div class="imagem__moldura">
-            <img
-              src="img/patch/pach-bordado-1.webp"
-              alt="Patch bordado aplicado em uniforme"
-              width="900"
-              height="900"
-              loading="lazy"
-              decoding="async"
-            />
+          <div class="imagem produto-aplicacao carrossel__item">
+            <div class="imagem__gradiente"></div>
+            <div class="imagem__padrao"></div>
+            <div class="imagem__moldura">
+              <img
+                src="img/patch/patch-termocolante.webp"
+                alt="Patch termocolante pronto para aplicação"
+                width="900"
+                height="900"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+
+            <div class="produto-aplicacao-titulo">Uniformes</div>
           </div>
-          <div class="produto-aplicacao-titulo">Jerseys</div>
-        </div>
-        <div class="imagem produto-aplicacao">
-          <div class="imagem__gradiente"></div>
-          <div class="imagem__padrao"></div>
-          <div class="imagem__moldura">
-            <img src="img/patch/close da clutch.png" alt="" />
+          <div class="imagem produto-aplicacao carrossel__item">
+            <div class="imagem__gradiente"></div>
+            <div class="imagem__padrao"></div>
+            <div class="imagem__moldura">
+              <img
+                src="img/patch/pach-bordado-1.webp"
+                alt="Patch bordado aplicado em uniforme"
+                width="900"
+                height="900"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="produto-aplicacao-titulo">Jerseys</div>
           </div>
-          <div class="produto-aplicacao-titulo">Clutch</div>
         </div>
+        <button
+          class="carrossel__seta carrossel__seta--proxima carrossel__seta--ouro"
+          type="button"
+          aria-label="Próxima imagem"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M9 6l6 6-6 6" />
+          </svg>
+        </button>
       </div>
     </section>
 
