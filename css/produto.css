@@ -364,7 +364,7 @@ body[data-cor='ouro'] .produto-aplicacao .imagem__padrao {
 }
 
 .caixa__texto {
-  padding: 2rem;
+  padding: 0 2rem;
 }
 
 .produto-relacionado-nome {
