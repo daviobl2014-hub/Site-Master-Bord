@@ -18,7 +18,7 @@
    Muda o fundo do header pra translúcido com blur quando
    o usuário rola mais de 20 pixels pra baixo.
    ================================================================ */
-(function() {
+(function () {
   const header = document.getElementById('mbHeader');
 
   // Se não achou o header, não faz nada (página sem header)
@@ -53,11 +53,50 @@
   function medir() {
     document.documentElement.style.setProperty(
       '--altura-cabecalho',
-      cabecalho.offsetHeight + 'px'
+      cabecalho.offsetHeight + 'px',
     );
   }
 
   medir();
   window.addEventListener('load', medir);
   window.addEventListener('resize', medir);
+})();
+
+/* ================================================================
+   3. CARROSSEL COM SETAS
+   Cada clique rola exatamente 1 item (largura do item + gap).
+   Desabilita a seta quando chega no começo/fim.
+   ================================================================ */
+(function () {
+  const carrosseis = document.querySelectorAll('.carrossel');
+
+  carrosseis.forEach(function (carrossel) {
+    const trilho = carrossel.querySelector('.carrossel__trilho');
+    const anterior = carrossel.querySelector('.carrossel__seta--anterior');
+    const proxima = carrossel.querySelector('.carrossel__seta--proxima');
+    if (!trilho || !anterior || !proxima) return;
+
+    function passo() {
+      const item = trilho.querySelector('.carrossel__item');
+      const gap = parseFloat(getComputedStyle(trilho).gap) || 0;
+      return item.getBoundingClientRect().width + gap;
+    }
+
+    function atualizarSetas() {
+      const fim = trilho.scrollWidth - trilho.clientWidth;
+      anterior.disabled = trilho.scrollLeft <= 1;
+      proxima.disabled = trilho.scrollLeft >= fim - 1;
+    }
+
+    anterior.addEventListener('click', function () {
+      trilho.scrollBy({ left: -passo() });
+    });
+    proxima.addEventListener('click', function () {
+      trilho.scrollBy({ left: passo() });
+    });
+
+    trilho.addEventListener('scroll', atualizarSetas, { passive: true });
+    window.addEventListener('resize', atualizarSetas);
+    atualizarSetas();
+  });
 })();

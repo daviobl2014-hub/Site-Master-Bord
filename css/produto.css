@@ -167,25 +167,20 @@ body[data-cor='ouro'] {
 }
 .produto-hero-img-sample {
   position: absolute;
-  bottom: 20px;
-  left: 20px;
-  right: 20px;
-  padding: 10px 20px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0.52rem 2rem;
   background: rgba(15, 17, 22, 0.6);
   backdrop-filter: blur(10px);
 }
-.produto-hero-img-sample-cod {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  color: var(--cor-produto);
-  letter-spacing: 0.2em;
-}
+
 .produto-hero-img-sample-txt {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 20px;
+  font-size: 2rem;
   color: var(--mb-paper);
-  margin-top: 4px;
+  margin: 0.21rem;
 }
 
 /* ================================================================
@@ -266,30 +261,22 @@ body[data-cor='ouro'] {
   color: var(--mb-paper);
   padding: 96px 48px;
 }
-.produto-aplicacoes-grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 16px;
-}
-.produto-aplicacao {
-  position: relative;
-  aspect-ratio: 1 / 1;
-}
+
 .produto-aplicacao-titulo {
   position: absolute;
-  bottom: 14px;
-  left: 14px;
+  bottom: 0px;
+  left: 0px;
   right: auto;
-  max-width: calc(100% - 28px);
-  padding: 8px 16px;
+  max-width: calc(100% - 2.8rem);
+  padding: 0.82rem 1.6rem;
   background: rgba(15, 17, 22, 0.6);
   backdrop-filter: blur(10px);
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 17px;
+  font-size: 1.92rem;
   color: var(--mb-paper);
   line-height: 1.1;
-  letter-spacing: -0.01em;
+  letter-spacing: 0.15em;
 }
 
 /* ===== Coloração via --cor-produto-rgb (substituem todos os style="" inline)
@@ -373,10 +360,10 @@ body[data-cor='ouro'] .produto-aplicacao .imagem__padrao {
   font-size: 4.89rem;
   color: var(--mb-paper);
   margin-top: 6px;
-  letter-spacing: -0.01em;
 }
 .produto-relacionado-link {
-  margin-top: 14px;
+  margin-left: 1.02rem;
+  margin-top: 1.28rem;
   font-family: var(--font-mono);
   font-size: 1.6rem;
   letter-spacing: 0.15em;
@@ -462,10 +449,18 @@ body[data-cor='ouro'] .produto-aplicacao .imagem__padrao {
   .produto-aplicacoes {
     padding: 56px 20px;
   }
-  .produto-aplicacoes-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
+
+  .carrossel {
+    --cards: 1;
+    --carrossel-gap: 12px;
   }
+  .carrossel__seta--anterior {
+    left: 8px;
+  }
+  .carrossel__seta--proxima {
+    right: 8px;
+  }
+
   .produto-aplicacao-titulo {
     bottom: 10px;
     left: 10px;

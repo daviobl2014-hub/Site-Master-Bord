@@ -914,3 +914,110 @@ img {
 .espacador {
   height: 12px;
 }
+
+/* ================================================================
+     CARROSSEL — modelo reutilizável
+   --cards = quantos itens aparecem por vez
+   --carrossel-gap = espaço entre os itens
+   ================================================================ */
+
+.carrossel {
+  --cards: 3;
+  --carrossel-gap: 16px;
+  position: relative;
+}
+
+.carrossel__trilho {
+  display: flex;
+  gap: var(--carrossel-gap);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none; /* Firefox */
+}
+
+.carrossel__trilho::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
+/* Largura de cada item = (container − gaps) ÷ cards */
+
+.carrossel__item {
+  flex: 0 0
+    calc((100% - var(--carrossel-gap) * (var(--cards) - 1)) / var(--cards));
+
+  aspect-ratio: 1 / 1;
+  scroll-snap-align: start;
+}
+
+/* Setas nas beiradas, centralizadas na vertical */
+.carrossel__seta {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  width: 4.8rem;
+  height: 4.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1px solid var(--mb-line);
+  background: rgba(15, 17, 22, 0.8);
+  color: var(--mb-paper);
+  cursor: pointer;
+  transform: translateY(-50%);
+  transition:
+    opacity 0.3s ease-in,
+    background 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.carrossel__seta--anterior {
+  left: -24px;
+}
+.carrossel__seta--proxima {
+  right: -24px;
+}
+
+.carrossel__seta svg {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.carrossel__seta:hover {
+  border-color: var(--mb-paper);
+}
+.carrossel__seta:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.carrossel__seta--vinho {
+  background: rgba(196, 75, 85, 0.3);
+  border-color: var(--mb-vinho);
+  &:hover {
+    border-color: rgba(196, 75, 85, 0.8);
+    background: rgba(196, 75, 85, 0.8);
+  }
+}
+
+.carrossel__seta--azul {
+  background: rgba(74, 139, 214, 0.3);
+  border-color: var(--mb-azul);
+  &:hover {
+    border-color: rgba(74, 139, 214, 0.8);
+    background: rgba(74, 139, 214, 0.8);
+  }
+}
+
+.carrossel__seta--ouro {
+  background: rgba(212, 169, 106, 0.3);
+  border-color: var(--mb-ouro);
+  &:hover {
+    border-color: rgba(212, 169, 106, 0.8);
+    background: rgba(212, 169, 106, 0.8);
+  }
+}
