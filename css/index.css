@@ -261,82 +261,6 @@
       perspective: none;
     }
   }
-
-  @media (min-width: 900px) {
-    & {
-      min-height: calc(100vh - var(--altura-cabecalho, 96px));
-      min-height: calc(100svh - var(--altura-cabecalho, 96px));
-      padding: clamp(28px, 4vh, 56px) clamp(24px, 3vw, 64px)
-        clamp(32px, 4vh, 64px);
-    }
-    & .principal__grade {
-      grid-template-columns: 1fr 1fr;
-      align-items: stretch;
-      max-width: 1500px;
-      margin: 0 auto;
-      gap: clamp(4px, 0.8vh, 12px) clamp(32px, 4vw, 64px);
-    }
-    & .principal__texto {
-      max-width: 720px;
-      align-self: stretch;
-      justify-content: center;
-    }
-    /* Galeria 3D: ocupa toda a altura da coluna do texto.
-       --raio NÃO é definido aqui de propósito — vem do cálculo do
-       tambor fechado (0,866 × largura) lá na regra base. */
-    & .principal__galeria {
-      align-self: stretch;
-      align-items: center;
-      height: auto;
-      min-height: 440px;
-      /* O card acompanha a altura da coluna de texto ao lado
-         (a galeria estica com o grid; 100% = altura cheia da linha) */
-      --card-w: clamp(268px, 20.5vw, 352px);
-      --card-h: 88%;
-    }
-    & .principal__chamada {
-      font-size: clamp(15px, 1.2vw, 19px);
-      margin-top: clamp(10px, 1.2vh, 18px);
-      max-width: 600px;
-    }
-    & .principal__chamada--apoio {
-      font-size: clamp(13px, 0.95vw, 16px);
-      margin-top: clamp(8px, 1vh, 12px);
-    }
-  }
-
-  @media (max-width: 900px) {
-    /* Hero */
-    /* Hero — mobile com overlay vertical */
-    & {
-      padding: 32px 20px 56px;
-      min-height: auto;
-    }
-    & .principal__grade {
-      grid-template-columns: 1fr;
-      gap: 20px;
-    }
-    & .principal__tag .rotulo {
-      padding: 8px 16px;
-      font-size: 10px;
-      letter-spacing: 0.1em;
-    }
-    & .principal__chamada {
-      font-size: 15px;
-      margin-top: 12px;
-    }
-    & .principal__chamada--apoio {
-      font-size: 13px;
-      margin-top: 8px;
-    }
-    /* Galeria 3D no mobile: menor, pra caber sem cortar os cards.
-       --raio continua saindo do cálculo do tambor fechado. */
-    & .principal__galeria {
-      --card-w: 164px;
-      --card-h: 218px;
-      height: 300px;
-    }
-  }
 }
 @keyframes titulo-entrada {
   from {
@@ -492,15 +416,6 @@
       display: none;
     }
   }
-
-  @media (max-width: 900px) {
-    & .galeria-3d__nome {
-      font-size: 17px;
-    }
-    & .galeria-3d__info {
-      padding: 12px 14px;
-    }
-  }
 }
 
 /* ================================================================
@@ -589,33 +504,6 @@
   & .solucoes__acoes {
     margin-top: 64px;
     text-align: center;
-  }
-
-  @media (max-width: 900px) {
-    & .solucoes__subtitulo {
-      font-size: 21px;
-      margin-bottom: 24px;
-    }
-    & .solucoes__especialidades {
-      grid-template-columns: 1fr;
-      gap: 16px;
-      margin-bottom: 48px;
-    }
-    /* No celular vira uma coluna simples. Em flex o posicionamento
-       explícito de grid dos cartões deixa de valer, então nenhum
-       fica preso a uma 2ª coluna que não existe mais. */
-    & .solucoes__publicos {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      max-width: none;
-    }
-    & .solucoes__especialidade .solucoes__especialidade-nome {
-      font-size: 18px;
-    }
-    & .solucoes__acoes {
-      margin-top: 40px;
-    }
   }
 }
 
@@ -737,12 +625,6 @@
       color: var(--mb-paper-dim);
     }
   }
-
-  @media (max-width: 900px) {
-    & .publico__nome {
-      font-size: 17px;
-    }
-  }
 }
 
 /* ================================================================
@@ -789,19 +671,6 @@
     font-size: 18px;
     line-height: 1.65;
     color: var(--mb-paper-dim);
-  }
-
-  @media (max-width: 900px) {
-    & {
-      margin-bottom: 36px;
-    }
-    & .intro__titulo {
-      gap: 6px;
-      margin-bottom: 20px;
-    }
-    & .intro__chamada {
-      font-size: 15px;
-    }
   }
 }
 
@@ -872,13 +741,6 @@
   @media (prefers-reduced-motion: reduce) {
     & .conector__seta {
       animation: none;
-    }
-  }
-
-  @media (max-width: 900px) {
-    & {
-      margin-top: 36px;
-      font-size: 16px;
     }
   }
 }
@@ -992,40 +854,6 @@
     margin: 0 0 18px;
     text-align: center;
   }
-
-  @media (max-width: 768px) {
-    & .historia__anos {
-      grid-template-columns: 1fr; /* empilha no mobile */
-      gap: 32px;
-      margin-top: 24px;
-    }
-    & .historia__numero.titulo {
-      font-size: 14rem;
-    }
-    & .historia__anos-rotulo {
-      font-size: 3.2rem;
-    }
-    & .historia__cartao .historia__texto p {
-      font-size: 15px;
-    }
-  }
-
-  @media (max-width: 900px) {
-    /* História / promessa */
-    & {
-      padding: 56px 20px;
-    }
-    & .historia__grade {
-      grid-template-columns: 1fr;
-      gap: 32px;
-    }
-    & .historia__cartao {
-      padding: 28px 24px 24px;
-    }
-    & .historia__titulo.titulo {
-      font-size: 26px;
-    }
-  }
 }
 
 /* ================================================================
@@ -1049,17 +877,6 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
-  }
-
-  @media (max-width: 900px) {
-    /* Depoimentos */
-    & {
-      padding: 56px 20px;
-    }
-    & .depoimentos__grade {
-      grid-template-columns: 1fr;
-      gap: 16px;
-    }
   }
 }
 
@@ -1213,12 +1030,6 @@
     border-color: var(
       --mb-ouro
     ); /* moldura dourada no hover (parecido com depoimento) */
-  }
-
-  @media (max-width: 900px) {
-    & .depoimento__texto {
-      font-size: 15px;
-    }
   }
 }
 
@@ -1411,16 +1222,6 @@
   & .marcas__item.marcas__item--rede-dor {
     background-image: url('../img/clientes/rede-dor.jpg');
   }
-
-  @media (max-width: 900px) {
-    & {
-      padding: 20px 0px;
-      gap: 16px;
-    }
-    & .marcas__lista {
-      padding: 40px 0; /* mantém espaço pro tooltip e hover em mobile */
-    }
-  }
 }
 @keyframes marcas-rolagem {
   0% {
@@ -1565,37 +1366,6 @@
     color: var(--mb-paper);
   }
 
-  @media (max-width: 900px) {
-    & {
-      padding: 56px 20px;
-    }
-    & .promessa__grade {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-    & .promessa__seta {
-      transform: rotate(90deg); /* vira ↓ no empilhado */
-      font-size: 26px;
-    }
-    & .promessa__cartao {
-      padding: 28px 22px;
-    }
-    & .promessa__cartao-titulo {
-      font-size: 22px;
-    }
-    & .promessa__destaque {
-      margin-top: 36px;
-      padding: 28px 20px;
-    }
-    & .promessa__destaque-numero {
-      font-size: 32px;
-    }
-    & .promessa__destaque p {
-      font-size: 15.5px;
-    }
-  }
-
   @media (prefers-reduced-motion: reduce) {
     & .promessa__cartao {
       transition: none;
@@ -1617,18 +1387,6 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 16px;
-  }
-
-  @media (max-width: 900px) {
-    /* Logos — ajustes mobile já estão no @media próprio acima da seção 5 */
-    /* Processo */
-    & {
-      padding: 56px 20px;
-    }
-    & .processo__grade {
-      grid-template-columns: 1fr;
-      gap: 14px;
-    }
   }
 }
 
@@ -1674,15 +1432,6 @@
     color: var(--mb-muted);
     line-height: 1.55;
   }
-
-  @media (max-width: 900px) {
-    & .etapa__numero {
-      font-size: 40px;
-    }
-    & .etapa__titulo {
-      font-size: 22px;
-    }
-  }
 }
 
 /* ================================================================
@@ -1716,20 +1465,6 @@
     gap: 12px;
     width: 100%;
     margin: 0; /* último bloco da seção — sem margem embaixo */
-  }
-
-  @media (max-width: 900px) {
-    /* Decisão / comparativo */
-    & {
-      padding: 56px 20px;
-    }
-    & .decisao__destaque {
-      font-size: 17px;
-    }
-    /* Celular: mesma coluna, só menos espaço */
-    & .decisao__objecoes {
-      gap: 10px;
-    }
   }
 }
 
@@ -1888,22 +1623,6 @@
       animation: none;
     }
   }
-
-  @media (max-width: 900px) {
-    & summary {
-      gap: 12px;
-      padding: 18px 20px;
-    }
-    & .objecao__conteudo {
-      padding: 0 20px 22px;
-    }
-    &:hover {
-      transform: none;
-    }
-    & .objecao__titulo {
-      font-size: 16px;
-    }
-  }
 }
 @keyframes objecao-abrir {
   from {
@@ -1990,30 +1709,6 @@
     }
     & .urgencia__ganho:hover {
       transform: none;
-    }
-  }
-
-  @media (max-width: 900px) {
-    /* Urgência */
-    & {
-      padding: 56px 20px;
-    }
-    & .urgencia__ganhos {
-      flex-direction: column;
-      gap: 12px;
-    }
-    & .urgencia__ganho {
-      padding: 24px 20px;
-    }
-    & .urgencia__ganho-titulo {
-      font-size: 18px;
-    }
-    & .urgencia__risco {
-      margin-top: 28px;
-      padding: 20px;
-    }
-    & .urgencia__risco p {
-      font-size: 15px;
     }
   }
 }
@@ -2171,42 +1866,6 @@
     text-align: center;
   }
 
-  @media (max-width: 900px) {
-    & {
-      padding: 56px 20px;
-    }
-    & .comparativo__cartoes {
-      grid-template-columns: 1fr;
-      gap: 28px;
-      margin-bottom: 28px;
-
-      & > .comparativo__cartao:nth-child(1),
-      & > .comparativo__cartao:nth-child(2),
-      & > .comparativo__cartao--nosso,
-      & > .custo {
-        grid-column: auto;
-        grid-row: auto;
-      }
-    }
-    & .comparativo__cartao {
-      padding: 26px 22px;
-
-      &:hover {
-        transform: none;
-      }
-    }
-    & .comparativo__nome {
-      font-size: 17px;
-      margin-bottom: 18px;
-    }
-    & .comparativo__itens {
-      gap: 14px;
-    }
-    & .comparativo__acoes {
-      margin-top: 32px;
-    }
-  }
-
   @media (prefers-reduced-motion: reduce) {
     & .comparativo__cartao {
       transition: none;
@@ -2274,26 +1933,6 @@
     font-size: 21px;
     line-height: 1.2;
     color: var(--mb-vinho);
-  }
-
-  @media (max-width: 900px) {
-    & {
-      padding: 24px 20px;
-    }
-    & .custo__titulo {
-      font-size: 17px;
-      margin-bottom: 18px;
-    }
-    & .custo__lista {
-      grid-template-columns: 1fr;
-      gap: 10px;
-    }
-    & .custo__lista li {
-      padding: 16px 18px;
-    }
-    & .custo__lista strong {
-      font-size: 18px;
-    }
   }
 }
 
@@ -2473,32 +2112,6 @@
   & .perguntas__resposta strong {
     color: var(--mb-paper);
   }
-
-  @media (max-width: 900px) {
-    /* FAQ */
-    & {
-      padding: 56px 20px;
-    }
-    & .perguntas__grade {
-      grid-template-columns: 1fr;
-      gap: 32px;
-    }
-    & .perguntas__intro {
-      position: static;
-    }
-    & .perguntas__categoria {
-      font-size: 17px;
-      margin: 32px 0 14px;
-    }
-    & .perguntas__item summary {
-      padding: 16px 18px;
-      font-size: 14px;
-      gap: 14px;
-    }
-    & .perguntas__resposta {
-      padding: 16px 18px 18px;
-    }
-  }
 }
 
 /* ================================================================
@@ -2548,20 +2161,5 @@
     color: var(--mb-muted);
     max-width: 700px;
     margin: 0 auto 36px;
-  }
-
-  @media (max-width: 900px) {
-    /* Garantia / risco zero */
-    & {
-      padding: 56px 20px;
-    }
-    & .garantia__chamada {
-      font-size: 15px;
-      margin-bottom: 28px;
-    }
-    & .garantia__brilho {
-      width: 320px;
-      height: 220px;
-    }
   }
 }

@@ -106,16 +106,6 @@ img {
 .so-celular {
   display: none;
 }
-@media (max-width: 900px) {
-  /* Utilitários de exibição */
-  .so-celular {
-    display: flex;
-  }
-  .oculto-celular {
-    display: inline;
-    justify-content: space-between;
-  }
-}
 
 /* ================================================================
    CABEÇALHO — barra do topo (todas as páginas)
@@ -239,49 +229,14 @@ img {
       border-bottom-color: var(--mb-vinho);
     }
   }
+}
 
-  /* ---- Faixa de navegação só-mobile ----
-     Fica escondida por padrão e só aparece na media query lá embaixo.
-     (O aninhamento tem especificidade maior que o utilitário
-     .so-celular, então quem manda aqui é o próprio bloco.) */
-  & .cabecalho__menu-celular {
-    display: none;
-    gap: 14px;
-    padding: 6px 16px 10px;
-    border-top: 1px solid var(--mb-line-soft);
-    overflow-x: auto;
-    font-size: 12px;
-  }
-
-  & .cabecalho__menu-link {
-    color: var(--mb-muted);
-    white-space: nowrap;
-    padding-bottom: 2px;
-    border-bottom: 1px solid transparent;
-
-    &.cabecalho__menu-link--ativo {
-      color: var(--mb-paper);
-      border-bottom-color: var(--mb-vinho);
-    }
-  }
-
-  /* ---- Mobile: some com telefone, links e divisor ---- */
-  @media (max-width: 900px) {
-    & .cabecalho__faixa {
-      padding: 6px 9px;
-      font-size: 9px;
-    }
-    & .cabecalho__navegacao {
-      padding: 12px 16px;
-    }
-    & .cabecalho__links,
-    & .cabecalho__divisor {
-      display: none;
-    }
-    & .cabecalho__menu-celular {
-      display: flex;
-    }
-  }
+/* ---- Faixa de navegação só-mobile ----
+   Fica escondida por padrão e só aparece na media query lá embaixo.
+   */
+.cabecalho__hamburguer,
+.menu-celular {
+  display: none;
 }
 
 /* ================================================================
@@ -477,36 +432,6 @@ img {
     letter-spacing: 0.15em;
     text-transform: uppercase;
   }
-
-  @media (max-width: 900px) {
-    /* Footer */
-    & .rodape__chamada {
-      padding: 40px 20px;
-    }
-    & .rodape__chamada-grade {
-      gap: 24px;
-    }
-    & .rodape__chamada-acoes,
-    & .rodape__chamada-acoes .botao {
-      width: 100%;
-    }
-    & .rodape__chamada-acoes .botao {
-      padding: 1.8rem 2rem;
-    }
-    & .rodape__colunas {
-      padding: 32px 20px;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-    }
-    & .rodape__sobre {
-      grid-column: 1 / -1;
-    }
-    & .rodape__base {
-      flex-direction: column;
-      gap: 8px;
-      padding: 16px 20px;
-    }
-  }
 }
 
 /* ================================================================
@@ -603,8 +528,8 @@ img {
   }
 
   &.botao--pequeno {
-    padding: 12px 18px;
-    font-size: 11px;
+    padding: 1.28rem 2rem;
+    font-size: 1.11rem;
   }
 
   /* CTA grande. Em repouso é um botão liso; o halo colorido só
@@ -658,16 +583,6 @@ img {
       &::after {
         background: #9d3c44;
       }
-    }
-  }
-
-  @media (max-width: 900px) {
-    &.botao--destaque {
-      width: 100%;
-      justify-content: center;
-      text-align: center;
-      padding: 18px 20px;
-      font-size: 13px;
     }
   }
 
@@ -747,20 +662,6 @@ img {
 
   &.titulo--medio {
     font-size: 40px;
-  }
-
-  @media (max-width: 900px) {
-    /* Header: regras mobile agora ficam aninhadas no bloco .cabecalho */
-    /* Títulos globais */
-    &.titulo--enorme {
-      font-size: 44px;
-    }
-    &.titulo--grande {
-      font-size: 32px;
-    }
-    &.titulo--medio {
-      font-size: 26px;
-    }
   }
 }
 
@@ -898,13 +799,6 @@ img {
   margin-bottom: 56px;
   flex-wrap: wrap;
   gap: 16px;
-
-  @media (max-width: 900px) {
-    /* Section head */
-    & {
-      margin-bottom: 32px;
-    }
-  }
 }
 
 /* ================================================================

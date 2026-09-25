@@ -1,0 +1,51 @@
+/* ================================================================
+   INDEX — DESKTOP
+   Complemento responsivo de index.css.
+   Carregado no HTML com media="(min-width: 900px)" — por isso as regras
+   aqui NÃO ficam dentro de @media: o próprio <link> já filtra.
+   Blocos na mesma ordem em que estavam no arquivo original.
+   ================================================================ */
+
+/* ---- .principal ---- */
+.principal {
+  & {
+    min-height: calc(100vh - var(--altura-cabecalho, 96px));
+    min-height: calc(100svh - var(--altura-cabecalho, 96px));
+    padding: clamp(28px, 4vh, 56px) clamp(24px, 3vw, 64px)
+      clamp(32px, 4vh, 64px);
+  }
+  & .principal__grade {
+    grid-template-columns: 1fr 1fr;
+    align-items: stretch;
+    max-width: 1500px;
+    margin: 0 auto;
+    gap: clamp(4px, 0.8vh, 12px) clamp(32px, 4vw, 64px);
+  }
+  & .principal__texto {
+    max-width: 720px;
+    align-self: stretch;
+    justify-content: center;
+  }
+  /* Galeria 3D: ocupa toda a altura da coluna do texto.
+     --raio NÃO é definido aqui de propósito — vem do cálculo do
+     tambor fechado (0,866 × largura) lá na regra base. */
+  & .principal__galeria {
+    align-self: stretch;
+    align-items: center;
+    height: auto;
+    min-height: 440px;
+    /* O card acompanha a altura da coluna de texto ao lado
+       (a galeria estica com o grid; 100% = altura cheia da linha) */
+    --card-w: clamp(268px, 20.5vw, 352px);
+    --card-h: 88%;
+  }
+  & .principal__chamada {
+    font-size: clamp(15px, 1.2vw, 19px);
+    margin-top: clamp(10px, 1.2vh, 18px);
+    max-width: 600px;
+  }
+  & .principal__chamada--apoio {
+    font-size: clamp(13px, 0.95vw, 16px);
+    margin-top: clamp(8px, 1vh, 12px);
+  }
+}

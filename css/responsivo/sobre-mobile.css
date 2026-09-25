@@ -1,0 +1,88 @@
+/* ================================================================
+   SOBRE — MOBILE
+   Complemento responsivo de sobre.css.
+   Carregado no HTML com media="(max-width: 900px)" — por isso as regras
+   aqui NÃO ficam dentro de @media: o próprio <link> já filtra.
+   Blocos na mesma ordem em que estavam no arquivo original.
+   ================================================================ */
+
+/* ================================================================
+   5. MEDIA QUERIES MOBILE
+   Ponto de quebra: 900px
+   ================================================================ */
+/* Hero */
+.sobre-hero {
+  padding: 56px 20px;
+}
+.sobre-hero-grid {
+  grid-template-columns: 1fr;
+  gap: 32px;
+}
+.sobre-hero-title {
+  font-size: 48px;
+  margin-top: 20px;
+}
+.sobre-hero-lead {
+  font-size: 15px;
+}
+
+/* Timeline */
+.sobre-timeline {
+  padding: 56px 20px;
+}
+.timeline-grid {
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+.timeline-marker-row {
+  margin-bottom: 10px;
+}
+.timeline-ano {
+  font-size: 28px;
+}
+.timeline-titulo {
+  font-size: 18px;
+}
+
+/* Certificados */
+.sobre-certificados {
+  padding: 56px 20px;
+}
+.certificados-grid {
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+.certificado-card {
+  grid-template-columns: 80px 1fr;
+  gap: 18px;
+}
+.certificado-selo {
+  font-size: 14px;
+}
+.certificado-titulo {
+  font-size: 20px;
+}
+
+/* Infraestrutura */
+.sobre-infra {
+  padding: 56px 20px;
+}
+.infra-grid {
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+.infra-img-titulo {
+  font-size: 28px;
+}
+.infra-img-secundaria {
+  min-height: 160px;
+}
+.infra-stats {
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 28px;
+  padding-top: 24px;
+}
+.infra-stat-num {
+  font-size: 28px;
+}

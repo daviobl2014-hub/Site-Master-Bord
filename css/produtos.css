@@ -157,29 +157,3 @@
 .produto-index-card.is-laser .produto-index-link {
   color: var(--mb-ouro);
 }
-
-/* ================================================================
-   3. MEDIA QUERIES MOBILE
-   Ponto de quebra: 900px
-   ================================================================ */
-@media (max-width: 900px) {
-  /* Hero */
-  .produtos-hero {
-    padding: 48px 20px;
-  }
-  .produtos-hero-title {
-    font-size: 48px;
-  }
-
-  /* Grid */
-  .produtos-index {
-    padding: 40px 20px 72px;
-  }
-  .produtos-index-grid {
-    grid-template-columns: 1fr;
-    gap: 16px;
-  }
-  .produto-index-nome {
-    font-size: 26px;
-  }
-}

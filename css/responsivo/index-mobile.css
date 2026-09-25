@@ -1,0 +1,389 @@
+/* ================================================================
+   INDEX — MOBILE
+   Complemento responsivo de index.css.
+   Carregado no HTML com media="(max-width: 900px)" — por isso as regras
+   aqui NÃO ficam dentro de @media: o próprio <link> já filtra.
+   Blocos na mesma ordem em que estavam no arquivo original.
+   ================================================================ */
+
+/* ---- .principal ---- */
+.principal {
+  /* Hero */
+  /* Hero — mobile com overlay vertical */
+  & {
+    padding: 32px 20px 56px;
+    min-height: auto;
+  }
+  & .principal__grade {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  & .principal__tag .rotulo {
+    padding: 8px 16px;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+  }
+  & .principal__chamada {
+    font-size: 15px;
+    margin-top: 12px;
+  }
+  & .principal__chamada--apoio {
+    font-size: 13px;
+    margin-top: 8px;
+  }
+  /* Galeria 3D no mobile: menor, pra caber sem cortar os cards.
+     --raio continua saindo do cálculo do tambor fechado. */
+  & .principal__galeria {
+    --card-w: 164px;
+    --card-h: 218px;
+    height: 300px;
+  }
+}
+
+/* ---- .galeria-3d ---- */
+.galeria-3d {
+  & .galeria-3d__nome {
+    font-size: 17px;
+  }
+  & .galeria-3d__info {
+    padding: 12px 14px;
+  }
+}
+
+/* ---- .solucoes ---- */
+.solucoes {
+  & .solucoes__subtitulo {
+    font-size: 21px;
+    margin-bottom: 24px;
+  }
+  & .solucoes__especialidades {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-bottom: 48px;
+  }
+  /* No celular vira uma coluna simples. Em flex o posicionamento
+     explícito de grid dos cartões deixa de valer, então nenhum
+     fica preso a uma 2ª coluna que não existe mais. */
+  & .solucoes__publicos {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: none;
+  }
+  & .solucoes__especialidade .solucoes__especialidade-nome {
+    font-size: 18px;
+  }
+  & .solucoes__acoes {
+    margin-top: 40px;
+  }
+}
+
+/* ---- .publico ---- */
+.publico {
+  & .publico__nome {
+    font-size: 17px;
+  }
+}
+
+/* ---- .intro ---- */
+.intro {
+  & {
+    margin-bottom: 36px;
+  }
+  & .intro__titulo {
+    gap: 6px;
+    margin-bottom: 20px;
+  }
+  & .intro__chamada {
+    font-size: 15px;
+  }
+}
+
+/* ---- .conector ---- */
+.conector {
+  & {
+    margin-top: 36px;
+    font-size: 16px;
+  }
+}
+
+/* ---- .historia ---- */
+.historia {
+  @media (max-width: 768px) {
+    & .historia__anos {
+      grid-template-columns: 1fr; /* empilha no mobile */
+      gap: 32px;
+      margin-top: 24px;
+    }
+    & .historia__numero.titulo {
+      font-size: 14rem;
+    }
+    & .historia__anos-rotulo {
+      font-size: 3.2rem;
+    }
+    & .historia__cartao .historia__texto p {
+      font-size: 15px;
+    }
+  }
+}
+
+/* ---- .historia ---- */
+.historia {
+  /* História / promessa */
+  & {
+    padding: 56px 20px;
+  }
+  & .historia__grade {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  & .historia__cartao {
+    padding: 28px 24px 24px;
+  }
+  & .historia__titulo.titulo {
+    font-size: 26px;
+  }
+}
+
+/* ---- .depoimentos ---- */
+.depoimentos {
+  /* Depoimentos */
+  & {
+    padding: 56px 20px;
+  }
+  & .depoimentos__grade {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+/* ---- .depoimento ---- */
+.depoimento {
+  & .depoimento__texto {
+    font-size: 15px;
+  }
+}
+
+/* ---- .marcas ---- */
+.marcas {
+  & {
+    padding: 20px 0px;
+    gap: 16px;
+  }
+  & .marcas__lista {
+    padding: 40px 0; /* mantém espaço pro tooltip e hover em mobile */
+  }
+}
+
+/* ---- .promessa ---- */
+.promessa {
+  & {
+    padding: 56px 20px;
+  }
+  & .promessa__grade {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  & .promessa__seta {
+    transform: rotate(90deg); /* vira ↓ no empilhado */
+    font-size: 26px;
+  }
+  & .promessa__cartao {
+    padding: 28px 22px;
+  }
+  & .promessa__cartao-titulo {
+    font-size: 22px;
+  }
+  & .promessa__destaque {
+    margin-top: 36px;
+    padding: 28px 20px;
+  }
+  & .promessa__destaque-numero {
+    font-size: 32px;
+  }
+  & .promessa__destaque p {
+    font-size: 15.5px;
+  }
+}
+
+/* ---- .processo ---- */
+.processo {
+  /* Logos — ajustes mobile já estão no @media próprio acima da seção 5 */
+  /* Processo */
+  & {
+    padding: 56px 20px;
+  }
+  & .processo__grade {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+}
+
+/* ---- .etapa ---- */
+.etapa {
+  & .etapa__numero {
+    font-size: 40px;
+  }
+  & .etapa__titulo {
+    font-size: 22px;
+  }
+}
+
+/* ---- .decisao ---- */
+.decisao {
+  /* Decisão / comparativo */
+  & {
+    padding: 56px 20px;
+  }
+  & .decisao__destaque {
+    font-size: 17px;
+  }
+  /* Celular: mesma coluna, só menos espaço */
+  & .decisao__objecoes {
+    gap: 10px;
+  }
+}
+
+/* ---- .objecao ---- */
+.objecao {
+  & summary {
+    gap: 12px;
+    padding: 18px 20px;
+  }
+  & .objecao__conteudo {
+    padding: 0 20px 22px;
+  }
+  &:hover {
+    transform: none;
+  }
+  & .objecao__titulo {
+    font-size: 16px;
+  }
+}
+
+/* ---- .urgencia ---- */
+.urgencia {
+  /* Urgência */
+  & {
+    padding: 56px 20px;
+  }
+  & .urgencia__ganhos {
+    flex-direction: column;
+    gap: 12px;
+  }
+  & .urgencia__ganho {
+    padding: 24px 20px;
+  }
+  & .urgencia__ganho-titulo {
+    font-size: 18px;
+  }
+  & .urgencia__risco {
+    margin-top: 28px;
+    padding: 20px;
+  }
+  & .urgencia__risco p {
+    font-size: 15px;
+  }
+}
+
+/* ---- .comparativo ---- */
+.comparativo {
+  & {
+    padding: 56px 20px;
+  }
+  & .comparativo__cartoes {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    margin-bottom: 28px;
+
+    & > .comparativo__cartao:nth-child(1),
+    & > .comparativo__cartao:nth-child(2),
+    & > .comparativo__cartao--nosso,
+    & > .custo {
+      grid-column: auto;
+      grid-row: auto;
+    }
+  }
+  & .comparativo__cartao {
+    padding: 26px 22px;
+
+    &:hover {
+      transform: none;
+    }
+  }
+  & .comparativo__nome {
+    font-size: 17px;
+    margin-bottom: 18px;
+  }
+  & .comparativo__itens {
+    gap: 14px;
+  }
+  & .comparativo__acoes {
+    margin-top: 32px;
+  }
+}
+
+/* ---- .custo ---- */
+.custo {
+  & {
+    padding: 24px 20px;
+  }
+  & .custo__titulo {
+    font-size: 17px;
+    margin-bottom: 18px;
+  }
+  & .custo__lista {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  & .custo__lista li {
+    padding: 16px 18px;
+  }
+  & .custo__lista strong {
+    font-size: 18px;
+  }
+}
+
+/* ---- .perguntas ---- */
+.perguntas {
+  /* FAQ */
+  & {
+    padding: 56px 20px;
+  }
+  & .perguntas__grade {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  & .perguntas__intro {
+    position: static;
+  }
+  & .perguntas__categoria {
+    font-size: 17px;
+    margin: 32px 0 14px;
+  }
+  & .perguntas__item summary {
+    padding: 16px 18px;
+    font-size: 14px;
+    gap: 14px;
+  }
+  & .perguntas__resposta {
+    padding: 16px 18px 18px;
+  }
+}
+
+/* ---- .garantia ---- */
+.garantia {
+  /* Garantia / risco zero */
+  & {
+    padding: 56px 20px;
+  }
+  & .garantia__chamada {
+    font-size: 15px;
+    margin-bottom: 28px;
+  }
+  & .garantia__brilho {
+    width: 320px;
+    height: 220px;
+  }
+}

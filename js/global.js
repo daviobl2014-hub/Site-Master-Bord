@@ -100,3 +100,44 @@
     atualizarSetas();
   });
 })();
+
+/* ================================================================
+   4. MENU CELULAR
+   Abre/fecha o painel em tela inteira pelo botão hambúrguer.
+   Fecha ao clicar num link, apertar Esc ou voltar pro desktop.
+   ================================================================ */
+(function () {
+  const botao = document.querySelector('.cabecalho__hamburguer');
+  const menu = document.getElementById('menuCelular');
+  if (!botao || !menu) return;
+
+  function alternar(abrir) {
+    menu.classList.toggle('menu-celular--aberto', abrir);
+    document.body.classList.toggle('menu-aberto', abrir);
+    botao.setAttribute('aria-expanded', abrir);
+    botao.setAttribute('aria-label', abrir ? 'Fechar menu' : 'Abrir menu');
+  }
+
+  botao.addEventListener('click', function () {
+    alternar(botao.getAttribute('aria-expanded') !== 'true');
+  });
+
+  // Clicar num link fecha o menu
+  menu.querySelectorAll('a').forEach(function (link) {
+    link.addEventListener('click', function () {
+      alternar(false);
+    });
+  });
+
+  // Esc fecha
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') alternar(false);
+  });
+
+  // Se a tela passar de 900px com o menu aberto, fecha
+  window
+    .matchMedia('(min-width: 901px)')
+    .addEventListener('change', function (e) {
+      if (e.matches) alternar(false);
+    });
+})();

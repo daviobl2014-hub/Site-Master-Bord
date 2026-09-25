@@ -154,7 +154,22 @@
 
     <!-- CSS: global (todas as páginas) + específico da home -->
     <link rel="stylesheet" href="css/global.css" />
+    <link
+      rel="stylesheet"
+      href="css/responsivo/global-mobile.css"
+      media="(max-width: 900px)"
+    />
     <link rel="stylesheet" href="css/index.css" />
+    <link
+      rel="stylesheet"
+      href="css/responsivo/index-desktop.css"
+      media="(min-width: 900px)"
+    />
+    <link
+      rel="stylesheet"
+      href="css/responsivo/index-mobile.css"
+      media="(max-width: 900px)"
+    />
   </head>
   <body>
     <!-- Google Tag Manager (noscript) -->
@@ -220,6 +235,7 @@
             <a href="atendimento.html" class="cabecalho__link">Atendimento</a>
           </div>
         </div>
+
         <div class="cabecalho__direita">
           <a
             href="atendimento.html"
@@ -227,21 +243,56 @@
             >Orçamento →</a
           >
         </div>
+        <button
+          class="cabecalho__hamburguer"
+          type="button"
+          aria-label="Abrir menu"
+          aria-expanded="false"
+          aria-controls="menuCelular"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path class="linha linha--1" d="M3 6h18" />
+            <path class="linha linha--2" d="M3 12h18" />
+            <path class="linha linha--3" d="M3 18h18" />
+          </svg>
+        </button>
       </nav>
+    </header>
 
-      <!-- Strip de navegação só-mobile -->
-      <div class="cabecalho__menu-celular so-celular">
+    <div class="menu-celular" id="menuCelular">
+      <nav class="menu-celular__links">
         <a
           href="index.html"
-          class="cabecalho__menu-link cabecalho__menu-link--ativo"
+          class="menu-celular__link menu-celular__link--ativo"
           >Home</a
         >
-        <a href="sobre.html" class="cabecalho__menu-link">Sobre</a>
-        <a href="produtos.html" class="cabecalho__menu-link">Produtos</a>
-        <a href="contato.html" class="cabecalho__menu-link">Contato</a>
-        <a href="atendimento.html" class="cabecalho__menu-link">Atendimento</a>
+        <a href="sobre.html" class="menu-celular__link">Sobre</a>
+        <a href="produtos.html" class="menu-celular__link">Produtos</a>
+        <a href="contato.html" class="menu-celular__link">Contato</a>
+        <a href="atendimento.html" class="menu-celular__link">Atendimento</a>
+      </nav>
+
+      <div class="menu-celular__redes">
+        <a
+          href="https://www.instagram.com/masterbordbordados/"
+          target="_blank"
+          aria-label="Instagram"
+        >
+          <span class="icone icone--instagram" aria-hidden="true"></span>
+        </a>
+        <a
+          href="https://www.facebook.com/masterbordbordados"
+          target="_blank"
+          aria-label="Facebook"
+        >
+          <span class="icone icone--facebook" aria-hidden="true"></span>
+        </a>
       </div>
-    </header>
+
+      <a href="atendimento.html" class="botao botao--primario botao--destaque"
+        >Orçamento →</a
+      >
+    </div>
 
     <!-- ================================================================
        HERO — 01 
