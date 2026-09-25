@@ -141,3 +141,21 @@
       if (e.matches) alternar(false);
     });
 })();
+
+/* ================================================================
+   5. SUBMENU (Produtos)
+   A seta alterna aria-expanded; o CSS abre/fecha a lista.
+   Serve para o submenu do desktop e do menu celular.
+   ================================================================ */
+(function () {
+  document.querySelectorAll('.submenu__seta').forEach(function (seta) {
+    seta.addEventListener('click', function () {
+      const abrir = seta.getAttribute('aria-expanded') !== 'true';
+      seta.setAttribute('aria-expanded', abrir);
+      seta.setAttribute(
+        'aria-label',
+        abrir ? 'Esconder produtos' : 'Mostrar produtos',
+      );
+    });
+  });
+})();
