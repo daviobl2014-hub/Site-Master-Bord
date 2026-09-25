@@ -235,7 +235,8 @@ img {
    Fica escondida por padrão e só aparece na media query lá embaixo.
    */
 .cabecalho__hamburguer,
-.menu-celular {
+.menu-celular,
+.cabecalho__local {
   display: none;
 }
 

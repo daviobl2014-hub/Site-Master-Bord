@@ -103,9 +103,17 @@
 
     <!-- CSS: global (todas as páginas) + específico da página produtos -->
     <link rel="stylesheet" href="css/global.css" />
-    <link rel="stylesheet" href="css/responsivo/global-mobile.css" media="(max-width: 900px)" />
+    <link
+      rel="stylesheet"
+      href="css/responsivo/global-mobile.css"
+      media="(max-width: 900px)"
+    />
     <link rel="stylesheet" href="css/produtos.css" />
-    <link rel="stylesheet" href="css/responsivo/produtos-mobile.css" media="(max-width: 900px)" />
+    <link
+      rel="stylesheet"
+      href="css/responsivo/produtos-mobile.css"
+      media="(max-width: 900px)"
+    />
   </head>
   <body>
     <!-- Google Tag Manager (noscript) -->
@@ -125,9 +133,9 @@
     <header class="cabecalho" id="mbHeader">
       <!-- Faixa utilitária superior -->
       <div class="cabecalho__faixa">
-        <span>📍 Petrópolis - RJ</span>
+        <span>Petrópolis - RJ</span>
 
-        <span class="oculto-celular"> 🚚 Entregamos para todo o Brasil </span>
+        <span class="oculto-celular">Entregamos para todo o Brasil </span>
 
         <span class="cabecalho__redes">
           <a
@@ -173,6 +181,7 @@
             <a href="atendimento.html" class="cabecalho__link">Atendimento</a>
           </div>
         </div>
+
         <div class="cabecalho__direita">
           <a
             href="atendimento.html"
@@ -180,22 +189,58 @@
             >Orçamento →</a
           >
         </div>
-      </nav>
 
-      <!-- Strip de navegação só-mobile -->
-      <div class="cabecalho__menu-celular so-celular">
-        <a href="index.html" class="cabecalho__menu-link">Home</a>
-        <a href="sobre.html" class="cabecalho__menu-link">Sobre</a>
-        <a
-          href="produtos.html"
-          class="cabecalho__menu-link cabecalho__menu-link--ativo"
-          >Produtos</a
+        <span class="cabecalho__local">Petrópolis - RJ</span>
+        <button
+          class="cabecalho__hamburguer"
+          type="button"
+          aria-label="Abrir menu"
+          aria-expanded="false"
+          aria-controls="menuCelular"
         >
-        <a href="contato.html" class="cabecalho__menu-link">Contato</a>
-        <a href="atendimento.html" class="cabecalho__menu-link">Atendimento</a>
-      </div>
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path class="linha linha--1" d="M3 6h18" />
+            <path class="linha linha--2" d="M3 12h18" />
+            <path class="linha linha--3" d="M3 18h18" />
+          </svg>
+        </button>
+      </nav>
     </header>
 
+    <div class="menu-celular" id="menuCelular">
+      <nav class="menu-celular__links">
+        <a href="index.html" class="menu-celular__link">Home</a>
+        <a href="sobre.html" class="menu-celular__link">Sobre</a>
+        <a
+          href="produtos.html"
+          class="menu-celular__link menu-celular__link--ativo"
+          >Produtos</a
+        >
+        <a href="contato.html" class="menu-celular__link">Contato</a>
+        <a href="atendimento.html" class="menu-celular__link">Atendimento</a>
+      </nav>
+
+      <div class="menu-celular__redes">
+        <a
+          href="https://www.instagram.com/masterbordbordados/"
+          target="_blank"
+          aria-label="Instagram"
+        >
+          <span class="icone icone--instagram" aria-hidden="true"></span>
+        </a>
+        <a
+          href="https://www.facebook.com/masterbordbordados"
+          target="_blank"
+          aria-label="Facebook"
+        >
+          <span class="icone icone--facebook" aria-hidden="true"></span>
+        </a>
+      </div>
+
+      <a href="atendimento.html" class="botao botao--primario botao--destaque"
+        >Orçamento →</a
+      >
+    </div>
     <!-- ================================================================
        HERO — capa "Três produtos, um padrão"
        ================================================================ -->

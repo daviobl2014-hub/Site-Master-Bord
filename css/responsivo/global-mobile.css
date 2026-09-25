@@ -42,6 +42,16 @@
   }
 }
 
+.cabecalho__local {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 1.11rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--mb-muted);
+  white-space: nowrap;
+}
+
 .cabecalho__hamburguer {
   display: flex;
   align-items: center;
