@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
@@ -55,23 +55,44 @@
     <link rel="canonical" href="https://bordado.com.br/politicas.html" />
     <meta name="robots" content="index, follow" />
     <meta name="author" content="Master Bord" />
-    <meta name="keywords" content="Master Bord, etiquetas, bordado, prazo de entrega, garantia, frete" />
+    <meta
+      name="keywords"
+      content="Master Bord, etiquetas, bordado, prazo de entrega, garantia, frete"
+    />
 
     <!-- Open Graph (WhatsApp, Facebook, LinkedIn) -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Master Bord" />
     <meta property="og:locale" content="pt_BR" />
     <meta property="og:url" content="https://bordado.com.br/politicas.html" />
-    <meta property="og:title" content="Políticas · Master Bord — Frete, Entrega, Pagamento e Garantia" />
-    <meta property="og:description" content="Políticas da Master Bord: frete, entrega, pagamento e garantia. Termos de produção sob encomenda para etiquetas, bordados e corte a laser." />
+    <meta
+      property="og:title"
+      content="Políticas · Master Bord — Frete, Entrega, Pagamento e Garantia"
+    />
+    <meta
+      property="og:description"
+      content="Políticas da Master Bord: frete, entrega, pagamento e garantia. Termos de produção sob encomenda para etiquetas, bordados e corte a laser."
+    />
     <meta property="og:image" content="https://bordado.com.br/img/og-img.jpg" />
-    <meta property="og:image:alt" content="Master Bord — etiquetas tecidas, bordados e corte a laser" />
+    <meta
+      property="og:image:alt"
+      content="Master Bord — etiquetas tecidas, bordados e corte a laser"
+    />
 
     <!-- Twitter / X -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Políticas · Master Bord — Frete, Entrega, Pagamento e Garantia" />
-    <meta name="twitter:description" content="Políticas da Master Bord: frete, entrega, pagamento e garantia. Termos de produção sob encomenda para etiquetas, bordados e corte a laser." />
-    <meta name="twitter:image" content="https://bordado.com.br/img/og-img.jpg" />
+    <meta
+      name="twitter:title"
+      content="Políticas · Master Bord — Frete, Entrega, Pagamento e Garantia"
+    />
+    <meta
+      name="twitter:description"
+      content="Políticas da Master Bord: frete, entrega, pagamento e garantia. Termos de produção sob encomenda para etiquetas, bordados e corte a laser."
+    />
+    <meta
+      name="twitter:image"
+      content="https://bordado.com.br/img/og-img.jpg"
+    />
 
     <!-- Fontes: Google Fonts + Bauhaus via CDN -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -84,10 +105,22 @@
 
     <!-- CSS: global (todas as páginas) + específico da página políticas -->
     <link rel="stylesheet" href="css/global.css" />
-    <link rel="stylesheet" href="css/responsivo/global-mobile.css" media="(max-width: 900px)" />
+    <link
+      rel="stylesheet"
+      href="css/responsivo/global-mobile.css"
+      media="(max-width: 900px)"
+    />
     <link rel="stylesheet" href="css/politicas.css" />
-    <link rel="stylesheet" href="css/responsivo/politicas-mobile.css" media="(max-width: 900px)" />
-    <link rel="stylesheet" href="css/responsivo/politicas-desktop.css" media="(min-width: 900px)" />
+    <link
+      rel="stylesheet"
+      href="css/responsivo/politicas-mobile.css"
+      media="(max-width: 900px)"
+    />
+    <link
+      rel="stylesheet"
+      href="css/responsivo/politicas-desktop.css"
+      media="(min-width: 900px)"
+    />
   </head>
   <body>
     <!-- Google Tag Manager (noscript) -->
@@ -104,9 +137,12 @@
        HEADER (idêntico ao resto do site)
        ================================================================ -->
     <header class="cabecalho" id="mbHeader">
+      <!-- Faixa utilitária superior -->
       <div class="cabecalho__faixa">
-        <span>📍 Petrópolis - RJ</span>
-        <span class="oculto-celular"> 🚚 Entregamos para todo o Brasil </span>
+        <span>Petrópolis - RJ</span>
+
+        <span class="oculto-celular">Entregamos para todo o Brasil </span>
+
         <span class="cabecalho__redes">
           <a
             href="https://www.instagram.com/masterbordbordados/"
@@ -120,9 +156,14 @@
         </span>
       </div>
 
+      <!-- Navegação principal -->
       <nav class="cabecalho__navegacao">
-        <div class="cabecalho__esquerda" onclick="location.href='index.html'">
-          <div class="logo">
+        <div class="cabecalho__esquerda">
+          <a
+            href="index.html"
+            class="logo"
+            aria-label="Master Bord — página inicial"
+          >
             <svg viewBox="0 0 86.5 58.36">
               <g>
                 <path
@@ -136,29 +177,139 @@
                 />
               </g>
             </svg>
-          </div>
+          </a>
           <div class="cabecalho__divisor oculto-celular"></div>
           <div class="cabecalho__links oculto-celular">
             <a href="index.html" class="cabecalho__link">Home</a>
             <a href="sobre.html" class="cabecalho__link">Sobre</a>
-            <a href="produtos.html" class="cabecalho__link">Produtos</a>
+
+            <div class="submenu">
+              <a href="produtos.html" class="cabecalho__link">Produtos</a>
+              <button
+                class="submenu__seta"
+                type="button"
+                aria-expanded="false"
+                aria-controls="submenuProdutos"
+                aria-label="Mostrar produtos"
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M9 6l6 6-6 6" />
+                </svg>
+              </button>
+              <div class="submenu__lista" id="submenuProdutos">
+                <div class="submenu__interno">
+                  <a href="produto-etiqueta.html" class="cabecalho__link"
+                    >Etiqueta</a
+                  >
+                  <a href="produto-bordado.html" class="cabecalho__link"
+                    >Bordado</a
+                  >
+                  <a href="produto-laser.html" class="cabecalho__link">Laser</a>
+                </div>
+              </div>
+            </div>
+
             <a href="contato.html" class="cabecalho__link">Contato</a>
+
             <a href="atendimento.html" class="cabecalho__link">Atendimento</a>
+
+            <a
+              href="politicas.html"
+              class="cabecalho__link cabecalho__link--ativo"
+              >Política</a
+            >
           </div>
         </div>
+
         <div class="cabecalho__direita">
-          <a href="atendimento.html" class="botao botao--primario botao--pequeno">Orçamento →</a>
+          <a
+            href="atendimento.html"
+            class="botao botao--primario botao--pequeno"
+            >Orçamento →</a
+          >
         </div>
+
+        <span class="cabecalho__local">Petrópolis - RJ</span>
+        <button
+          class="cabecalho__hamburguer"
+          type="button"
+          aria-label="Abrir menu"
+          aria-expanded="false"
+          aria-controls="menuCelular"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path class="linha linha--1" d="M3 6h18" />
+            <path class="linha linha--2" d="M3 12h18" />
+            <path class="linha linha--3" d="M3 18h18" />
+          </svg>
+        </button>
+      </nav>
+    </header>
+
+    <div class="menu-celular" id="menuCelular">
+      <nav class="menu-celular__links">
+        <a href="index.html" class="menu-celular__link">Home</a>
+        <a href="sobre.html" class="menu-celular__link">Sobre</a>
+        <div class="submenu">
+          <a href="produtos.html" class="menu-celular__link">Produtos</a>
+
+          <button
+            class="submenu__seta"
+            type="button"
+            aria-expanded="false"
+            aria-controls="submenuProdutosCelular"
+            aria-label="Mostrar produtos"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M9 6l6 6-6 6" />
+            </svg>
+          </button>
+
+          <div class="submenu__lista" id="submenuProdutosCelular">
+            <div class="submenu__interno">
+              <a href="produto-etiqueta.html" class="menu-celular__link"
+                >Etiqueta</a
+              >
+              <a href="produto-bordado.html" class="menu-celular__link"
+                >Bordado</a
+              >
+              <a href="produto-laser.html" class="menu-celular__link">Laser</a>
+            </div>
+          </div>
+        </div>
+
+        <a href="contato.html" class="menu-celular__link">Contato</a>
+
+        <a href="atendimento.html" class="menu-celular__link">Atendimento</a>
+
+        <a
+          href="politicas.html"
+          class="menu-celular__link menu-celular__link--ativo"
+          >Política</a
+        >
       </nav>
 
-      <div class="cabecalho__menu-celular so-celular">
-        <a href="index.html" class="cabecalho__menu-link">Home</a>
-        <a href="sobre.html" class="cabecalho__menu-link">Sobre</a>
-        <a href="produtos.html" class="cabecalho__menu-link">Produtos</a>
-        <a href="contato.html" class="cabecalho__menu-link">Contato</a>
-        <a href="atendimento.html" class="cabecalho__menu-link">Atendimento</a>
+      <div class="menu-celular__redes">
+        <a
+          href="https://www.instagram.com/masterbordbordados/"
+          target="_blank"
+          aria-label="Instagram"
+        >
+          <span class="icone icone--instagram" aria-hidden="true"></span>
+        </a>
+        <a
+          href="https://www.facebook.com/masterbordbordados"
+          target="_blank"
+          aria-label="Facebook"
+        >
+          <span class="icone icone--facebook" aria-hidden="true"></span>
+        </a>
       </div>
-    </header>
+
+      <a href="atendimento.html" class="botao botao--primario botao--destaque"
+        >Orçamento →</a
+      >
+    </div>
 
     <!-- ================================================================
        HERO — capa da página Políticas
@@ -213,7 +364,8 @@
           <div>
             <div class="rotulo">FRETE</div>
             <h2 class="politica-titulo">
-              Transporte e <span class="destaque destaque--azul">taxa de envio</span>
+              Transporte e
+              <span class="destaque destaque--azul">taxa de envio</span>
             </h2>
           </div>
         </div>
@@ -267,7 +419,8 @@
           <div>
             <div class="rotulo">ENTREGA</div>
             <h2 class="politica-titulo">
-              Endereço, prazo e <span class="destaque destaque--azul">recebimento</span>
+              Endereço, prazo e
+              <span class="destaque destaque--azul">recebimento</span>
             </h2>
           </div>
         </div>
@@ -573,12 +726,15 @@
         <div class="rodape__chamada-grade">
           <div>
             <h2 class="titulo titulo--enorme">
-              <span class="destaque destaque--azul">Pronto</span> para<br />produzir com
-              a <span class="destaque destaque--vinho">gente</span>
+              <span class="destaque destaque--azul">Pronto</span>
+              para<br />produzir com a
+              <span class="destaque destaque--vinho">gente</span>
             </h2>
           </div>
           <div class="rodape__chamada-acoes">
-            <a href="atendimento.html" class="botao botao--primario botao--destaque botao--centralizado"
+            <a
+              href="atendimento.html"
+              class="botao botao--primario botao--destaque botao--centralizado"
               >Solicitar orçamento →</a
             >
           </div>
@@ -588,8 +744,7 @@
       <div class="rodape__colunas">
         <div class="rodape__sobre">
           <div class="logo rodape__logo">
-            <span>Master</span
-            ><span>Bord</span>
+            <span>Master</span><span>Bord</span>
           </div>
           <p>
             Desde 1994 transformando ideias em etiquetas, bordados e cortes
@@ -603,7 +758,8 @@
               rel="noopener noreferrer"
               data-tooltip="Instagram"
               aria-label="Instagram Master Bord"
-              ><span class="icone icone--instagram" aria-hidden="true"></span></a>
+              ><span class="icone icone--instagram" aria-hidden="true"></span
+            ></a>
             <a
               class="rodape__rede"
               href="https://wa.me/5524981190914"
@@ -611,7 +767,8 @@
               rel="noopener noreferrer"
               data-tooltip="WhatsApp Bordado"
               aria-label="WhatsApp Bordado"
-              ><span class="icone icone--whatsapp" aria-hidden="true"></span></a>
+              ><span class="icone icone--whatsapp" aria-hidden="true"></span
+            ></a>
             <a
               class="rodape__rede"
               href="https://wa.me/5524992808372"
@@ -619,7 +776,8 @@
               rel="noopener noreferrer"
               data-tooltip="WhatsApp Etiqueta"
               aria-label="WhatsApp Etiqueta"
-              ><span class="icone icone--whatsapp" aria-hidden="true"></span></a>
+              ><span class="icone icone--whatsapp" aria-hidden="true"></span
+            ></a>
             <a
               class="rodape__rede"
               href="https://www.facebook.com/masterbordbordados/"
@@ -627,7 +785,8 @@
               rel="noopener noreferrer"
               data-tooltip="Facebook"
               aria-label="Facebook Master Bord"
-              ><span class="icone icone--facebook" aria-hidden="true"></span></a>
+              ><span class="icone icone--facebook" aria-hidden="true"></span
+            ></a>
           </div>
         </div>
 

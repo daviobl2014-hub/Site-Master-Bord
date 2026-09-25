@@ -148,8 +148,12 @@
 
       <!-- Navegação principal -->
       <nav class="cabecalho__navegacao">
-        <div class="cabecalho__esquerda" onclick="location.href = 'index.html'">
-          <div class="logo">
+        <div class="cabecalho__esquerda">
+          <a
+            href="index.html"
+            class="logo"
+            aria-label="Master Bord — página inicial"
+          >
             <svg viewBox="0 0 86.5 58.36">
               <g>
                 <path
@@ -163,13 +167,40 @@
                 />
               </g>
             </svg>
-          </div>
+          </a>
           <div class="cabecalho__divisor oculto-celular"></div>
           <div class="cabecalho__links oculto-celular">
             <a href="index.html" class="cabecalho__link">Home</a>
             <a href="sobre.html" class="cabecalho__link">Sobre</a>
-            <a href="produtos.html" class="cabecalho__link">Produtos</a>
+
+            <div class="submenu">
+              <a href="produtos.html" class="cabecalho__link">Produtos</a>
+              <button
+                class="submenu__seta"
+                type="button"
+                aria-expanded="false"
+                aria-controls="submenuProdutos"
+                aria-label="Mostrar produtos"
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M9 6l6 6-6 6" />
+                </svg>
+              </button>
+              <div class="submenu__lista" id="submenuProdutos">
+                <div class="submenu__interno">
+                  <a href="produto-etiqueta.html" class="cabecalho__link"
+                    >Etiqueta</a
+                  >
+                  <a href="produto-bordado.html" class="cabecalho__link"
+                    >Bordado</a
+                  >
+                  <a href="produto-laser.html" class="cabecalho__link">Laser</a>
+                </div>
+              </div>
+            </div>
+
             <a href="contato.html" class="cabecalho__link">Contato</a>
+
             <a
               href="atendimento.html"
               class="cabecalho__link cabecalho__link--ativo"
@@ -207,8 +238,36 @@
       <nav class="menu-celular__links">
         <a href="index.html" class="menu-celular__link">Home</a>
         <a href="sobre.html" class="menu-celular__link">Sobre</a>
-        <a href="produtos.html" class="menu-celular__link">Produtos</a>
+        <div class="submenu">
+          <a href="produtos.html" class="menu-celular__link">Produtos</a>
+
+          <button
+            class="submenu__seta"
+            type="button"
+            aria-expanded="false"
+            aria-controls="submenuProdutosCelular"
+            aria-label="Mostrar produtos"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M9 6l6 6-6 6" />
+            </svg>
+          </button>
+
+          <div class="submenu__lista" id="submenuProdutosCelular">
+            <div class="submenu__interno">
+              <a href="produto-etiqueta.html" class="menu-celular__link"
+                >Etiqueta</a
+              >
+              <a href="produto-bordado.html" class="menu-celular__link"
+                >Bordado</a
+              >
+              <a href="produto-laser.html" class="menu-celular__link">Laser</a>
+            </div>
+          </div>
+        </div>
+
         <a href="contato.html" class="menu-celular__link">Contato</a>
+
         <a
           href="atendimento.html"
           class="menu-celular__link menu-celular__link--ativo"

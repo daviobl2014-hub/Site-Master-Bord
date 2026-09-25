@@ -117,7 +117,7 @@
   & .menu-celular__redes,
   & .botao {
     opacity: 0;
-    transform: rotatey(12deg);
+    transform: translatey(12px);
     transition:
       opacity 0.3s ease,
       transform 0.3s ease;
@@ -150,11 +150,14 @@
     & .menu-celular__links > :nth-child(5) {
       transition-delay: 0.3s;
     }
-    & .menu-celular__redes {
+    & .menu-celular__links > :nth-child(5) {
       transition-delay: 0.35s;
     }
-    & .botao {
+    & .menu-celular__redes {
       transition-delay: 0.4s;
+    }
+    & .botao {
+      transition-delay: 0.45s;
     }
   }
   & .menu-celular__links {
