@@ -70,6 +70,7 @@
 .infra-grid {
   grid-template-columns: 1fr;
   gap: 20px;
+  height: max-content;
 }
 .infra-img-titulo {
   font-size: 28px;
@@ -85,4 +86,11 @@
 }
 .infra-stat-num {
   font-size: 28px;
+}
+
+.infra-img-principal,
+.infra-img-secundaria {
+  &.imagem {
+    height: 40rem;
+  }
 }

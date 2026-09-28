@@ -311,6 +311,9 @@ body.menu-aberto {
     text-align: center;
     align-items: center;
   }
+  & .rodape__sobre p {
+    max-width: 80%;
+  }
 }
 
 /* ---- .botao ---- */
