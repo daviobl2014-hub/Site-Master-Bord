@@ -345,7 +345,11 @@
             />
           </div>
 
-          <button type="submit" class="botao botao--primario botao--destaque" id="botaoBuscar">
+          <button
+            type="submit"
+            class="botao botao--primario botao--destaque"
+            id="botaoBuscar"
+          >
             Buscar
           </button>
         </form>
@@ -369,10 +373,12 @@
         </div>
 
         <div class="container__status">
+          <!-- Esquerda: nº do pedido · nome da etiqueta | direita: código MB -->
           <div class="cabecalho__resultado">
+            <p class="codigo" id="resultadoPedido"></p>
             <p class="codigo" id="resultadoCodigo"></p>
-            <p class="atualizado" id="resultadoAtualizado"></p>
           </div>
+          <p class="atualizado" id="resultadoAtualizado"></p>
 
           <div class="resultado__status">
             <!-- As 5 etapas são montadas pelo js/rastreio.js a partir do

@@ -10,7 +10,8 @@
    frase não exige exportar nada de novo.
 
    Formato do JSON:
-     { "codigo": "MB-7K2QXP", "pedido": "26/001756", "entrega": "envio",
+     { "codigo": "MB-7K2QXP", "pedido": "26/001756", "etiqueta": "SACADA",
+       "entrega": "envio",
        "cancelado": false, "atualizado_em": "2026-09-29T18:00",
        "datas": { "recebido", "em_producao", "finalizado", "despachado" } }
    ================================================================ */
@@ -104,8 +105,11 @@
     // Quantos trechos da linha pintar. O CSS calcula o mesmo com :has(),
     // mas o Firefox 115 (Windows 7) não entende :has() — aqui vale para todos.
     lista.style.setProperty('--progresso', atual === -1 ? etapas.length - 1 : atual);
-    document.getElementById('resultadoCodigo').textContent =
-      p.pedido ? `Pedido ${p.pedido} · ${p.codigo}` : `Pedido ${p.codigo}`;
+    // textContent (e não innerHTML): o nome da etiqueta é digitado no TEAR,
+    // um "<" ou "&" nele não pode virar HTML
+    document.getElementById('resultadoPedido').textContent =
+      [p.pedido ? `Pedido ${p.pedido}` : 'Pedido', p.etiqueta].filter(Boolean).join(' · ');
+    document.getElementById('resultadoCodigo').textContent = p.codigo;
     const atualizado = document.getElementById('resultadoAtualizado');
     const dias = (Date.now() - new Date(p.atualizado_em).getTime()) / 86400000;
     const velho = dias > DIAS_PARA_AVISO;

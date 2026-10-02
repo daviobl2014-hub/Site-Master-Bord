@@ -271,7 +271,6 @@
     align-items: baseline;
     flex-wrap: wrap;
     gap: 0.8rem 2rem;
-    margin-bottom: 3.2rem;
   }
 
   & .codigo {
@@ -281,9 +280,12 @@
     color: var(--mb-paper);
   }
 
+  /* Fica fora do cabeçalho, logo abaixo do código MB, alinhado à direita.
+     A margem até as etapas mora aqui (saiu do .cabecalho__resultado) */
   & .atualizado {
-    margin: 0;
-    font-size: 14px;
+    margin: 0.4rem 0 3.2rem;
+    font-size: 13px;
+    text-align: right;
     color: var(--mb-muted);
   }
 
