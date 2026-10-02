@@ -1,0 +1,451 @@
+/* ================================================================
+   RASTREIO.CSS — Master Bord (página rastreio.html)
+
+   Uma tela só: o cartão com o campo do código de rastreio, centralizado.
+
+   O fundo repete as camadas da primeira dobra da home: cor base,
+   textura de linhas finas (::before), grade técnica e os dois brilhos.
+   Quando entrar uma foto, acrescente no .rastreio:
+     background: url('../img/....webp') center / cover no-repeat;
+   e escureça com um véu, senão o cartão não se lê.
+   ================================================================ */
+
+.rastreio {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  /* ocupa a tela menos a navegação do topo (medida no js/global.js) */
+  min-height: calc(100vh - var(--altura-cabecalho, 96px));
+  min-height: calc(100svh - var(--altura-cabecalho, 96px));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 20px;
+  background: var(--mb-bg);
+
+  /* Textura de linhas finas — a mesma da primeira dobra da home */
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      repeating-linear-gradient(
+        0deg,
+        rgba(255, 255, 255, 0.015) 0px,
+        rgba(255, 255, 255, 0.015) 1px,
+        transparent 1px,
+        transparent 4px
+      ),
+      repeating-linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0.015) 0px,
+        rgba(255, 255, 255, 0.015) 1px,
+        transparent 1px,
+        transparent 4px
+      );
+    pointer-events: none;
+  }
+
+  /* A grade técnica (global) fica por baixo do cartão */
+  & .grade-tecnica {
+    z-index: 0;
+  }
+
+  /* Brilhos de fundo, como na home: a cor vem do modificador */
+  & .rastreio__brilho {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    filter: blur(100px);
+    opacity: 0.4;
+    pointer-events: none;
+    z-index: 0;
+
+    &.rastreio__brilho--azul {
+      background: radial-gradient(
+        circle,
+        rgba(0, 120, 255, 0.25),
+        transparent 70%
+      );
+      top: -120px;
+      left: -120px;
+    }
+
+    &.rastreio__brilho--vinho {
+      background: radial-gradient(
+        circle,
+        rgba(180, 0, 60, 0.25),
+        transparent 70%
+      );
+      bottom: -120px;
+      right: -120px;
+    }
+  }
+
+  /* ---- Cartão central ----
+     A sensação de altura vem de três coisas somadas:
+     1. sombras em camadas (perto = curta e densa, longe = larga e suave)
+     2. um filete de luz no topo e sombra interna na base, como se a luz
+        viesse de cima (é o que dá o relevo de caixa)
+     3. uma inclinação de 2 graus que se endireita quando o mouse chega */
+  & .rastreio__cartao {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    max-width: 52rem;
+    padding: 40px 36px;
+    border: 1px solid var(--mb-line);
+    /* a borda de cima mais clara reforça a luz vindo de cima */
+    border-top-color: rgba(242, 236, 224, 0.16);
+    border-radius: 16px;
+    background: linear-gradient(
+      165deg,
+      var(--mb-card-hover) 0%,
+      var(--mb-card) 45%,
+      #1a1e26 100%
+    );
+    text-align: center;
+
+    box-shadow:
+      /* relevo interno */
+      inset 0 1px 0 rgba(242, 236, 224, 0.08),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.5),
+      /* elevação: da mais curta à mais distante */ 0 2px 4px rgba(0, 0, 0, 0.3),
+      0 8px 16px rgba(0, 0, 0, 0.35),
+      0 24px 48px rgba(0, 0, 0, 0.45),
+      0 48px 88px rgba(0, 0, 0, 0.4);
+
+    transform: perspective(1400px) rotateX(2deg);
+    transform-origin: center bottom;
+    transition:
+      transform 0.45s cubic-bezier(0.2, 0.8, 0.25, 1),
+      box-shadow 0.45s ease;
+
+    /* o cartão se endireita e sobe mais um pouco */
+    &:hover {
+      transform: perspective(1400px) rotateX(0deg) translateY(-6px);
+      box-shadow:
+        inset 0 1px 0 rgba(242, 236, 224, 0.1),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.5),
+        0 4px 8px rgba(0, 0, 0, 0.32),
+        0 14px 28px rgba(0, 0, 0, 0.38),
+        0 36px 64px rgba(0, 0, 0, 0.5),
+        0 64px 110px rgba(0, 0, 0, 0.45);
+    }
+
+    & button {
+      justify-content: center;
+      text-align: center;
+      width: 55%;
+      padding: 1.28rem 3.12rem;
+    }
+
+    /* Enquanto busca o pedido (js/rastreio.js desabilita o botão) */
+    & button:disabled {
+      opacity: 0.6;
+      cursor: wait;
+    }
+  }
+
+  /* Sombra projetada no chão, atrás do cartão */
+  & .rastreio__cartao::after {
+    content: '';
+    position: absolute;
+    left: 8%;
+    right: 8%;
+    bottom: -26px;
+    height: 40px;
+    z-index: -1;
+    border-radius: 50%;
+    background: radial-gradient(
+      ellipse at center,
+      rgba(0, 0, 0, 0.55),
+      transparent 70%
+    );
+    filter: blur(10px);
+    pointer-events: none;
+  }
+
+  & .rotulo {
+    display: block;
+    margin-bottom: 16px;
+  }
+
+  & .rastreio__titulo {
+    margin: 0 0 12px;
+    font-size: 34px;
+    line-height: 1.15;
+  }
+
+  & .rastreio__apoio {
+    margin-top: 2rem;
+    margin-bottom: 0.55rem;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--mb-muted);
+  }
+
+  /* ---- Campo do código de rastreio ---- */
+  & .rastreio__campo {
+    & input {
+      width: 60%;
+      height: 3rem;
+      margin-bottom: 2rem;
+      border-radius: 5rem;
+      outline: none;
+      padding: 1.6rem 2rem;
+      font-size: 1.6rem;
+      font-weight: 600;
+      border: 1px solid transparent;
+      color: #000;
+      box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.2);
+      text-align: center;
+      transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+    }
+
+    /* Anel azul quando o campo é selecionado (substitui o outline) */
+    & input:focus-visible {
+      border-color: var(--mb-azul);
+    }
+
+    /* Código não encontrado: o JS coloca aria-invalid="true" no input */
+    & input[aria-invalid='true'] {
+      border-color: var(--mb-vinho);
+      box-shadow:
+        0 1rem 1rem rgba(0, 0, 0, 0.2),
+        0 0 0 4px rgba(196, 75, 85, 0.3);
+    }
+  }
+
+  /* ---- Mensagem de "pedido não encontrado" ---- */
+  & .rastreio__erro {
+    margin: 1.6rem 0 0;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--mb-vinho-glow);
+  }
+}
+
+/* ================================================================
+   RESULTADO — linha do tempo do pedido (só HTML + CSS)
+
+   Como atualizar um pedido: no HTML, cada <li> tem um estado:
+     resultado__passo--concluido  → etapa feita (círculo cheio)
+     resultado__passo--atual      → etapa em andamento (anel + observação)
+     (sem modificador)            → etapa futura (tracejado, apagado)
+   A linha colorida entre os círculos anda sozinha: o :has() lá embaixo
+   descobre em qual posição está o passo --atual.
+   ================================================================ */
+
+.resultado {
+  &[hidden] {
+    display: none;
+  }
+  --tam-circulo: 64px;
+  padding: 48px 20px 80px;
+  width: 100%;
+  max-width: 96rem;
+  margin: 0 auto;
+
+  & .container__resultado {
+    display: flex;
+    align-items: center;
+    flex-flow: column;
+    gap: 3.2rem;
+  }
+
+  & .container__status {
+    width: 100%;
+    background: var(--mb-card);
+    border-radius: 12px;
+    padding: 2.4rem;
+    border: 1px solid var(--mb-line);
+  }
+
+  /* ---- Código do pedido + data de atualização ---- */
+  & .cabecalho__resultado {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 0.8rem 2rem;
+    margin-bottom: 3.2rem;
+  }
+
+  & .codigo {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--mb-paper);
+  }
+
+  & .atualizado {
+    margin: 0;
+    font-size: 14px;
+    color: var(--mb-muted);
+  }
+
+  /* Arquivo com mais de 2 dias (esqueceram de subir): o JS acrescenta o aviso */
+  & .atualizado--velho {
+    color: var(--mb-vinho-glow);
+  }
+
+  /* ---- A linha do tempo ---- */
+  & .resultado__passos {
+    --total: 5; /* quantidade de etapas */
+    --progresso: 0; /* quantos trechos da linha já estão pintados */
+    position: relative;
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    /* ::before = linha tracejada (costura por fazer)
+       ::after  = linha contínua por cima (costura feita)
+       As duas começam no centro do 1º círculo e vão até o centro do último:
+       cada etapa ocupa 100%/5, então o centro fica na metade disso (50%/5). */
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      top: calc(var(--tam-circulo) / 2 - 1px);
+      left: calc(50% / var(--total));
+      height: 2px;
+    }
+
+    &::before {
+      right: calc(50% / var(--total));
+      background: repeating-linear-gradient(
+        90deg,
+        var(--mb-line) 0 8px,
+        transparent 8px 14px
+      );
+    }
+
+    &::after {
+      width: calc(var(--progresso) * 100% / var(--total));
+      background: var(--mb-azul);
+    }
+
+    /* Descobre a posição do passo atual e pinta a linha até ele */
+    &:has(.resultado__passo--atual:nth-child(2)) {
+      --progresso: 1;
+    }
+    &:has(.resultado__passo--atual:nth-child(3)) {
+      --progresso: 2;
+    }
+    &:has(.resultado__passo--atual:nth-child(4)) {
+      --progresso: 3;
+    }
+    &:has(.resultado__passo--atual:nth-child(5)) {
+      --progresso: 4;
+    }
+    /* Pedido enviado/retirado: tudo concluído, não há passo --atual.
+       Sem esta regra a linha voltaria para zero no pedido terminado. */
+    &:has(.resultado__passo--concluido:nth-child(5)) {
+      --progresso: 4;
+    }
+  }
+
+  /* ---- Cada etapa ---- */
+  & .resultado__passo {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0 6px;
+
+    & h3 {
+      margin: 0 0 2px;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--mb-muted);
+    }
+
+    & time,
+    & .sem-data {
+      min-height: 1.3em;
+      font-size: 13px;
+      color: var(--mb-muted);
+    }
+  }
+
+  & .resultado__circulo {
+    position: relative;
+    z-index: 1; /* fica por cima da linha */
+    width: var(--tam-circulo);
+    height: var(--tam-circulo);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 2px dashed var(--mb-line);
+    background: var(--mb-card); /* mesma cor da caixa: "corta" a linha atrás */
+
+    /* Os SVGs são pretos: invert(1) deixa branco, a opacidade apaga */
+    & img {
+      width: 28px;
+      height: 28px;
+      object-fit: contain;
+      filter: invert(1);
+      opacity: 0.3;
+    }
+  }
+
+  /* Prazo de entrega: abaixo da caixa (usa o estilo do .rotulo).
+     O espaço até a caixa vem do gap do .container__resultado */
+  & .resultado__prazo {
+    margin: 0;
+    font-size: 13px;
+    text-align: center;
+  }
+
+  /* Observação: só aparece no passo atual */
+  & .resultado__observacao {
+    display: none;
+    max-width: 16ch;
+    margin: 8px 0 0;
+    font-size: 13px;
+    line-height: 1.4;
+    color: var(--mb-azul-glow);
+  }
+
+  /* ---- Estados ---- */
+  & .resultado__passo--concluido {
+    & .resultado__circulo {
+      border: 2px solid var(--mb-azul);
+      background: var(--mb-azul);
+
+      & img {
+        opacity: 1;
+      }
+    }
+
+    & h3 {
+      color: var(--mb-paper);
+    }
+  }
+
+  & .resultado__passo--atual {
+    & .resultado__circulo {
+      border: 2px solid var(--mb-azul);
+      box-shadow: 0 0 0 6px rgba(74, 139, 214, 0.18); /* anel em volta */
+
+      & img {
+        opacity: 1;
+      }
+    }
+
+    & h3 {
+      color: var(--mb-azul-glow);
+    }
+
+    & .resultado__observacao {
+      display: block;
+    }
+  }
+}
