@@ -31,6 +31,21 @@
 .resultado .container__status {
     padding: 2rem 1.6rem;
   }
+/* Cabeçalho empilhado e tudo à esquerda: com nome de etiqueta comprido
+     o código MB quebrava de linha e desalinhava do "Atualizado em" */
+.resultado .cabecalho__resultado {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.4rem;
+  }
+.resultado .atualizado {
+    text-align: left;
+    margin-bottom: 2.4rem;
+  }
+/* Menor para caber numa linha só (com 13px sobrava o "DIAS" sozinho) */
+.resultado .resultado__prazo {
+    font-size: 11px;
+  }
 .resultado .resultado__passos {
     flex-direction: column;
     gap: 2.4rem;
