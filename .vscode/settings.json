@@ -1,3 +1,7 @@
 {
-  "liveServer.settings.port": 5501
+  "liveServer.settings.port": 5501,
+  // css/ é gerado pelo PostCSS a partir do css-fonte/ — edite lá
+  "files.readonlyInclude": {
+    "css/**": true
+  }
 }

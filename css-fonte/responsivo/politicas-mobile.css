@@ -1,0 +1,81 @@
+/* ================================================================
+   POLITICAS — MOBILE
+   Complemento responsivo de politicas.css.
+   Carregado no HTML com media="(max-width: 900px)" — por isso as regras
+   aqui NÃO ficam dentro de @media: o próprio <link> já filtra.
+   Blocos na mesma ordem em que estavam no arquivo original.
+   ================================================================ */
+
+/* ================================================================
+   6. MEDIA QUERIES MOBILE
+   Ponto de quebra: 900px
+   ================================================================ */
+/* Hero */
+.politicas-hero {
+  padding: 48px 20px 56px;
+}
+.politicas-hero-title {
+  font-size: 40px;
+}
+.politicas-hero-lead {
+  font-size: 15px;
+  margin-bottom: 32px;
+}
+
+/* Índice — coluna única */
+.politicas-indice {
+  grid-template-columns: 1fr;
+  gap: 10px;
+  margin-top: 32px;
+}
+.politicas-indice-item {
+  padding: 16px 18px;
+}
+.politicas-indice-titulo {
+  font-size: 16px;
+}
+
+/* Seções de política */
+.politica-secao {
+  padding: 56px 20px;
+  scroll-margin-top: 80px;
+}
+.politica-cabecalho {
+  grid-template-columns: 1fr;
+  gap: 8px;
+  margin-bottom: 32px;
+}
+.politica-numero {
+  font-size: 56px;
+}
+.politica-titulo {
+  font-size: 28px;
+  margin-top: 4px;
+}
+
+/* Conteúdo */
+.politica-conteudo {
+  margin-left: 0;
+}
+.politica-conteudo p {
+  font-size: 15px;
+}
+.politica-conteudo ul li {
+  font-size: 14px;
+}
+.politica-subtitulo {
+  font-size: 18px;
+  margin: 28px 0 12px;
+}
+.politica-aviso {
+  padding: 14px 16px;
+  font-size: 13px;
+}
+
+/* Fim */
+.politicas-fim {
+  padding: 32px 20px;
+}
+.politicas-fim-texto {
+  font-size: 11px;
+}

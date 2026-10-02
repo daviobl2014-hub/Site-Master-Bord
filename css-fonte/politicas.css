@@ -91,7 +91,6 @@ html {
   padding: 20px 22px;
   background: var(--mb-card);
   border: 1px solid var(--mb-line);
-  -webkit-text-decoration: none;
   text-decoration: none;
   color: var(--mb-paper);
   transition: border-color 0.2s, transform 0.2s, background 0.2s;
@@ -257,7 +256,6 @@ html {
 /* Links dentro do texto */
 .politica-conteudo a {
   color: var(--mb-azul-glow);
-  -webkit-text-decoration: underline;
   text-decoration: underline;
   text-underline-offset: 3px;
   transition: color 0.2s;
@@ -291,7 +289,6 @@ html {
   color: var(--mb-ouro);
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  -webkit-text-decoration: none;
   text-decoration: none;
   transition: color 0.2s;
 }

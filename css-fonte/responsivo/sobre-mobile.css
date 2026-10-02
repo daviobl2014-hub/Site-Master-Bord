@@ -88,6 +88,9 @@
   font-size: 28px;
 }
 
-.imagem:is(.infra-img-principal,.infra-img-secundaria) {
+.infra-img-principal,
+.infra-img-secundaria {
+  &.imagem {
     height: 40rem;
   }
+}

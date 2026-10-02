@@ -1,0 +1,20 @@
+{
+  "name": "site-master-bord",
+  "private": true,
+  "description": "Converte o CSS aninhado de css-fonte/ em CSS compatível (Windows 7: Chrome/Edge 109, Firefox 115) dentro de css/",
+  "scripts": {
+    "build:css": "postcss \"css-fonte/**/*.css\" --base css-fonte --dir css --no-map",
+    "watch:css": "postcss \"css-fonte/**/*.css\" --base css-fonte --dir css --no-map --watch"
+  },
+  "browserslist": [
+    "chrome >= 109",
+    "edge >= 109",
+    "firefox >= 115",
+    "safari >= 15"
+  ],
+  "devDependencies": {
+    "postcss": "^8.5.28",
+    "postcss-cli": "^12.0.0",
+    "postcss-preset-env": "^11.5.5"
+  }
+}

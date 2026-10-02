@@ -24,9 +24,7 @@
   background: var(--mb-bg);
 
   /* Textura de linhas finas — a mesma da primeira dobra da home */
-}
-
-.rastreio::before {
+  &::before {
     content: '';
     position: absolute;
     inset: 0;
@@ -48,15 +46,13 @@
     pointer-events: none;
   }
 
-/* A grade técnica (global) fica por baixo do cartão */
-
-.rastreio .grade-tecnica {
+  /* A grade técnica (global) fica por baixo do cartão */
+  & .grade-tecnica {
     z-index: 0;
   }
 
-/* Brilhos de fundo, como na home: a cor vem do modificador */
-
-.rastreio .rastreio__brilho {
+  /* Brilhos de fundo, como na home: a cor vem do modificador */
+  & .rastreio__brilho {
     position: absolute;
     width: 500px;
     height: 500px;
@@ -64,9 +60,8 @@
     opacity: 0.4;
     pointer-events: none;
     z-index: 0;
-  }
 
-.rastreio__brilho--azul:is(.rastreio .rastreio__brilho) {
+    &.rastreio__brilho--azul {
       background: radial-gradient(
         circle,
         rgba(0, 120, 255, 0.25),
@@ -76,7 +71,7 @@
       left: -120px;
     }
 
-.rastreio__brilho--vinho:is(.rastreio .rastreio__brilho) {
+    &.rastreio__brilho--vinho {
       background: radial-gradient(
         circle,
         rgba(180, 0, 60, 0.25),
@@ -85,15 +80,15 @@
       bottom: -120px;
       right: -120px;
     }
+  }
 
-/* ---- Cartão central ----
+  /* ---- Cartão central ----
      A sensação de altura vem de três coisas somadas:
      1. sombras em camadas (perto = curta e densa, longe = larga e suave)
      2. um filete de luz no topo e sombra interna na base, como se a luz
         viesse de cima (é o que dá o relevo de caixa)
      3. uma inclinação de 2 graus que se endireita quando o mouse chega */
-
-.rastreio .rastreio__cartao {
+  & .rastreio__cartao {
     position: relative;
     z-index: 10;
     width: 100%;
@@ -127,9 +122,7 @@
       box-shadow 0.45s ease;
 
     /* o cartão se endireita e sobe mais um pouco */
-  }
-
-:is(.rastreio .rastreio__cartao):hover {
+    &:hover {
       transform: perspective(1400px) rotateX(0deg) translateY(-6px);
       box-shadow:
         inset 0 1px 0 rgba(242, 236, 224, 0.1),
@@ -140,23 +133,22 @@
         0 64px 110px rgba(0, 0, 0, 0.45);
     }
 
-:is(.rastreio .rastreio__cartao) button {
+    & button {
       justify-content: center;
       text-align: center;
       width: 55%;
       padding: 1.28rem 3.12rem;
     }
 
-/* Enquanto busca o pedido (js/rastreio.js desabilita o botão) */
-
-:is(.rastreio .rastreio__cartao) button:disabled {
+    /* Enquanto busca o pedido (js/rastreio.js desabilita o botão) */
+    & button:disabled {
       opacity: 0.6;
       cursor: wait;
     }
+  }
 
-/* Sombra projetada no chão, atrás do cartão */
-
-.rastreio .rastreio__cartao::after {
+  /* Sombra projetada no chão, atrás do cartão */
+  & .rastreio__cartao::after {
     content: '';
     position: absolute;
     left: 8%;
@@ -174,18 +166,18 @@
     pointer-events: none;
   }
 
-.rastreio .rotulo {
+  & .rotulo {
     display: block;
     margin-bottom: 16px;
   }
 
-.rastreio .rastreio__titulo {
+  & .rastreio__titulo {
     margin: 0 0 12px;
     font-size: 34px;
     line-height: 1.15;
   }
 
-.rastreio .rastreio__apoio {
+  & .rastreio__apoio {
     margin-top: 2rem;
     margin-bottom: 0.55rem;
     font-size: 15px;
@@ -193,9 +185,9 @@
     color: var(--mb-muted);
   }
 
-/* ---- Campo do código de rastreio ---- */
-
-:is(.rastreio .rastreio__campo) input {
+  /* ---- Campo do código de rastreio ---- */
+  & .rastreio__campo {
+    & input {
       width: 60%;
       height: 3rem;
       margin-bottom: 2rem;
@@ -213,29 +205,28 @@
         box-shadow 0.2s ease;
     }
 
-/* Anel azul quando o campo é selecionado (substitui o outline) */
-
-:is(.rastreio .rastreio__campo) input:focus-visible {
+    /* Anel azul quando o campo é selecionado (substitui o outline) */
+    & input:focus-visible {
       border-color: var(--mb-azul);
     }
 
-/* Código não encontrado: o JS coloca aria-invalid="true" no input */
-
-:is(.rastreio .rastreio__campo) input[aria-invalid='true'] {
+    /* Código não encontrado: o JS coloca aria-invalid="true" no input */
+    & input[aria-invalid='true'] {
       border-color: var(--mb-vinho);
       box-shadow:
         0 1rem 1rem rgba(0, 0, 0, 0.2),
         0 0 0 4px rgba(196, 75, 85, 0.3);
     }
+  }
 
-/* ---- Mensagem de "pedido não encontrado" ---- */
-
-.rastreio .rastreio__erro {
+  /* ---- Mensagem de "pedido não encontrado" ---- */
+  & .rastreio__erro {
     margin: 1.6rem 0 0;
     font-size: 14px;
     line-height: 1.5;
     color: var(--mb-vinho-glow);
   }
+}
 
 /* ================================================================
    RESULTADO — linha do tempo do pedido (só HTML + CSS)
@@ -248,26 +239,24 @@
    descobre em qual posição está o passo --atual.
    ================================================================ */
 
-.resultado[hidden] {
+.resultado {
+  &[hidden] {
     display: none;
   }
-
-.resultado {
   --tam-circulo: 64px;
   padding: 48px 20px 80px;
   width: 100%;
   max-width: 96rem;
   margin: 0 auto;
-}
 
-.resultado .container__resultado {
+  & .container__resultado {
     display: flex;
     align-items: center;
     flex-flow: column;
     gap: 3.2rem;
   }
 
-.resultado .container__status {
+  & .container__status {
     width: 100%;
     background: var(--mb-card);
     border-radius: 12px;
@@ -275,9 +264,8 @@
     border: 1px solid var(--mb-line);
   }
 
-/* ---- Código do pedido + data de atualização ---- */
-
-.resultado .cabecalho__resultado {
+  /* ---- Código do pedido + data de atualização ---- */
+  & .cabecalho__resultado {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
@@ -286,28 +274,26 @@
     margin-bottom: 3.2rem;
   }
 
-.resultado .codigo {
+  & .codigo {
     margin: 0;
     font-size: 18px;
     font-weight: 600;
     color: var(--mb-paper);
   }
 
-.resultado .atualizado {
+  & .atualizado {
     margin: 0;
     font-size: 14px;
     color: var(--mb-muted);
   }
 
-/* Arquivo com mais de 2 dias (esqueceram de subir): o JS acrescenta o aviso */
-
-.resultado .atualizado--velho {
+  /* Arquivo com mais de 2 dias (esqueceram de subir): o JS acrescenta o aviso */
+  & .atualizado--velho {
     color: var(--mb-vinho-glow);
   }
 
-/* ---- A linha do tempo ---- */
-
-.resultado .resultado__passos {
+  /* ---- A linha do tempo ---- */
+  & .resultado__passos {
     --total: 5; /* quantidade de etapas */
     --progresso: 0; /* quantos trechos da linha já estão pintados */
     position: relative;
@@ -320,9 +306,8 @@
        ::after  = linha contínua por cima (costura feita)
        As duas começam no centro do 1º círculo e vão até o centro do último:
        cada etapa ocupa 100%/5, então o centro fica na metade disso (50%/5). */
-  }
-
-:is(.resultado .resultado__passos)::before,:is(.resultado .resultado__passos)::after {
+    &::before,
+    &::after {
       content: '';
       position: absolute;
       top: calc(var(--tam-circulo) / 2 - 1px);
@@ -330,7 +315,7 @@
       height: 2px;
     }
 
-:is(.resultado .resultado__passos)::before {
+    &::before {
       right: calc(50% / var(--total));
       background: repeating-linear-gradient(
         90deg,
@@ -339,63 +324,58 @@
       );
     }
 
-:is(.resultado .resultado__passos)::after {
+    &::after {
       width: calc(var(--progresso) * 100% / var(--total));
       background: var(--mb-azul);
     }
 
-/* Descobre a posição do passo atual e pinta a linha até ele.
+    /* Descobre a posição do passo atual e pinta a linha até ele.
        O js/rastreio.js também define --progresso no style da lista
        (reserva para navegador sem :has(), como o Firefox 115). */
-
-:is(.resultado .resultado__passos):has(.resultado__passo--atual:nth-child(2)) {
+    &:has(.resultado__passo--atual:nth-child(2)) {
       --progresso: 1;
     }
-
-:is(.resultado .resultado__passos):has(.resultado__passo--atual:nth-child(3)) {
+    &:has(.resultado__passo--atual:nth-child(3)) {
       --progresso: 2;
     }
-
-:is(.resultado .resultado__passos):has(.resultado__passo--atual:nth-child(4)) {
+    &:has(.resultado__passo--atual:nth-child(4)) {
       --progresso: 3;
     }
-
-:is(.resultado .resultado__passos):has(.resultado__passo--atual:nth-child(5)) {
+    &:has(.resultado__passo--atual:nth-child(5)) {
       --progresso: 4;
     }
-
-/* Pedido enviado/retirado: tudo concluído, não há passo --atual.
+    /* Pedido enviado/retirado: tudo concluído, não há passo --atual.
        Sem esta regra a linha voltaria para zero no pedido terminado. */
-
-:is(.resultado .resultado__passos):has(.resultado__passo--concluido:nth-child(5)) {
+    &:has(.resultado__passo--concluido:nth-child(5)) {
       --progresso: 4;
     }
+  }
 
-/* ---- Cada etapa ---- */
-
-.resultado .resultado__passo {
+  /* ---- Cada etapa ---- */
+  & .resultado__passo {
     flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
     padding: 0 6px;
-  }
 
-:is(.resultado .resultado__passo) h3 {
+    & h3 {
       margin: 0 0 2px;
       font-size: 15px;
       font-weight: 600;
       color: var(--mb-muted);
     }
 
-:is(.resultado .resultado__passo) time,:is(.resultado .resultado__passo) .sem-data {
+    & time,
+    & .sem-data {
       min-height: 1.3em;
       font-size: 13px;
       color: var(--mb-muted);
     }
+  }
 
-.resultado .resultado__circulo {
+  & .resultado__circulo {
     position: relative;
     z-index: 1; /* fica por cima da linha */
     width: var(--tam-circulo);
@@ -409,28 +389,25 @@
     background: var(--mb-card); /* mesma cor da caixa: "corta" a linha atrás */
 
     /* Os SVGs são pretos: invert(1) deixa branco, a opacidade apaga */
-  }
-
-:is(.resultado .resultado__circulo) img {
+    & img {
       width: 28px;
       height: 28px;
       object-fit: contain;
       filter: invert(1);
       opacity: 0.3;
     }
+  }
 
-/* Prazo de entrega: abaixo da caixa (usa o estilo do .rotulo).
+  /* Prazo de entrega: abaixo da caixa (usa o estilo do .rotulo).
      O espaço até a caixa vem do gap do .container__resultado */
-
-.resultado .resultado__prazo {
+  & .resultado__prazo {
     margin: 0;
     font-size: 13px;
     text-align: center;
   }
 
-/* Observação: só aparece no passo atual */
-
-.resultado .resultado__observacao {
+  /* Observação: só aparece no passo atual */
+  & .resultado__observacao {
     display: none;
     max-width: 16ch;
     margin: 8px 0 0;
@@ -439,34 +416,38 @@
     color: var(--mb-azul-glow);
   }
 
-/* ---- Estados ---- */
-
-:is(.resultado .resultado__passo--concluido) .resultado__circulo {
+  /* ---- Estados ---- */
+  & .resultado__passo--concluido {
+    & .resultado__circulo {
       border: 2px solid var(--mb-azul);
       background: var(--mb-azul);
-    }
 
-:is(:is(.resultado .resultado__passo--concluido) .resultado__circulo) img {
+      & img {
         opacity: 1;
       }
+    }
 
-:is(.resultado .resultado__passo--concluido) h3 {
+    & h3 {
       color: var(--mb-paper);
     }
+  }
 
-:is(.resultado .resultado__passo--atual) .resultado__circulo {
+  & .resultado__passo--atual {
+    & .resultado__circulo {
       border: 2px solid var(--mb-azul);
       box-shadow: 0 0 0 6px rgba(74, 139, 214, 0.18); /* anel em volta */
-    }
 
-:is(:is(.resultado .resultado__passo--atual) .resultado__circulo) img {
+      & img {
         opacity: 1;
       }
+    }
 
-:is(.resultado .resultado__passo--atual) h3 {
+    & h3 {
       color: var(--mb-azul-glow);
     }
 
-:is(.resultado .resultado__passo--atual) .resultado__observacao {
+    & .resultado__observacao {
       display: block;
     }
+  }
+}

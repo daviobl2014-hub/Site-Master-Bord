@@ -66,7 +66,6 @@ body {
 }
 a {
   color: inherit;
-  -webkit-text-decoration: none;
   text-decoration: none;
 }
 button {
@@ -121,24 +120,16 @@ img {
   border-bottom: 1px solid var(--mb-line);
   transition:
     background 0.3s ease,
-    -webkit-backdrop-filter 0.3s ease;
-  transition:
-    background 0.3s ease,
     backdrop-filter 0.3s ease;
-  transition:
-    background 0.3s ease,
-    backdrop-filter 0.3s ease,
-    -webkit-backdrop-filter 0.3s ease;
 
   /* Modificador: ligado pelo js/global.js quando a página rola */
-}
-.cabecalho.cabecalho--rolado {
+  &.cabecalho--rolado {
     background: rgba(15, 17, 22, 0.92);
-    -webkit-backdrop-filter: blur(16px);
-            backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
   }
-/* ---- Faixa utilitária (local · frete · redes) ---- */
-.cabecalho .cabecalho__faixa {
+
+  /* ---- Faixa utilitária (local · frete · redes) ---- */
+  & .cabecalho__faixa {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -152,66 +143,75 @@ img {
     text-transform: uppercase;
 
     /* 1º item à esquerda, 2º no centro, 3º à direita */
-  }
-:is(.cabecalho .cabecalho__faixa) span:nth-child(1) {
+    & span:nth-child(1) {
       text-align: left;
     }
-:is(.cabecalho .cabecalho__faixa) span:nth-child(2) {
+    & span:nth-child(2) {
       text-align: center;
     }
-:is(.cabecalho .cabecalho__faixa) span:nth-child(3) {
+    & span:nth-child(3) {
       text-align: right;
     }
-/* ---- Redes sociais dentro da faixa ---- */
-.cabecalho .cabecalho__redes {
+  }
+
+  /* ---- Redes sociais dentro da faixa ---- */
+  & .cabecalho__redes {
     display: flex;
     gap: 10px;
-  }
-:is(.cabecalho .cabecalho__redes) a {
+
+    & a {
       display: flex;
       align-items: center;
       justify-content: center;
       width: 24px;
       height: 24px;
-      -webkit-text-decoration: none;
       text-decoration: none;
     }
-:is(.cabecalho .cabecalho__redes) .icone {
+
+    & .icone {
       font-size: 16px;
       color: #fff;
       transition: color 0.3s;
     }
-:is(.cabecalho .cabecalho__redes) a:hover .icone {
+
+    & a:hover .icone {
       color: #ccc;
     }
-/* ---- Navegação principal ---- */
-.cabecalho .cabecalho__navegacao {
+  }
+
+  /* ---- Navegação principal ---- */
+  & .cabecalho__navegacao {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px 40px;
   }
-.cabecalho .cabecalho__esquerda {
+
+  & .cabecalho__esquerda {
     display: flex;
     align-items: center;
     gap: 28px;
   }
-.cabecalho .cabecalho__direita {
+
+  & .cabecalho__direita {
     display: flex;
     align-items: center;
     gap: 14px;
   }
-.cabecalho .cabecalho__divisor {
+
+  & .cabecalho__divisor {
     width: 1px;
     height: 16px;
     background: var(--mb-line);
   }
-/* ---- Links do menu (desktop) ---- */
-.cabecalho .cabecalho__links {
+
+  /* ---- Links do menu (desktop) ---- */
+  & .cabecalho__links {
     display: flex;
     gap: 22px;
   }
-.cabecalho .cabecalho__link {
+
+  & .cabecalho__link {
     color: var(--mb-muted);
     font-size: 13px;
     font-weight: 500;
@@ -222,11 +222,13 @@ img {
       border-color 0.2s;
 
     /* Modificador da página atual — mesmo visual do hover */
-  }
-.cabecalho__link--ativo:is(.cabecalho .cabecalho__link),:is(.cabecalho .cabecalho__link):hover {
+    &.cabecalho__link--ativo,
+    &:hover {
       color: var(--mb-paper);
       border-bottom-color: var(--mb-vinho);
     }
+  }
+}
 
 /* ================================================================
    SUBMENU — Produtos > Etiqueta / Bordado / Laser
@@ -250,9 +252,7 @@ img {
   border: 0;
   color: var(--mb-muted);
   cursor: pointer;
-}
-
-.submenu__seta svg {
+  & svg {
     margin-bottom: 2px;
     width: 1.4rem;
     height: 1.4rem;
@@ -264,15 +264,14 @@ img {
     transition: rotate 0.3s ease;
   }
 
-.submenu__seta:hover {
+  &:hover {
     color: var(--mb-paper);
   }
-
-/* Aberto: a seta vira para a esquerda ("fechar") */
-
-.submenu__seta[aria-expanded='true'] svg {
+  /* Aberto: a seta vira para a esquerda ("fechar") */
+  &[aria-expanded='true'] svg {
     rotate: 180deg;
   }
+}
 
 .submenu__lista {
   display: grid;
@@ -289,25 +288,23 @@ img {
   visibility: hidden;
   transition: visibility 0.35s;
   padding-left: 0.2rem;
-}
-
-.submenu__interno::after {
+  &::after {
     content: '';
     flex-shrink: 0;
     width: 1px;
     height: 1.6rem;
     background: var(--mb-line); /* mesma cor do divisor ao lado da logo */
   }
+}
 
 /* Aberto: coluna do tamanho do conteúdo, empurrando o resto */
 
 .submenu__seta[aria-expanded='true'] + .submenu__lista {
   grid-template-columns: 1fr;
-}
-
-:is(.submenu__seta[aria-expanded='true'] + .submenu__lista) .submenu__interno {
+  & .submenu__interno {
     visibility: visible;
   }
+}
 
 /* ---- Faixa de navegação só-mobile ----
    Fica escondida por padrão e só aparece na media query lá embaixo.
@@ -324,13 +321,14 @@ img {
 .rodape {
   background: var(--mb-bg-deep);
   border-top: 1px solid var(--mb-line);
-}
-.rodape .rodape__chamada {
+
+  & .rodape__chamada {
     padding: 64px 48px;
     position: relative;
     overflow: hidden;
   }
-.rodape .rodape__chamada-fundo {
+
+  & .rodape__chamada-fundo {
     position: absolute;
     inset: 0;
     background:
@@ -345,56 +343,65 @@ img {
         transparent 50%
       );
   }
-.rodape .rodape__chamada-grade {
+
+  & .rodape__chamada-grade {
     position: relative;
     display: grid;
     grid-template-columns: 1fr;
     justify-items: center;
     gap: 32px;
   }
-.rodape .rodape__chamada-acoes {
+
+  & .rodape__chamada-acoes {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 12px;
   }
-/* Botão da chamada final é mais largo que os botões das outras seções */
-.rodape .rodape__chamada-acoes .botao {
+
+  /* Botão da chamada final é mais largo que os botões das outras seções */
+  & .rodape__chamada-acoes .botao {
     padding: 1.6rem 8.8rem;
   }
-.rodape .rodape__colunas {
+
+  & .rodape__colunas {
     padding: 24px 48px;
     border-top: 1px solid var(--mb-line);
     display: grid;
     grid-template-columns: 1.3fr 1fr 1fr 1fr 1.2fr;
     gap: 40px;
   }
-/* ===== UTILITÁRIOS GLOBAIS (substituem inline styles que se repetiam em várias páginas) ===== */
-/* Logo dentro do footer (era style="font-size: 22px") */
-.rodape .rodape__logo {
+
+  /* ===== UTILITÁRIOS GLOBAIS (substituem inline styles que se repetiam em várias páginas) ===== */
+  /* Logo dentro do footer (era style="font-size: 22px") */
+  & .rodape__logo {
     font-size: 22px;
     display: flex;
     align-items: center;
     gap: 10px;
   }
-/* Margin-top no h2 grande do footer-cta-grid */
-.rodape .rodape__chamada-grade .titulo.titulo--enorme {
+
+  /* Margin-top no h2 grande do footer-cta-grid */
+  & .rodape__chamada-grade .titulo.titulo--enorme {
     margin-top: 14px;
     text-align: center;
   }
-.rodape .rodape__sobre p {
+
+  & .rodape__sobre p {
     font-size: 13px;
     color: var(--mb-muted);
     line-height: 1.6;
     margin: 14px 0 0;
     max-width: 280px;
   }
-.rodape .rodape__redes {
+
+  & .rodape__redes {
     display: flex;
     gap: 8px;
     margin-top: 16px;
   }
-.rodape .rodape__redes .rodape__rede {
+
+  & .rodape__redes .rodape__rede {
     position: relative;
     width: 32px;
     height: 32px;
@@ -412,14 +419,17 @@ img {
       transform 0.25s ease,
       background 0.25s ease;
   }
-.rodape .rodape__redes .rodape__rede:hover {
+
+  & .rodape__redes .rodape__rede:hover {
     color: var(--mb-paper);
     border-color: var(--mb-ouro);
     transform: translateY(-2px);
     background: rgba(212, 169, 106, 0.08);
   }
-/* Tooltip — aparece acima do ícone com nome da rede */
-.rodape .rodape__redes .rodape__rede::before,.rodape .rodape__redes .rodape__rede::after {
+
+  /* Tooltip — aparece acima do ícone com nome da rede */
+  & .rodape__redes .rodape__rede::before,
+  & .rodape__redes .rodape__rede::after {
     position: absolute;
     left: 50%;
     opacity: 0;
@@ -428,7 +438,8 @@ img {
       opacity 0.25s ease,
       transform 0.25s ease;
   }
-.rodape .rodape__redes .rodape__rede::before {
+
+  & .rodape__redes .rodape__rede::before {
     content: attr(data-tooltip);
     bottom: calc(100% + 10px);
     transform: translateX(-50%) translateY(4px);
@@ -442,22 +453,28 @@ img {
     padding: 6px 10px;
     white-space: nowrap;
   }
-.rodape .rodape__redes .rodape__rede::after {
+
+  & .rodape__redes .rodape__rede::after {
     content: '';
     bottom: calc(100% + 5px);
     transform: translateX(-50%) translateY(4px);
     border: 5px solid transparent;
     border-top-color: var(--mb-ouro);
   }
-.rodape .rodape__redes .rodape__rede:hover::before,.rodape .rodape__redes .rodape__rede:hover::after {
+
+  & .rodape__redes .rodape__rede:hover::before,
+  & .rodape__redes .rodape__rede:hover::after {
     opacity: 1;
     transform: translateX(-50%) translateY(0);
   }
-/* Esconde o tooltip se o link não tiver data-tooltip definido */
-.rodape .rodape__redes .rodape__rede:not([data-tooltip])::before,.rodape .rodape__redes .rodape__rede:not([data-tooltip])::after {
+
+  /* Esconde o tooltip se o link não tiver data-tooltip definido */
+  & .rodape__redes .rodape__rede:not([data-tooltip])::before,
+  & .rodape__redes .rodape__rede:not([data-tooltip])::after {
     display: none;
   }
-.rodape .rodape__coluna-titulo {
+
+  & .rodape__coluna-titulo {
     font-family: var(--font-mono);
     font-size: 10px;
     color: var(--mb-ouro);
@@ -465,7 +482,8 @@ img {
     text-transform: uppercase;
     margin-bottom: 16px;
   }
-.rodape .rodape__coluna ul {
+
+  & .rodape__coluna ul {
     list-style: none;
     padding: 0;
     margin: 0;
@@ -473,11 +491,13 @@ img {
     flex-direction: column;
     gap: 10px;
   }
-.rodape .rodape__coluna li {
+
+  & .rodape__coluna li {
     font-size: 13px;
     color: var(--mb-paper-dim);
   }
-.rodape .rodape__base {
+
+  & .rodape__base {
     padding: 20px 48px;
     border-top: 1px solid var(--mb-line);
     display: flex;
@@ -488,6 +508,7 @@ img {
     letter-spacing: 0.15em;
     text-transform: uppercase;
   }
+}
 
 /* ================================================================
    BOTÃO WHATSAPP — ícone flutuante
@@ -506,33 +527,32 @@ img {
   font-size: 4rem;
 
   /* o link ocupa o círculo inteiro (área de clique cheia) */
-}
-.botao-whatsapp .botao-whatsapp__link {
+  & .botao-whatsapp__link {
     display: block;
     width: 100%;
     height: 100%;
   }
-/* tamanho explícito: não depende de herdar font-size */
-.botao-whatsapp .icone {
+
+  /* tamanho explícito: não depende de herdar font-size */
+  & .icone {
     width: 100%;
     height: 100%;
   }
-.botao-whatsapp {
   /* no estado normal: vale na ida e na volta do hover */
   transition: transform 0.25s ease;
-}
-.botao-whatsapp:hover {
+
+  &:hover {
     transform: scale(1.2);
   }
-@media (prefers-reduced-motion: reduce) {
-.botao-whatsapp {
-    transition: none;
-}
 
-    .botao-whatsapp:hover {
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+
+    &:hover {
       transform: none;
     }
   }
+}
 
 /* ================================================================
    BOTÃO — bloco .botao e suas variações
@@ -556,38 +576,43 @@ img {
     transform 0.2s;
 
   /* Botões do footer-cta com texto centralizado */
-}
-.botao.botao--centralizado {
+  &.botao--centralizado {
     justify-content: center;
   }
-.botao:hover {
+
+  &:hover {
     opacity: 0.9;
     transform: translateY(-1px);
   }
-.botao.botao--primario {
+
+  &.botao--primario {
     background: var(--mb-vinho-fundo);
     color: var(--mb-paper);
     border-color: var(--mb-vinho-fundo);
   }
-.botao.botao--secundario {
+
+  &.botao--secundario {
     background: var(--mb-card);
     color: var(--mb-azul-glow);
     border-color: var(--mb-azul);
   }
-.botao.botao--vazado {
+
+  &.botao--vazado {
     background: var(--mb-card);
     color: var(--mb-paper);
     border-color: var(--mb-line);
   }
-.botao.botao--pequeno {
+
+  &.botao--pequeno {
     padding: 1.28rem 2rem;
     font-size: 1.11rem;
   }
-/* CTA grande. Em repouso é um botão liso; o halo colorido só
+
+  /* CTA grande. Em repouso é um botão liso; o halo colorido só
      aparece quando o mouse passa por cima.
      ::before = halo desfocado (invisível até o hover)
      ::after  = fundo sólido, pintado por cima do halo */
-.botao.botao--destaque {
+  &.botao--destaque {
     position: relative;
     isolation: isolate;
     padding: 20px 38px;
@@ -595,8 +620,8 @@ img {
     border-radius: 8px;
     background: transparent;
     border-color: transparent;
-  }
-.botao.botao--destaque::before {
+
+    &::before {
       content: '';
       position: absolute;
       inset: -4px;
@@ -612,7 +637,8 @@ img {
       opacity: 0;
       transition: opacity 0.3s ease;
     }
-.botao.botao--destaque::after {
+
+    &::after {
       content: '';
       position: absolute;
       inset: 0;
@@ -621,21 +647,27 @@ img {
       background: var(--mb-vinho-fundo);
       transition: background 0.2s ease;
     }
-.botao.botao--destaque:hover {
+
+    &:hover {
       opacity: 1;
       transform: translateY(-2px);
-    }
-.botao.botao--destaque:hover::before {
+
+      &::before {
         opacity: 1;
       }
-.botao.botao--destaque:hover::after {
+
+      &::after {
         background: #9d3c44;
       }
-@media (prefers-reduced-motion: reduce) {
-    .botao.botao--destaque:hover {
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &.botao--destaque:hover {
       transform: none;
     }
   }
+}
 
 /* ================================================================
    ÍCONE — símbolos das redes em SVG (substitui o Font Awesome)
@@ -653,19 +685,22 @@ img {
   -webkit-mask-size: contain;
   mask-size: contain;
   flex: none;
-}
-.icone.icone--instagram {
+
+  &.icone--instagram {
     -webkit-mask-image: url('../img/svg/instagram.svg');
     mask-image: url('../img/svg/instagram.svg');
   }
-.icone.icone--facebook {
+
+  &.icone--facebook {
     -webkit-mask-image: url('../img/svg/facebook.svg');
     mask-image: url('../img/svg/facebook.svg');
   }
-.icone.icone--whatsapp {
+
+  &.icone--whatsapp {
     -webkit-mask-image: url('../img/svg/whatsapp.svg');
     mask-image: url('../img/svg/whatsapp.svg');
   }
+}
 
 /* ================================================================
    RÓTULO — tag técnica que abre as seções
@@ -691,17 +726,20 @@ img {
   letter-spacing: -0.02em;
   color: var(--mb-paper);
   /* text-align: center; */
-}
-.titulo.titulo--enorme {
+
+  &.titulo--enorme {
     font-size: 84px;
     text-align: left;
   }
-.titulo.titulo--grande {
+
+  &.titulo--grande {
     font-size: 56px;
   }
-.titulo.titulo--medio {
+
+  &.titulo--medio {
     font-size: 40px;
   }
+}
 
 /* ================================================================
    CARTÃO — caixa base com faixa colorida opcional
@@ -714,14 +752,15 @@ img {
   position: relative;
   overflow: hidden;
   /* text-align: center; */
-}
-.cartao .cartao__faixa {
+
+  & .cartao__faixa {
     position: absolute;
     top: 0;
     left: 0;
     width: 3px;
     height: 100%;
   }
+}
 
 /* ================================================================
    GRADE TÉCNICA — linhas cruzadas de fundo
@@ -743,17 +782,20 @@ img {
 /* ================================================================
    LOGO — Master Bord (cabeçalho e rodapé)
    ================================================================ */
-/* Logo MasterBord. (usado no header e no footer) */
-.logo svg {
+.logo {
+  /* Logo MasterBord. (usado no header e no footer) */
+  & svg {
     width: 3rem; /* ajusta tamanho */
     transition: 0.3s;
     fill: var(--mb-azul-glow); /* cor normal */
     cursor: pointer;
   }
-.logo svg:hover {
+
+  & svg:hover {
     fill: var(--mb-azul);
     opacity: 0.7;
   }
+}
 
 /* ================================================================
    IMAGEM — placeholder e variações de moldura
@@ -764,16 +806,18 @@ img {
   position: relative;
   overflow: hidden;
   border: 1px solid var(--mb-line);
-}
-.imagem .imagem__gradiente {
+
+  & .imagem__gradiente {
     position: absolute;
     inset: 0;
   }
-.imagem .imagem__padrao {
+
+  & .imagem__padrao {
     position: absolute;
     inset: 0;
   }
-.imagem .imagem__moldura {
+
+  & .imagem__moldura {
     position: absolute;
     inset: 14px;
     border: 1px dashed;
@@ -782,14 +826,16 @@ img {
     align-items: center;
     justify-content: center;
   }
-.imagem .imagem__moldura img {
+
+  & .imagem__moldura img {
     display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: center;
   }
-.imagem .imagem__rotulo {
+
+  & .imagem__rotulo {
     position: absolute;
     top: 16px;
     left: 16px;
@@ -799,20 +845,25 @@ img {
     letter-spacing: 0.2em;
     text-transform: uppercase;
   }
+}
 
 /* ================================================================
    DESTAQUE — trechos coloridos dentro de textos
    ================================================================ */
-/* Destaques de cor inline dentro de textos */
-.destaque.destaque--azul {
+.destaque {
+  /* Destaques de cor inline dentro de textos */
+  &.destaque--azul {
     color: var(--mb-azul);
   }
-.destaque.destaque--vinho {
+
+  &.destaque--vinho {
     color: var(--mb-vinho);
   }
-.destaque.destaque--ouro {
+
+  &.destaque--ouro {
     color: var(--mb-ouro);
   }
+}
 
 /* ================================================================
    CABEÇALHO DE SEÇÃO — título com subtítulo ao lado
@@ -918,29 +969,26 @@ img {
 .carrossel__seta--vinho {
   background: rgba(196, 75, 85, 0.3);
   border-color: var(--mb-vinho);
-}
-
-.carrossel__seta--vinho:hover {
+  &:hover {
     border-color: rgba(196, 75, 85, 0.8);
     background: rgba(196, 75, 85, 0.8);
   }
+}
 
 .carrossel__seta--azul {
   background: rgba(74, 139, 214, 0.3);
   border-color: var(--mb-azul);
-}
-
-.carrossel__seta--azul:hover {
+  &:hover {
     border-color: rgba(74, 139, 214, 0.8);
     background: rgba(74, 139, 214, 0.8);
   }
+}
 
 .carrossel__seta--ouro {
   background: rgba(212, 169, 106, 0.3);
   border-color: var(--mb-ouro);
-}
-
-.carrossel__seta--ouro:hover {
+  &:hover {
     border-color: rgba(212, 169, 106, 0.8);
     background: rgba(212, 169, 106, 0.8);
   }
+}

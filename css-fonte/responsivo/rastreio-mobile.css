@@ -8,42 +8,45 @@
 
 /* ---- .rastreio ---- */
 .rastreio {
+  & {
     padding: 32px 16px;
   }
-.rastreio .rastreio__cartao {
+  & .rastreio__cartao {
     padding: 28px 22px;
   }
-.rastreio .rastreio__titulo {
+  & .rastreio__titulo {
     font-size: 26px;
   }
-.rastreio .rastreio__apoio {
+  & .rastreio__apoio {
     font-size: 14px;
     margin-bottom: 22px;
   }
+}
 
 /* ---- .resultado ----
    No celular a linha do tempo vira vertical: círculo à esquerda,
    texto à direita, e a linha desce pelo centro dos círculos. */
 .resultado {
+  & {
     --tam-circulo: 48px;
     padding: 32px 16px 56px;
   }
-.resultado .container__status {
+  & .container__status {
     padding: 2rem 1.6rem;
   }
-.resultado .resultado__passos {
+  & .resultado__passos {
     flex-direction: column;
     gap: 2.4rem;
 
     /* a linha agora é vertical: troca left/right por top/bottom */
-  }
-:is(.resultado .resultado__passos)::before,:is(.resultado .resultado__passos)::after {
+    &::before,
+    &::after {
       top: calc(var(--tam-circulo) / 2);
       left: calc(var(--tam-circulo) / 2 - 1px);
       width: 2px;
       height: auto;
     }
-:is(.resultado .resultado__passos)::before {
+    &::before {
       right: auto;
       bottom: calc(var(--tam-circulo) / 2);
       background: repeating-linear-gradient(
@@ -52,29 +55,32 @@
         transparent 8px 14px
       );
     }
-:is(.resultado .resultado__passos)::after {
+    &::after {
       width: 2px;
       /* altura aproximada: cada etapa + o espaço entre elas */
       height: calc(var(--progresso) * (var(--tam-circulo) + 2.4rem));
     }
-.resultado .resultado__passo {
+  }
+  & .resultado__passo {
     display: grid;
     grid-template-columns: var(--tam-circulo) 1fr;
     column-gap: 1.6rem;
     align-items: center;
     text-align: left;
     padding: 0;
-  }
-:is(.resultado .resultado__passo) .resultado__circulo {
+
+    & .resultado__circulo {
       grid-row: span 3;
       align-self: start;
       margin: 0;
     }
-.resultado .resultado__circulo img {
+  }
+  & .resultado__circulo img {
     width: 22px;
     height: 22px;
   }
-.resultado .resultado__observacao {
+  & .resultado__observacao {
     max-width: none;
     margin-top: 4px;
   }
+}

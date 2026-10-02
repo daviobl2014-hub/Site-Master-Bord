@@ -1,0 +1,205 @@
+/* ================================================================
+   CONTATO.CSS — Master Bord
+   CSS exclusivo da PÁGINA CONTATO (contato.html).
+   NÃO carregue em outras páginas.
+   (as variáveis de tema e os blocos compartilhados vêm de global.css)
+
+   Seções:
+   1. Hero
+   2. Bloco de dados (número, horário e endereço)
+   3. Tooltip dos números de WhatsApp
+   4. Mapa / localização
+   5. Media queries mobile
+   ================================================================ */
+
+/* ================================================================
+   1. HERO
+   ================================================================ */
+.contato-hero {
+  position: relative;
+  overflow: hidden;
+  background: var(--mb-bg);
+  color: var(--mb-paper);
+  padding: 72px 48px 96px;
+}
+
+.contato-grid {
+  position: relative;
+  display: flex;
+  gap: 56px;
+  align-items: start;
+}
+.contato-hero-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 96px;
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  color: var(--mb-paper);
+  margin: 0;
+  max-width: 80rem;
+}
+.contato-hero-lead {
+  font-family: var(--font-sans);
+  font-size: 17px;
+  color: var(--mb-paper-dim);
+  line-height: 1.6;
+  margin: 3rem 0 0;
+  max-width: max-content;
+}
+
+/* ================================================================
+   2. BLOCO DE DADOS — número, horário e endereço
+   (ocupa o lugar do antigo formulário)
+   ================================================================ */
+.contato-dados {
+  background: var(--mb-bg-soft);
+  color: var(--mb-paper);
+  padding: 96px 48px;
+}
+.contato-dados-cartao {
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.contato-info {
+  /* margin-top: 3.2rem; */
+  display: flex;
+  flex-direction: column;
+}
+.contato-info-row {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 20px;
+  padding: 14px 0;
+  border-bottom: 1px dashed var(--mb-line);
+  align-items: center;
+}
+.contato-info-key {
+  font-family: var(--font-mono);
+  font-size: 1.4rem;
+  letter-spacing: 0.25em;
+}
+.contato-info-val {
+  display: flex;
+  gap: 10px;
+  font-family: var(--font-sans);
+  font-size: 15px;
+  color: var(--mb-paper);
+  font-weight: 500;
+}
+
+/* Cor do rótulo de cada linha (substitui inline styles do HTML) */
+.contato-info-key.is-whatsapp {
+  color: var(--mb-green);
+}
+.contato-info-key.is-email {
+  color: var(--mb-azul);
+}
+.contato-info-key.is-endereco {
+  color: var(--mb-ouro);
+}
+.contato-info-key.is-horario {
+  color: var(--mb-vinho);
+}
+
+/* ================================================================
+   3. TOOLTIP DOS NÚMEROS DE WHATSAPP
+   ================================================================ */
+.n-bordado,
+.n-etiqueta {
+  position: relative;
+  cursor: pointer; /* muda o cursor */
+}
+.n-bordado:hover,
+.n-etiqueta:hover {
+  color: var(--mb-paper);
+  border-color: var(--mb-ouro);
+  transform: translateY(-2px);
+  background: rgba(212, 169, 106, 0.08);
+}
+/* TEXTO DO TOOLTIP (escondido até o hover) */
+.n-bordado::before,
+.n-etiqueta::before {
+  content: attr(data-tooltip);
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 10px);
+
+  transform: translateX(-50%) translateY(4px);
+  opacity: 0;
+  pointer-events: none;
+
+  background: var(--mb-bg-deep);
+  border: 1px solid var(--mb-ouro);
+  color: var(--mb-paper);
+
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+
+  padding: 6px 10px;
+  white-space: nowrap;
+
+  transition: 0.25s ease;
+}
+/* SETINHA */
+.n-bordado::after,
+.n-etiqueta::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 5px);
+
+  transform: translateX(-50%) translateY(4px);
+  opacity: 0;
+
+  border: 5px solid transparent;
+  border-top-color: var(--mb-ouro);
+
+  transition: 0.25s ease;
+}
+
+/* HOVER */
+.n-bordado:hover::before,
+.n-bordado:hover::after,
+.n-etiqueta:hover::before,
+.n-etiqueta:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ================================================================
+   4. MAPA / LOCALIZAÇÃO
+   ================================================================ */
+.contato-mapa {
+  background: var(--mb-bg);
+  padding: 80px 48px;
+}
+.contato-mapa iframe {
+  border: 0;
+}
+.contato-mapa-img {
+  position: relative;
+  aspect-ratio: 16 / 6;
+}
+/* Placeholder/moldura azul do mapa (substitui inline styles do HTML) */
+.contato-mapa-img .imagem__gradiente {
+  background: linear-gradient(
+    135deg,
+    rgba(74, 139, 214, 0.19),
+    transparent 60%
+  );
+}
+.contato-mapa-img .imagem__padrao {
+  background: repeating-linear-gradient(
+    0deg,
+    transparent 0 6px,
+    rgba(74, 139, 214, 0.13) 6px 7px
+  );
+}
+.contato-mapa-img .imagem__moldura {
+  border-color: rgba(74, 139, 214, 0.3);
+}

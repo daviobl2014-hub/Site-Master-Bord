@@ -8,15 +8,17 @@
 
 /* ---- .canal ---- */
 .canal {
+  & {
     padding: 32px 16px;
   }
-.canal .canal__cartao {
+  & .canal__cartao {
     padding: 28px 22px;
   }
-.canal .canal__titulo {
+  & .canal__titulo {
     font-size: 26px;
   }
-.canal .canal__apoio {
+  & .canal__apoio {
     font-size: 14px;
     margin-bottom: 22px;
   }
+}

@@ -1,0 +1,51 @@
+/* ================================================================
+   CONTATO — MOBILE
+   Complemento responsivo de contato.css.
+   Carregado no HTML com media="(max-width: 900px)" — por isso as regras
+   aqui NÃO ficam dentro de @media: o próprio <link> já filtra.
+   Blocos na mesma ordem em que estavam no arquivo original.
+   ================================================================ */
+
+/* ================================================================
+   5. MEDIA QUERIES MOBILE
+   Ponto de quebra: 900px
+   ================================================================ */
+/* Hero */
+.contato-hero {
+  padding: 48px 20px 72px;
+}
+.contato-grid {
+  gap: 32px;
+}
+.contato-hero-title {
+  font-size: 44px;
+}
+.contato-hero-lead {
+  font-size: 15px;
+}
+
+/* Bloco de dados */
+.contato-dados {
+  padding: 56px 20px;
+}
+.contato-dados-cartao {
+  padding: 24px;
+}
+.contato-info {
+  margin-top: 32px;
+}
+.contato-info-row {
+  grid-template-columns: 90px 1fr;
+  gap: 12px;
+}
+.contato-info-val {
+  font-size: 14px;
+}
+
+/* Mapa */
+.contato-mapa {
+  padding: 56px 20px;
+}
+.contato-mapa-img {
+  aspect-ratio: 4 / 3;
+}

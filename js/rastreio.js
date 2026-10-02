@@ -97,9 +97,13 @@
     // Atual = primeira etapa ainda não feita. Tudo feito (enviado/retirado) → nenhuma atual.
     const atual = etapas.findIndex((e) => !e.feito);
 
-    document.getElementById('resultadoPassos').innerHTML = etapas
+    const lista = document.getElementById('resultadoPassos');
+    lista.innerHTML = etapas
       .map((e, i) => htmlEtapa(e, i === atual ? 'atual' : e.feito ? 'concluido' : ''))
       .join('');
+    // Quantos trechos da linha pintar. O CSS calcula o mesmo com :has(),
+    // mas o Firefox 115 (Windows 7) não entende :has() — aqui vale para todos.
+    lista.style.setProperty('--progresso', atual === -1 ? etapas.length - 1 : atual);
     document.getElementById('resultadoCodigo').textContent =
       p.pedido ? `Pedido ${p.pedido} · ${p.codigo}` : `Pedido ${p.codigo}`;
     const atualizado = document.getElementById('resultadoAtualizado');

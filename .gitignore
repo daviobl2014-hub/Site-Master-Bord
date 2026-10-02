@@ -1,2 +1,5 @@
 sistema-tamanhos.txt
 vscode/
+pedidos/
+# Dependências do npm (recriar com: npm install)
+node_modules/

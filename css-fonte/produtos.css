@@ -1,0 +1,159 @@
+/* ================================================================
+   PRODUTOS.CSS — Master Bord
+   CSS exclusivo da PÁGINA PRODUTOS (produtos.html — índice dos 3).
+   NÃO carregue em outras páginas.
+
+   Seções:
+   1. Hero (capa "Três produtos, um padrão")
+   2. Grid de produtos (3 cards)
+   3. Media queries mobile
+   ================================================================ */
+
+/* ================================================================
+   1. HERO — capa da página produtos
+   ================================================================ */
+.produtos-hero {
+  background: var(--mb-bg);
+  color: var(--mb-paper);
+  padding: 72px 48px;
+}
+.produtos-hero-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 112px;
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  color: var(--mb-paper);
+  margin: 0;
+}
+
+/* ================================================================
+   2. GRID — 3 cards dos produtos
+   ================================================================ */
+.produtos-index {
+  background: var(--mb-bg-soft);
+  padding: 56px 48px 96px;
+}
+.produtos-index-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.produto-index-card {
+  display: block;
+  cursor: pointer;
+  transition:
+    transform 0.2s,
+    border-color 0.2s;
+  text-align: center;
+}
+.produto-index-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--mb-line);
+}
+.produto-index-image {
+  aspect-ratio: 5 / 4;
+  margin-bottom: 20px;
+}
+
+.produto-index-nome {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 32px;
+  color: var(--mb-paper);
+  margin-top: 8px;
+  letter-spacing: -0.01em;
+}
+.produto-index-tagline {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 15px;
+  margin-top: 6px;
+}
+.produto-index-link {
+  margin-top: 18px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  display: inline-block;
+  text-transform: uppercase;
+}
+
+/* ===== Variantes por categoria — substituem todos os style="" inline ===== */
+
+/* --- ETIQUETA (azul) --- */
+.produto-index-card.is-etiqueta .cartao__faixa {
+  background: var(--mb-azul);
+  box-shadow: 0 0 20px rgba(74, 139, 214, 0.5);
+}
+.produto-index-card.is-etiqueta .imagem__gradiente {
+  background: linear-gradient(
+    135deg,
+    rgba(74, 139, 214, 0.19),
+    transparent 60%
+  );
+}
+.produto-index-card.is-etiqueta .imagem__padrao {
+  background: repeating-linear-gradient(
+    0deg,
+    transparent 0 6px,
+    rgba(74, 139, 214, 0.13) 6px 7px
+  );
+}
+.produto-index-card.is-etiqueta .imagem__moldura {
+  border-color: rgba(74, 139, 214, 0.3);
+}
+.produto-index-card.is-etiqueta .produto-index-tagline,
+.produto-index-card.is-etiqueta .produto-index-link {
+  color: var(--mb-azul);
+}
+
+/* --- BORDADO (vinho) --- */
+.produto-index-card.is-bordado .cartao__faixa {
+  background: var(--mb-vinho);
+  box-shadow: 0 0 20px rgba(196, 75, 85, 0.5);
+}
+.produto-index-card.is-bordado .imagem__gradiente {
+  background: linear-gradient(135deg, rgba(196, 75, 85, 0.19), transparent 60%);
+}
+.produto-index-card.is-bordado .imagem__padrao {
+  background: repeating-linear-gradient(
+    35deg,
+    transparent 0 6px,
+    rgba(196, 75, 85, 0.13) 6px 7px
+  );
+}
+.produto-index-card.is-bordado .imagem__moldura {
+  border-color: rgba(196, 75, 85, 0.3);
+}
+.produto-index-card.is-bordado .produto-index-tagline,
+.produto-index-card.is-bordado .produto-index-link {
+  color: var(--mb-vinho);
+}
+
+/* --- LASER (ouro) --- */
+.produto-index-card.is-laser .cartao__faixa {
+  background: var(--mb-ouro);
+  box-shadow: 0 0 20px rgba(212, 169, 106, 0.5);
+}
+.produto-index-card.is-laser .imagem__gradiente {
+  background: linear-gradient(
+    135deg,
+    rgba(212, 169, 106, 0.19),
+    transparent 60%
+  );
+}
+.produto-index-card.is-laser .imagem__padrao {
+  background: repeating-linear-gradient(
+    -70deg,
+    transparent 0 6px,
+    rgba(212, 169, 106, 0.13) 6px 7px
+  );
+}
+.produto-index-card.is-laser .imagem__moldura {
+  border-color: rgba(212, 169, 106, 0.3);
+}
+.produto-index-card.is-laser .produto-index-tagline,
+.produto-index-card.is-laser .produto-index-link {
+  color: var(--mb-ouro);
+}

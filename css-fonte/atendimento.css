@@ -26,9 +26,7 @@
   background: var(--mb-bg);
 
   /* Textura de linhas finas — a mesma da primeira dobra da home */
-}
-
-.canal::before {
+  &::before {
     content: '';
     position: absolute;
     inset: 0;
@@ -50,15 +48,13 @@
     pointer-events: none;
   }
 
-/* A grade técnica (global) fica por baixo do cartão */
-
-.canal .grade-tecnica {
+  /* A grade técnica (global) fica por baixo do cartão */
+  & .grade-tecnica {
     z-index: 0;
   }
 
-/* Brilhos de fundo, como na home: a cor vem do modificador */
-
-.canal .canal__brilho {
+  /* Brilhos de fundo, como na home: a cor vem do modificador */
+  & .canal__brilho {
     position: absolute;
     width: 500px;
     height: 500px;
@@ -66,9 +62,8 @@
     opacity: 0.4;
     pointer-events: none;
     z-index: 0;
-  }
 
-.canal__brilho--azul:is(.canal .canal__brilho) {
+    &.canal__brilho--azul {
       background: radial-gradient(
         circle,
         rgba(0, 120, 255, 0.25),
@@ -78,7 +73,7 @@
       left: -120px;
     }
 
-.canal__brilho--vinho:is(.canal .canal__brilho) {
+    &.canal__brilho--vinho {
       background: radial-gradient(
         circle,
         rgba(180, 0, 60, 0.25),
@@ -87,15 +82,15 @@
       bottom: -120px;
       right: -120px;
     }
+  }
 
-/* ---- Cartão central ----
+  /* ---- Cartão central ----
      A sensação de altura vem de três coisas somadas:
      1. sombras em camadas (perto = curta e densa, longe = larga e suave)
      2. um filete de luz no topo e sombra interna na base, como se a luz
         viesse de cima (é o que dá o relevo de caixa)
      3. uma inclinação de 2 graus que se endireita quando o mouse chega */
-
-.canal .canal__cartao {
+  & .canal__cartao {
     position: relative;
     z-index: 10;
     width: 100%;
@@ -130,9 +125,7 @@
       box-shadow 0.45s ease;
 
     /* o cartão se endireita e sobe mais um pouco */
-  }
-
-:is(.canal .canal__cartao):hover {
+    &:hover {
       transform: perspective(1400px) rotateX(0deg) translateY(-6px);
       box-shadow:
         inset 0 1px 0 rgba(242, 236, 224, 0.1),
@@ -142,10 +135,10 @@
         0 36px 64px rgba(0, 0, 0, 0.5),
         0 64px 110px rgba(0, 0, 0, 0.45);
     }
+  }
 
-/* Sombra projetada no chão, atrás do cartão */
-
-.canal .canal__cartao::after {
+  /* Sombra projetada no chão, atrás do cartão */
+  & .canal__cartao::after {
     content: '';
     position: absolute;
     left: 8%;
@@ -163,33 +156,32 @@
     pointer-events: none;
   }
 
-.canal .rotulo {
+  & .rotulo {
     display: block;
     margin-bottom: 16px;
   }
 
-.canal .canal__titulo {
+  & .canal__titulo {
     margin: 0 0 12px;
     font-size: 34px;
     line-height: 1.15;
   }
 
-.canal .canal__apoio {
+  & .canal__apoio {
     margin: 0 0 28px;
     font-size: 15px;
     line-height: 1.6;
     color: var(--mb-muted);
   }
 
-/* ---- As duas opções de setor ---- */
-
-.canal .canal__opcoes {
+  /* ---- As duas opções de setor ---- */
+  & .canal__opcoes {
     display: flex;
     flex-direction: column;
     gap: 12px;
   }
 
-.canal .canal__opcao {
+  & .canal__opcao {
     --canal-cor: var(--mb-vinho);
 
     position: relative;
@@ -206,28 +198,28 @@
       background 0.2s ease,
       border-color 0.2s ease,
       transform 0.2s ease;
-  }
 
-:is(.canal .canal__opcao):hover {
+    &:hover {
       background: var(--mb-card-hover);
       border-color: var(--canal-cor);
       transform: translateX(4px);
     }
 
-:is(.canal .canal__opcao):focus-visible {
+    &:focus-visible {
       outline: 2px solid var(--canal-cor);
       outline-offset: 2px;
     }
 
-.canal__opcao--vinho:is(.canal .canal__opcao) {
+    &.canal__opcao--vinho {
       --canal-cor: var(--mb-vinho);
     }
 
-.canal__opcao--azul:is(.canal .canal__opcao) {
+    &.canal__opcao--azul {
       --canal-cor: var(--mb-azul);
     }
+  }
 
-.canal .canal__opcao-icone {
+  & .canal__opcao-icone {
     flex: none;
     display: flex;
     align-items: center;
@@ -240,72 +232,73 @@
     font-size: 22px;
   }
 
-.canal .canal__opcao-corpo {
+  & .canal__opcao-corpo {
     flex: 1;
     display: flex;
     flex-direction: column;
   }
 
-.canal .canal__opcao-rotulo {
+  & .canal__opcao-rotulo {
     font-family: var(--font-display);
     font-weight: 700;
     font-size: 17px;
     color: var(--mb-paper);
   }
 
-.canal .canal__opcao-numero {
+  & .canal__opcao-numero {
     font-family: var(--font-mono);
     font-size: 12px;
     letter-spacing: 0.08em;
     color: var(--mb-muted);
   }
 
-.canal .canal__opcao-seta {
+  & .canal__opcao-seta {
     flex: none;
     font-size: 18px;
     color: var(--canal-cor);
     transition: transform 0.2s ease;
   }
 
-.canal .canal__opcao:hover .canal__opcao-seta {
+  & .canal__opcao:hover .canal__opcao-seta {
     transform: translateX(4px);
   }
 
-/* ---- Saída alternativa: formulário e telefone ---- */
-
-.canal .canal__alternativa {
+  /* ---- Saída alternativa: formulário e telefone ---- */
+  & .canal__alternativa {
     margin: 26px 0 0;
     font-size: 13.5px;
     line-height: 1.7;
     color: var(--mb-muted);
-  }
 
-:is(.canal .canal__alternativa) a {
+    & a {
       color: var(--mb-ouro);
       border-bottom: 1px solid transparent;
       transition: border-color 0.2s ease;
-    }
 
-:is(:is(.canal .canal__alternativa) a):hover {
+      &:hover {
         border-bottom-color: var(--mb-ouro);
       }
+    }
+  }
 
-@media (prefers-reduced-motion: reduce) {
-    .canal .canal__cartao {
+  @media (prefers-reduced-motion: reduce) {
+    & .canal__cartao {
       transform: none;
       transition: none;
-    }
 
-      :is(.canal .canal__cartao):hover {
+      &:hover {
         transform: none;
       }
-    .canal .canal__opcao,.canal .canal__opcao-seta {
+    }
+    & .canal__opcao,
+    & .canal__opcao-seta {
       transition: none;
     }
-    .canal .canal__opcao:hover {
+    & .canal__opcao:hover {
       transform: none;
     }
-    .canal .canal__opcao:hover .canal__opcao-seta {
+    & .canal__opcao:hover .canal__opcao-seta {
       transform: none;
     }
   }
+}
