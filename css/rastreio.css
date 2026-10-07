@@ -235,7 +235,13 @@
     font-size: 14px;
     line-height: 1.5;
     color: var(--mb-vinho-glow);
+
+    /* Aviso que não é erro (pedido concluído há mais de 30 dias) */
   }
+
+.rastreio__erro--info:is(.rastreio .rastreio__erro) {
+      color: var(--mb-azul-glow);
+    }
 
 /* ================================================================
    RESULTADO — linha do tempo do pedido (só HTML + CSS)
@@ -440,6 +446,13 @@
     font-size: 13px;
     line-height: 1.4;
     color: var(--mb-azul-glow);
+  }
+
+/* Pedido terminado (enviado/retirado): não sobra passo atual, então a
+     frase da última etapa aparece. A classe vem do js/rastreio.js */
+
+.resultado .resultado__passos--terminado .resultado__passo:last-child .resultado__observacao {
+    display: block;
   }
 
 /* ---- Estados ---- */

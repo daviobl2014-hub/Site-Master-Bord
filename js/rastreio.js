@@ -22,12 +22,17 @@
   const PASTA_PEDIDOS = 'pedidos/';
   // Envio do arquivo é manual (1x por dia): se esquecerem, avisa em vez de mostrar dado velho como atual
   const DIAS_PARA_AVISO = 2;
+  // Pedido enviado/pronto para retirada há mais que isso sai da linha do tempo
+  // e vira só a mensagem "concluído" (os JSON antigos podem ficar no servidor)
+  const DIAS_PARA_CONCLUIR = 30;
 
   const MENSAGENS = {
     formato: 'O código tem 6 letras e números depois de "MB-". Ex.: MB-7K2QXP.',
     naoEncontrado: 'Não encontramos esse pedido. Confira o código e tente de novo.',
     cancelado: 'Este pedido foi cancelado. Em caso de dúvida, fale com o nosso atendimento.',
     conexao: 'Não conseguimos consultar agora. Verifique sua internet e tente de novo.',
+    concluido: (data) =>
+      `Este pedido foi concluído em ${data}. Em caso de dúvida, fale com o nosso atendimento.`,
   };
 
   const form = document.getElementById('formRastreio');
@@ -52,6 +57,10 @@
     return d ? `${d}/${m}` : '';
   }
 
+  function diasDesde(iso) {
+    return (Date.now() - new Date(iso).getTime()) / 86400000;
+  }
+
   function atualizadoEm(iso) {
     const [data, hora] = String(iso || '').split('T');
     if (!data) return '';
@@ -71,9 +80,13 @@
       { titulo: 'Em produção', icone: 'producao', data: d.em_producao, feito: !!d.finalizado,
         obs: 'Sua etiqueta está sendo produzida.' },
       { titulo: 'Produção finalizada', icone: 'finalizado', data: d.finalizado, feito: !!d.despachado,
-        obs: 'Pronto! Enviaremos após o acerto final.' },
-      { titulo: retirada ? 'Retirado' : 'Enviado', icone: 'enviado', data: d.despachado, feito: !!d.despachado,
-        obs: retirada ? 'Pedido retirado na fábrica.' : 'Seu pedido está a caminho.' },
+        obs: 'Pronto! Seu produto está finalizado e em fase final de preparo.' },
+      // Retirada: a fábrica não sabe quando o cliente vem buscar, então a
+      // última etapa é "pronto" e a frase orienta onde retirar
+      { titulo: retirada ? 'Pronto para retirada' : 'Enviado', icone: 'enviado', data: d.despachado, feito: !!d.despachado,
+        obs: retirada
+          ? 'Seu produto está pronto! Retire na fábrica: R. São Sebastião, 269 — Petrópolis.'
+          : 'Seu pedido está a caminho.' },
     ];
   }
 
@@ -105,14 +118,17 @@
     // Quantos trechos da linha pintar. O CSS calcula o mesmo com :has(),
     // mas o Firefox 115 (Windows 7) não entende :has() — aqui vale para todos.
     lista.style.setProperty('--progresso', atual === -1 ? etapas.length - 1 : atual);
+    // Pedido terminado (enviado/retirado): não há passo atual, então o CSS
+    // usa esta classe para mostrar a observação da última etapa
+    lista.classList.toggle('resultado__passos--terminado', atual === -1);
     // textContent (e não innerHTML): o nome da etiqueta é digitado no TEAR,
     // um "<" ou "&" nele não pode virar HTML
     document.getElementById('resultadoPedido').textContent =
       [p.pedido ? `Pedido ${p.pedido}` : 'Pedido', p.etiqueta].filter(Boolean).join(' · ');
     document.getElementById('resultadoCodigo').textContent = p.codigo;
     const atualizado = document.getElementById('resultadoAtualizado');
-    const dias = (Date.now() - new Date(p.atualizado_em).getTime()) / 86400000;
-    const velho = dias > DIAS_PARA_AVISO;
+    // Pedido terminado não muda mais: o arquivo parado não é "desatualizado"
+    const velho = atual !== -1 && diasDesde(p.atualizado_em) > DIAS_PARA_AVISO;
     atualizado.textContent = atualizadoEm(p.atualizado_em) +
       (velho ? ' · as informações podem estar desatualizadas, fale com o atendimento' : '');
     atualizado.classList.toggle('atualizado--velho', velho);
@@ -125,8 +141,19 @@
 
   function mostrarErro(chave) {
     erro.textContent = MENSAGENS[chave];
+    erro.classList.remove('rastreio__erro--info');
     erro.hidden = false;
     campo.setAttribute('aria-invalid', 'true');
+    resultado.hidden = true;
+  }
+
+  // Pedido concluído há mais de 30 dias: mesma área de mensagem do erro,
+  // mas sem marcar o campo como inválido (o código está certo)
+  function mostrarConcluido(dataIso) {
+    erro.textContent = MENSAGENS.concluido(dataCurta(dataIso));
+    // Não é erro: a classe deixa a mensagem azul em vez de vermelha
+    erro.classList.add('rastreio__erro--info');
+    erro.hidden = false;
     resultado.hidden = true;
   }
 
@@ -151,7 +178,12 @@
       if (!r.ok) return mostrarErro('conexao');
       const pedido = await r.json();
       if (pedido.cancelado) return mostrarErro('cancelado');
-      mostrarPedido(pedido);
+      const despachado = pedido.datas && pedido.datas.despachado;
+      if (despachado && diasDesde(despachado) > DIAS_PARA_CONCLUIR) {
+        mostrarConcluido(despachado);
+      } else {
+        mostrarPedido(pedido);
+      }
 
       // Deixa o endereço com ?p= (dá pra salvar/compartilhar o link)
       const url = new URL(location.href);
