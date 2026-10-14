@@ -1,0 +1,77 @@
+/* ================================================================
+   PATCH — MOBILE
+   Complemento responsivo de patch.css.
+   Carregado no HTML com media="(max-width: 900px)" — por isso as regras
+   aqui NÃO ficam dentro de @media: o próprio <link> já filtra.
+   ================================================================ */
+
+/* Hero */
+.patch-hero {
+  padding: 48px 20px 56px;
+}
+.patch-breadcrumb {
+  font-size: 10px;
+  margin-bottom: 20px;
+}
+.patch-hero-grid {
+  grid-template-columns: 1fr;
+  gap: 32px;
+}
+.patch-hero-title {
+  font-size: 44px;
+}
+.patch-hero-tagline {
+  font-size: 18px;
+}
+.patch-hero-lead {
+  font-size: 15px;
+  margin-top: 22px;
+}
+/* Aviso "a partir de 8 peças": ícone em cima, texto embaixo, centralizado */
+.patch__infos {
+  flex-direction: column;
+  text-align: center;
+  gap: 0;
+  max-width: 100%;
+}
+.patch-hero-ctas {
+  margin-top: 24px;
+}
+.patch-hero-img-sample-txt {
+  font-size: 16px;
+}
+
+/* Aplicações */
+.patch-aplicacoes {
+  padding: 56px 20px;
+}
+
+.carrossel {
+  --cards: 1;
+  --carrossel-gap: 12px;
+}
+.carrossel__seta--anterior {
+  left: 8px;
+}
+.carrossel__seta--proxima {
+  right: 8px;
+}
+
+.patch-aplicacao-titulo {
+  bottom: 10px;
+  left: 10px;
+  right: 10px;
+  font-size: 14px;
+}
+
+/* Relacionados */
+.patch-relacionados {
+  padding: 56px 20px;
+}
+.patch-relacionados-grid {
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+.patch-relacionado-nome {
+  font-size: 26px;
+}

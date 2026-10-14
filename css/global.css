@@ -666,6 +666,10 @@ img {
     -webkit-mask-image: url('../img/svg/whatsapp.svg');
     mask-image: url('../img/svg/whatsapp.svg');
   }
+.icone.icone--atencao {
+    -webkit-mask-image: url('../img/atencao.svg');
+    mask-image: url('../img/atencao.svg');
+  }
 
 /* ================================================================
    RÓTULO — tag técnica que abre as seções

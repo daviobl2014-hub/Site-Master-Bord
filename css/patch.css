@@ -1,0 +1,280 @@
+/* ================================================================
+   PATCH.CSS — Master Bord (página patch.html)
+   Começou como cópia do produto.css (páginas de produto) e foi
+   renomeado para patch-*. Mobile: responsivo/patch-mobile.css.
+
+   A cor da página (ouro) fica nas variáveis --cor-patch: trocando
+   ali, muda tudo que usa a cor da página de uma vez.
+
+   Seções:
+   1. Cor da página
+   2. Hero (breadcrumb, título, imagem)
+   3. Aplicações (carrossel "Onde vai bem")
+   4. Relacionados (cards dos outros produtos)
+   ================================================================ */
+
+/* ================================================================
+   1. COR DA PÁGINA
+   ================================================================ */
+body {
+  --cor-patch: var(--mb-ouro);
+  --cor-patch-rgb:
+    212, 169, 106; /* a mesma cor em RGB, para usar com transparência */
+}
+
+/* Aplica a cor onde foi marcada com a classe utilitária */
+.cor-patch {
+  color: var(--cor-patch);
+}
+
+/* ================================================================
+   2. HERO
+   ================================================================ */
+.patch-hero {
+  position: relative;
+  overflow: hidden;
+  background: var(--mb-bg);
+  color: var(--mb-paper);
+  padding: 72px 48px 96px;
+}
+
+.patch-breadcrumb {
+  position: relative;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--mb-muted);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 32px;
+}
+.patch-breadcrumb a {
+  color: var(--mb-muted);
+  transition: color 0.2s;
+}
+.patch-breadcrumb a:hover {
+  color: var(--mb-paper);
+}
+/* A "/" entre Home e Patch: é o 2º filho do breadcrumb (o nth-child conta
+   todos os irmãos, não só os .sep) */
+.patch-breadcrumb .sep {
+  margin: 0 4px;
+}
+:is(.patch-breadcrumb .sep):nth-child(2) {
+    color: var(--mb-vinho);
+  }
+
+.patch__infos {
+  margin-top: 1rem;
+  display: flex;
+  gap: 1.6rem;
+  align-items: center;
+  background-color: rgba(15, 17, 22, 0.6);
+  color: var(--mb-paper-dim);
+  padding: 1.2rem;
+  border: 1px solid var(--mb-ouro);
+  border-radius: 1rem;
+  width: auto;
+  max-width: 100%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+}
+.patch__info {
+  font-size: 1.7rem;
+  padding: 0 0.8rem;
+}
+.patch__info span {
+    font-size: 1.9rem;
+    font-weight: 600;
+  }
+
+/* O ícone é uma máscara (.icone, no global.css): a cor vem do "color"
+   e o tamanho do width/height — fill e stroke não funcionam aqui */
+.patch__icone {
+  width: 4rem;
+  height: 4rem;
+  color: var(--mb-vinho);
+  background-color: var(--mb-vinho);
+}
+
+.patch-hero-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 56px;
+  align-items: start;
+}
+
+.patch-hero-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 6.68rem;
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+  color: var(--mb-paper);
+  margin: 0;
+}
+.patch-hero-tagline {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 26px;
+  color: var(--mb-azul);
+  margin-top: 14px;
+}
+.patch-hero-lead {
+  font-family: var(--font-sans);
+  font-size: 17px;
+  color: var(--mb-paper-dim);
+  line-height: 1.6;
+  margin: 32px 0 0;
+  max-width: 560px;
+}
+.patch-hero-ctas {
+  display: flex;
+  gap: 12px;
+  margin-top: 36px;
+  flex-wrap: wrap;
+}
+
+/* Imagem do hero, com a faixa de texto embaixo */
+.patch-hero-img {
+  position: relative;
+  height: 70vh;
+}
+.patch-hero-img-sample {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0.52rem 2rem;
+  background: rgba(15, 17, 22, 0.6);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+}
+.patch-hero-img-sample-txt {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 2rem;
+  color: var(--mb-paper);
+  margin: 0.21rem;
+}
+
+/* ================================================================
+   3. APLICAÇÕES — carrossel "Onde vai bem"
+   ================================================================ */
+.patch-aplicacoes {
+  background: var(--mb-bg-soft);
+  color: var(--mb-paper);
+  padding: 96px 48px;
+}
+
+.patch-aplicacao-titulo {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  right: auto;
+  max-width: calc(100% - 2.8rem);
+  padding: 0.82rem 1.6rem;
+  background: rgba(15, 17, 22, 0.6);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.92rem;
+  color: var(--mb-paper);
+  line-height: 1.1;
+  letter-spacing: 0.15em;
+}
+
+/* Imagens do hero e das aplicações tingidas com a cor da página */
+.patch-hero-img .imagem__gradiente,
+.patch-aplicacao .imagem__gradiente {
+  background: linear-gradient(
+    135deg,
+    rgba(var(--cor-patch-rgb), 0.19),
+    transparent 60%
+  );
+}
+/* Listras diagonais: ângulo do ouro no padrão do site (azul 0deg,
+   vinho 35deg, ouro -70deg) */
+.patch-hero-img .imagem__padrao,
+.patch-aplicacao .imagem__padrao {
+  background: repeating-linear-gradient(
+    -70deg,
+    transparent 0 6px,
+    rgba(var(--cor-patch-rgb), 0.13) 6px 7px
+  );
+}
+.patch-hero-img .imagem__moldura,
+.patch-aplicacao .imagem__moldura {
+  border-color: rgba(var(--cor-patch-rgb), 0.3);
+}
+
+/* Espaço de 40px abaixo dos títulos das seções */
+.head-margin-40 {
+  margin-bottom: 40px;
+}
+
+/* ================================================================
+   4. RELACIONADOS — cards dos outros produtos
+   ================================================================ */
+.patch-relacionados {
+  background: var(--mb-bg);
+  color: var(--mb-paper);
+  padding: 96px 48px;
+}
+.patch-relacionados-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.patch-relacionado-card {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.patch-relacionado-card:hover {
+  transform: translateY(-2px);
+}
+
+.caixa__texto {
+  padding: 0 2rem;
+}
+
+.patch-relacionado-nome {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 4.89rem;
+  color: var(--mb-paper);
+  margin-top: 6px;
+}
+.patch-relacionado-link {
+  margin-left: 1.02rem;
+  margin-top: 1.28rem;
+  font-family: var(--font-mono);
+  font-size: 1.6rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+/* Cor de cada card (a cor do produto para onde ele leva) */
+.patch-relacionado-card.is-azul .cartao__faixa {
+  background: var(--mb-azul);
+}
+.patch-relacionado-card.is-azul .patch-relacionado-link {
+  color: var(--mb-azul);
+}
+
+.patch-relacionado-card.is-vinho .cartao__faixa {
+  background: var(--mb-vinho);
+}
+.patch-relacionado-card.is-vinho .patch-relacionado-link {
+  color: var(--mb-vinho);
+}
+
+.patch-relacionado-card.is-ouro .cartao__faixa {
+  background: var(--mb-ouro);
+}
+.patch-relacionado-card.is-ouro .patch-relacionado-link {
+  color: var(--mb-ouro);
+}
